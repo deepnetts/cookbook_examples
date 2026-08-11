@@ -1,0 +1,4 @@
+**/target/
+**/models/
+*.dnet
+**/nbproject/private/
