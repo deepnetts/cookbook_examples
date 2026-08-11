@@ -2,3 +2,5 @@
 **/models/
 *.dnet
 **/nbproject/private/
+course/.venv/
+course/site/

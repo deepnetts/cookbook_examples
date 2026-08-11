@@ -1,0 +1,13 @@
+site_name: Deep Netts Course
+
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - Course:
+      - ML Basics: lectures/01-ml-basics.md
+      - Neural Networks: lectures/02-neural-networks.md
+      - Deep Netts API: lectures/03-deep-netts-api.md
+      - Model Development: lectures/04-model-development.md
+  - Glossary: glossary.md
