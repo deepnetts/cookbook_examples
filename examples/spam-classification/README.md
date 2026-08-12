@@ -31,6 +31,11 @@ probability >= 0.5 -> SPAM
 ---
 
 ## Dataset
+The dataset is from:
+
+```text
+https://www.kaggle.com/datasets/smayanj/spam-detection-dataset
+```
 
 The dataset is located at:
 
