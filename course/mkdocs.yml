@@ -7,10 +7,6 @@ theme:
   highlightjs: true
   hljs_style: github
 
-badge:
-  github_user: deepnetts
-  github_repo: cookbook-examples
-
 nav:
   - Home: index.md
 
