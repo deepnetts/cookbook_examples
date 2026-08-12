@@ -1,13 +1,23 @@
 site_name: Deep Netts Course
+site_description: Deep Netts Machine Learning cookbook for Java developers
+site_author: Deep Netts
 
 theme:
-  name: material
+  name: github
+  highlightjs: true
+  hljs_style: github
+
+badge:
+  github_user: deepnetts
+  github_repo: cookbook-examples
 
 nav:
   - Home: index.md
+
   - Course:
       - ML Basics: lectures/01-ml-basics.md
       - Neural Networks: lectures/02-neural-networks.md
       - Deep Netts API: lectures/03-deep-netts-api.md
       - Model Development: lectures/04-model-development.md
+
   - Glossary: glossary.md
