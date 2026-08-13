@@ -10,7 +10,7 @@ input data -> model -> output
 
 The model has an expected input structure, performs a sequence of transformations, and returns a result. Training determines the internal parameters used by those transformations.
 
-## Start with the complete prediction flow
+## Complete prediction flow
 
 Consider the email spam example. One email is represented by five numerical features:
 
@@ -47,7 +47,7 @@ The output is a number between `0` and `1`. A threshold such as `0.5` converts i
 
 This input-to-output contract is the first thing to understand. The internal structure explains how the model performs the transformation.
 
-## Read the architecture from left to right
+## Read the architecture
 
 The spam network has this architecture:
 
@@ -84,7 +84,7 @@ The notation provides a compact system-level view before we inspect what happens
 
 [View the complete `5 -> 32 -> 16 -> 1` classification network on GitHub](https://github.com/deepnetts/cookbook-examples/blob/main/examples/spam-classification/src/main/java/com/deepnetts/examples/spamclassificationdeepnetts/SpamClassificationDeepNetts.java)
 
-## Understand the responsibility of each layer
+## Layer responsibilities
 
 A feed-forward network organizes its transformations into layers.
 
@@ -113,7 +113,7 @@ Binary classification -> one sigmoid output
 
 The spam classifier uses one Sigmoid output because it predicts the probability of one positive class: spam.
 
-## Compare two complete network designs
+## Compare network designs
 
 The two projects demonstrate how architecture follows the prediction problem.
 
@@ -150,7 +150,7 @@ features -> learned transformation -> prediction
 
 They differ in their internal structure because they solve different kinds of problems.
 
-## Zoom in: what does one neuron do?
+## Inside one neuron
 
 After understanding the network and its layers, we can inspect the smallest computational unit.
 
@@ -170,7 +170,7 @@ The weights control how strongly each incoming value affects the result. The bia
 
 One neuron performs a small calculation. A layer performs many such calculations, and the network composes the transformations of all its layers.
 
-## Activation functions transform neuron output
+## Activation functions
 
 After calculating its weighted sum, a neuron usually applies an **activation function**:
 
@@ -190,7 +190,7 @@ The spam network uses ReLU in its hidden layers and Sigmoid in its output layer.
 
 Without non-linear activation functions in hidden layers, stacking several layers would still behave like a single linear transformation. Non-linearity allows hidden layers to represent more complex relationships.
 
-## Training configures the internal parameters
+## How training works
 
 Defining the architecture creates an untrained network. Its initial weights and biases do not yet represent useful patterns in the dataset.
 
@@ -221,7 +221,7 @@ In more specific terms, training:
 
 The network architecture remains the same during this process. What changes are the learned weights and biases inside its neurons.
 
-## Architecture is a model-design decision
+## Architecture decisions
 
 Choosing an architecture involves deciding:
 
