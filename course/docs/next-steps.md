@@ -14,7 +14,7 @@ Use the course when you need to understand terminology, architecture, preprocess
 
 ## Learn Through Code
 
-A separate **Learn Through Code** repository is planned as the bridge between the course and the complete projects:
+The **Learn Through Code** section bridges the course and the complete projects:
 
 ```text
 MkDocs Course
@@ -29,30 +29,25 @@ Complete Maven Examples
 RUN
 ```
 
-That repository will build each program progressively with more code than theory and short explanations between code sections.
+The walkthroughs build each program progressively with more code than theory and short explanations between code sections.
 
-Each example will use one README for its complete walkthrough:
+Each example uses one page for its complete walkthrough:
 
 ```text
-learn-through-code/
-├── README.md
-├── linear-regression/
-│   └── README.md
-└── spam-classification/
-    └── README.md
+Learn Through Code
+├── Linear Regression
+└── Spam Classification
 ```
 
-A walkthrough will not be split into many small files. One README will cover the full path from loading the dataset to making a prediction, then link to the corresponding runnable Maven project in this repository.
+A walkthrough is not split into many small files. One page covers the full path from loading the dataset to making a prediction, then links to the corresponding runnable Maven project.
 
-The separate repository is not part of the current course and is not created here.
+[Open Learn Through Code](learn-through-code/index.md)
 
 ## Continue with the runnable projects
 
-Until the code-first walkthroughs are published, use the detailed READMEs already included with the examples:
+Use the walkthroughs while building, then use the detailed READMEs included with the complete examples as references:
 
 - [Computer Hardware Performance Regression](https://github.com/deepnetts/cookbook-examples/tree/main/examples/linear-regression)
 - [Email Spam Classification](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
 
 When adapting an example, keep the complete workflow intact: split before fitting preprocessing, evaluate on unseen data, save preprocessing with the model, and preserve feature order during prediction.
-
-[Previous: Glossary](glossary.md) · [Return to Course Home](index.md)

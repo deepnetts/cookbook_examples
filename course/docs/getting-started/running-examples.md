@@ -94,5 +94,3 @@ If an example does not start, check:
 - the dataset file is present under `src/main/resources/datasets/`.
 
 For a detailed explanation of every operation, read the README inside the selected example.
-
-[Previous: Prerequisites](prerequisites.md) · [Next: Machine Learning Basics](../lectures/01-ml-basics.md)

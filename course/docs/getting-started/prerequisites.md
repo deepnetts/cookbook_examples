@@ -77,5 +77,3 @@ java --version
 javac --version
 mvn --version
 ```
-
-[Next: Running the Examples](running-examples.md)

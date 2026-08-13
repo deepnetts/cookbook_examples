@@ -246,5 +246,3 @@ How does training improve the complete system?
 ## Continue learning
 
 Now connect the network, layers, neurons, and training process to the Java classes and methods used to implement them.
-
-[Previous: Machine Learning Basics](01-ml-basics.md) · [Next: Deep Netts API](03-deep-netts-api.md)

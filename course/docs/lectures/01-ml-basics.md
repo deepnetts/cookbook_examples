@@ -118,5 +118,3 @@ If the answer is a quantity, the problem is usually regression. If the answer is
 ## Continue learning
 
 Next, look inside a neural network and see how it transforms features into predictions.
-
-[Next: Neural Networks](02-neural-networks.md)
