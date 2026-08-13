@@ -295,5 +295,3 @@ Each project includes its dataset, Java source, Maven configuration, and a detai
 ## Continue learning
 
 Now place the individual API calls into a complete, trustworthy model-development process.
-
-[Previous: Neural Networks](02-neural-networks.md) · [Next: Model Development](04-model-development.md)

@@ -1,3 +1,23 @@
+.title .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.title .course-logo {
+    display: block;
+    width: auto;
+    height: 34px;
+    margin: 0;
+    float: none;
+}
+
+@media only screen and (min-width: 769px) {
+    .title {
+        padding-left: 12px;
+    }
+}
+
 .page-toc {
     box-sizing: border-box;
     position: fixed;
@@ -52,6 +72,7 @@
 .side {
     box-sizing: border-box;
     width: 310px;
+    padding-top: 66px;
     padding-left: 22px;
     padding-right: 18px;
     font-size: 16px;
@@ -72,6 +93,124 @@
 
 .side .about {
     display: none;
+}
+
+.page-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 36px;
+    padding-top: 18px;
+    border-top: 1px solid #d8dee4;
+}
+
+.page-navigation .prev,
+.page-navigation .next {
+    float: none;
+}
+
+.code-block {
+    position: relative;
+}
+
+.code-block pre {
+    padding-top: 42px;
+}
+
+.copy-code-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    color: #24292f;
+    background: #f6f8fa;
+    border: 1px solid #d0d7de;
+    border-radius: 5px;
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.copy-code-button svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
+.copy-code-button::after {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 7px);
+    padding: 5px 8px;
+    color: #ffffff;
+    background: #24292f;
+    border-radius: 4px;
+    content: attr(data-tooltip);
+    font-size: 12px;
+    line-height: 1;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(3px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.copy-code-button:hover::after,
+.copy-code-button:focus-visible::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.copy-code-button:hover {
+    background: #eef1f4;
+}
+
+.copy-code-button:focus-visible {
+    outline: 2px solid #0969da;
+    outline-offset: 2px;
+}
+
+.copy-code-button.copied {
+    color: #1a7f37;
+    border-color: #1a7f37;
+}
+
+.markdown-body .github-example-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 13px;
+    color: #ffffff !important;
+    background: #24292f;
+    border: 1px solid #24292f;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none !important;
+    box-shadow: 0 1px 0 rgba(27, 31, 36, 0.1);
+}
+
+.markdown-body .github-example-button:hover {
+    background: #32383f;
+    border-color: #32383f;
+}
+
+.markdown-body .github-example-button:focus-visible {
+    outline: 2px solid #0969da;
+    outline-offset: 2px;
+}
+
+.markdown-body .github-example-button svg {
+    width: 17px;
+    height: 17px;
+    fill: currentColor;
 }
 
 @media only screen and (min-width: 1281px) {

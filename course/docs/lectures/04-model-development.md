@@ -391,5 +391,3 @@ Use their READMEs to review the dataset, commands, model configuration, metrics,
 ## Continue learning
 
 You have completed the introductory course path. Use the glossary to review terminology while exploring and adapting the runnable examples.
-
-[Previous: Deep Netts API](03-deep-netts-api.md) · [Next: Glossary](../glossary.md)

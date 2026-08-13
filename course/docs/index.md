@@ -24,7 +24,7 @@ The lectures explain the ideas behind Machine Learning, neural networks, the Dee
 
 ### Build the program step by step
 
-Code-focused walkthroughs will progressively assemble each example, with short explanations between Java code sections.
+Use [Learn Through Code](learn-through-code/index.md) to progressively assemble each example, with short explanations between focused Java code sections.
 
 ### Run the complete project
 
@@ -41,7 +41,9 @@ The complete examples are standalone Maven projects containing the Java program,
 4. [Neural Networks](lectures/02-neural-networks.md)
 5. [Deep Netts API](lectures/03-deep-netts-api.md)
 6. [Model Development](lectures/04-model-development.md)
-7. [Glossary](glossary.md)
-8. [Next Steps](next-steps.md)
+7. [Build Linear Regression step by step](learn-through-code/linear-regression.md)
+8. [Build Spam Classification step by step](learn-through-code/spam-classification.md)
+9. [Glossary](glossary.md)
+10. [Next Steps](next-steps.md)
 
 The course will grow incrementally. Each topic will explain why a step is needed before presenting the corresponding Deep Netts code.
