@@ -19,7 +19,7 @@ Instead of presenting the complete Java class immediately, each walkthrough buil
 
 ## Choose a walkthrough
 
-### [Linear Regression](linear-regression.md)
+### [Multiple Linear Regression](multiple-linear-regression.md)
 
 Build a model that predicts computer hardware performance from six numerical features.
 

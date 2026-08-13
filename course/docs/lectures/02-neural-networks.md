@@ -140,7 +140,7 @@ CHMAX -----/
 
 Because there are no hidden layers, the model learns a weighted linear combination of the six features. This is multiple linear regression represented with the Deep Netts neural-network API.
 
-[View the complete `6 -> 1` regression network on GitHub](https://github.com/deepnetts/cookbook-examples/blob/main/examples/linear-regression/src/main/java/com/deepnetts/examples/linearregression/LinearRegressionDeepNetts.java)
+[View the complete `6 -> 1` regression network on GitHub](https://github.com/deepnetts/cookbook-examples/blob/main/examples/multiple-linear-regression/src/main/java/com/deepnetts/examples/multiplelinearregression/MultipleLinearRegressionDeepNetts.java)
 
 At the system level, both models have the same responsibility:
 

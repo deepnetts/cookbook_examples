@@ -6,13 +6,13 @@ The projects under `examples/` are complete, standalone Maven applications. Run 
 
 ### Linear regression
 
-The Computer Hardware Performance Regression project predicts a continuous `PRP` value:
+The Computer Hardware Performance — Multiple Linear Regression project predicts a continuous `PRP` value:
 
 ```bash
-cd examples/linear-regression
+cd examples/multiple-linear-regression
 ```
 
-[View the project on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/linear-regression)
+[View the project on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiple-linear-regression)
 
 ### Spam classification
 
@@ -67,7 +67,7 @@ The regression example ends with a predicted relative computer performance value
 Each program creates a local `models/` directory and saves a trained `.dnet` model:
 
 ```text
-linear-regression/models/computer-hardware-regression.dnet
+multiple-linear-regression/models/computer-hardware-multiple-regression.dnet
 spam-classification/models/spam-classifier.dnet
 ```
 

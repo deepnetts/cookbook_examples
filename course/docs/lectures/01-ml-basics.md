@@ -61,7 +61,7 @@ The computer hardware example in this project is a regression problem because `P
 hardware features -> model -> predicted PRP: 347.25
 ```
 
-[View the complete Computer Hardware Performance Regression example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/linear-regression)
+[View the complete Computer Hardware Performance — Multiple Linear Regression example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiple-linear-regression)
 
 ## Classification
 

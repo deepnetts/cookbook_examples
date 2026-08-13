@@ -1,4 +1,4 @@
-package com.deepnetts.examples.linearregression;
+package com.deepnetts.examples.multiplelinearregression;
 
 import deepnetts.core.DeepNetts;
 import deepnetts.data.DataSets;
@@ -25,12 +25,12 @@ import java.util.Arrays;
  *
  * Dataset: 6 numerical input features and 1 continuous target (PRP).
  */
-public class LinearRegressionDeepNetts {
+public class MultipleLinearRegressionDeepNetts {
 
     // 0. Configuration
     private static final String DATASET_PATH = "src/main/resources/datasets/computer_hardware.csv";
 
-    private static final String MODEL_PATH = "models/computer-hardware-regression.dnet";
+    private static final String MODEL_PATH = "models/computer-hardware-multiple-regression.dnet";
 
     private static final int NUM_INPUTS = 6;
     private static final int NUM_OUTPUTS = 1;

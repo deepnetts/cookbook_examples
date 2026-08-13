@@ -383,7 +383,7 @@ Model development is a pipeline. Every stage contributes to whether the final pr
 
 The standalone projects apply the checklist from this lesson from data loading through prediction:
 
-- [Run the Computer Hardware Performance Regression workflow](https://github.com/deepnetts/cookbook-examples/tree/main/examples/linear-regression)
+- [Run the Computer Hardware Performance — Multiple Linear Regression workflow](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiple-linear-regression)
 - [Run the Email Spam Classification workflow](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
 
 Use their READMEs to review the dataset, commands, model configuration, metrics, and expected program flow before adapting either project to a new problem.

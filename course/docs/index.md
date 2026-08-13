@@ -30,7 +30,7 @@ Use [Learn Through Code](learn-through-code/index.md) to progressively assemble 
 
 The complete examples are standalone Maven projects containing the Java program, dataset, and detailed README:
 
-- [Computer Hardware Performance Regression](https://github.com/deepnetts/cookbook-examples/tree/main/examples/linear-regression)
+- [Computer Hardware Performance — Multiple Linear Regression](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiple-linear-regression)
 - [Email Spam Classification](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
 
 ## Course path
@@ -41,7 +41,7 @@ The complete examples are standalone Maven projects containing the Java program,
 4. [Neural Networks](lectures/02-neural-networks.md)
 5. [Deep Netts API](lectures/03-deep-netts-api.md)
 6. [Model Development](lectures/04-model-development.md)
-7. [Build Linear Regression step by step](learn-through-code/linear-regression.md)
+7. [Build Multiple Linear Regression step by step](learn-through-code/multiple-linear-regression.md)
 8. [Build Spam Classification step by step](learn-through-code/spam-classification.md)
 9. [Glossary](glossary.md)
 10. [Next Steps](next-steps.md)

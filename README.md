@@ -45,7 +45,7 @@ Then open <http://127.0.0.1:8002>.
 
 Each example is a standalone Maven project with its own Java program, dataset, and detailed README.
 
-### [Computer Hardware Performance Regression](examples/linear-regression/)
+### [Computer Hardware Performance — Multiple Linear Regression](examples/multiple-linear-regression/)
 
 Predicts published relative computer performance (`PRP`) from six hardware characteristics. It demonstrates multiple linear regression and the workflow:
 
@@ -67,7 +67,7 @@ load -> inspect -> split -> scale -> train -> evaluate -> save -> predict
 cookbook-examples/
 ├── course/                 # Concept-focused MkDocs course
 └── examples/
-    ├── linear-regression/  # Complete regression Maven project
+    ├── multiple-linear-regression/ # Complete multiple regression Maven project
     └── spam-classification/ # Complete classification Maven project
 ```
 

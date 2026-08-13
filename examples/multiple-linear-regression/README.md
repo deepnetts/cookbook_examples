@@ -1,6 +1,6 @@
-# Computer Hardware Performance Regression with Deep Netts
+# Computer Hardware Performance — Multiple Linear Regression with Deep Netts
 
-This example demonstrates a complete **linear regression workflow** using Deep Netts.
+This example demonstrates a complete **multiple linear regression workflow** using Deep Netts.
 
 The goal is to predict the relative performance of a computer from several hardware characteristics.
 
@@ -114,18 +114,18 @@ The first six values are model inputs.
 ## Project Structure
 
 ```text
-LinearRegressionDeepNetts/
+multiple-linear-regression/
 │
 ├── README.md
 ├── pom.xml
 ├── models/
-│   └── computer-hardware-regression.dnet
+│   └── computer-hardware-multiple-regression.dnet
 │
 └── src/
     └── main/
         ├── java/
-        │   └── com/deepnetts/examples/linearregression/
-        │       └── LinearRegressionDeepNetts.java
+        │   └── com/deepnetts/examples/multiplelinearregression/
+        │       └── MultipleLinearRegressionDeepNetts.java
         │
         └── resources/
             └── datasets/
@@ -474,7 +474,7 @@ CHMAX ──┘
 
 ---
 
-## Why Is This Linear Regression?
+## Why Is This Multiple Linear Regression?
 
 A neural network does not necessarily have to contain hidden layers.
 
@@ -690,7 +690,7 @@ neuralNet.save(MODEL_PATH);
 The resulting file is:
 
 ```text
-models/computer-hardware-regression.dnet
+models/computer-hardware-multiple-regression.dnet
 ```
 
 Saving the model makes it possible to reuse the trained network without repeating training.

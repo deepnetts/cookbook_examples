@@ -116,7 +116,7 @@ The training set teaches the model. The test set measures performance on data th
 
 Deep Netts provides preprocessing objects that can be fitted on training data and then applied consistently to other data.
 
-The linear-regression example uses standardization:
+The multiple-linear-regression example uses standardization:
 
 ```java
 Standardizer standardizer = new Standardizer(trainingSet);
@@ -287,7 +287,7 @@ The complete runnable projects show these calls in context. The next lesson expl
 
 Use the standalone Maven projects when you are ready to see every API call in one runnable program:
 
-- [View the complete Linear Regression API flow on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/linear-regression)
+- [View the complete Multiple Linear Regression API flow on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiple-linear-regression)
 - [View the complete Spam Classification API flow on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
 
 Each project includes its dataset, Java source, Maven configuration, and a detailed README explaining the workflow.
