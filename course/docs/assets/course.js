@@ -1,17 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const siteLogo = document.querySelector(".title .logo");
-    const courseScript = document.querySelector('script[src*="assets/course.js"]');
-
-    if (siteLogo && courseScript && !siteLogo.querySelector(".course-logo")) {
-        const logoImage = document.createElement("img");
-
-        logoImage.className = "course-logo";
-        logoImage.src = new URL("deep-netts-logo.png", courseScript.src).href;
-        logoImage.alt = "Deep Netts";
-        siteLogo.textContent = "";
-        siteLogo.appendChild(logoImage);
-    }
-
     const navigation = document.getElementById("side");
     const navigationHeading = navigation
         ? navigation.querySelector("h2")

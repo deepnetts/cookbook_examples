@@ -1,15 +1,14 @@
 .title .logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.title .course-logo {
     display: block;
-    width: auto;
+    width: 166px;
     height: 34px;
     margin: 0;
     float: none;
+    overflow: hidden;
+    background: url("deep-netts-logo.png") left center / contain no-repeat;
+    font-size: 0 !important;
+    line-height: 0;
+    white-space: nowrap;
 }
 
 @media only screen and (min-width: 769px) {
@@ -58,15 +57,26 @@
 .page-toc a {
     display: block;
     overflow: hidden;
-    color: #0366d6;
+    padding: 4px 8px;
+    color: #087ca7;
+    border-left: 2px solid transparent;
+    border-radius: 0 5px 5px 0;
     font-size: 16px;
+    font-weight: 500;
     text-decoration: none;
     text-overflow: ellipsis;
+    transition: color 0.15s ease, background-color 0.15s ease,
+        border-color 0.15s ease, transform 0.15s ease;
 }
 
 .page-toc a:hover,
-.page-toc a:active {
-    text-decoration: underline;
+.page-toc a:active,
+.page-toc a:focus-visible {
+    color: #075985;
+    background: rgba(14, 165, 233, 0.09);
+    border-left-color: #16b8e9;
+    text-decoration: none;
+    transform: translateX(2px);
 }
 
 .side {
@@ -88,7 +98,43 @@
 }
 
 .side a {
+    display: inline-block;
+    padding: 2px 7px;
+    color: #087ca7;
+    border-radius: 5px;
     font-size: 16px;
+    font-weight: 500;
+    transition: color 0.15s ease, background-color 0.15s ease,
+        box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.side a:hover,
+.side a:focus-visible {
+    color: #075985;
+    background: rgba(14, 165, 233, 0.1);
+    text-decoration: none;
+    transform: translateX(3px);
+}
+
+.side a.current {
+    color: #ffffff;
+    background: linear-gradient(90deg, #087ca7, #16b8e9);
+    box-shadow: 0 2px 7px rgba(8, 124, 167, 0.25);
+}
+
+.markdown-body a:not(.github-example-button) {
+    color: #087ca7;
+    font-weight: 600;
+    text-decoration-color: rgba(22, 184, 233, 0.45);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.markdown-body a:not(.github-example-button):hover,
+.markdown-body a:not(.github-example-button):focus-visible {
+    color: #075985;
+    text-decoration-color: #16b8e9;
 }
 
 .side .about {
@@ -107,6 +153,24 @@
 .page-navigation .prev,
 .page-navigation .next {
     float: none;
+    padding: 8px 13px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #087ca7, #16b8e9);
+    border: 1px solid rgba(7, 89, 133, 0.25);
+    border-radius: 6px;
+    box-shadow: 0 2px 7px rgba(8, 124, 167, 0.22);
+    text-decoration: none;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.page-navigation .prev:hover,
+.page-navigation .next:hover,
+.page-navigation .prev:focus-visible,
+.page-navigation .next:focus-visible {
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(8, 124, 167, 0.32);
+    text-decoration: none;
+    transform: translateY(-1px);
 }
 
 .code-block {
