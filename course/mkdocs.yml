@@ -7,6 +7,12 @@ theme:
   highlightjs: true
   hljs_style: github
 
+extra_css:
+  - assets/course.css
+
+extra_javascript:
+  - assets/course.js
+
 nav:
   - Home: index.md
 

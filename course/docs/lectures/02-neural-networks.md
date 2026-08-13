@@ -1,56 +1,18 @@
 # Neural Networks
 
-A neural network is a model that transforms input features into predictions through connected layers of simple computational units called neurons.
+A neural network is a model that transforms input features into a prediction. Before looking at individual neurons and equations, it is more useful to understand the network as a complete system.
 
-Despite the name, the main ideas can be understood using familiar programming concepts: numbers enter a function, the function applies parameters and an operation, and a result comes out.
-
-## What does a neuron do?
-
-A neuron receives one or more input values. Each input is multiplied by a **weight**, the weighted values are added together, and a **bias** is added:
+For a Java developer, the high-level idea resembles a processing pipeline:
 
 ```text
-weighted sum = x1*w1 + x2*w2 + ... + xn*wn + bias
+input data -> model -> output
 ```
 
-Where:
+The model has an expected input structure, performs a sequence of transformations, and returns a result. Training determines the internal parameters used by those transformations.
 
-- `x1 ... xn` are input values,
-- `w1 ... wn` are weights,
-- `bias` is an additional adjustable value.
+## Start with the complete prediction flow
 
-The weights determine how strongly each input affects the result. The bias allows the neuron to shift its output independently of the input values.
-
-During training, the neural network learns useful values for its weights and biases from the training data.
-
-## Activation functions
-
-After calculating the weighted sum, a neuron usually applies an **activation function**:
-
-```text
-inputs -> weighted sum + bias -> activation -> output
-```
-
-The activation function determines how the neuron transforms its calculated value.
-
-Common activation functions include:
-
-| Activation | Typical role |
-|---|---|
-| Linear | Predicting an unrestricted numerical value |
-| ReLU | Learning non-linear patterns in hidden layers |
-| Sigmoid | Producing a value between `0` and `1` |
-
-Without non-linear activation functions in hidden layers, stacking several layers would still behave like a single linear transformation. Non-linearity allows a network to learn more complex relationships.
-
-## Layers
-
-Neurons are organized into layers.
-
-### Input layer
-
-The input layer receives the feature values. It does not make a prediction by itself; it defines what data enters the network.
-
-For the spam example, the input layer receives five features:
+Consider the email spam example. One email is represented by five numerical features:
 
 ```text
 num_links
@@ -60,62 +22,47 @@ sender_score
 all_caps
 ```
 
-### Hidden layers
-
-Hidden layers transform information between the input and output layers. A network can have no hidden layers, one hidden layer, or several hidden layers.
-
-Each hidden layer can learn combinations of patterns from the preceding layer. Deeper or wider networks can represent more complex relationships, but they also introduce more parameters and may require more data and careful training.
-
-### Output layer
-
-The output layer produces the final prediction. Its size and activation function depend on the problem.
-
-For example:
+The complete prediction flow is:
 
 ```text
-Regression            -> one linear output
-Binary classification -> one sigmoid output
+email features
+      |
+      v
+neural network
+      |
+      v
+spam probability
+      |
+      v
+SPAM or NOT SPAM
 ```
 
-## A linear regression network
-
-The computer hardware example uses this architecture:
+At this level, the network can be treated as a function:
 
 ```text
-6 -> 1
+five input values -> one output value
 ```
 
-It has six input features, no hidden layers, and one linear output:
+The output is a number between `0` and `1`. A threshold such as `0.5` converts it into a class.
 
-```text
-MYCT  ----\
-MMIN  -----\
-MMAX  ------\
-CACH  -------+-> LINEAR OUTPUT -> predicted PRP
-CHMIN ------/
-CHMAX -----/
-```
+This input-to-output contract is the first thing to understand. The internal structure explains how the model performs the transformation.
 
-Because the network has no hidden layers and uses a linear output, it learns a weighted linear combination of the six features. This is multiple linear regression represented with the Deep Netts neural-network API.
+## Read the architecture from left to right
 
-[View the complete `6 -> 1` regression network on GitHub](https://github.com/deepnetts/cookbook-examples/blob/main/examples/linear-regression/src/main/java/com/deepnetts/examples/linearregression/LinearRegressionDeepNetts.java)
-
-## A binary classification network
-
-The spam example uses this architecture:
+The spam network has this architecture:
 
 ```text
 5 -> 32 -> 16 -> 1
 ```
 
-It contains:
+Each number describes the size of one layer:
 
-- five input values,
-- a hidden layer with 32 neurons,
-- a hidden layer with 16 neurons,
-- one Sigmoid output.
+- `5` input values,
+- `32` neurons in the first hidden layer,
+- `16` neurons in the second hidden layer,
+- `1` output value.
 
-The data flows forward through the network:
+Data flows forward through the complete network:
 
 ```text
 5 input features
@@ -133,43 +80,171 @@ The data flows forward through the network:
 spam probability
 ```
 
-The hidden layers allow the model to learn non-linear combinations of email characteristics. The Sigmoid output produces a value between `0` and `1`, which can be interpreted as a spam probability.
+The notation provides a compact system-level view before we inspect what happens inside each layer.
 
 [View the complete `5 -> 32 -> 16 -> 1` classification network on GitHub](https://github.com/deepnetts/cookbook-examples/blob/main/examples/spam-classification/src/main/java/com/deepnetts/examples/spamclassificationdeepnetts/SpamClassificationDeepNetts.java)
 
-## Architecture is part of model design
+## Understand the responsibility of each layer
 
-A notation such as:
+A feed-forward network organizes its transformations into layers.
+
+### Input layer: define the model contract
+
+The input layer receives feature values. Its size must match the number of features supplied for each sample.
+
+In the spam example, five dataset columns become five network inputs. The feature order is part of the contract: changing the order changes the meaning of the data.
+
+### Hidden layers: transform representations
+
+Hidden layers sit between the input and output. Each hidden layer receives values from the preceding layer and produces a new representation for the following layer.
+
+The spam network uses layers of 32 and 16 neurons. These layers allow the model to learn non-linear combinations of email characteristics. A pattern may depend on several features together rather than on one feature alone.
+
+A network can have no hidden layers, one hidden layer, or several hidden layers. More layers and neurons create more trainable parameters and greater capacity, but they may also require more data and careful training.
+
+### Output layer: match the prediction task
+
+The output layer returns the final prediction. Its structure depends on the problem:
 
 ```text
-5 -> 32 -> 16 -> 1
+Regression            -> one linear output
+Binary classification -> one sigmoid output
 ```
 
-describes the number of neurons in each layer, from input to output.
+The spam classifier uses one Sigmoid output because it predicts the probability of one positive class: spam.
 
-Choosing an architecture involves decisions such as:
+## Compare two complete network designs
 
-- how many input features the dataset contains,
-- whether the problem needs hidden layers,
-- how many neurons each hidden layer should contain,
-- which activation functions to use,
-- how many outputs the prediction requires.
+The two projects demonstrate how architecture follows the prediction problem.
 
-There is no single best architecture for every dataset. A useful approach is to begin with the smallest model that matches the problem, evaluate it, and increase complexity only when the evidence supports doing so.
+### Binary classification: `5 -> 32 -> 16 -> 1`
 
-## From architecture to training
+The spam classifier contains hidden layers because it is intended to learn non-linear relationships between email features.
 
-Defining layers creates the structure of a neural network, but it does not make the network useful by itself. Its initial weights and biases do not yet represent the patterns in the dataset.
+```text
+email characteristics -> hidden transformations -> spam probability
+```
 
-Training repeatedly:
+### Linear regression: `6 -> 1`
 
-1. sends samples through the network,
+The computer hardware example uses six inputs, no hidden layers, and one linear output:
+
+```text
+MYCT  ----\
+MMIN  -----\
+MMAX  ------\
+CACH  -------+-> LINEAR OUTPUT -> predicted PRP
+CHMIN ------/
+CHMAX -----/
+```
+
+Because there are no hidden layers, the model learns a weighted linear combination of the six features. This is multiple linear regression represented with the Deep Netts neural-network API.
+
+[View the complete `6 -> 1` regression network on GitHub](https://github.com/deepnetts/cookbook-examples/blob/main/examples/linear-regression/src/main/java/com/deepnetts/examples/linearregression/LinearRegressionDeepNetts.java)
+
+At the system level, both models have the same responsibility:
+
+```text
+features -> learned transformation -> prediction
+```
+
+They differ in their internal structure because they solve different kinds of problems.
+
+## Zoom in: what does one neuron do?
+
+After understanding the network and its layers, we can inspect the smallest computational unit.
+
+A neuron receives values from the preceding layer. Each value is multiplied by a **weight**, the weighted values are added, and a **bias** is included:
+
+```text
+weighted sum = x1*w1 + x2*w2 + ... + xn*wn + bias
+```
+
+Where:
+
+- `x1 ... xn` are values entering the neuron,
+- `w1 ... wn` are trainable weights,
+- `bias` is an additional trainable value.
+
+The weights control how strongly each incoming value affects the result. The bias allows the neuron to shift its result independently of those inputs.
+
+One neuron performs a small calculation. A layer performs many such calculations, and the network composes the transformations of all its layers.
+
+## Activation functions transform neuron output
+
+After calculating its weighted sum, a neuron usually applies an **activation function**:
+
+```text
+inputs -> weighted sum + bias -> activation -> output
+```
+
+Common activation functions have different responsibilities:
+
+| Activation | Typical role |
+|---|---|
+| Linear | Predicting an unrestricted numerical value |
+| ReLU | Learning non-linear patterns in hidden layers |
+| Sigmoid | Producing a value between `0` and `1` |
+
+The spam network uses ReLU in its hidden layers and Sigmoid in its output layer. The regression network uses a Linear output.
+
+Without non-linear activation functions in hidden layers, stacking several layers would still behave like a single linear transformation. Non-linearity allows hidden layers to represent more complex relationships.
+
+## Training configures the internal parameters
+
+Defining the architecture creates an untrained network. Its initial weights and biases do not yet represent useful patterns in the dataset.
+
+Training repeatedly performs this high-level loop:
+
+```text
+input samples
+      |
+      v
+forward prediction
+      |
+      v
+compare with known targets
+      |
+      v
+measure loss
+      |
+      v
+adjust weights and biases
+```
+
+In more specific terms, training:
+
+1. sends samples forward through the complete network,
 2. compares predictions with known targets,
 3. measures the error using a loss function,
-4. adjusts weights and biases to reduce that error.
+4. uses backpropagation and an optimizer to adjust parameters.
+
+The network architecture remains the same during this process. What changes are the learned weights and biases inside its neurons.
+
+## Architecture is a model-design decision
+
+Choosing an architecture involves deciding:
+
+- how many input features the model receives,
+- whether the problem needs hidden layers,
+- how many neurons each hidden layer contains,
+- which activation functions match each layer's role,
+- how many outputs the prediction requires.
+
+There is no single best architecture for every dataset. Begin with the smallest model that matches the problem, evaluate it, and increase complexity only when the evidence supports doing so.
+
+The important top-down questions are:
+
+```text
+What enters the model?
+What should it predict?
+Which layers transform the data?
+What does each neuron do inside those layers?
+How does training improve the complete system?
+```
 
 ## Continue learning
 
-Connect these neural-network concepts to the Java classes and methods used to implement them.
+Now connect the network, layers, neurons, and training process to the Java classes and methods used to implement them.
 
 [Previous: Machine Learning Basics](01-ml-basics.md) · [Next: Deep Netts API](03-deep-netts-api.md)
