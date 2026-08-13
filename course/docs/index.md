@@ -30,8 +30,8 @@ Code-focused walkthroughs will progressively assemble each example, with short e
 
 The complete examples are standalone Maven projects containing the Java program, dataset, and detailed README:
 
-- [Computer Hardware Performance Regression](https://github.com/deepnetts/cookbook-examples/tree/add-first-examples/examples/linear-regression)
-- [Email Spam Classification](https://github.com/deepnetts/cookbook-examples/tree/add-first-examples/examples/spam-classification)
+- [Computer Hardware Performance Regression](https://github.com/deepnetts/cookbook-examples/tree/main/examples/linear-regression)
+- [Email Spam Classification](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
 
 ## Course path
 
