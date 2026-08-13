@@ -10,6 +10,10 @@ theme:
 nav:
   - Home: index.md
 
+  - Getting Started:
+      - Prerequisites: getting-started/prerequisites.md
+      - Running the Examples: getting-started/running-examples.md
+
   - Course:
       - ML Basics: lectures/01-ml-basics.md
       - Neural Networks: lectures/02-neural-networks.md
@@ -17,3 +21,4 @@ nav:
       - Model Development: lectures/04-model-development.md
 
   - Glossary: glossary.md
+  - Next Steps: next-steps.md
