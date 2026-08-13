@@ -56,21 +56,21 @@ run, algorithm, array_size, execution_time_ms, memory_usage_kb, comparison_count
 
 The `array_size` column is constant in the supplied data, so it cannot explain differences in execution time. For a meaningful one-feature example, this project uses `comparison_count`, which has a strong positive relationship with `execution_time_ms` in the supplied measurements.
 
-Deep Netts reads the prepared two-column view:
+At runtime, DFLib selects the two model columns in the required order:
+
+```java
+DataFrame regressionData = Csv.load(RAW_DATASET_PATH)
+        .cols("comparison_count", "execution_time_ms")
+        .select();
+```
+
+DFLib writes the selected view under Maven's generated `target/` directory. Deep Netts then reads this model-ready CSV:
 
 ```text
-src/main/resources/datasets/sorting_algorithm_regression.csv
+target/datasets/sorting_algorithm_regression.csv
 ```
 
-Its column order is the model contract:
-
-```csv
-comparison_count,execution_time_ms
-499500,1910.624
-499500,1922.265
-```
-
-The first column is the input feature and the second column is the continuous target. The prepared file is derived only by selecting these two columns from `Sorting_Algorithm.csv`; the measurements are not invented or replaced.
+The first selected column is the input feature and the second is the continuous target. The generated view is not committed and can always be recreated from the original dataset.
 
 > This is an educational benchmark dataset. Results describe the supplied measurements and should not be treated as universal performance guarantees for sorting algorithms or hardware.
 
@@ -89,11 +89,10 @@ linear-regression/
         │       └── LinearRegressionDeepNetts.java
         └── resources/
             └── datasets/
-                ├── Sorting_Algorithm.csv
-                └── sorting_algorithm_regression.csv
+                └── Sorting_Algorithm.csv
 ```
 
-The `models/` directory is created when the program runs.
+The `models/` and `target/` directories are generated when the program runs.
 
 ## Prerequisites
 

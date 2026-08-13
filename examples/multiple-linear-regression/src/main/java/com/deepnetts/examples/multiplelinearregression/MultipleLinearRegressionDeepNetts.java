@@ -21,7 +21,7 @@ import java.util.Arrays;
  * Problem: Computer performance prediction 
  * 
  * Predicts computer performance from hardware characteristics using
- * linear regression.
+ * multiple linear regression.
  *
  * Dataset: 6 numerical input features and 1 continuous target (PRP).
  */

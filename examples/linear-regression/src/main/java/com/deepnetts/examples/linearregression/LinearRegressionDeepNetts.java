@@ -11,6 +11,8 @@ import deepnetts.net.FeedForwardNetwork;
 import deepnetts.net.layers.activation.ActivationType;
 import deepnetts.net.loss.LossType;
 import deepnetts.net.train.opt.OptimizerType;
+import org.dflib.DataFrame;
+import org.dflib.csv.Csv;
 
 import javax.visrec.ml.data.DataSet;
 import java.nio.file.Files;
@@ -18,15 +20,20 @@ import java.nio.file.Path;
 import java.util.Arrays;
 
 /**
- * Predicts sorting execution time from the number of comparisons.
+ * Problem: Sorting execution time prediction.
  *
- * This is simple linear regression because the model has exactly one input
- * feature and one continuous target.
+ * Predicts sorting execution time from the number of comparisons using
+ * simple linear regression.
+ *
+ * Dataset: 1 numerical input feature (comparison_count) and 1 continuous
+ * target (execution_time_ms).
  */
 public class LinearRegressionDeepNetts {
 
     // 0. Configuration
-    private static final String DATASET_PATH = "src/main/resources/datasets/sorting_algorithm_regression.csv";
+    private static final String RAW_DATASET_PATH = "src/main/resources/datasets/Sorting_Algorithm.csv";
+
+    private static final String DATASET_PATH = "target/datasets/sorting_algorithm_regression.csv";
 
     private static final String MODEL_PATH = "models/sorting-execution-time-regression.dnet";
 
@@ -38,15 +45,24 @@ public class LinearRegressionDeepNetts {
         // 1. Runtime configuration
         DeepNetts.getInstance().setUseCuda(false);
 
-        // 2. Load data
+        // 2. Select the feature and target columns from the raw dataset
+        DataFrame regressionData = Csv.load(RAW_DATASET_PATH)
+                .cols("comparison_count", "execution_time_ms")
+                .select();
+
+        Csv.saver()
+                .createMissingDirs()
+                .save(regressionData, DATASET_PATH);
+
+        // 3. Load data
         TabularDataSet<MLDataItem> dataSet =
                 DataSets.readCsv(DATASET_PATH,NUM_INPUTS,NUM_OUTPUTS,true,",");
 
-        // 3. Inspect data
+        // 4. Inspect data
         System.out.println("Samples: " + dataSet.size());
         System.out.println("Columns: " + Arrays.toString(dataSet.getColumnNames()));
 
-        // 4. Shuffle and split
+        // 5. Shuffle and split
         dataSet.shuffle(42);
 
         TrainTestSplit split = dataSet.trainTestSplit(0.8);
@@ -55,13 +71,13 @@ public class LinearRegressionDeepNetts {
 
         DataSet<MLDataItem> testSet = split.getTestSet();
 
-        // 5. Preprocess
+        // 6. Preprocess
         Standardizer standardizer = new Standardizer(trainingSet);
 
         standardizer.apply(trainingSet);
         standardizer.apply(testSet);
 
-        // 6. Build linear model
+        // 7. Build linear model
         FeedForwardNetwork neuralNet =
                 FeedForwardNetwork.builder()
                         .addInputLayer(NUM_INPUTS)
@@ -70,7 +86,7 @@ public class LinearRegressionDeepNetts {
                         .randomSeed(42)
                         .build();
 
-        // 7. Configure and train
+        // 8. Configure and train
         neuralNet.getTrainer()
                 .setStopEpochs(3000)
                 .setLearningRate(0.001f)
@@ -79,16 +95,16 @@ public class LinearRegressionDeepNetts {
 
         neuralNet.train(trainingSet);
 
-        // 8. Evaluate
+        // 9. Evaluate
         RegressionMetrics metrics = (RegressionMetrics) neuralNet.test(testSet);
         System.out.println(metrics);
 
-        // 9. Save model with preprocessing
+        // 10. Save model with preprocessing
         neuralNet.setNormalizer(standardizer);
         Files.createDirectories(Path.of("models"));
         neuralNet.save(MODEL_PATH);
 
-        // 10. Predict sorting execution time
+        // 11. Predict sorting execution time
         float comparisonCount = 100_000;
         float predictedExecutionTime = neuralNet.predict(comparisonCount)[0];
 
