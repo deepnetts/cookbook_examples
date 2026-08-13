@@ -387,3 +387,9 @@ The standalone projects apply the checklist from this lesson from data loading t
 - [Run the Email Spam Classification workflow](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
 
 Use their READMEs to review the dataset, commands, model configuration, metrics, and expected program flow before adapting either project to a new problem.
+
+## Continue learning
+
+You have completed the introductory course path. Use the glossary to review terminology while exploring and adapting the runnable examples.
+
+[Previous: Deep Netts API](03-deep-netts-api.md) · [Next: Glossary](../glossary.md)

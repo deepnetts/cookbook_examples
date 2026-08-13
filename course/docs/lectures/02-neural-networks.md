@@ -168,4 +168,8 @@ Training repeatedly:
 3. measures the error using a loss function,
 4. adjusts weights and biases to reduce that error.
 
-The next lessons will connect these concepts to the Deep Netts API and the complete model-development workflow.
+## Continue learning
+
+Connect these neural-network concepts to the Java classes and methods used to implement them.
+
+[Previous: Machine Learning Basics](01-ml-basics.md) · [Next: Deep Netts API](03-deep-netts-api.md)
