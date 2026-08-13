@@ -19,7 +19,13 @@ Instead of presenting the complete Java class immediately, each walkthrough buil
 
 ## Choose a walkthrough
 
-### [Linear Regression](linear-regression.md)
+### [Simple Linear Regression](linear-regression.md)
+
+Build a model that estimates sorting execution time from one numerical feature.
+
+You will create a `1 -> 1` linear network, train it using comparison counts and measured execution times, evaluate it with regression metrics, save it, and predict runtime for a new comparison count.
+
+### [Multiple Linear Regression](multiple-linear-regression.md)
 
 Build a model that predicts computer hardware performance from six numerical features.
 

@@ -61,7 +61,7 @@ The computer hardware example in this project is a regression problem because `P
 hardware features -> model -> predicted PRP: 347.25
 ```
 
-[View the complete Computer Hardware Performance Regression example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/linear-regression)
+[Full Multiple Linear Regression on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiple-linear-regression)
 
 ## Classification
 
@@ -87,7 +87,7 @@ probability < 0.5  -> NOT SPAM
 probability >= 0.5 -> SPAM
 ```
 
-[View the complete Email Spam Classification example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
+[Full Spam Classification on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
 
 ## Regression or classification?
 

@@ -6,18 +6,22 @@ This repository is intended primarily for experienced Java developers who are ne
 
 ## Learning structure
 
-The repository currently provides two complementary levels:
+The repository provides three complementary levels:
 
 ```text
 Deep Netts Course
 LEARN THE CONCEPT
         |
         v
+Learn Through Code
+BUILD STEP BY STEP
+        |
+        v
 Complete Maven Examples
 RUN THE PROJECT
 ```
 
-A separate code-first, step-by-step learning resource may be added later. The complete runnable projects in this repository remain the source of truth for implementations and datasets.
+The Learn Through Code walkthroughs use focused snippets from the real examples. The complete runnable projects remain the source of truth for implementations and datasets.
 
 ## Deep Netts Course
 
@@ -45,7 +49,15 @@ Then open <http://127.0.0.1:8002>.
 
 Each example is a standalone Maven project with its own Java program, dataset, and detailed README.
 
-### [Computer Hardware Performance Regression](examples/linear-regression/)
+### [Sorting Execution Time - Simple Linear Regression](examples/linear-regression/)
+
+Predicts sorting execution time from one numerical feature, `comparison_count`. It demonstrates simple linear regression and the workflow:
+
+```text
+load -> inspect -> split -> standardize -> train -> evaluate -> save -> predict
+```
+
+### [Computer Hardware Performance - Multiple Linear Regression](examples/multiple-linear-regression/)
 
 Predicts published relative computer performance (`PRP`) from six hardware characteristics. It demonstrates multiple linear regression and the workflow:
 
@@ -67,8 +79,9 @@ load -> inspect -> split -> scale -> train -> evaluate -> save -> predict
 cookbook-examples/
 ├── course/                 # Concept-focused MkDocs course
 └── examples/
-    ├── linear-regression/  # Complete regression Maven project
+    ├── linear-regression/  # Complete simple regression Maven project
+    ├── multiple-linear-regression/ # Complete multiple regression Maven project
     └── spam-classification/ # Complete classification Maven project
 ```
 
-Start with the [course](course/docs/index.md) to learn the concepts, then open either example to run the complete workflow.
+Start with the [course](course/docs/index.md) to learn the concepts, continue through Learn Through Code, then open an example to run the complete workflow.

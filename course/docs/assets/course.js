@@ -121,7 +121,19 @@ document.addEventListener("DOMContentLoaded", function () {
         "#14-predict-new-samples": "14. Predict new samples",
         "#keep-experiments-reproducible": "Reproducible experiments",
         "#separate-learning-building-and-running": "Learn, build, and run",
-        "#run-the-complete-workflows": "Run complete workflows"
+        "#run-the-complete-workflows": "Run complete workflows",
+        "#1-configure-the-program": "1. Configure the program",
+        "#2-select-cpu-execution": "2. Select CPU execution",
+        "#3-select-the-model-columns": "3. Select model columns",
+        "#4-load-the-dataset": "4. Load the dataset",
+        "#5-inspect-the-data": "5. Inspect the data",
+        "#6-create-train-and-test-sets": "6. Create train/test sets",
+        "#7-standardize-the-feature": "7. Standardize feature",
+        "#8-build-a-1-to-1-model": "8. Build 1 to 1 model",
+        "#9-train-the-model": "9. Train the model",
+        "#10-evaluate-on-unseen-data": "10. Evaluate the model",
+        "#11-save-the-complete-pipeline": "11. Save the pipeline",
+        "#12-predict-execution-time": "12. Predict execution time"
     };
 
     toc.querySelectorAll("a").forEach(function (link) {
