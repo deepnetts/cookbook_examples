@@ -2,6 +2,27 @@
 
 This glossary defines the main terms used throughout the Deep Netts course.
 
+## Quick navigation
+
+[A](#activation-function) ·
+[B](#backpropagation) ·
+[C](#classification) ·
+[D](#data-leakage) ·
+[E](#epoch) ·
+[F](#f1-score) ·
+[G](#generalization) ·
+[H](#hidden-layer) ·
+[I](#input-layer) ·
+[L](#learning-rate) ·
+[M](#mean-absolute-error-mae) ·
+[N](#neural-network) ·
+[O](#optimizer) ·
+[P](#parameter) ·
+[R](#r-squared-r2) ·
+[S](#sample) ·
+[T](#target) ·
+[W](#weight)
+
 ## Activation function
 
 A function applied to a neuron's weighted sum. It determines how that value is transformed before being passed to the next layer or returned as an output. Examples include Linear, ReLU, and Sigmoid.
