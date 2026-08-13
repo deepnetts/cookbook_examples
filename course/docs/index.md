@@ -35,10 +35,13 @@ The complete examples are standalone Maven projects containing the Java program,
 
 ## Course path
 
-1. [Machine Learning Basics](lectures/01-ml-basics.md)
-2. [Neural Networks](lectures/02-neural-networks.md)
-3. [Deep Netts API](lectures/03-deep-netts-api.md)
-4. [Model Development](lectures/04-model-development.md)
-5. [Glossary](glossary.md)
+1. [Check the prerequisites](getting-started/prerequisites.md)
+2. [Run a complete example](getting-started/running-examples.md)
+3. [Machine Learning Basics](lectures/01-ml-basics.md)
+4. [Neural Networks](lectures/02-neural-networks.md)
+5. [Deep Netts API](lectures/03-deep-netts-api.md)
+6. [Model Development](lectures/04-model-development.md)
+7. [Glossary](glossary.md)
+8. [Next Steps](next-steps.md)
 
 The course will grow incrementally. Each topic will explain why a step is needed before presenting the corresponding Deep Netts code.
