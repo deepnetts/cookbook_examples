@@ -1,4 +1,4 @@
-# Computer Hardware Performance — Multiple Linear Regression with Deep Netts
+# Computer Hardware Performance - Multiple Linear Regression with Deep Netts
 
 This example demonstrates a complete **multiple linear regression workflow** using Deep Netts.
 
@@ -84,7 +84,7 @@ Those categorical columns are intentionally excluded from this entry-level examp
 | `CACH` | Cache memory in KB |
 | `CHMIN` | Minimum number of channels |
 | `CHMAX` | Maximum number of channels |
-| `PRP` | Published relative performance — prediction target |
+| `PRP` | Published relative performance - prediction target |
 
 Example row:
 
@@ -611,7 +611,7 @@ R²
 
 ---
 
-## MSE — Mean Squared Error
+## MSE - Mean Squared Error
 
 MSE measures the average squared difference between predicted and actual values.
 
@@ -621,7 +621,7 @@ Because errors are squared, large errors are penalized more strongly.
 
 ---
 
-## RMSE — Root Mean Squared Error
+## RMSE - Root Mean Squared Error
 
 RMSE is the square root of MSE.
 
@@ -631,7 +631,7 @@ Lower values are better.
 
 ---
 
-## MAE — Mean Absolute Error
+## MAE - Mean Absolute Error
 
 MAE measures the average absolute difference between predictions and actual values.
 
@@ -648,7 +648,7 @@ Lower MAE means predictions are closer to the real values on average.
 
 ---
 
-## R² — Coefficient of Determination
+## R² - Coefficient of Determination
 
 R² indicates how much of the variation in the target is explained by the model.
 

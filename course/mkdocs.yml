@@ -28,6 +28,7 @@ nav:
 
   - Learn Through Code:
       - Overview: learn-through-code/index.md
+      - Simple Linear Regression: learn-through-code/linear-regression.md
       - Multiple Linear Regression: learn-through-code/multiple-linear-regression.md
       - Spam Classification: learn-through-code/spam-classification.md
 

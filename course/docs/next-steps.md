@@ -1,10 +1,13 @@
 # Next Steps
 
-You now have two complementary ways to work with the material in this repository:
+You now have three complementary ways to work with the material in this repository:
 
 ```text
 Deep Netts Course
 = LEARN THE CONCEPT
+
+Learn Through Code
+= BUILD STEP BY STEP
 
 Complete Maven Examples
 = RUN THE COMPLETE PROJECT
@@ -35,6 +38,7 @@ Each example uses one page for its complete walkthrough:
 
 ```text
 Learn Through Code
+├── Simple Linear Regression
 ├── Multiple Linear Regression
 └── Spam Classification
 ```
@@ -47,7 +51,10 @@ A walkthrough is not split into many small files. One page covers the full path 
 
 Use the walkthroughs while building, then use the detailed READMEs included with the complete examples as references:
 
-- [Computer Hardware Performance — Multiple Linear Regression](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiple-linear-regression)
-- [Email Spam Classification](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
+[Full Simple Linear Regression on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/linear-regression)
+
+[Full Multiple Linear Regression on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiple-linear-regression)
+
+[Full Spam Classification on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
 
 When adapting an example, keep the complete workflow intact: split before fitting preprocessing, evaluate on unseen data, save preprocessing with the model, and preserve feature order during prediction.

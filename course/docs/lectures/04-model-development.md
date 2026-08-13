@@ -239,11 +239,11 @@ neuralNet.getTrainer()
 
 Important choices include:
 
-- **epochs** — how many times training may process the dataset,
-- **learning rate** — how large each parameter update is,
-- **optimizer** — how weights and biases are updated,
-- **batch size** — how many samples contribute to one update,
-- **shuffle** — whether sample order changes between epochs.
+- **epochs** - how many times training may process the dataset,
+- **learning rate** - how large each parameter update is,
+- **optimizer** - how weights and biases are updated,
+- **batch size** - how many samples contribute to one update,
+- **shuffle** - whether sample order changes between epochs.
 
 These values are hyperparameters. They are selected by the developer rather than learned as model weights.
 
@@ -378,15 +378,6 @@ Before considering an introductory model-development experiment complete, verify
 - [ ] preserved feature order for prediction.
 
 Model development is a pipeline. Every stage contributes to whether the final prediction can be trusted.
-
-## Run the complete workflows
-
-The standalone projects apply the checklist from this lesson from data loading through prediction:
-
-- [Run the Computer Hardware Performance — Multiple Linear Regression workflow](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiple-linear-regression)
-- [Run the Email Spam Classification workflow](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
-
-Use their READMEs to review the dataset, commands, model configuration, metrics, and expected program flow before adapting either project to a new problem.
 
 ## Continue learning
 

@@ -4,15 +4,25 @@ The projects under `examples/` are complete, standalone Maven applications. Run 
 
 ## Choose an example
 
-### Linear regression
+### Simple linear regression
 
-The Computer Hardware Performance — Multiple Linear Regression project predicts a continuous `PRP` value:
+The Sorting Execution Time project predicts a continuous runtime from one input feature:
+
+```bash
+cd examples/linear-regression
+```
+
+[Full Simple Linear Regression on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/linear-regression)
+
+### Multiple linear regression
+
+The Computer Hardware Performance - Multiple Linear Regression project predicts a continuous `PRP` value:
 
 ```bash
 cd examples/multiple-linear-regression
 ```
 
-[View the project on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiple-linear-regression)
+[Full Multiple Linear Regression on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiple-linear-regression)
 
 ### Spam classification
 
@@ -22,7 +32,7 @@ The Email Spam Classification project predicts a spam probability and binary cla
 cd examples/spam-classification
 ```
 
-[View the project on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
+[Full Spam Classification on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
 
 ## Compile the project
 
@@ -46,7 +56,7 @@ The first run may take longer while Maven resolves dependencies. Training output
 
 ## What the program does
 
-Both examples execute the complete workflow in one run:
+All three examples execute the complete workflow in one run:
 
 ```text
 load data
@@ -60,13 +70,14 @@ load data
 -> predict
 ```
 
-The regression example ends with a predicted relative computer performance value. The classification example ends with a spam probability and either `SPAM` or `NOT SPAM`.
+The simple-regression example predicts sorting execution time. The multiple-regression example predicts relative computer performance. The classification example ends with a spam probability and either `SPAM` or `NOT SPAM`.
 
 ## Generated model files
 
 Each program creates a local `models/` directory and saves a trained `.dnet` model:
 
 ```text
+linear-regression/models/sorting-execution-time-regression.dnet
 multiple-linear-regression/models/computer-hardware-multiple-regression.dnet
 spam-classification/models/spam-classifier.dnet
 ```

@@ -30,8 +30,11 @@ Use [Learn Through Code](learn-through-code/index.md) to progressively assemble 
 
 The complete examples are standalone Maven projects containing the Java program, dataset, and detailed README:
 
-- [Computer Hardware Performance — Multiple Linear Regression](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiple-linear-regression)
-- [Email Spam Classification](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
+[Full Simple Linear Regression on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/linear-regression)
+
+[Full Multiple Linear Regression on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiple-linear-regression)
+
+[Full Spam Classification on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
 
 ## Course path
 
@@ -41,9 +44,10 @@ The complete examples are standalone Maven projects containing the Java program,
 4. [Neural Networks](lectures/02-neural-networks.md)
 5. [Deep Netts API](lectures/03-deep-netts-api.md)
 6. [Model Development](lectures/04-model-development.md)
-7. [Build Multiple Linear Regression step by step](learn-through-code/multiple-linear-regression.md)
-8. [Build Spam Classification step by step](learn-through-code/spam-classification.md)
-9. [Glossary](glossary.md)
-10. [Next Steps](next-steps.md)
+7. [Build Simple Linear Regression step by step](learn-through-code/linear-regression.md)
+8. [Build Multiple Linear Regression step by step](learn-through-code/multiple-linear-regression.md)
+9. [Build Spam Classification step by step](learn-through-code/spam-classification.md)
+10. [Glossary](glossary.md)
+11. [Next Steps](next-steps.md)
 
 The course will grow incrementally. Each topic will explain why a step is needed before presenting the corresponding Deep Netts code.

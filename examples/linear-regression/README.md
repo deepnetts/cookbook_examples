@@ -1,4 +1,4 @@
-# Sorting Execution Time — Simple Linear Regression with Deep Netts
+# Sorting Execution Time - Simple Linear Regression with Deep Netts
 
 This example demonstrates a complete **simple linear regression workflow** using Deep Netts.
 

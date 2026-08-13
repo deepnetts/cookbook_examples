@@ -49,7 +49,7 @@ Runtime configuration belongs at the beginning of the program so that the execut
 
 ## Loading tabular data
 
-Both examples load a CSV file using `DataSets.readCsv`:
+All three examples load a CSV file using `DataSets.readCsv`:
 
 ```java
 TabularDataSet<MLDataItem> dataSet =
@@ -282,15 +282,6 @@ neuralNet.predict(...)
 ```
 
 The complete runnable projects show these calls in context. The next lesson explains why the overall model-development workflow must be treated as more than just model training.
-
-## Explore the complete API flows
-
-Use the standalone Maven projects when you are ready to see every API call in one runnable program:
-
-- [View the complete Multiple Linear Regression API flow on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiple-linear-regression)
-- [View the complete Spam Classification API flow on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
-
-Each project includes its dataset, Java source, Maven configuration, and a detailed README explaining the workflow.
 
 ## Continue learning
 
