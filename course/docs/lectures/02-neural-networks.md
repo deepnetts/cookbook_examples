@@ -98,6 +98,8 @@ CHMAX -----/
 
 Because the network has no hidden layers and uses a linear output, it learns a weighted linear combination of the six features. This is multiple linear regression represented with the Deep Netts neural-network API.
 
+[View the complete `6 -> 1` regression network on GitHub](https://github.com/deepnetts/cookbook-examples/blob/main/examples/linear-regression/src/main/java/com/deepnetts/examples/linearregression/LinearRegressionDeepNetts.java)
+
 ## A binary classification network
 
 The spam example uses this architecture:
@@ -132,6 +134,8 @@ spam probability
 ```
 
 The hidden layers allow the model to learn non-linear combinations of email characteristics. The Sigmoid output produces a value between `0` and `1`, which can be interpreted as a spam probability.
+
+[View the complete `5 -> 32 -> 16 -> 1` classification network on GitHub](https://github.com/deepnetts/cookbook-examples/blob/main/examples/spam-classification/src/main/java/com/deepnetts/examples/spamclassificationdeepnetts/SpamClassificationDeepNetts.java)
 
 ## Architecture is part of model design
 
