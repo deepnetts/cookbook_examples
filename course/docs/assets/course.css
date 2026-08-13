@@ -1,0 +1,99 @@
+.page-toc {
+    box-sizing: border-box;
+    position: fixed;
+    top: 70px;
+    left: calc(350px + min(980px, calc(100vw - 700px)) + 28px);
+    width: 320px;
+    max-height: calc(100vh - 94px);
+    padding: 16px 18px;
+    overflow-y: auto;
+    background: #fafbfc;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+}
+
+.page-toc h2 {
+    margin: 0 0 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #d8dee4;
+    font-size: 18px;
+}
+
+.page-toc ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.page-toc li {
+    margin: 7px 0;
+    line-height: 1.35;
+    white-space: nowrap;
+}
+
+.page-toc li.child {
+    padding-left: 12px;
+}
+
+.page-toc a {
+    display: block;
+    overflow: hidden;
+    color: #0366d6;
+    font-size: 16px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+}
+
+.page-toc a:hover,
+.page-toc a:active {
+    text-decoration: underline;
+}
+
+.side {
+    box-sizing: border-box;
+    width: 310px;
+    padding-left: 22px;
+    padding-right: 18px;
+    font-size: 16px;
+}
+
+.side h2 {
+    margin-bottom: 8px;
+    font-size: 19px;
+}
+
+.side ul {
+    padding-left: 16px;
+}
+
+.side a {
+    font-size: 16px;
+}
+
+.side .about {
+    display: none;
+}
+
+@media only screen and (min-width: 1281px) {
+    .markdown-body {
+        max-width: 980px;
+        margin-left: 350px;
+        margin-right: 350px;
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+    .page-toc {
+        position: static;
+        left: auto;
+        width: auto;
+        max-height: none;
+        margin: 70px 25px 20px 340px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .page-toc {
+        margin: 70px 15px 0;
+    }
+}
