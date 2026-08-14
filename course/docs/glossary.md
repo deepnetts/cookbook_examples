@@ -16,7 +16,7 @@ This glossary defines the main terms used throughout the Deep Netts course.
 [L](#learning-rate) ·
 [M](#mean-absolute-error-mae) ·
 [N](#neural-network) ·
-[O](#optimizer) ·
+[O](#one-hot-encoding) ·
 [P](#parameter) ·
 [R](#r-squared-r2) ·
 [S](#sample) ·
@@ -50,6 +50,14 @@ A classification problem with two possible classes, such as `SPAM` and `NOT SPAM
 ## Classification
 
 A supervised learning task in which the target is one of a fixed set of categories.
+
+## Multiclass classification
+
+A classification problem with three or more possible classes. The Iris example predicts `SETOSA`, `VERSICOLOR`, or `VIRGINICA`.
+
+## One-hot encoding
+
+A class representation with one target column per class. The correct class contains `1` and all other class columns contain `0`.
 
 ## Confusion matrix
 
@@ -194,6 +202,10 @@ One observation in a dataset. In tabular data, one row usually represents one sa
 ## Sigmoid
 
 An activation function that produces a value between `0` and `1`. It is commonly used for the output of a binary classifier.
+
+## Softmax
+
+An output activation that converts multiple scores into class probabilities that sum to approximately `1`. The class with the largest probability becomes the prediction.
 
 ## Standardization
 

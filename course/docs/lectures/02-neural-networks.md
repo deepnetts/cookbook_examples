@@ -109,9 +109,12 @@ The output layer returns the final prediction. Its structure depends on the prob
 ```text
 Regression            -> one linear output
 Binary classification -> one sigmoid output
+Multiclass classification -> one softmax output per class
 ```
 
 The spam classifier uses one Sigmoid output because it predicts the probability of one positive class: spam.
+
+The Iris classifier uses three Softmax outputs. Together they represent the probabilities of `SETOSA`, `VERSICOLOR`, and `VIRGINICA`.
 
 ## Compare network designs
 
@@ -124,6 +127,18 @@ The spam classifier contains hidden layers because it is intended to learn non-l
 ```text
 email characteristics -> hidden transformations -> spam probability
 ```
+
+### Multiclass classification: `4 -> 16 -> 3`
+
+The Iris classifier receives four flower measurements and returns three class probabilities:
+
+```text
+flower measurements -> hidden transformation -> three class probabilities
+```
+
+The position of the largest output determines the predicted species.
+
+[View Example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiclass-classification)
 
 ### Linear regression: `6 -> 1`
 

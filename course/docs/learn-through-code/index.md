@@ -37,6 +37,12 @@ Build a neural network that predicts whether an email is spam from five numerica
 
 You will create a `5 -> 32 -> 16 -> 1` network, train it on labeled email data, evaluate it with classification metrics, save it, and classify a new email.
 
+### [Multiclass Classification](multiclass-classification.md)
+
+Build a neural network that identifies an Iris flower species from four numerical measurements.
+
+You will create a `4 -> 16 -> 3` network, connect one-hot targets to a Softmax output, train it with ADAM, evaluate it, save it, and select the most probable class.
+
 ## How to use the walkthroughs
 
 Read each page from top to bottom. The snippets follow the order in the real `main` method, so every new section adds another part of the Machine Learning pipeline.

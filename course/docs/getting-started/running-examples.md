@@ -30,6 +30,14 @@ The Email Spam Classification project predicts a spam probability and binary cla
 cd examples/spam-classification
 ```
 
+### Multiclass classification
+
+The Iris project predicts one of three flower species from four numerical measurements:
+
+```bash
+cd examples/multiclass-classification
+```
+
 ## Compile the project
 
 From the chosen example directory, run:
@@ -52,7 +60,7 @@ The first run may take longer while Maven resolves dependencies. Training output
 
 ## What the program does
 
-All three examples execute the complete workflow in one run:
+All four examples execute the complete workflow in one run:
 
 ```text
 load data
@@ -66,7 +74,7 @@ load data
 -> predict
 ```
 
-The simple-regression example predicts sorting execution time. The multiple-regression example predicts relative computer performance. The classification example ends with a spam probability and either `SPAM` or `NOT SPAM`.
+The simple-regression example predicts sorting execution time. The multiple-regression example predicts relative computer performance. The binary classification example ends with a spam probability and either `SPAM` or `NOT SPAM`. The multiclass example returns three probabilities and predicts an Iris species.
 
 ## Generated model files
 
@@ -76,6 +84,7 @@ Each program creates a local `models/` directory and saves a trained `.dnet` mod
 linear-regression/models/sorting-execution-time-regression.dnet
 multiple-linear-regression/models/computer-hardware-multiple-regression.dnet
 spam-classification/models/spam-classifier.dnet
+multiclass-classification/models/iris-multiclass-classifier.dnet
 ```
 
 Generated models are ignored by Git. Re-running an example can replace its local model file with the result of the new training run.

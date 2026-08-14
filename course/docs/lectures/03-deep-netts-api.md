@@ -49,7 +49,7 @@ Runtime configuration belongs at the beginning of the program so that the execut
 
 ## Loading tabular data
 
-All three examples load a CSV file using `DataSets.readCsv`:
+All current examples load a CSV file using `DataSets.readCsv`:
 
 ```java
 TabularDataSet<MLDataItem> dataSet =
@@ -125,7 +125,7 @@ standardizer.apply(trainingSet);
 standardizer.apply(testSet);
 ```
 
-The spam-classification example uses Min-Max scaling:
+The binary and multiclass classification examples use Min-Max scaling:
 
 ```java
 MinMaxScaler scaler = DataSets.scaleToMinMax(trainingSet);
@@ -177,6 +177,21 @@ This corresponds to:
 5 -> 32 -> 16 -> 1
 ```
 
+A multiclass classifier uses one output for every class:
+
+```java
+FeedForwardNetwork neuralNet =
+        FeedForwardNetwork.builder()
+                .addInputLayer(4)
+                .addFullyConnectedLayer(16, ActivationType.TANH)
+                .addOutputLayer(3, ActivationType.SOFTMAX)
+                .lossFunction(LossType.CROSS_ENTROPY)
+                .randomSeed(42)
+                .build();
+```
+
+This corresponds to `4 -> 16 -> 3`. Softmax turns the three outputs into comparable class probabilities.
+
 The builder keeps architecture decisions together: layer sizes, output activation, loss function, and random seed.
 
 ## Matching the output to the problem
@@ -187,8 +202,9 @@ The output activation and loss function should match the prediction task:
 |---|---|---|
 | Regression | `LINEAR` | `MEAN_SQUARED_ERROR` |
 | Binary classification | `SIGMOID` | `CROSS_ENTROPY` |
+| Multiclass classification | `SOFTMAX` | `CROSS_ENTROPY` |
 
-For regression, the model must produce an unrestricted numerical value. For binary classification, the Sigmoid output produces a value between `0` and `1`.
+For regression, the model must produce an unrestricted numerical value. For binary classification, the Sigmoid output produces a value between `0` and `1`. For multiclass classification, Softmax produces one probability per class.
 
 ## Configuring training
 
@@ -248,7 +264,7 @@ neuralNet.setNormalizer(standardizer);
 neuralNet.save(MODEL_PATH);
 ```
 
-For the classification example, the attached object is the `MinMaxScaler` instead.
+For both classification examples, the attached object is the `MinMaxScaler` instead.
 
 Keeping the transformation with the model reduces the risk of applying different preprocessing during prediction.
 
@@ -260,7 +276,7 @@ The trained network accepts a feature array in the same order used by the datase
 float predictedValue = neuralNet.predict(input)[0];
 ```
 
-For regression, the first output is the predicted numerical value. For binary classification, it is interpreted as the positive-class probability and can be compared with a threshold.
+For regression, the first output is the predicted numerical value. For binary classification, it is interpreted as the positive-class probability and can be compared with a threshold. For multiclass classification, `predict` returns one probability per class and the largest value determines the final label.
 
 Feature order is part of the model contract. Changing the order changes the meaning of the input, even if the array still has the correct length.
 
