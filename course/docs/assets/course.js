@@ -1,13 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const navigation = document.getElementById("side");
-    const navigationHeading = navigation
-        ? navigation.querySelector("h2")
-        : null;
     const toc = document.getElementById("toc");
-
-    if (navigationHeading) {
-        navigationHeading.textContent = "Course navigation";
-    }
 
     const pageBody = document.getElementById("body");
     const previousPage = document.querySelector(".markdown-body > .prev");

@@ -1,14 +1,19 @@
 .title .logo {
-    display: block;
+    display: flex;
+    align-items: center;
     width: 166px;
     height: 34px;
     margin: 0;
     float: none;
     overflow: hidden;
-    background: url("deep-netts-logo.png") left center / contain no-repeat;
-    font-size: 0 !important;
-    line-height: 0;
-    white-space: nowrap;
+}
+
+.title .logo img {
+    display: block;
+    width: 166px;
+    height: 34px;
+    object-fit: contain;
+    object-position: left center;
 }
 
 @media only screen and (min-width: 769px) {
