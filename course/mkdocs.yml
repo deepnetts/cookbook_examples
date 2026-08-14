@@ -4,6 +4,7 @@ site_author: Deep Netts
 
 theme:
   name: github
+  custom_dir: overrides
   highlightjs: true
   hljs_style: github
 
