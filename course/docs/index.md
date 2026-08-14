@@ -43,7 +43,8 @@ The complete examples are standalone Maven projects containing the Java program,
 7. [Build Simple Linear Regression step by step](learn-through-code/linear-regression.md)
 8. [Build Multiple Linear Regression step by step](learn-through-code/multiple-linear-regression.md)
 9. [Build Spam Classification step by step](learn-through-code/spam-classification.md)
-10. [Glossary](glossary.md)
-11. [Next Steps](next-steps.md)
+10. [Build Multiclass Classification step by step](learn-through-code/multiclass-classification.md)
+11. [Glossary](glossary.md)
+12. [Next Steps](next-steps.md)
 
 The course will grow incrementally. Each topic will explain why a step is needed before presenting the corresponding Deep Netts code.

@@ -73,6 +73,14 @@ Predicts whether an email is spam from five numerical features. It demonstrates 
 load -> inspect -> split -> scale -> train -> evaluate -> save -> predict
 ```
 
+### [Iris Multiclass Classification](examples/multiclass-classification/)
+
+Predicts one of three Iris flower species from four numerical measurements. It demonstrates multiclass classification with one-hot targets, a softmax output layer, and the workflow:
+
+```text
+load -> inspect -> split -> scale -> train -> evaluate -> save -> predict
+```
+
 ## Repository structure
 
 ```text
@@ -80,6 +88,7 @@ cookbook-examples/
 ├── course/                 # Concept-focused MkDocs course
 └── examples/
     ├── linear-regression/  # Complete simple regression Maven project
+    ├── multiclass-classification/ # Complete multiclass Maven project
     ├── multiple-linear-regression/ # Complete multiple regression Maven project
     └── spam-classification/ # Complete classification Maven project
 ```

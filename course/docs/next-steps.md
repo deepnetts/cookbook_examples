@@ -40,7 +40,8 @@ Each example uses one page for its complete walkthrough:
 Learn Through Code
 ├── Simple Linear Regression
 ├── Multiple Linear Regression
-└── Spam Classification
+├── Spam Classification
+└── Multiclass Classification
 ```
 
 A walkthrough is not split into many small files. One page covers the full path from loading the dataset to making a prediction, then links to the corresponding runnable Maven project.
@@ -51,10 +52,6 @@ A walkthrough is not split into many small files. One page covers the full path 
 
 Use the walkthroughs while building, then use the detailed READMEs included with the complete examples as references:
 
-[View Example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/linear-regression)
-
-[View Example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiple-linear-regression)
-
-[View Example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
+[View Examples on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/)
 
 When adapting an example, keep the complete workflow intact: split before fitting preprocessing, evaluate on unseen data, save preprocessing with the model, and preserve feature order during prediction.

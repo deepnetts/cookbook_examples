@@ -89,6 +89,16 @@ probability >= 0.5 -> SPAM
 
 [View Example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
 
+The Iris example is a multiclass classification problem because it chooses among three possible species:
+
+```text
+flower measurements -> model -> SETOSA, VERSICOLOR, or VIRGINICA
+```
+
+Instead of one binary target, each known species is represented by three one-hot values. The model produces one probability for each class and selects the largest.
+
+[View Example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiclass-classification)
+
 ## Regression or classification?
 
 The target determines the type of supervised learning problem:
@@ -97,6 +107,7 @@ The target determines the type of supervised learning problem:
 |---|---|---|
 | Continuous numerical value | Regression | `347.25` |
 | One of a fixed set of classes | Classification | `SPAM` |
+| One of three or more classes | Multiclass classification | `SETOSA` |
 
 A useful first question for any Machine Learning project is therefore:
 

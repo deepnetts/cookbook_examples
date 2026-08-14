@@ -188,7 +188,7 @@ standardizer.apply(trainingSet);
 standardizer.apply(testSet);
 ```
 
-The classification example fits a Min-Max scaler on the training set and then applies it to the test set.
+The binary and multiclass classification examples fit a Min-Max scaler on the training set and then apply it to the test set.
 
 ## 8. Choose the smallest suitable model
 
@@ -210,6 +210,14 @@ The spam classifier uses:
 
 Its hidden layers can learn non-linear relationships, while the Sigmoid output is appropriate for binary classification.
 
+The Iris classifier uses:
+
+```text
+4 -> 16 -> 3
+```
+
+Its Softmax output assigns a probability to each of the three flower species.
+
 Start with a model that is easy to explain and evaluate. Add complexity only when results show that the simpler model is insufficient.
 
 ## 9. Match activation and loss to the task
@@ -220,8 +228,9 @@ The model must optimize an objective that represents the prediction problem:
 |---|---|---|
 | Regression | Linear | Mean Squared Error |
 | Binary classification | Sigmoid | Cross-Entropy |
+| Multiclass classification | Softmax | Cross-Entropy |
 
-A linear output can predict unrestricted numerical values. A Sigmoid output produces a value between `0` and `1`, suitable for a binary probability.
+A linear output can predict unrestricted numerical values. A Sigmoid output produces a value between `0` and `1`, suitable for a binary probability. A Softmax output compares three or more class probabilities.
 
 The loss function supplies the training signal: it measures how different the prediction is from the known target.
 
@@ -333,7 +342,7 @@ Prediction uses:
 float prediction = neuralNet.predict(input)[0];
 ```
 
-For regression, this value is the predicted quantity. For binary classification, it is a probability that can be converted into a class with a threshold.
+For regression, this value is the predicted quantity. For binary classification, it is a probability that can be converted into a class with a threshold. For multiclass classification, prediction returns a probability vector and `argmax` selects the class index.
 
 ## Keep experiments reproducible
 
