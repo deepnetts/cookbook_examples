@@ -51,10 +51,10 @@ A walkthrough is not split into many small files. One page covers the full path 
 
 Use the walkthroughs while building, then use the detailed READMEs included with the complete examples as references:
 
-[Full Simple Linear Regression on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/linear-regression)
+[View Example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/linear-regression)
 
-[Full Multiple Linear Regression on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiple-linear-regression)
+[View Example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiple-linear-regression)
 
-[Full Spam Classification on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
+[View Example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
 
 When adapting an example, keep the complete workflow intact: split before fitting preprocessing, evaluate on unseen data, save preprocessing with the model, and preserve feature order during prediction.

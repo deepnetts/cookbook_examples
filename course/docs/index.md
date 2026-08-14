@@ -30,11 +30,7 @@ Use [Learn Through Code](learn-through-code/index.md) to progressively assemble 
 
 The complete examples are standalone Maven projects containing the Java program, dataset, and detailed README:
 
-[Full Simple Linear Regression on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/linear-regression)
-
-[Full Multiple Linear Regression on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiple-linear-regression)
-
-[Full Spam Classification on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
+[View Examples on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/)
 
 ## Course path
 

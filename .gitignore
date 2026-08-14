@@ -2,5 +2,8 @@
 **/models/
 *.dnet
 **/nbproject/private/
+**/nb-configuration.xml
+**/nbactions.xml
 course/.venv/
 course/site/
+documentation/

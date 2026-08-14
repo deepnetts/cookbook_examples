@@ -2,6 +2,8 @@
 
 The projects under `examples/` are complete, standalone Maven applications. Run each command from the selected example directory because the Java programs use project-relative paths for datasets and saved models.
 
+[View Examples on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/)
+
 ## Choose an example
 
 ### Simple linear regression
@@ -12,8 +14,6 @@ The Sorting Execution Time project predicts a continuous runtime from one input 
 cd examples/linear-regression
 ```
 
-[Full Simple Linear Regression on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/linear-regression)
-
 ### Multiple linear regression
 
 The Computer Hardware Performance - Multiple Linear Regression project predicts a continuous `PRP` value:
@@ -22,8 +22,6 @@ The Computer Hardware Performance - Multiple Linear Regression project predicts 
 cd examples/multiple-linear-regression
 ```
 
-[Full Multiple Linear Regression on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiple-linear-regression)
-
 ### Spam classification
 
 The Email Spam Classification project predicts a spam probability and binary class:
@@ -31,8 +29,6 @@ The Email Spam Classification project predicts a spam probability and binary cla
 ```bash
 cd examples/spam-classification
 ```
-
-[Full Spam Classification on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
 
 ## Compile the project
 

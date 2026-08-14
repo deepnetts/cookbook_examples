@@ -82,7 +82,7 @@ spam probability
 
 The notation provides a compact system-level view before we inspect what happens inside each layer.
 
-[Full Spam Classification on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
+[View Example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
 
 ## Layer responsibilities
 
@@ -140,7 +140,7 @@ CHMAX -----/
 
 Because there are no hidden layers, the model learns a weighted linear combination of the six features. This is multiple linear regression represented with the Deep Netts neural-network API.
 
-[Full Multiple Linear Regression on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiple-linear-regression)
+[View Example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiple-linear-regression)
 
 At the system level, both models have the same responsibility:
 
