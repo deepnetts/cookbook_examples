@@ -299,6 +299,12 @@ neuralNet.predict(...)
 
 The complete runnable projects show these calls in context. The next lesson explains why the overall model-development workflow must be treated as more than just model training.
 
+## See the API in practice
+
+- [Simple Linear Regression](../examples/regression/linear-regression.md) shows the smallest complete API pipeline.
+- [Spam Classification](../examples/classification/spam-classification.md) shows a multi-layer binary classifier and probability threshold.
+- [Multiclass Classification](../examples/classification/multiclass-classification.md) shows one-hot targets and a Softmax output.
+
 ## Continue learning
 
 Now place the individual API calls into a complete, trustworthy model-development process.

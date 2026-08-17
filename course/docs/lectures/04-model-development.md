@@ -362,12 +362,12 @@ In a larger project, reproducibility also includes tracking dataset versions, pr
 This course uses three complementary levels:
 
 ```text
-MkDocs Course       -> understand the concepts
-Learn Through Code  -> build the program progressively
+Course              -> understand the concepts
+Examples            -> explore the workflow
 Complete examples   -> run the standalone Maven project
 ```
 
-The course explains why each workflow step exists. Code-focused walkthroughs will later show how the program grows step by step. The projects under `examples/` remain the source of truth for complete runnable implementations.
+The course explains why each workflow step exists. The example walkthroughs show how the program grows step by step and link to the corresponding complete runnable projects on GitHub.
 
 ## Workflow checklist
 
@@ -390,4 +390,8 @@ Model development is a pipeline. Every stage contributes to whether the final pr
 
 ## Continue learning
 
-You have completed the introductory course path. Use the glossary to review terminology while exploring and adapting the runnable examples.
+You have completed the introductory course path. Continue with:
+
+- [Examples](../examples/index.md) to choose a complete workflow;
+- [Running the Examples](../examples/running-examples.md) to compile and execute a Maven project;
+- [Glossary](../glossary.md) to review unfamiliar terminology.

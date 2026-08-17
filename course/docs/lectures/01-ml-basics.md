@@ -61,7 +61,7 @@ The computer hardware example in this project is a regression problem because `P
 hardware features -> model -> predicted PRP: 347.25
 ```
 
-[View Example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiple-linear-regression)
+[Explore Multiple Linear Regression](../examples/regression/multiple-linear-regression.md)
 
 ## Classification
 
@@ -87,7 +87,7 @@ probability < 0.5  -> NOT SPAM
 probability >= 0.5 -> SPAM
 ```
 
-[View Example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/spam-classification)
+[Explore Spam Classification](../examples/classification/spam-classification.md)
 
 The Iris example is a multiclass classification problem because it chooses among three possible species:
 
@@ -97,7 +97,7 @@ flower measurements -> model -> SETOSA, VERSICOLOR, or VIRGINICA
 
 Instead of one binary target, each known species is represented by three one-hot values. The model produces one probability for each class and selects the largest.
 
-[View Example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiclass-classification)
+[Explore Multiclass Classification](../examples/classification/multiclass-classification.md)
 
 ## Regression or classification?
 

@@ -18,21 +18,29 @@ nav:
   - Home: index.md
 
   - Getting Started:
+      - Overview: getting-started/index.md
       - Prerequisites: getting-started/prerequisites.md
-      - Running the Examples: getting-started/running-examples.md
+      - Download: getting-started/download.md
+      - Installation: getting-started/installation.md
+      - Hello World: getting-started/hello-world.md
+
+  - Examples:
+      - Overview: examples/index.md
+      - Running the Examples: examples/running-examples.md
+      - Regression:
+          - Overview: examples/regression/index.md
+          - Simple Linear Regression: examples/regression/linear-regression.md
+          - Multiple Linear Regression: examples/regression/multiple-linear-regression.md
+      - Classification:
+          - Overview: examples/classification/index.md
+          - Spam Classification: examples/classification/spam-classification.md
+          - Multiclass Classification: examples/classification/multiclass-classification.md
 
   - Course:
       - ML Basics: lectures/01-ml-basics.md
       - Neural Networks: lectures/02-neural-networks.md
       - Deep Netts API: lectures/03-deep-netts-api.md
       - Model Development: lectures/04-model-development.md
-
-  - Learn Through Code:
-      - Overview: learn-through-code/index.md
-      - Simple Linear Regression: learn-through-code/linear-regression.md
-      - Multiple Linear Regression: learn-through-code/multiple-linear-regression.md
-      - Spam Classification: learn-through-code/spam-classification.md
-      - Multiclass Classification: learn-through-code/multiclass-classification.md
 
   - Glossary: glossary.md
   - Next Steps: next-steps.md

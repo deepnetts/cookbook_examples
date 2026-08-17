@@ -13,27 +13,33 @@ Deep Netts Course
 LEARN THE CONCEPT
         |
         v
-Learn Through Code
-BUILD STEP BY STEP
+Examples
+EXPLORE THE WORKFLOW
         |
         v
 Complete Maven Examples
 RUN THE PROJECT
 ```
 
-The Learn Through Code walkthroughs use focused snippets from the real examples. The complete runnable projects remain the source of truth for implementations and datasets.
+The Examples pages use focused snippets to explain the important workflow steps, then link to the complete runnable projects and datasets.
 
 ## Deep Netts Course
 
-The MkDocs course is located in [`course/`](course/). It introduces:
+The source for the hosted MkDocs course is located in [`course/`](course/). Learners follow the published website; they do not need to clone this repository just to read the course.
 
-- Machine Learning basics,
-- neural networks,
-- the Deep Netts API,
-- the complete model-development workflow,
-- essential Machine Learning terminology.
+The current course includes:
 
-Run the course locally:
+- Getting Started: prerequisites, download, installation, and Hello World;
+- an Examples gallery with regression and classification projects;
+- Machine Learning and neural-network learning material;
+- Deep Netts API and model-development introductions;
+- an essential Machine Learning glossary.
+
+The public course URL must be added here once its final deployment location is confirmed.
+
+### Preview the course locally
+
+The following commands are for course contributors and maintainers:
 
 ```bash
 cd course
@@ -48,6 +54,10 @@ Then open <http://127.0.0.1:8002>.
 ## Complete examples
 
 Each example is a standalone Maven project with its own Java program, dataset, and detailed README.
+
+### [Deep Netts Hello World](examples/hello-world/)
+
+Creates a minimal neural network and runs one prediction to verify Java, Maven, the Deep Netts dependencies, licensing, and Vector API runtime configuration before starting a complete Machine Learning workflow.
 
 ### [Sorting Execution Time - Simple Linear Regression](examples/linear-regression/)
 
@@ -85,12 +95,19 @@ load -> inspect -> split -> scale -> train -> evaluate -> save -> predict
 
 ```text
 cookbook-examples/
-├── course/                 # Concept-focused MkDocs course
+├── course/
+│   ├── docs/
+│   │   ├── getting-started/ # Setup and installation verification
+│   │   ├── examples/        # Example gallery and walkthroughs
+│   │   ├── lectures/        # Machine Learning learning material
+│   │   └── glossary.md
+│   └── mkdocs.yml           # Website navigation and configuration
 └── examples/
+    ├── hello-world/        # Minimal installation verification project
     ├── linear-regression/  # Complete simple regression Maven project
     ├── multiclass-classification/ # Complete multiclass Maven project
     ├── multiple-linear-regression/ # Complete multiple regression Maven project
     └── spam-classification/ # Complete classification Maven project
 ```
 
-Start with the [course](course/docs/index.md) to learn the concepts, continue through Learn Through Code, then open an example to run the complete workflow.
+Start with the [course](course/docs/index.md), verify the installation with Hello World, then choose an example to explore and run a complete workflow.

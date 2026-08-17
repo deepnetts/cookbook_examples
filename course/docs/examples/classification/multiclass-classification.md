@@ -1,8 +1,22 @@
 [View Example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiclass-classification)
 
-# Build an Iris Multiclass Classifier
+# Multiclass Classification
 
-In this walkthrough, you will build the Iris Multiclass Classification example one part at a time.
+This walkthrough builds the Iris flower classifier one part at a time. It demonstrates multiclass classification: predicting one class from three or more possible categories.
+
+## At a glance
+
+| | |
+|---|---|
+| **ML task** | Multiclass classification |
+| **Level** | Beginner |
+| **Dataset** | 150 Iris flower records |
+| **Inputs** | Four numerical flower measurements |
+| **Target** | One of three Iris species, represented by one-hot columns |
+| **Model** | `4 -> 16 -> 3` feed-forward neural network with a Softmax output |
+| **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Neural Networks](../../lectures/02-neural-networks.md), [Model Development](../../lectures/04-model-development.md) |
+
+[Back to Classification examples](index.md)
 
 The model receives four flower measurements:
 
@@ -234,3 +248,7 @@ Saved model and species prediction
 The complete Java class, dataset, `pom.xml`, and detailed README are available here:
 
 [View Example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiclass-classification)
+
+## Continue
+
+[Previous: Spam Classification](spam-classification.md) · [Classification examples](index.md) · [All examples](../index.md) · [Running the Examples](../running-examples.md)
