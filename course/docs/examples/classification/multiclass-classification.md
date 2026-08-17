@@ -22,7 +22,7 @@ This walkthrough builds the Iris flower classifier one part at a time. It demons
 | **Model** | `4 -> 16 -> 3` feed-forward neural network with a Softmax output |
 | **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Neural Networks](../../lectures/02-neural-networks.md), [Model Development](../../lectures/04-model-development.md) |
 
-[Back to Classification examples](index.md)
+[Back to all examples](../index.md)
 
 The model receives four flower measurements:
 
@@ -254,7 +254,3 @@ Saved model and species prediction
 The complete Java class, dataset, `pom.xml`, and detailed README are available here:
 
 [View Example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/multiclass-classification)
-
-## Continue
-
-[Previous: Spam Classification](spam-classification.md) · [Classification examples](index.md) · [All examples](../index.md) · [Running the Examples](../running-examples.md)

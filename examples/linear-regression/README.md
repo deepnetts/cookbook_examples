@@ -96,7 +96,7 @@ The `models/` and `target/` directories are generated when the program runs.
 
 ## Prerequisites
 
-- Java 22
+- Java 25
 - Maven
 - Deep Netts `4.0.0-beta`
 - a configured Deep Netts license

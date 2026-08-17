@@ -6,14 +6,14 @@ The program creates a small `1 -> 1` neural network and performs one prediction.
 
 ## Requirements
 
-- Java 22
+- Java 25
 - Maven
 - `deepnetts-core-pro:4.0.0-beta` installed or otherwise available to Maven
 - `deepnetts-license:1.0` installed or otherwise available to Maven
 
 ## Run
 
-From this directory, confirm that Maven uses Java 22:
+From this directory, confirm that Maven uses Java 25:
 
 ```bash
 mvn --version
@@ -45,7 +45,7 @@ mvn exec:java
 A successful run ends with:
 
 ```text
-Java version: 22...
+Java version: 25...
 Vector API enabled: true
 Deep Netts prediction for 1.0: ...
 SUCCESS: Deep Netts is installed and configured correctly.
@@ -55,8 +55,8 @@ The complete Java version and numerical prediction can differ between environmen
 
 ## Troubleshooting
 
-- If Maven reports that Java 22 is not available, select the correct JDK and run `mvn --version` again.
+- If Maven reports that Java 25 is not available, select the correct JDK and run `mvn --version` again.
 - If a Deep Netts artifact cannot be resolved, repeat the local Maven import and verify the dependency versions.
-- If `jdk.incubator.vector` is unavailable, confirm that Maven uses Java 22 and that `MAVEN_OPTS` is set in the same terminal.
+- If `jdk.incubator.vector` is unavailable, confirm that Maven uses Java 25 and that `MAVEN_OPTS` is set in the same terminal.
 
 See the course [Installation](../../course/docs/getting-started/installation.md) and [Hello World](../../course/docs/getting-started/hello-world.md) pages for the complete setup flow.

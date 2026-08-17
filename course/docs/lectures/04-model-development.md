@@ -1,74 +1,68 @@
 # Model Development
 
-Training a neural network is only one part of Machine Learning. A useful model comes from a complete, repeatable workflow that starts with a clearly defined problem and continues through data preparation, evaluation, saving, and prediction.
+Training a neural network is only one part of Machine Learning. A useful model comes from a complete, repeatable workflow that begins with a clearly defined problem and continues through data preparation, evaluation, deployment, and monitoring.
 
-The introductory Deep Netts examples follow this sequence:
+This lesson explains **why the stages exist and why their order matters**. For focused Java implementation recipes, use the [Developer Guide](../developer-guide/index.md).
 
 ```text
-Configure runtime
-       |
-       v
-Load and inspect data
-       |
-       v
-Shuffle and split
-       |
-       v
-Fit preprocessing on training data
-       |
-       v
-Build and configure the model
-       |
-       v
-Train
-       |
-       v
-Evaluate on test data
-       |
-       v
-Save model and preprocessing
-       |
-       v
+Define the problem
+        |
+        v
+Load and understand data
+        |
+        v
+Split before preprocessing
+        |
+        v
+Build and train a suitable model
+        |
+        v
+Evaluate on unseen data
+        |
+        v
+Save the complete pipeline
+        |
+        v
 Predict new samples
 ```
 
-The order matters. Changing it carelessly can produce misleading evaluation results or a model that behaves differently in production.
+Changing this order carelessly can produce misleading evaluation results or a model that behaves differently after deployment.
 
 ## 1. Define the prediction problem
 
-Begin by stating exactly what the model should predict.
-
-For computer hardware performance:
+Begin by stating what the model receives and what it must predict:
 
 ```text
-Input:  six hardware characteristics
-Target: PRP, a continuous numerical value
-Task:   regression
+Inputs -> model -> target
 ```
 
-For email spam detection:
+Then identify the task:
 
-```text
-Input:  five email characteristics
-Target: is_spam, either 0 or 1
-Task:   binary classification
-```
+- **regression** predicts a continuous numerical value;
+- **binary classification** chooses between two classes;
+- **multiclass classification** chooses from three or more classes.
 
-This decision influences the dataset structure, output layer, loss function, and evaluation metrics.
+This decision determines the dataset structure, output layer, loss function, evaluation metrics, and interpretation of predictions. If the target is unclear, later implementation decisions cannot be evaluated reliably.
 
-## 2. Configure the runtime
+## 2. Choose the execution environment
 
-Runtime choices should be explicit and reproducible. The examples use CPU execution:
+Runtime choices should be explicit and reproducible. The introductory examples use CPU execution because their tabular datasets and networks are small. A more complex environment is useful only when the workload justifies the additional setup and operational cost.
 
-```java
-DeepNetts.getInstance().setUseCuda(false);
-```
+Environment verification belongs in [Getting Started](../getting-started/index.md), before model-development work begins.
 
-Small tabular datasets and compact networks do not require GPU acceleration. Starting with the simplest suitable environment makes the examples easier to run and debug.
+## 3. Load and inspect the data
 
-## 3. Load the data
+The model can learn only from information represented in the dataset. Before training, confirm:
 
-The model can only learn from the information represented in its dataset. Loading is therefore the first point where assumptions should be checked:
+- where the data came from;
+- what one row represents;
+- which columns are features and targets;
+- whether values are missing or invalid;
+- whether rows are duplicated or ordered;
+- whether classes are balanced;
+- whether feature units and ranges make sense.
+
+A program can execute successfully while learning the wrong relationship if the dataset is misunderstood.
 
 ```java
 TabularDataSet<MLDataItem> dataSet =
@@ -79,319 +73,191 @@ TabularDataSet<MLDataItem> dataSet =
                 true,
                 ","
         );
-```
 
-The program must know:
-
-- where the dataset is located,
-- which columns are features,
-- which columns are targets,
-- whether a header is present,
-- which delimiter separates values.
-
-For these examples, all feature columns come before the target column.
-
-## 4. Inspect and understand the data
-
-Before building a model, verify that the dataset matches expectations:
-
-```java
 System.out.println("Samples: " + dataSet.size());
 System.out.println(
         "Columns: " + Arrays.toString(dataSet.getColumnNames())
 );
 ```
 
-The examples use prepared datasets, so their Java programs perform only basic inspection. In real projects, this stage may also include:
+## 4. Separate training and evaluation data
 
-- missing-value checks,
-- invalid-value detection,
-- duplicate analysis,
-- feature distributions,
-- target or class distribution,
-- outlier analysis,
-- categorical encoding decisions.
+Training and test data have different responsibilities:
 
-A model can execute successfully and still learn the wrong thing if the data is misunderstood.
+| Dataset | Purpose |
+|---|---|
+| Training set | Learn model parameters and preprocessing values |
+| Test set | Estimate behavior on unseen samples |
 
-## 5. Shuffle the samples
-
-Rows may be ordered by collection time, class, source, or another hidden pattern. Shuffling reduces the chance that this ordering creates a biased split:
+Shuffle when row order could bias the split, and use a fixed seed when comparing experiments. Do not train on the test set or repeatedly tune decisions against the final test result.
 
 ```java
 dataSet.shuffle(42);
-```
 
-The fixed seed makes the shuffled order reproducible. Reproducibility helps compare model changes because repeated runs begin from the same experimental conditions.
-
-## 6. Create training and test sets
-
-The examples use an 80/20 split:
-
-```java
 TrainTestSplit split = dataSet.trainTestSplit(0.8);
-
 DataSet<MLDataItem> trainingSet = split.getTrainingSet();
 DataSet<MLDataItem> testSet = split.getTestSet();
 ```
 
-The two subsets have different responsibilities:
+## 5. Fit preprocessing without leakage
 
-| Dataset | Purpose |
-|---|---|
-| Training set | Learn weights and biases |
-| Test set | Measure behavior on unseen samples |
-
-Evaluating only on training data answers how well the model fits examples it has already seen. It does not reliably answer how well the model generalizes.
-
-## 7. Fit preprocessing on training data
-
-Features often use different numerical scales. Preprocessing can make optimization more stable, but its parameters must be learned without looking at the test set.
-
-Correct order:
+Split the dataset before fitting preprocessing:
 
 ```text
 Complete dataset
-       |
-       v
+        |
+        v
 Train/test split
-       |
-       v
+        |
+        v
 Fit preprocessing on TRAIN only
-       |
-       +-----------------+
-       |                 |
-       v                 v
-Transform train     Transform test
+        |
+        +------------------+
+        |                  |
+        v                  v
+Transform train      Transform test
 ```
 
-Incorrect order:
-
-```text
-Complete dataset
-       |
-       v
-Fit preprocessing
-       |
-       v
-Train/test split
-```
-
-The incorrect order allows information from the test set to influence preprocessing. This is **data leakage**, and it can make evaluation results look better than they should.
-
-The regression example uses standardization:
+Fitting preprocessing on the complete dataset lets test information influence training. This is **data leakage**, and it can make evaluation results look better than they should.
 
 ```java
 Standardizer standardizer = new Standardizer(trainingSet);
-
 standardizer.apply(trainingSet);
 standardizer.apply(testSet);
 ```
 
-The binary and multiclass classification examples fit a Min-Max scaler on the training set and then apply it to the test set.
+## 6. Choose the smallest suitable model
 
-## 8. Choose the smallest suitable model
+Architecture should match the prediction problem rather than being complex by default:
 
-Architecture should match the problem rather than being complex by default.
+- a linear regression model may need no hidden layers;
+- a nonlinear binary classifier may benefit from hidden layers and one probability output;
+- a multiclass classifier needs one output per class.
 
-The regression example uses:
+Start with a model that is easy to explain and evaluate. Add complexity only when evidence shows that the simpler model is insufficient.
 
-```text
-6 -> 1
+```java
+FeedForwardNetwork neuralNet = FeedForwardNetwork.builder()
+        .addInputLayer(NUM_INPUTS)
+        .addFullyConnectedLayer(16, ActivationType.TANH)
+        .addOutputLayer(NUM_OUTPUTS, ActivationType.SOFTMAX)
+        .lossFunction(LossType.CROSS_ENTROPY)
+        .randomSeed(42)
+        .build();
 ```
 
-This is sufficient for multiple linear regression because it has no hidden layers and uses a linear output.
+## 7. Match output, activation, and loss
 
-The spam classifier uses:
+The output layer must represent the target correctly:
 
-```text
-5 -> 32 -> 16 -> 1
-```
-
-Its hidden layers can learn non-linear relationships, while the Sigmoid output is appropriate for binary classification.
-
-The Iris classifier uses:
-
-```text
-4 -> 16 -> 3
-```
-
-Its Softmax output assigns a probability to each of the three flower species.
-
-Start with a model that is easy to explain and evaluate. Add complexity only when results show that the simpler model is insufficient.
-
-## 9. Match activation and loss to the task
-
-The model must optimize an objective that represents the prediction problem:
-
-| Task | Output activation | Loss |
+| Task | Typical output | Typical loss |
 |---|---|---|
-| Regression | Linear | Mean Squared Error |
-| Binary classification | Sigmoid | Cross-Entropy |
-| Multiclass classification | Softmax | Cross-Entropy |
+| Regression | Linear value | Mean Squared Error |
+| Binary classification | Sigmoid probability | Cross-Entropy |
+| Multiclass classification | Softmax probabilities | Cross-Entropy |
 
-A linear output can predict unrestricted numerical values. A Sigmoid output produces a value between `0` and `1`, suitable for a binary probability. A Softmax output compares three or more class probabilities.
+The activation constrains what the model can output. The loss measures how different that output is from the known target and supplies the training signal.
 
-The loss function supplies the training signal: it measures how different the prediction is from the known target.
+## 8. Configure and run training
 
-## 10. Configure training
+Training choices include the learning rate, optimizer, epoch limit, batch size, sample shuffling, and stopping conditions. These values are hyperparameters selected by the developer rather than learned as weights.
 
-Training configuration controls how the model learns:
+The goal is not merely to reduce training loss. The model must learn patterns that remain useful on unseen data. Change one major decision at a time and record the configuration so experiments can be compared.
 
 ```java
 neuralNet.getTrainer()
-        .setStopEpochs(50)
+        .setStopEpochs(350)
         .setLearningRate(0.001f)
-        .setOptimizer(OptimizerType.SGD)
+        .setOptimizer(OptimizerType.ADAM)
         .setShuffle(true);
-```
 
-Important choices include:
-
-- **epochs** - how many times training may process the dataset,
-- **learning rate** - how large each parameter update is,
-- **optimizer** - how weights and biases are updated,
-- **batch size** - how many samples contribute to one update,
-- **shuffle** - whether sample order changes between epochs.
-
-These values are hyperparameters. They are selected by the developer rather than learned as model weights.
-
-## 11. Train the model
-
-Training begins with:
-
-```java
 neuralNet.train(trainingSet);
 ```
 
-Internally, the process repeatedly performs:
+## 9. Evaluate on unseen data
 
-```text
-forward propagation
-        |
-        v
-loss calculation
-        |
-        v
-backpropagation
-        |
-        v
-parameter update
-```
+Evaluation should answer whether the model is useful for the real prediction problem, not only whether training completed.
 
-The goal is not merely to reduce training loss. The real goal is to learn patterns that remain useful for unseen data.
+Regression commonly examines MAE, RMSE, and R². Classification may examine accuracy, precision, recall, F1, and a confusion matrix. No metric is universally best: the correct choice depends on the target, class balance, baseline performance, and cost of different errors.
 
-## 12. Evaluate on unseen data
-
-After training, evaluate with the test set:
-
-```java
-RegressionMetrics metrics =
-        (RegressionMetrics) neuralNet.test(testSet);
-```
-
-or:
+Unexpectedly strong results should trigger checks for leakage, duplicates, an unrepresentative split, or target information hidden among the features.
 
 ```java
 ClassificationMetrics metrics =
         (ClassificationMetrics) neuralNet.test(testSet);
+
+System.out.println(metrics);
 ```
 
-Regression metrics answer questions about numerical prediction error. Classification metrics answer questions about correct and incorrect class decisions.
+## 10. Save the complete prediction pipeline
 
-Useful regression metrics include:
+A trained network expects data transformed exactly as its training inputs were transformed. Treat the model, fitted preprocessing, feature order, class mapping, and relevant metadata as one versioned pipeline.
 
-- Mean Squared Error,
-- Root Mean Squared Error,
-- Mean Absolute Error,
-- R-squared.
-
-Useful classification metrics include:
-
-- accuracy,
-- precision,
-- recall,
-- F1 score,
-- confusion matrix.
-
-No single metric is best for every problem. The appropriate metric depends on the consequences of different kinds of errors.
-
-## 13. Save the complete prediction pipeline
-
-The trained network expects input transformed in the same way as its training data. The preprocessing object is attached before saving:
+Saving only learned weights while forgetting preprocessing creates inconsistent predictions after deployment.
 
 ```java
 neuralNet.setNormalizer(standardizer);
+Files.createDirectories(Path.of("models"));
 neuralNet.save(MODEL_PATH);
 ```
 
-Saving only learned weights while forgetting preprocessing would create inconsistent predictions later. The deployed model and its preprocessing should be treated as one pipeline.
+## 11. Predict new samples safely
 
-## 14. Predict new samples
+Every prediction input must follow the training contract:
 
-New input must follow the same contract as the training data:
+- same number of features;
+- same meaning, units, and order;
+- same preprocessing;
+- valid and finite values;
+- same class mapping for categorical outputs.
 
-- same number of features,
-- same feature meaning,
-- same feature order,
-- same preprocessing.
-
-Prediction uses:
+Regression returns a quantity, binary classification usually applies a threshold to a probability, and multiclass classification selects among class probabilities. The application must interpret those outputs explicitly.
 
 ```java
-float prediction = neuralNet.predict(input)[0];
-```
+float[] probabilities = neuralNet.predict(input);
 
-For regression, this value is the predicted quantity. For binary classification, it is a probability that can be converted into a class with a threshold. For multiclass classification, prediction returns a probability vector and `argmax` selects the class index.
+int predictedClass = 0;
+for (int i = 1; i < probabilities.length; i++) {
+    if (probabilities[i] > probabilities[predictedClass]) {
+        predictedClass = i;
+    }
+}
+```
 
 ## Keep experiments reproducible
 
-The examples use fixed random seeds for data shuffling and network initialization. They also keep configuration values visible in the Java program.
+Fixed random seeds help compare runs, but reproducibility also requires recording:
 
-Reproducibility makes it easier to answer:
+- dataset and code versions;
+- feature and target definitions;
+- split strategy;
+- preprocessing decisions;
+- model architecture and hyperparameters;
+- evaluation metrics;
+- dependency and runtime versions;
+- saved model version.
 
-```text
-Did the model improve because of my change,
-or because this run started differently?
-```
-
-In a larger project, reproducibility also includes tracking dataset versions, preprocessing decisions, dependencies, hyperparameters, metrics, and saved model versions.
-
-## Separate learning, building, and running
-
-This course uses three complementary levels:
-
-```text
-Course              -> understand the concepts
-Examples            -> explore the workflow
-Complete examples   -> run the standalone Maven project
-```
-
-The course explains why each workflow step exists. The example walkthroughs show how the program grows step by step and link to the corresponding complete runnable projects on GitHub.
+Without this context, it is difficult to know whether a result changed because of an intentional improvement or because the experiment started differently.
 
 ## Workflow checklist
 
-Before considering an introductory model-development experiment complete, verify that you have:
+Before considering an experiment complete, verify that you have:
 
-- [ ] defined the prediction target,
-- [ ] identified regression or classification,
-- [ ] loaded and inspected the dataset,
-- [ ] shuffled reproducibly,
-- [ ] separated training and test data,
-- [ ] fitted preprocessing on training data only,
-- [ ] selected an appropriate architecture,
-- [ ] matched the output activation and loss to the task,
-- [ ] configured and trained the model,
-- [ ] evaluated on unseen test data,
-- [ ] saved preprocessing with the model,
-- [ ] preserved feature order for prediction.
+- [ ] defined the target and task type;
+- [ ] understood and inspected the dataset;
+- [ ] separated training and test data;
+- [ ] fitted preprocessing on training data only;
+- [ ] selected an appropriate architecture;
+- [ ] matched the output activation and loss to the task;
+- [ ] recorded the training configuration;
+- [ ] evaluated on unseen data with relevant metrics;
+- [ ] saved preprocessing with the model;
+- [ ] preserved the prediction input contract.
 
 Model development is a pipeline. Every stage contributes to whether the final prediction can be trusted.
 
 ## Continue learning
 
-You have completed the introductory course path. Continue with:
-
-- [Examples](../examples/index.md) to choose a complete workflow;
-- [Running the Examples](../examples/running-examples.md) to compile and execute a Maven project;
-- [Glossary](../glossary.md) to review unfamiliar terminology.
+- Use the [Developer Guide](../developer-guide/index.md) when implementing an individual step.
+- Choose an [Example](../examples/index.md) to see the complete workflow in context.
+- Open [Running the Examples](../examples/running-examples.md) to compile and execute a Maven project.

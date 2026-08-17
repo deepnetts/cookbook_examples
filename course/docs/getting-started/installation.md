@@ -61,13 +61,13 @@ The current course examples use Deep Netts 4 beta and the Deep Netts license art
 
 Use the artifact versions supplied with your distribution. To run the course examples unchanged, those versions must match the versions shown above.
 
-## 4. Target Java 22
+## 4. Target Java 25
 
-Configure Maven to compile with Java 22:
+Configure Maven to compile with Java 25:
 
 ```xml
 <properties>
-    <maven.compiler.release>22</maven.compiler.release>
+    <maven.compiler.release>25</maven.compiler.release>
 </properties>
 ```
 
@@ -77,7 +77,7 @@ Confirm that Maven is using the expected JDK:
 mvn --version
 ```
 
-The output should report Java 22.
+The output should report Java 25.
 
 ## 5. Enable the Vector API at runtime
 
@@ -120,10 +120,6 @@ Check that:
 
 ### The Vector API module is missing
 
-Confirm that Maven runs on Java 22 and that the `--add-modules jdk.incubator.vector` option is applied to the Java process that starts the application.
-
-## Next step
-
-[Previous: Download](download.md) · [Next: Hello World](hello-world.md)
+Confirm that Maven runs on Java 25 and that the `--add-modules jdk.incubator.vector` option is applied to the Java process that starts the application.
 
 The Hello World project verifies the JDK, Maven dependencies, Deep Netts license, and Vector API configuration together.

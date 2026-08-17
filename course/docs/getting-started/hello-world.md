@@ -6,7 +6,7 @@ Use this small project to verify the complete Deep Netts setup before starting a
 
 A successful run confirms that:
 
-- Maven uses Java 22;
+- Maven uses Java 25;
 - Maven can resolve the Deep Netts library and license artifacts;
 - Deep Netts can create a neural network;
 - the Java Vector API is enabled at runtime;
@@ -29,7 +29,7 @@ The course website remains available online. Cloning is required here only becau
 mvn --version
 ```
 
-The output should report Java 22. If it reports another version, select the correct JDK before continuing.
+The output should report Java 25. If it reports another version, select the correct JDK before continuing.
 
 ## 3. Compile
 
@@ -66,7 +66,7 @@ mvn exec:java
 The program prints a numerical prediction followed by:
 
 ```text
-Java version: 22...
+Java version: 25...
 Vector API enabled: true
 Deep Netts prediction for 1.0: ...
 SUCCESS: Deep Netts is installed and configured correctly.
@@ -77,12 +77,8 @@ The exact Java patch version and prediction are not important. `Vector API enabl
 ## If it fails
 
 - If Maven cannot resolve `deepnetts-core-pro` or `deepnetts-license`, repeat the local Maven import step from Installation and verify the dependency versions.
-- If Java reports that `jdk.incubator.vector` is unavailable, confirm that Maven uses Java 22.
+- If Java reports that `jdk.incubator.vector` is unavailable, confirm that Maven uses Java 25.
 - If the Vector API module is not enabled, check that `MAVEN_OPTS` is set in the same terminal used to run Maven.
 - If Deep Netts reports a license error, verify that the license artifact supplied with your distribution was imported successfully.
-
-## Continue
-
-[Previous: Installation](installation.md) · [Next: Examples](../examples/index.md)
 
 After this project succeeds, choose a complete regression or classification workflow.

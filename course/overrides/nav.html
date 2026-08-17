@@ -6,18 +6,29 @@
   {% else %}
     {% set landing_page = nav_item.children | first %}
     <li class="nav-section{% if nav_item.active %} active-section{% endif %}">
-      {% if landing_page.title == "Overview" %}
-        <a class="section-link" href="{{ landing_page.url|url }}">{{ nav_item.title }}</a>
-      {% else %}
-        <span class="section-label">{{ nav_item.title }}</span>
-      {% endif %}
-      <ul>
-        {% for nav_item in nav_item.children %}
-          {% if nav_item.title != "Overview" %}
-            {% include "nav.html" %}
+      <details{% if nav_item.active %} open{% endif %}>
+        <summary>{{ nav_item.title }}</summary>
+        <ul>
+          {% if landing_page.title == "Overview" %}
+            <li{% if landing_page.active %} class="active"{% endif %}>
+              <a href="{{ landing_page.url|url }}">
+                {% if nav_item.title == "Getting Started" %}Start Here
+                {% elif nav_item.title == "Examples" %}Choose an Example
+                {% elif nav_item.title == "Regression" %}All Regression Examples
+                {% elif nav_item.title == "Classification" %}All Classification Examples
+                {% elif nav_item.title == "Developer Guide" %}Choose a Task
+                {% else %}Introduction
+                {% endif %}
+              </a>
+            </li>
           {% endif %}
-        {% endfor %}
-      </ul>
+          {% for nav_item in nav_item.children %}
+            {% if nav_item.title != "Overview" %}
+              {% include "nav.html" %}
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </details>
     </li>
   {% endif %}
 {% endif %}

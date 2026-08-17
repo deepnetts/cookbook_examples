@@ -59,7 +59,7 @@ From the chosen example directory, run:
 mvn compile
 ```
 
-This resolves the configured dependencies and compiles the Java source with Java 22.
+This resolves the configured dependencies and compiles the Java source with Java 25.
 
 ## Run from a terminal
 
@@ -134,7 +134,7 @@ Also ensure that the working directory is the example project directory. Otherwi
 
 If an example does not start, check:
 
-- Maven is using Java 22,
+- Maven is using Java 25,
 - the Vector API module is enabled,
 - Deep Netts artifacts and licensing are configured,
 - the command is running from the example directory,

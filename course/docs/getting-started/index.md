@@ -6,7 +6,7 @@ Follow the pages in order:
 
 ## 1. Prerequisites
 
-Confirm that Java 22 and Maven are installed and that Maven uses the correct JDK. You will also learn which runtime module Deep Netts 4 requires.
+Confirm that Java 25 and Maven are installed and that Maven uses the correct JDK. You will also learn which runtime module Deep Netts 4 requires.
 
 [Check the prerequisites](prerequisites.md)
 

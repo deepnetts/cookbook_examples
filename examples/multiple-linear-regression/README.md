@@ -139,7 +139,7 @@ multiple-linear-regression/
 This example uses:
 
 ```text
-Java 22
+Java 25
 Maven
 Deep Netts 4.0.0-beta
 ```

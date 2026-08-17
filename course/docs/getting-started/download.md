@@ -25,8 +25,4 @@ Make sure you have:
 
 Keep the downloaded distribution and license in a secure local location. Do not add license files, account credentials, or downloaded proprietary libraries to source control.
 
-## Next step
-
-[Previous: Prerequisites](prerequisites.md) · [Next: Installation](installation.md)
-
 Installation makes the downloaded Deep Netts artifacts available to Maven and configures the required Java runtime options. You will download a runnable project later, when you are ready to verify the installation with Hello World or explore a complete example.

@@ -29,7 +29,7 @@ Classification
 └── Multiclass Classification
 ```
 
-[Open Regression examples](examples/regression/index.md) · [Open Classification examples](examples/classification/index.md)
+[Choose an example](examples/index.md)
 
 ## Continue with the runnable projects
 

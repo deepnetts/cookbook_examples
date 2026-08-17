@@ -6,12 +6,12 @@ The Deep Netts course is written for Java developers who are new to Machine Lear
 
 Install or configure the following tools before running the complete examples.
 
-### Java 22
+### Java 25
 
-All current Maven example projects compile with Java 22:
+All current Maven example projects compile with Java 25:
 
 ```xml
-<maven.compiler.release>22</maven.compiler.release>
+<maven.compiler.release>25</maven.compiler.release>
 ```
 
 Confirm the active runtime:
@@ -21,7 +21,7 @@ java --version
 javac --version
 ```
 
-Both commands should report Java 22.
+Both commands should report Java 25.
 
 ### Maven
 
@@ -33,7 +33,7 @@ Confirm Maven is available:
 mvn --version
 ```
 
-The output includes the Java version and Java home used by Maven. If several JDKs are installed, confirm that Maven also reports Java 22.
+The output includes the Java version and Java home used by Maven. If several JDKs are installed, confirm that Maven also reports Java 25.
 
 ### Java Vector API
 
@@ -58,7 +58,3 @@ java --version
 javac --version
 mvn --version
 ```
-
-## Continue
-
-[Back to Getting Started](index.md) · [Next: Download](download.md)
