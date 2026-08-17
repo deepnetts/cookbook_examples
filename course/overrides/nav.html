@@ -1,0 +1,23 @@
+{% if nav_item.title != "Home" %}
+  {% if not nav_item.children %}
+    <li{% if nav_item.active %} class="active"{% endif %}>
+      <a href="{{ nav_item.url|url }}">{{ nav_item.title }}</a>
+    </li>
+  {% else %}
+    {% set landing_page = nav_item.children | first %}
+    <li class="nav-section{% if nav_item.active %} active-section{% endif %}">
+      {% if landing_page.title == "Overview" %}
+        <a class="section-link" href="{{ landing_page.url|url }}">{{ nav_item.title }}</a>
+      {% else %}
+        <span class="section-label">{{ nav_item.title }}</span>
+      {% endif %}
+      <ul>
+        {% for nav_item in nav_item.children %}
+          {% if nav_item.title != "Overview" %}
+            {% include "nav.html" %}
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </li>
+  {% endif %}
+{% endif %}

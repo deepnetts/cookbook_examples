@@ -4,6 +4,12 @@
 
 This walkthrough builds the Email Spam Classification example one part at a time. It demonstrates binary classification: predicting which of two classes an input belongs to.
 
+**Problem:** Classify an email as `SPAM` or `NOT SPAM` from five numerical features.
+
+**Dataset:** Prepared email records containing message and sender characteristics plus a binary target.
+
+**You will learn:** How to scale features, build a binary feed-forward neural network, interpret a spam probability, evaluate classification metrics, and apply a decision threshold.
+
 ## At a glance
 
 | | |

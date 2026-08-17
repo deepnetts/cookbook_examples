@@ -4,6 +4,12 @@
 
 This walkthrough builds the Computer Hardware Performance example one part at a time. It demonstrates multiple linear regression: predicting one continuous numerical value from several numerical features.
 
+**Problem:** Predict published relative computer performance from six hardware characteristics.
+
+**Dataset:** 209 computers with six numerical features and the continuous `PRP` target.
+
+**You will learn:** How multiple inputs contribute to one prediction, how to standardize features without data leakage, and how to train and evaluate a linear regression model.
+
 ## At a glance
 
 | | |

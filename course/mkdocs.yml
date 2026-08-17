@@ -26,7 +26,6 @@ nav:
 
   - Examples:
       - Overview: examples/index.md
-      - Running the Examples: examples/running-examples.md
       - Regression:
           - Overview: examples/regression/index.md
           - Simple Linear Regression: examples/regression/linear-regression.md
@@ -35,6 +34,7 @@ nav:
           - Overview: examples/classification/index.md
           - Spam Classification: examples/classification/spam-classification.md
           - Multiclass Classification: examples/classification/multiclass-classification.md
+      - Running the Examples: examples/running-examples.md
 
   - Course:
       - ML Basics: lectures/01-ml-basics.md

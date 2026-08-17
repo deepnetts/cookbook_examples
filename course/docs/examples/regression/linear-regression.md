@@ -4,6 +4,12 @@
 
 This walkthrough builds the Sorting Execution Time example one part at a time. It demonstrates simple linear regression: predicting one continuous numerical value from one numerical feature.
 
+**Problem:** Predict sorting execution time from the number of comparisons.
+
+**Dataset:** 903 sorting benchmark measurements with one numerical feature and one continuous target.
+
+**You will learn:** How to select a feature and target, split and standardize data, build a `1 -> 1` linear model, evaluate regression metrics, save the model, and make a prediction.
+
 ## At a glance
 
 | | |

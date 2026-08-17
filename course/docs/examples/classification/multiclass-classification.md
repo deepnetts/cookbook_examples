@@ -4,6 +4,12 @@
 
 This walkthrough builds the Iris flower classifier one part at a time. It demonstrates multiclass classification: predicting one class from three or more possible categories.
 
+**Problem:** Identify an Iris flower as Setosa, Versicolor, or Virginica from four measurements.
+
+**Dataset:** 150 flowers with four numerical features and three one-hot encoded target columns.
+
+**You will learn:** How one-hot targets represent classes, how a Softmax output produces class probabilities, and how to select the most probable class.
+
 ## At a glance
 
 | | |
