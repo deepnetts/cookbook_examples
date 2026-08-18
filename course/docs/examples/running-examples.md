@@ -4,7 +4,7 @@ The projects listed in [Examples](index.md) are complete, standalone Maven appli
 
 [View Examples on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/)
 
-Before starting a complete Machine Learning workflow, run [Hello World](../getting-started/hello-world.md). If Hello World succeeds, the same Java, Maven, Deep Netts, license, and Vector API configuration is ready for these projects.
+Before starting a complete Machine Learning workflow, run [Hello World](../getting-started/index.md#4-hello-world). If Hello World succeeds, the same Java, Maven, Deep Netts, license, and Vector API configuration is ready for these projects.
 
 ## Get the example projects
 

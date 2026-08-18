@@ -15,14 +15,7 @@ extra_javascript:
   - assets/course.js
 
 nav:
-  - Home: index.md
-
-  - Getting Started:
-      - Overview: getting-started/index.md
-      - Prerequisites: getting-started/prerequisites.md
-      - Download: getting-started/download.md
-      - Installation: getting-started/installation.md
-      - Hello World: getting-started/hello-world.md
+  - Getting Started: getting-started/index.md
 
   - Examples:
       - Overview: examples/index.md
@@ -43,6 +36,7 @@ nav:
       - Making Predictions: developer-guide/making-predictions.md
 
   - Course:
+      - Overview: index.md
       - ML Basics: lectures/01-ml-basics.md
       - Neural Networks: lectures/02-neural-networks.md
       - Deep Netts API: lectures/03-deep-netts-api.md

@@ -59,4 +59,4 @@ The complete Java version and numerical prediction can differ between environmen
 - If a Deep Netts artifact cannot be resolved, repeat the local Maven import and verify the dependency versions.
 - If `jdk.incubator.vector` is unavailable, confirm that Maven uses Java 25 and that `MAVEN_OPTS` is set in the same terminal.
 
-See the course [Installation](../../course/docs/getting-started/installation.md) and [Hello World](../../course/docs/getting-started/hello-world.md) pages for the complete setup flow.
+See the course [Getting Started](../../course/docs/getting-started/index.md) page for the complete Installation and Hello World flow.

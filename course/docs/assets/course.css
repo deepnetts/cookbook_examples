@@ -148,7 +148,9 @@
 
 .side summary {
     position: relative;
-    padding: 14px 42px 14px 24px;
+    min-height: 56px;
+    box-sizing: border-box;
+    padding: 18px 42px 18px 24px;
     color: #172b4d;
     font-size: 15px;
     font-weight: 700;
@@ -161,7 +163,19 @@
     display: none;
 }
 
-.side summary::after {
+.side .section-toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 48px;
+    height: 100%;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.side .section-toggle::after {
     position: absolute;
     top: 50%;
     right: 24px;
@@ -174,8 +188,15 @@
     transition: transform 0.18s ease;
 }
 
-.side details[open] > summary::after {
+.side details[open] > summary .section-toggle::after {
     transform: translateY(-35%) rotate(225deg);
+}
+
+.side .section-toggle:hover,
+.side .section-toggle:focus-visible {
+    background: rgba(14, 165, 233, 0.08);
+    outline: 2px solid #16b8e9;
+    outline-offset: -2px;
 }
 
 .side summary:hover,
@@ -183,6 +204,27 @@
     color: #075985;
     background: #f6f8fa;
     outline: none;
+}
+
+.side summary .section-link {
+    position: absolute;
+    inset: 0 48px 0 0;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 24px;
+    color: inherit;
+    background: transparent;
+    border-radius: 0;
+    font: inherit;
+    line-height: inherit;
+}
+
+.side summary .section-link:hover,
+.side summary .section-link:focus-visible {
+    color: inherit;
+    background: transparent;
+    box-shadow: none;
+    text-decoration: none;
 }
 
 .side .active-section > details > summary {
@@ -231,6 +273,27 @@
     font-weight: 650;
 }
 
+.side > ul > li:not(.nav-section) {
+    border-bottom: 1px solid #eaeef2;
+}
+
+.side > ul > li:not(.nav-section) > a {
+    min-height: 56px;
+    box-sizing: border-box;
+    padding: 18px 24px;
+    color: #172b4d;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.side > ul > li:not(.nav-section) > a:hover,
+.side > ul > li:not(.nav-section) > a:focus-visible,
+.side > ul > li.active:not(.nav-section) > a,
+.side > ul > li:not(.nav-section) > a.current {
+    color: #075985;
+}
+
 .markdown-body a:not(.github-example-button) {
     color: #087ca7;
     font-weight: 600;
@@ -244,6 +307,29 @@
 .markdown-body a:not(.github-example-button):focus-visible {
     color: #075985;
     text-decoration-color: #16b8e9;
+}
+
+.markdown-body .back-button {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 22px;
+    padding: 10px 15px;
+    color: #ffffff !important;
+    background: #087ca7;
+    border: 1px solid #075985;
+    border-radius: 7px;
+    box-shadow: 0 2px 7px rgba(8, 124, 167, 0.22);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none !important;
+}
+
+.markdown-body .back-button:hover,
+.markdown-body .back-button:focus-visible {
+    color: #ffffff !important;
+    background: #075985;
+    box-shadow: 0 4px 11px rgba(8, 124, 167, 0.3);
+    text-decoration: none !important;
 }
 
 .markdown-body .learning-path {

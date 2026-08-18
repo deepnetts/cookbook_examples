@@ -82,3 +82,5 @@ The exact Java patch version and prediction are not important. `Vector API enabl
 - If Deep Netts reports a license error, verify that the license artifact supplied with your distribution was imported successfully.
 
 After this project succeeds, choose a complete regression or classification workflow.
+
+<a class="back-button" href="../">← Back to Getting Started</a>

@@ -3,6 +3,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const sideNavigation = document.getElementById("side");
 
     if (sideNavigation) {
+        sideNavigation.querySelectorAll(".section-toggle").forEach(function (button) {
+            button.addEventListener("click", function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                const section = button.closest("details");
+
+                if (section) {
+                    section.open = !section.open;
+                    button.setAttribute("aria-expanded", String(section.open));
+                }
+            });
+        });
+
+        sideNavigation.querySelectorAll("summary > a").forEach(function (link) {
+            link.addEventListener("click", function (event) {
+                event.stopPropagation();
+            });
+        });
+
         const syncNavigationState = function () {
             document.body.classList.toggle(
                 "navigation-collapsed",

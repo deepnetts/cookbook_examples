@@ -7,21 +7,17 @@
     {% set landing_page = nav_item.children | first %}
     <li class="nav-section{% if nav_item.active %} active-section{% endif %}">
       <details{% if nav_item.active %} open{% endif %}>
-        <summary>{{ nav_item.title }}</summary>
-        <ul>
+        <summary>
           {% if landing_page.title == "Overview" %}
-            <li{% if landing_page.active %} class="active"{% endif %}>
-              <a href="{{ landing_page.url|url }}">
-                {% if nav_item.title == "Getting Started" %}Start Here
-                {% elif nav_item.title == "Examples" %}Choose an Example
-                {% elif nav_item.title == "Regression" %}All Regression Examples
-                {% elif nav_item.title == "Classification" %}All Classification Examples
-                {% elif nav_item.title == "Developer Guide" %}Choose a Task
-                {% else %}Introduction
-                {% endif %}
-              </a>
-            </li>
+            <a class="section-link" href="{{ landing_page.url|url }}">{{ nav_item.title }}</a>
+          {% else %}
+            <span>{{ nav_item.title }}</span>
           {% endif %}
+          <button class="section-toggle" type="button"
+                  aria-label="Toggle {{ nav_item.title }} menu"
+                  aria-expanded="{% if nav_item.active %}true{% else %}false{% endif %}"></button>
+        </summary>
+        <ul>
           {% for nav_item in nav_item.children %}
             {% if nav_item.title != "Overview" %}
               {% include "nav.html" %}

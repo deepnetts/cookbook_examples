@@ -2,7 +2,7 @@
 
 Choose a complete project by the type of Machine Learning problem you want to solve. Each example page explains the problem, dataset, important development steps, and relevant Deep Netts API before linking to the runnable Maven project on GitHub.
 
-If you have not run Deep Netts yet, complete [Hello World](../getting-started/hello-world.md) first. Hello World verifies the installation; the projects below demonstrate complete model-development workflows.
+If you have not run Deep Netts yet, complete [Hello World](../getting-started/index.md#4-hello-world) first. Hello World verifies the installation; the projects below demonstrate complete model-development workflows.
 
 ## Choose an example
 
