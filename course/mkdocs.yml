@@ -1,4 +1,4 @@
-site_name: Deep Netts Course
+site_name: Machine Learning with Java and Deep Netts
 site_description: Deep Netts Machine Learning cookbook for Java developers
 site_author: Deep Netts
 
@@ -19,9 +19,11 @@ nav:
 
   - Examples:
       - Overview: examples/index.md
-      - Classification: examples/classification/index.md
       - Regression: examples/regression/index.md
+      - Classification: examples/classification/index.md
       - Image Classification: examples/image-classification/index.md
+      - NLP: examples/nlp/index.md
+      - NPLM: examples/nplm/index.md
 
   - Developer Guide:
       - Overview: developer-guide/index.md
@@ -41,4 +43,3 @@ nav:
       - Model Development: lectures/04-model-development.md
 
   - Glossary: glossary.md
-  - Next Steps: next-steps.md

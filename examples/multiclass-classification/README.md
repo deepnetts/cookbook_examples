@@ -184,8 +184,7 @@ The helper selects the index with the largest probability and maps it to `SETOSA
 From this project directory:
 
 ```bash
-mvn compile
-MAVEN_OPTS="--add-modules jdk.incubator.vector" mvn exec:java
+MAVEN_OPTS="--add-modules jdk.incubator.vector" mvn clean compile exec:java
 ```
 
 The program prints dataset information, training progress, classification metrics, the three predicted probabilities, and the predicted species.

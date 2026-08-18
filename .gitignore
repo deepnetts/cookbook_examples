@@ -1,5 +1,6 @@
 **/target/
 **/models/
+**/logs/
 *.dnet
 **/nbproject/private/
 **/nb-configuration.xml

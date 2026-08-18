@@ -1,13 +1,13 @@
 # Hello World
 
-Use this small project to verify the complete Deep Netts setup before starting a Machine Learning example. It creates a neural network and runs a prediction; it does not merely print a greeting.
+Use this small project to verify the Java and Deep Netts runtime before starting a Machine Learning example. It creates a neural network and runs a real prediction; it does not merely print a greeting.
 
 ## What this verifies
 
 A successful run confirms that:
 
 - Maven uses Java 25;
-- Maven can resolve the Deep Netts library and license artifacts;
+- Maven can resolve Deep Netts 4 Pro and its license from the local Maven repository;
 - Deep Netts can create a neural network;
 - the Java Vector API is enabled at runtime;
 - Deep Netts can execute a prediction on CPU.
@@ -37,28 +37,28 @@ The output should report Java 25. If it reports another version, select the corr
 mvn compile
 ```
 
-This confirms that Maven can resolve the required Deep Netts artifacts and compile the Java source.
+This confirms that Maven can resolve the installed Deep Netts 4 Pro and license artifacts and compile the Java source.
 
 ## 4. Run
 
 On Linux or macOS:
 
 ```bash
-MAVEN_OPTS="--add-modules jdk.incubator.vector" mvn exec:java
+MAVEN_OPTS="--add-modules jdk.incubator.vector" mvn clean compile exec:java
 ```
 
 On Windows Command Prompt:
 
 ```bat
 set MAVEN_OPTS=--add-modules jdk.incubator.vector
-mvn exec:java
+mvn clean compile exec:java
 ```
 
 On Windows PowerShell:
 
 ```powershell
 $env:MAVEN_OPTS="--add-modules jdk.incubator.vector"
-mvn exec:java
+mvn clean compile exec:java
 ```
 
 ## Expected result
@@ -76,10 +76,9 @@ The exact Java patch version and prediction are not important. `Vector API enabl
 
 ## If it fails
 
-- If Maven cannot resolve `deepnetts-core-pro` or `deepnetts-license`, repeat the local Maven import step from Installation and verify the dependency versions.
+- If Maven cannot resolve the Deep Netts Pro or license artifact, repeat the local Maven import from Installation and reload the Maven project.
 - If Java reports that `jdk.incubator.vector` is unavailable, confirm that Maven uses Java 25.
 - If the Vector API module is not enabled, check that `MAVEN_OPTS` is set in the same terminal used to run Maven.
-- If Deep Netts reports a license error, verify that the license artifact supplied with your distribution was imported successfully.
 
 After this project succeeds, choose a complete regression or classification workflow.
 

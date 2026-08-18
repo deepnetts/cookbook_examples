@@ -38,6 +38,7 @@ public class SpamClassificationDeepNetts {
     private static final int NUM_OUTPUTS = 1;
 
     public static void main(String[] args) throws Exception {
+        verifyJavaRuntime();
 
         // 1. Runtime configuration
         DeepNetts.getInstance().setUseCuda(false);
@@ -116,6 +117,16 @@ public class SpamClassificationDeepNetts {
         System.out.printf("Spam probability: %.4f%n",spamProbability);
         System.out.println(spamProbability >= 0.5f ? "SPAM" : "NOT SPAM");
 
-        
+    }
+
+    private static void verifyJavaRuntime() {
+        if (Runtime.version().feature() != 25) {
+            throw new IllegalStateException("Java 25 is required. Maven is using Java "
+                    + Runtime.version().feature() + ".");
+        }
+        if (ModuleLayer.boot().findModule("jdk.incubator.vector").isEmpty()) {
+            throw new IllegalStateException(
+                    "Vector API is not enabled. Run Maven with --add-modules jdk.incubator.vector.");
+        }
     }
 }

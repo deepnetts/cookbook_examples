@@ -148,7 +148,7 @@ If the Vector API module is missing, confirm that Maven runs on Java 25 and the 
 
 ## 4. Hello World
 
-Use the minimal Hello World project to verify the complete setup. It creates a Deep Netts neural network and runs a prediction, confirming that Java 25, Maven, the library, license, and Vector API configuration work together.
+Use the minimal Hello World project to verify the complete runtime setup. It loads Deep Netts 4 Pro and its license, creates a neural network, and runs a prediction with Java 25 and the Vector API enabled.
 
 [View Hello World on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/hello-world)
 

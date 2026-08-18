@@ -6,23 +6,38 @@ If you have not run Deep Netts yet, complete [Hello World](../getting-started/in
 
 ## Browse by category
 
-### Classification
-
-- [Browse Classification](classification/index.md)
-- [Spam Classification](classification/spam-classification.md)
-- [Multiclass Classification](classification/multiclass-classification.md)
-
-### Regression
-
-- [Browse Regression](regression/index.md)
-- [Simple Linear Regression](regression/linear-regression.md)
-- [Multiple Linear Regression](regression/multiple-linear-regression.md)
-
-### Image Classification
-
-Image-classification projects will be added here as the collection grows.
-
-- [Browse Image Classification](image-classification/index.md)
+<div class="example-categories">
+  <a href="regression/">
+    <span class="category-mark">01</span>
+    <strong>Regression</strong>
+    <small>Predict continuous numerical values from one or more features.</small>
+    <span class="category-arrow" aria-hidden="true">→</span>
+  </a>
+  <a href="classification/">
+    <span class="category-mark">02</span>
+    <strong>Classification</strong>
+    <small>Predict binary or multiclass labels from structured data.</small>
+    <span class="category-arrow" aria-hidden="true">→</span>
+  </a>
+  <a href="image-classification/">
+    <span class="category-mark">03</span>
+    <strong>Image Classification</strong>
+    <small>Build models that assign images to predefined classes.</small>
+    <span class="category-arrow" aria-hidden="true">→</span>
+  </a>
+  <a href="nlp/">
+    <span class="category-mark">04</span>
+    <strong>NLP</strong>
+    <small>Process, classify, and extract information from natural language.</small>
+    <span class="category-arrow" aria-hidden="true">→</span>
+  </a>
+  <a href="nplm/">
+    <span class="category-mark">05</span>
+    <strong>NPLM</strong>
+    <small>Explore neural probabilistic language-model projects.</small>
+    <span class="category-arrow" aria-hidden="true">→</span>
+  </a>
+</div>
 
 If this is your first complete Machine Learning project, start with Simple Linear Regression. It uses one input and one output while still demonstrating data preparation, training, evaluation, model saving, and prediction.
 

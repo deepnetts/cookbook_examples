@@ -41,6 +41,7 @@ public class LinearRegressionDeepNetts {
     private static final int NUM_OUTPUTS = 1;
 
     public static void main(String[] args) throws Exception {
+        verifyJavaRuntime();
 
         // 1. Runtime configuration
         DeepNetts.getInstance().setUseCuda(false);
@@ -110,5 +111,16 @@ public class LinearRegressionDeepNetts {
 
         System.out.printf("Predicted execution time for %.0f comparisons: %.2f ms%n",
                 comparisonCount,predictedExecutionTime);
+    }
+
+    private static void verifyJavaRuntime() {
+        if (Runtime.version().feature() != 25) {
+            throw new IllegalStateException("Java 25 is required. Maven is using Java "
+                    + Runtime.version().feature() + ".");
+        }
+        if (ModuleLayer.boot().findModule("jdk.incubator.vector").isEmpty()) {
+            throw new IllegalStateException(
+                    "Vector API is not enabled. Run Maven with --add-modules jdk.incubator.vector.");
+        }
     }
 }

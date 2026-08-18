@@ -389,9 +389,80 @@
     line-height: 1.4;
 }
 
+.markdown-body .example-categories {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin: 10px 0 28px;
+}
+
+.markdown-body .example-categories a {
+    position: relative;
+    display: flex;
+    min-height: 122px;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 44px 16px 16px;
+    color: #24292f;
+    background: #ffffff;
+    border: 1px solid #d8dee4;
+    border-radius: 9px;
+    box-shadow: 0 2px 8px rgba(31, 35, 40, 0.06);
+    text-decoration: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.markdown-body .example-categories a:hover,
+.markdown-body .example-categories a:focus-visible {
+    color: #24292f;
+    border-color: #16b8e9;
+    box-shadow: 0 6px 16px rgba(8, 124, 167, 0.14);
+    text-decoration: none;
+    transform: translateY(-3px);
+}
+
+.markdown-body .example-categories .category-mark {
+    color: #087ca7;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.markdown-body .example-categories strong {
+    font-size: 17px;
+    line-height: 1.25;
+}
+
+.markdown-body .example-categories small {
+    color: #57606a;
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+.markdown-body .example-categories .category-arrow {
+    position: absolute;
+    right: 16px;
+    bottom: 14px;
+    color: #087ca7;
+    font-size: 21px;
+    font-weight: 700;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.markdown-body .example-categories a:hover .category-arrow,
+.markdown-body .example-categories a:focus-visible .category-arrow {
+    color: #16a8d5;
+    transform: translateX(4px);
+}
+
 @media only screen and (max-width: 900px) {
     .markdown-body .learning-path {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .markdown-body .example-categories {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -402,6 +473,10 @@
 
     .markdown-body .learning-path a {
         min-height: auto;
+    }
+
+    .markdown-body .example-categories a {
+        min-height: 128px;
     }
 }
 

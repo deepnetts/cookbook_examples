@@ -1,4 +1,4 @@
-# Deep Netts Course
+# Machine Learning with Java and Deep Netts
 
 Learn the foundations of Machine Learning with Java and Deep Netts.
 

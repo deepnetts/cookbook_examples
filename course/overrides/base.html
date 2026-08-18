@@ -104,7 +104,7 @@
             {{ page.content }}
         </div>
       {% endblock %}
-      {% set hide_page_navigation = page and ((page.file and page.file.src_uri == "index.md") or page.url == "getting-started/" or page.url == "examples/" or page.url == "examples/classification/" or page.url == "examples/regression/" or page.url == "examples/image-classification/" or page.url == "developer-guide/") %}
+      {% set hide_page_navigation = page and ((page.file and page.file.src_uri == "index.md") or page.url == "getting-started/" or page.url == "examples/" or page.url == "examples/classification/" or page.url == "examples/regression/" or page.url == "examples/image-classification/" or page.url == "examples/nlp/" or page.url == "examples/nplm/" or page.url == "developer-guide/") %}
       {% set show_previous = page and page.previous_page and not hide_page_navigation and page.url != "lectures/01-ml-basics/" and page.url != "developer-guide/loading-data/" %}
       {% set show_next = page and page.next_page and not hide_page_navigation and page.url != "lectures/04-model-development/" and page.url != "developer-guide/making-predictions/" %}
       {% if show_previous or show_next %}

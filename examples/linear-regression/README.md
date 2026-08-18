@@ -104,7 +104,7 @@ The `models/` and `target/` directories are generated when the program runs.
 Deep Netts 4 uses the incubating Java Vector API. Enable it when running from a terminal:
 
 ```bash
-MAVEN_OPTS="--add-modules jdk.incubator.vector" mvn exec:java
+MAVEN_OPTS="--add-modules jdk.incubator.vector" mvn clean compile exec:java
 ```
 
 ## Build and run
@@ -113,8 +113,7 @@ From this project directory:
 
 ```bash
 cd examples/linear-regression
-mvn compile
-MAVEN_OPTS="--add-modules jdk.incubator.vector" mvn exec:java
+MAVEN_OPTS="--add-modules jdk.incubator.vector" mvn clean compile exec:java
 ```
 
 The program explicitly selects CPU execution:

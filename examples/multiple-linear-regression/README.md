@@ -158,6 +158,12 @@ In Apache NetBeans:
 Project -> Properties -> Run -> VM Options
 ```
 
+From a Linux or macOS terminal:
+
+```bash
+MAVEN_OPTS="--add-modules jdk.incubator.vector" mvn clean compile exec:java
+```
+
 ---
 
 # Machine Learning Workflow

@@ -42,6 +42,7 @@ public class MulticlassClassificationDeepNetts {
     };
 
     public static void main(String[] args) throws Exception {
+        verifyJavaRuntime();
 
         // 1. Runtime configuration
         DeepNetts.getInstance().setUseCuda(false);
@@ -115,6 +116,17 @@ public class MulticlassClassificationDeepNetts {
 
         System.out.println("Class probabilities: " + Arrays.toString(probabilities));
         System.out.println("Predicted species: " + CLASS_NAMES[predictedClass]);
+    }
+
+    private static void verifyJavaRuntime() {
+        if (Runtime.version().feature() != 25) {
+            throw new IllegalStateException("Java 25 is required. Maven is using Java "
+                    + Runtime.version().feature() + ".");
+        }
+        if (ModuleLayer.boot().findModule("jdk.incubator.vector").isEmpty()) {
+            throw new IllegalStateException(
+                    "Vector API is not enabled. Run Maven with --add-modules jdk.incubator.vector.");
+        }
     }
 
     private static int indexOfLargest(float[] values) {

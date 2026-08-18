@@ -1,7 +1,8 @@
 # Classification Examples
 
-This page will collect complete classification projects as they are added to the cookbook.
+Explore complete classification walkthroughs and runnable Deep Netts projects.
 
 ## Projects
 
-No classification projects have been published in this category yet.
+- [Spam Classification](spam-classification.md)
+- [Multiclass Classification](multiclass-classification.md)

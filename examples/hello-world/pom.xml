@@ -14,6 +14,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>25</maven.compiler.release>
+        <deepnetts.version>4.0.0-beta</deepnetts.version>
         <exec.mainClass>com.deepnetts.examples.helloworld.DeepNettsHelloWorld</exec.mainClass>
     </properties>
 
@@ -21,9 +22,8 @@
         <dependency>
             <groupId>com.deepnetts</groupId>
             <artifactId>deepnetts-core-pro</artifactId>
-            <version>4.0.0</version>
+            <version>${deepnetts.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.deepnetts</groupId>
             <artifactId>deepnetts-license</artifactId>
@@ -42,6 +42,15 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.6.3</version>
+                <configuration>
+                    <!-- Avoid a Log4j 2.7 shutdown hook outliving exec:java's classloader. -->
+                    <systemProperties>
+                        <systemProperty>
+                            <key>log4j.shutdownHookEnabled</key>
+                            <value>false</value>
+                        </systemProperty>
+                    </systemProperties>
+                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -1,13 +1,9 @@
 package com.deepnetts.examples.helloworld;
 
-import deepnetts.core.DeepNetts;
 import deepnetts.net.FeedForwardNetwork;
 import deepnetts.net.layers.activation.ActivationType;
 import deepnetts.net.loss.LossType;
 
-/**
- * Verifies that Deep Netts and its required runtime configuration are available.
- */
 public class DeepNettsHelloWorld {
 
     public static void main(String[] args) {
@@ -19,14 +15,14 @@ public class DeepNettsHelloWorld {
         System.out.println("Java version: " + javaVersion);
         System.out.println("Vector API enabled: " + vectorApiEnabled);
 
+        if (Runtime.version().feature() != 25) {
+            throw new IllegalStateException("Java 25 is required. Maven is using Java "
+                    + Runtime.version().feature() + ".");
+        }
         if (!vectorApiEnabled) {
             throw new IllegalStateException(
-                    "The jdk.incubator.vector module is not enabled. "
-                    + "Run Maven with MAVEN_OPTS=--add-modules jdk.incubator.vector."
-            );
+                    "Vector API is not enabled. Run Maven with --add-modules jdk.incubator.vector.");
         }
-
-        DeepNetts.getInstance().setUseCuda(false);
 
         FeedForwardNetwork neuralNet = FeedForwardNetwork.builder()
                 .addInputLayer(1)
@@ -36,13 +32,13 @@ public class DeepNettsHelloWorld {
                 .build();
 
         float input = 1.0f;
-        float prediction = neuralNet.predict(input)[0];
+        float prediction = neuralNet.predict(new float[]{input})[0];
 
         if (!Float.isFinite(prediction)) {
-            throw new IllegalStateException("Deep Netts returned an invalid prediction.");
+            throw new IllegalStateException("Deep Netts returned a non-finite prediction.");
         }
 
-        System.out.printf("Deep Netts prediction for %.1f: %.6f%n", input, prediction);
+        System.out.println("Deep Netts prediction for " + input + ": " + prediction);
         System.out.println("SUCCESS: Deep Netts is installed and configured correctly.");
     }
 }
