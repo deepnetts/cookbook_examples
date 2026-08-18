@@ -98,7 +98,7 @@ The `models/` and `target/` directories are generated when the program runs.
 
 - Java 25
 - Maven
-- Deep Netts `4.0.0-beta`
+- Deep Netts `4.0.0`
 - a configured Deep Netts license
 
 Deep Netts 4 uses the incubating Java Vector API. Enable it when running from a terminal:

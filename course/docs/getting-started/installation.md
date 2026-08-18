@@ -33,7 +33,7 @@ Linux/macOS: ~/.m2/repository/com/deepnetts
 Confirm that the versions required by the course exist below that directory:
 
 ```text
-com/deepnetts/deepnetts-core-pro/4.0.0-beta/
+com/deepnetts/deepnetts-core-pro/4.0.0/
 com/deepnetts/deepnetts-license/1.0/
 ```
 
@@ -41,14 +41,14 @@ Each version directory should contain its corresponding JAR and Maven metadata. 
 
 ## 3. Add the Maven dependencies
 
-The current course examples use Deep Netts 4 beta and the Deep Netts license artifact:
+The current course examples use Deep Netts 4 and the Deep Netts license artifact:
 
 ```xml
 <dependencies>
     <dependency>
         <groupId>com.deepnetts</groupId>
         <artifactId>deepnetts-core-pro</artifactId>
-        <version>4.0.0-beta</version>
+        <version>4.0.0</version>
     </dependency>
 
     <dependency>

@@ -69,7 +69,7 @@ The generated model is saved locally under `models/` and is ignored by Git.
 ```text
 Java 25
 Maven
-Deep Netts 4.0.0-beta
+Deep Netts 4.0.0
 ```
 
 Deep Netts 4 uses the Java Vector API. Add this VM option when running the example:

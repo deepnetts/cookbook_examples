@@ -4,54 +4,13 @@ This page takes you from a Java development environment to a verified Deep Netts
 
 ## 1. Prerequisites
 
-The course is written for Java developers who are new to Machine Learning. You do not need previous ML experience, but you should be comfortable reading Java classes, methods, arrays, and Maven project files.
+You do not need previous Machine Learning experience. To follow the course, install:
 
-### 1.1. Java 25
+- [JDK 25](https://www.oracle.com/java/technologies/downloads/);
+- [Apache Maven](https://maven.apache.org/download.cgi);
+- a Java IDE of your choice (optional).
 
-Download JDK 25 from the [official Oracle Java downloads page](https://www.oracle.com/java/technologies/downloads/).
-
-All current Maven example projects compile with Java 25:
-
-```xml
-<maven.compiler.release>25</maven.compiler.release>
-```
-
-Confirm the active runtime:
-
-```bash
-java --version
-javac --version
-```
-
-Both commands should report Java 25.
-
-### 1.2. Apache Maven Build Tool
-
-Maven is the recommended build tool for Deep Netts and is required by the runnable projects in this course. Download it from the [official Apache Maven page](https://maven.apache.org/download.cgi) and follow the [installation instructions](https://maven.apache.org/install.html).
-
-Each example is a standalone Maven project with its own `pom.xml`. Confirm Maven is available:
-
-```bash
-mvn --version
-```
-
-The output includes the Java version and Java home used by Maven. If several JDKs are installed, confirm that Maven also reports Java 25.
-
-### 1.3. Java Vector API
-
-Deep Netts 4 uses the incubating Java Vector API. The module must be enabled when running an example:
-
-```text
---add-modules jdk.incubator.vector
-```
-
-You will configure this option during Installation.
-
-### 1.4. Java IDE (optional)
-
-You can use any Java IDE. The example projects can also be opened in Apache NetBeans, which can store the Vector API VM option in its run configuration.
-
-Before continuing, verify that these commands all succeed:
+Deep Netts 4 uses the Java Vector API, which will be enabled during Installation. Before continuing, verify that Java 25 and Maven are available:
 
 ```bash
 java --version
@@ -68,7 +27,7 @@ To run Deep Netts applications, download the distribution used by the examples. 
 The runnable projects currently require these Maven artifacts:
 
 ```text
-com.deepnetts:deepnetts-core-pro:4.0.0-beta
+com.deepnetts:deepnetts-core-pro:4.0.0
 com.deepnetts:deepnetts-license:1.0
 ```
 
@@ -78,7 +37,7 @@ Download Deep Netts through the [official Deep Netts download page](https://www.
 
 Before continuing, make sure you have:
 
-- the distribution that provides `deepnetts-core-pro:4.0.0-beta`;
+- the distribution that provides `deepnetts-core-pro:4.0.0`;
 - the corresponding Deep Netts license;
 - access to the import script included with the distribution.
 
@@ -119,7 +78,7 @@ Linux/macOS: ~/.m2/repository/com/deepnetts
 Confirm that these versions exist:
 
 ```text
-com/deepnetts/deepnetts-core-pro/4.0.0-beta/
+com/deepnetts/deepnetts-core-pro/4.0.0/
 com/deepnetts/deepnetts-license/1.0/
 ```
 
@@ -130,7 +89,7 @@ com/deepnetts/deepnetts-license/1.0/
     <dependency>
         <groupId>com.deepnetts</groupId>
         <artifactId>deepnetts-core-pro</artifactId>
-        <version>4.0.0-beta</version>
+        <version>4.0.0</version>
     </dependency>
 
     <dependency>

@@ -7,7 +7,7 @@ To run Deep Netts applications, download the Deep Netts distribution used by the
 The runnable projects linked by this course currently require these Maven artifacts:
 
 ```text
-com.deepnetts:deepnetts-core-pro:4.0.0-beta
+com.deepnetts:deepnetts-core-pro:4.0.0
 com.deepnetts:deepnetts-license:1.0
 ```
 
@@ -19,7 +19,7 @@ Download Deep Netts through the [official Deep Netts download page](https://www.
 
 Make sure you have:
 
-- the downloaded Deep Netts distribution that provides `deepnetts-core-pro:4.0.0-beta`;
+- the downloaded Deep Netts distribution that provides `deepnetts-core-pro:4.0.0`;
 - the corresponding Deep Netts license supplied for your account or organization;
 - access to the import script included with that distribution.
 

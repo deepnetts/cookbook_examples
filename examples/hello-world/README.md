@@ -8,7 +8,7 @@ The program creates a small `1 -> 1` neural network and performs one prediction.
 
 - Java 25
 - Maven
-- `deepnetts-core-pro:4.0.0-beta` installed or otherwise available to Maven
+- `deepnetts-core-pro:4.0.0` installed or otherwise available to Maven
 - `deepnetts-license:1.0` installed or otherwise available to Maven
 
 ## Run
