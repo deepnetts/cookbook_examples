@@ -1,69 +1,48 @@
 # Running All Examples
 
-The projects listed in [Examples](index.md) are complete, standalone Maven applications. You do not need their source code to read the course. Download them only when you want to run or modify a complete project.
+Every project listed in [Examples](index.md) is a standalone Maven application and follows the same build-and-run process. Clone the repository only when you want to run or modify the code.
 
 [View Examples on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/)
 
-Before starting a complete Machine Learning workflow, run [Hello World](../getting-started/index.md#4-hello-world). If Hello World succeeds, the same Java, Maven, Deep Netts, license, and Vector API configuration is ready for these projects.
+Before continuing, complete [Hello World](../getting-started/index.md#4-hello-world) to verify Java 25, Maven, Deep Netts, licensing, and the Vector API.
 
 ## Get the example projects
 
-Clone the examples repository, then enter it:
+Clone the repository:
 
 ```bash
 git clone https://github.com/deepnetts/cookbook-examples.git
 cd cookbook-examples
 ```
 
-Run the remaining commands from the selected example directory. The programs use project-relative paths for datasets and saved models.
-
 ## Choose an example
 
-### Simple linear regression
+Enter one of the project directories:
 
-The Sorting Execution Time project predicts a continuous runtime from one input feature:
+| Project | Directory | Result |
+| --- | --- | --- |
+| Simple Linear Regression | `examples/linear-regression` | Sorting execution time |
+| Multiple Linear Regression | `examples/multiple-linear-regression` | Relative computer performance |
+| Spam Classification | `examples/spam-classification` | Spam probability and class |
+| Multiclass Classification | `examples/multiclass-classification` | Iris species probabilities and class |
+
+For example:
 
 ```bash
 cd examples/linear-regression
 ```
 
-### Multiple linear regression
+All following commands must be run from the selected project directory because datasets and generated models use project-relative paths.
 
-The Computer Hardware Performance - Multiple Linear Regression project predicts a continuous `PRP` value:
+## Compile and run
 
-```bash
-cd examples/multiple-linear-regression
-```
-
-### Spam classification
-
-The Email Spam Classification project predicts a spam probability and binary class:
-
-```bash
-cd examples/spam-classification
-```
-
-### Multiclass classification
-
-The Iris project predicts one of three flower species from four numerical measurements:
-
-```bash
-cd examples/multiclass-classification
-```
-
-## Compile the project
-
-From the chosen example directory, run:
+Compile the selected project:
 
 ```bash
 mvn compile
 ```
 
-This resolves the configured dependencies and compiles the Java source with Java 25.
-
-## Run from a terminal
-
-Enable the Vector API for the Maven process and start the configured main class.
+Then enable the Vector API and run its configured main class.
 
 On Linux or macOS:
 
@@ -85,12 +64,11 @@ $env:MAVEN_OPTS="--add-modules jdk.incubator.vector"
 mvn exec:java
 ```
 
-The first run may take longer while Maven resolves dependencies. Training output and final evaluation metrics are printed in the terminal.
+The first run may take longer while Maven resolves dependencies. The application prints its training progress, evaluation metrics, and prediction in the terminal.
 
 ## What the program does
 
-All examples execute the complete workflow in one run:
-
+Regardless of the selected problem, every application performs the same high-level workflow:
 
 ```text
 load data
@@ -104,21 +82,7 @@ load data
 -> predict
 ```
 
-
-The simple-regression example predicts sorting execution time. The multiple-regression example predicts relative computer performance. The binary classification example ends with a spam probability and either `SPAM` or `NOT SPAM`. The multiclass example returns three probabilities and predicts an Iris species.
-
-## Generated model files
-
-Each program creates a local `models/` directory and saves a trained `.dnet` model:
-
-```text
-linear-regression/models/sorting-execution-time-regression.dnet
-multiple-linear-regression/models/computer-hardware-multiple-regression.dnet
-spam-classification/models/spam-classifier.dnet
-multiclass-classification/models/iris-multiclass-classifier.dnet
-```
-
-Re-running an example can replace its local model file with the result of the new training run.
+Each application saves its trained `.dnet` model under the project's local `models/` directory. Running it again may replace the previously generated model.
 
 ## Run from an IDE
 
@@ -128,7 +92,7 @@ When running from an IDE, configure this VM option:
 --add-modules jdk.incubator.vector
 ```
 
-Also ensure that the working directory is the example project directory. Otherwise, relative dataset paths such as `src/main/resources/datasets/...` will not resolve correctly.
+Use the selected project directory as the working directory so that its relative dataset paths resolve correctly.
 
 ## Troubleshooting checklist
 
