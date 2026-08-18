@@ -17,13 +17,7 @@ extra_javascript:
 nav:
   - Getting Started: getting-started/index.md
 
-  - Examples:
-      - Overview: examples/index.md
-      - Simple Linear Regression: examples/regression/linear-regression.md
-      - Multiple Linear Regression: examples/regression/multiple-linear-regression.md
-      - Spam Classification: examples/classification/spam-classification.md
-      - Multiclass Classification: examples/classification/multiclass-classification.md
-      - Running the Examples: examples/running-examples.md
+  - Examples: examples/index.md
 
   - Developer Guide:
       - Overview: developer-guide/index.md

@@ -1,4 +1,4 @@
-# Running the Examples
+# Running All Examples
 
 The projects listed in [Examples](index.md) are complete, standalone Maven applications. You do not need their source code to read the course. Download them only when you want to run or modify a complete project.
 
@@ -141,3 +141,5 @@ If an example does not start, check:
 - the dataset file is present under `src/main/resources/datasets/`.
 
 For a detailed explanation of every operation, read the README inside the selected example.
+
+<a class="back-button" href="../">← Back to Examples</a>

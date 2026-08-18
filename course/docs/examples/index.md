@@ -16,8 +16,10 @@ If you have not run Deep Netts yet, complete [Hello World](../getting-started/in
 - [Spam Classification](classification/spam-classification.md)
 - [Multiclass Classification](classification/multiclass-classification.md)
 
-### Run the projects
-
-- [Running the Examples](running-examples.md)
-
 If this is your first complete Machine Learning project, start with Simple Linear Regression. It uses one input and one output while still demonstrating data preparation, training, evaluation, model saving, and prediction.
+
+## Run all examples
+
+When you are ready to run the projects locally, open the complete guide for cloning the repository, choosing a project, compiling it, enabling the Vector API, and troubleshooting common setup problems.
+
+[Open Running All Examples](running-examples.md)
