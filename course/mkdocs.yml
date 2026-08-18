@@ -25,6 +25,8 @@ nav:
       - NLP: examples/nlp/index.md
       - NPLM: examples/nplm/index.md
 
+  - API Documentation: api-documentation/index.md
+
   - Developer Guide:
       - Overview: developer-guide/index.md
       - Loading Data: developer-guide/loading-data.md
