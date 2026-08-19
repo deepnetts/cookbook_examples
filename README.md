@@ -83,6 +83,10 @@ Predicts whether an email is spam from five numerical features. It demonstrates 
 load -> inspect -> split -> scale -> train -> evaluate -> save -> predict
 ```
 
+### [Logistic Regression](examples/classification/logistic-regression/)
+
+Provides a Java 25 binary-classification scaffold with a Sigmoid output and Cross-Entropy loss. Add a numerical CSV dataset and configure its feature count before running it.
+
 ### [Iris Multiclass Classification](examples/classification/multiclass-classification/)
 
 Predicts one of three Iris flower species from four numerical measurements. It demonstrates multiclass classification with one-hot targets, a softmax output layer, and the workflow:
@@ -108,6 +112,7 @@ cookbook-examples/
     │   ├── linear-regression/
     │   └── multiple-linear-regression/
     ├── classification/
+    │   ├── logistic-regression/
     │   ├── spam-classification/
     │   └── multiclass-classification/
     ├── img-classification/ # Future image-classification projects
