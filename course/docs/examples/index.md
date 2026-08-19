@@ -28,13 +28,7 @@ If you have not run Deep Netts yet, complete [Hello World](../getting-started/in
   <a href="nlp/">
     <span class="category-mark">04</span>
     <strong>NLP</strong>
-    <small>Process, classify, and extract information from natural language.</small>
-    <span class="category-arrow" aria-hidden="true">→</span>
-  </a>
-  <a href="nplm/">
-    <span class="category-mark">05</span>
-    <strong>NPLM</strong>
-    <small>Explore neural probabilistic language-model projects.</small>
+    <small>Process natural language, including neural probabilistic language models.</small>
     <span class="category-arrow" aria-hidden="true">→</span>
   </a>
 </div>

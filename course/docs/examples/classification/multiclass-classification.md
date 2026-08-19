@@ -1,4 +1,4 @@
-[View Example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/classification/multiclass-classification)
+<a href="https://github.com/deepnetts/cookbook-examples/tree/main/examples/classification/multiclass-classification">View Example on GitHub</a>
 
 # Multiclass Classification
 
@@ -253,6 +253,10 @@ Saved model and species prediction
 
 The complete Java class, dataset, `pom.xml`, and detailed README are available here:
 
-[View Example on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/classification/multiclass-classification)
+<div class="github-action-right">
+
+<a href="https://github.com/deepnetts/cookbook-examples/tree/main/examples/classification/multiclass-classification">View Example on GitHub</a>
+
+</div>
 
 <a class="back-button" href="../../">← Back to Examples</a>

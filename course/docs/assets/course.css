@@ -1,3 +1,21 @@
+.markdown-body,
+body,
+button,
+input,
+select,
+textarea {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+    font-family: "JetBrains Mono", "SFMono-Regular", Consolas,
+        "Liberation Mono", monospace;
+}
+
 .title .logo {
     display: flex;
     align-items: center;
@@ -391,15 +409,17 @@
 
 .markdown-body .example-categories {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
+    width: 100%;
+    gap: 16px;
     margin: 10px 0 28px;
 }
 
 .markdown-body .example-categories a {
     position: relative;
     display: flex;
-    min-height: 122px;
+    min-height: 154px;
     flex-direction: column;
     gap: 8px;
     padding: 16px 44px 16px 16px;
@@ -456,11 +476,77 @@
     transform: translateX(4px);
 }
 
+.markdown-body .developer-guides-list {
+    overflow: hidden;
+    margin: 12px 0 28px;
+    background: #ffffff;
+    border: 1px solid #d8dee4;
+    border-radius: 9px;
+    box-shadow: 0 2px 8px rgba(31, 35, 40, 0.06);
+}
+
+.markdown-body .developer-guides-list a {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(190px, 0.7fr) minmax(280px, 1.3fr);
+    gap: 22px;
+    align-items: center;
+    min-height: 72px;
+    padding: 14px 48px 14px 18px;
+    color: #24292f;
+    border-bottom: 1px solid #eaeef2;
+    text-decoration: none;
+    transition: color 0.18s ease, background-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.markdown-body .developer-guides-list a:last-child {
+    border-bottom: 0;
+}
+
+.markdown-body .developer-guides-list a::after {
+    position: absolute;
+    right: 20px;
+    color: #087ca7;
+    content: "→";
+    font-size: 21px;
+    font-weight: 700;
+    transition: color 0.18s ease, transform 0.18s ease;
+}
+
+.markdown-body .developer-guides-list a:hover,
+.markdown-body .developer-guides-list a:focus-visible {
+    color: #24292f;
+    background: #f6fbfd;
+    box-shadow: inset 4px 0 0 #16b8e9;
+    text-decoration: none;
+}
+
+.markdown-body .developer-guides-list a:hover::after,
+.markdown-body .developer-guides-list a:focus-visible::after {
+    color: #16a8d5;
+    transform: translateX(4px);
+}
+
+.markdown-body .developer-guides-list strong {
+    color: #075985;
+    font-size: 16px;
+    line-height: 1.3;
+}
+
+.markdown-body .developer-guides-list span {
+    color: #57606a;
+    font-size: 14px;
+    line-height: 1.45;
+}
+
 @media only screen and (max-width: 900px) {
     .markdown-body .learning-path {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+}
 
+@media only screen and (max-width: 680px) {
     .markdown-body .example-categories {
         grid-template-columns: 1fr;
     }
@@ -477,6 +563,12 @@
 
     .markdown-body .example-categories a {
         min-height: 128px;
+    }
+
+    .markdown-body .developer-guides-list a {
+        grid-template-columns: 1fr;
+        gap: 5px;
+        min-height: 84px;
     }
 }
 
@@ -539,10 +631,29 @@
 
 .code-block {
     position: relative;
+    margin-bottom: 18px;
 }
 
 .code-block pre {
     padding-top: 42px;
+}
+
+.markdown-body pre,
+.markdown-body .highlight pre {
+    color: #172b4d;
+    background: #f3f7fa;
+    border: 1px solid #c7d3dc;
+    border-left: 4px solid #16a8d5;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(31, 35, 40, 0.08);
+}
+
+.markdown-body :not(pre) > code {
+    color: #075985;
+    background: #edf5f8;
+    border: 1px solid #d2e2e9;
+    border-radius: 4px;
+    font-weight: 500;
 }
 
 .copy-code-button {
@@ -650,6 +761,76 @@
     fill: currentColor;
 }
 
+.markdown-body .resource-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin: 18px 0 24px;
+}
+
+.markdown-body .resource-actions .github-example-button {
+    flex: 0 0 auto;
+    margin-left: auto;
+}
+
+.markdown-body .explanation-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 38px;
+    padding: 8px 14px;
+    color: #075985;
+    background: linear-gradient(135deg, #eefaff 0%, #e3f5fb 100%);
+    border: 1px solid #7dcce6;
+    border-radius: 7px;
+    box-shadow: 0 2px 7px rgba(8, 124, 167, 0.13);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.markdown-body .explanation-button::before {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    color: #ffffff;
+    background: #087ca7;
+    border-radius: 50%;
+    content: "i";
+    font-family: Georgia, serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.markdown-body .explanation-button:hover,
+.markdown-body .explanation-button:focus-visible {
+    color: #075985;
+    text-decoration: none;
+}
+
+.markdown-body .explanation-button:focus-visible {
+    outline: 3px solid rgba(22, 184, 233, 0.3);
+    outline-offset: 2px;
+}
+
+@media only screen and (max-width: 620px) {
+    .markdown-body .resource-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .markdown-body .resource-actions .github-example-button,
+    .markdown-body .resource-actions .explanation-button {
+        justify-content: center;
+        margin-left: 0;
+    }
+}
+
 .markdown-body a:not(.github-example-button)[href*="github.com/deepnetts/cookbook-examples/"][href*="/examples/"] {
     display: inline-flex;
     align-items: center;
@@ -732,25 +913,21 @@
 }
 
 @media only screen and (min-width: 1281px) {
-    .markdown-body {
+    .markdown-body,
+    .markdown-body.cake {
         max-width: 980px;
-        margin-left: 350px;
-        margin-right: 350px;
-    }
-
-    body.navigation-collapsed .markdown-body.cake {
-        margin-right: 370px !important;
-        margin-left: auto !important;
-    }
-
-    body.navigation-collapsed .page-toc {
-        right: 24px;
-        left: auto;
-        transform: none;
+        margin-right: 350px !important;
+        margin-left: 350px !important;
     }
 }
 
 @media only screen and (max-width: 1280px) {
+    .markdown-body,
+    .markdown-body.cake {
+        margin-right: 0 !important;
+        margin-left: 330px !important;
+    }
+
     .page-toc {
         position: static;
         left: auto;
@@ -761,7 +938,17 @@
 }
 
 @media only screen and (max-width: 480px) {
+    .markdown-body,
+    .markdown-body.cake {
+        margin: 0 auto !important;
+    }
+
     .page-toc {
         margin: 70px 15px 0;
     }
+}
+.markdown-body .github-action-right {
+  display: flex;
+  justify-content: flex-end;
+  margin: 16px 0 4px;
 }

@@ -23,19 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
 
-        const syncNavigationState = function () {
-            document.body.classList.toggle(
-                "navigation-collapsed",
-                sideNavigation.classList.contains("chess")
-            );
-        };
-        const navigationObserver = new MutationObserver(syncNavigationState);
-
-        navigationObserver.observe(sideNavigation, {
-            attributes: true,
-            attributeFilter: ["class"]
-        });
-        syncNavigationState();
     }
 
     const pageBody = document.getElementById("body");

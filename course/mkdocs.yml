@@ -23,7 +23,6 @@ nav:
       - Classification: examples/classification/index.md
       - Image Classification: examples/image-classification/index.md
       - NLP: examples/nlp/index.md
-      - NPLM: examples/nplm/index.md
 
   - API Documentation: api-documentation/index.md
 

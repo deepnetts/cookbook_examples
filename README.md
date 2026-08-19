@@ -116,8 +116,7 @@ cookbook-examples/
     │   ├── spam-classification/
     │   └── multiclass-classification/
     ├── img-classification/ # Future image-classification projects
-    ├── nlp/                # Future NLP projects
-    └── nplm/               # Future NPLM projects
+    └── nlp/                # Future NLP and language-model projects
 ```
 
 Start with the [course](course/docs/index.md), verify the installation with Hello World, then choose an example to explore and run a complete workflow.

@@ -1,34 +1,38 @@
-# Developer Guide
+# Developer guides
 
-Use the Developer Guide when you know what you want to build and need focused instructions for completing a specific task with the Deep Netts API.
+Developer guides are focused deep-dives into specific Deep Netts development tasks, such as preparing data, configuring training, evaluating a model, or saving it for later use. They are one of the fastest ways to understand how an individual API operation fits into a real Java Machine Learning workflow.
 
-This section complements the rest of the site:
+Each guide contains a compact Java recipe, explains the important choices, and links to complete runnable examples. The examples use standalone Maven projects, so you can copy the relevant snippet into your own workflow or open the full project when you need more context.
 
-- [Getting Started](../getting-started/index.md) installs and verifies Deep Netts;
-- [Examples](../examples/index.md) explain complete runnable projects;
-- [Course](../lectures/01-ml-basics.md) teaches the Machine Learning concepts behind the code;
-- the Developer Guide provides short, task-oriented API recipes.
+<div class="developer-guides-list">
+  <a href="loading-data/">
+    <strong>Loading data</strong>
+    <span>Read prepared tabular datasets and define their input and target columns.</span>
+  </a>
+  <a href="preparing-data/">
+    <strong>Preparing data</strong>
+    <span>Shuffle, split, standardize, and scale data without leaking test information.</span>
+  </a>
+  <a href="creating-model/">
+    <strong>Creating a model</strong>
+    <span>Match network inputs, outputs, activations, and loss to the prediction task.</span>
+  </a>
+  <a href="training-model/">
+    <strong>Training a model</strong>
+    <span>Configure epochs, learning rate, optimizer, shuffling, and mini-batches.</span>
+  </a>
+  <a href="evaluating-model/">
+    <strong>Evaluating a model</strong>
+    <span>Measure regression or classification performance on held-out samples.</span>
+  </a>
+  <a href="saving-loading/">
+    <strong>Saving and loading</strong>
+    <span>Preserve a trained network and the preprocessing required for prediction.</span>
+  </a>
+  <a href="making-predictions/">
+    <strong>Making predictions</strong>
+    <span>Prepare new input and convert model output into a useful result.</span>
+  </a>
+</div>
 
-## Choose a task
-
-The guide will follow the same practical workflow used by the complete examples:
-
-| Task | What the guide will help you do |
-|---|---|
-| [Load data](loading-data.md) | Read a prepared tabular dataset and identify input and target columns |
-| [Prepare data](preparing-data.md) | Shuffle, split, standardize, or scale data without leakage |
-| [Create a model](creating-model.md) | Build a network whose output matches a regression or classification task |
-| [Train a model](training-model.md) | Configure a trainer and run a reproducible training process |
-| [Evaluate a model](evaluating-model.md) | Measure performance on samples that were not used for training |
-| [Save and load a model](saving-loading.md) | Preserve the trained network together with its preprocessing |
-| [Make predictions](making-predictions.md) | Transform new input correctly and interpret the model output |
-
-Each guide will focus on one development task, show only the relevant Java code, explain the important API choices, and link to a complete example where the task is used in context.
-
-## Start with the current material
-
-Alongside the available task guides, these pages provide the wider context:
-
-- [Deep Netts API](../lectures/03-deep-netts-api.md) maps the Machine Learning workflow to the main Java classes and methods.
-- [Model Development](../lectures/04-model-development.md) explains the order of the complete workflow and why it matters.
-- [Examples](../examples/index.md) lets you choose a complete walkthrough and runnable Maven project.
+For the wider conceptual context, continue with [Deep Netts API](../lectures/03-deep-netts-api.md) and [Model Development](../lectures/04-model-development.md). To see every step assembled into one application, choose a project from [Examples](../examples/index.md).

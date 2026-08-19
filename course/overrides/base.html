@@ -21,6 +21,9 @@
         <title>{% if page and page.title and not page.is_homepage %}{{ page.title }} - {% endif %}{{ config.site_name }}</title>
       {%- endblock %}
         <link rel="preload" as="image" href="{{ 'assets/deep-netts-logo.png'|url }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ 'css/theme.css'|url }}">
         {%- if config.theme.highlightjs %}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/{{ config.theme.hljs_style }}.min.css">
@@ -104,7 +107,7 @@
             {{ page.content }}
         </div>
       {% endblock %}
-      {% set hide_page_navigation = page and ((page.file and page.file.src_uri == "index.md") or page.url == "getting-started/" or page.url == "examples/" or page.url == "examples/classification/" or page.url == "examples/regression/" or page.url == "examples/image-classification/" or page.url == "examples/nlp/" or page.url == "examples/nplm/" or page.url == "api-documentation/" or page.url == "developer-guide/") %}
+      {% set hide_page_navigation = page and ((page.file and page.file.src_uri == "index.md") or page.url == "getting-started/" or page.url == "examples/" or page.url == "examples/classification/" or page.url == "examples/regression/" or page.url == "examples/image-classification/" or page.url == "examples/nlp/" or page.url == "api-documentation/" or page.url == "developer-guide/") %}
       {% set show_previous = page and page.previous_page and not hide_page_navigation and page.url != "lectures/01-ml-basics/" and page.url != "developer-guide/loading-data/" %}
       {% set show_next = page and page.next_page and not hide_page_navigation and page.url != "lectures/04-model-development/" and page.url != "developer-guide/making-predictions/" %}
       {% if show_previous or show_next %}
