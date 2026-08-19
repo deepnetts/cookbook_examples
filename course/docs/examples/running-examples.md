@@ -23,6 +23,7 @@ Enter one of the project directories:
 | --- | --- | --- |
 | Simple Linear Regression | `examples/regression/linear-regression` | Sorting execution time |
 | Multiple Linear Regression | `examples/regression/multiple-linear-regression` | Relative computer performance |
+| Logistic Regression | `examples/classification/logistic-regression` | Sonar rock-or-mine probability and class |
 | Spam Classification | `examples/classification/spam-classification` | Spam probability and class |
 | Multiclass Classification | `examples/classification/multiclass-classification` | Iris species probabilities and class |
 

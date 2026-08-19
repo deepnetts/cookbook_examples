@@ -102,6 +102,8 @@ The spam network uses layers of 32 and 16 neurons. These layers allow the model 
 
 A network can have no hidden layers, one hidden layer, or several hidden layers. More layers and neurons create more trainable parameters and greater capacity, but they may also require more data and careful training.
 
+The [Logistic Regression example](../examples/classification/logistic-regression.md) demonstrates the zero-hidden-layer case. Its `60 -> 1` architecture learns a linear decision boundary, while the Spam network uses hidden layers to learn non-linear feature combinations.
+
 ### Output layer: match the prediction task
 
 The output layer returns the final prediction. Its structure depends on the problem:

@@ -61,4 +61,5 @@ Keep the fitted preprocessing object. Attach it to the trained model before savi
 ## See complete examples
 
 - [Simple Linear Regression](../examples/regression/linear-regression.md) uses `Standardizer`.
+- [Logistic Regression](../examples/classification/logistic-regression.md) fits `MinMaxScaler` on training data before transforming the test set.
 - [Spam Classification](../examples/classification/spam-classification.md) uses `MinMaxScaler`.

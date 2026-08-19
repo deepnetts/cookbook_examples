@@ -61,3 +61,8 @@ Keep an epoch limit even when using an error target so a run cannot continue ind
 - Changing several settings at once makes experiments difficult to compare.
 - A lower training error does not guarantee better performance on unseen data.
 - Training without the same preprocessing used in evaluation creates inconsistent inputs.
+
+## See it in practice
+
+- [Logistic Regression](../examples/classification/logistic-regression.md) trains a compact baseline with SGD.
+- [Spam Classification](../examples/classification/spam-classification.md) demonstrates mini-batch training on a larger dataset.

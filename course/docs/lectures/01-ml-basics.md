@@ -89,6 +89,10 @@ probability >= 0.5 -> SPAM
 
 [Explore Spam Classification](../examples/classification/spam-classification.md)
 
+The Sonar example uses the same binary-classification principle with a smaller model. Logistic regression connects 60 signal features directly to one Sigmoid output and predicts `ROCK` or `MINE`.
+
+[Explore Logistic Regression](../examples/classification/logistic-regression.md)
+
 The Iris example is a multiclass classification problem because it chooses among three possible species:
 
 ```text

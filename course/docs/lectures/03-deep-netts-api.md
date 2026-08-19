@@ -302,6 +302,7 @@ The complete runnable projects show these calls in context. The next lesson expl
 ## See the API in practice
 
 - [Simple Linear Regression](../examples/regression/linear-regression.md) shows the smallest complete API pipeline.
+- [Logistic Regression](../examples/classification/logistic-regression.md) shows a zero-hidden-layer binary classifier with a Sigmoid output.
 - [Spam Classification](../examples/classification/spam-classification.md) shows a multi-layer binary classifier and probability threshold.
 - [Multiclass Classification](../examples/classification/multiclass-classification.md) shows one-hot targets and a Softmax output.
 

@@ -65,5 +65,6 @@ String species = CLASS_NAMES[predictedClass];
 ## See complete examples
 
 - [Multiple Linear Regression](../examples/regression/multiple-linear-regression.md) predicts one numerical value.
+- [Logistic Regression](../examples/classification/logistic-regression.md) converts a Sonar probability into `ROCK` or `MINE` with a binary threshold.
 - [Spam Classification](../examples/classification/spam-classification.md) applies a binary threshold.
 - [Multiclass Classification](../examples/classification/multiclass-classification.md) maps Softmax outputs to a class.
