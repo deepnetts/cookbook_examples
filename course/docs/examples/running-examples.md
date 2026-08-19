@@ -21,15 +21,15 @@ Enter one of the project directories:
 
 | Project | Directory | Result |
 | --- | --- | --- |
-| Simple Linear Regression | `examples/linear-regression` | Sorting execution time |
-| Multiple Linear Regression | `examples/multiple-linear-regression` | Relative computer performance |
-| Spam Classification | `examples/spam-classification` | Spam probability and class |
-| Multiclass Classification | `examples/multiclass-classification` | Iris species probabilities and class |
+| Simple Linear Regression | `examples/regression/linear-regression` | Sorting execution time |
+| Multiple Linear Regression | `examples/regression/multiple-linear-regression` | Relative computer performance |
+| Spam Classification | `examples/classification/spam-classification` | Spam probability and class |
+| Multiclass Classification | `examples/classification/multiclass-classification` | Iris species probabilities and class |
 
 For example:
 
 ```bash
-cd examples/linear-regression
+cd examples/regression/linear-regression
 ```
 
 All following commands must be run from the selected project directory because datasets and generated models use project-relative paths.

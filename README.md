@@ -59,7 +59,7 @@ Each example is a standalone Maven project with its own Java program, dataset, a
 
 Creates a minimal neural network and runs one prediction to verify Java, Maven, the Deep Netts dependencies, licensing, and Vector API runtime configuration before starting a complete Machine Learning workflow.
 
-### [Sorting Execution Time - Simple Linear Regression](examples/linear-regression/)
+### [Sorting Execution Time - Simple Linear Regression](examples/regression/linear-regression/)
 
 Predicts sorting execution time from one numerical feature, `comparison_count`. It demonstrates simple linear regression and the workflow:
 
@@ -67,7 +67,7 @@ Predicts sorting execution time from one numerical feature, `comparison_count`. 
 load -> inspect -> split -> standardize -> train -> evaluate -> save -> predict
 ```
 
-### [Computer Hardware Performance - Multiple Linear Regression](examples/multiple-linear-regression/)
+### [Computer Hardware Performance - Multiple Linear Regression](examples/regression/multiple-linear-regression/)
 
 Predicts published relative computer performance (`PRP`) from six hardware characteristics. It demonstrates multiple linear regression and the workflow:
 
@@ -75,7 +75,7 @@ Predicts published relative computer performance (`PRP`) from six hardware chara
 load -> inspect -> split -> standardize -> train -> evaluate -> save -> predict
 ```
 
-### [Email Spam Classification](examples/spam-classification/)
+### [Email Spam Classification](examples/classification/spam-classification/)
 
 Predicts whether an email is spam from five numerical features. It demonstrates binary classification with a feed-forward neural network and the workflow:
 
@@ -83,7 +83,7 @@ Predicts whether an email is spam from five numerical features. It demonstrates 
 load -> inspect -> split -> scale -> train -> evaluate -> save -> predict
 ```
 
-### [Iris Multiclass Classification](examples/multiclass-classification/)
+### [Iris Multiclass Classification](examples/classification/multiclass-classification/)
 
 Predicts one of three Iris flower species from four numerical measurements. It demonstrates multiclass classification with one-hot targets, a softmax output layer, and the workflow:
 
@@ -104,10 +104,15 @@ cookbook-examples/
 │   └── mkdocs.yml           # Website navigation and configuration
 └── examples/
     ├── hello-world/        # Minimal installation verification project
-    ├── linear-regression/  # Complete simple regression Maven project
-    ├── multiclass-classification/ # Complete multiclass Maven project
-    ├── multiple-linear-regression/ # Complete multiple regression Maven project
-    └── spam-classification/ # Complete classification Maven project
+    ├── regression/
+    │   ├── linear-regression/
+    │   └── multiple-linear-regression/
+    ├── classification/
+    │   ├── spam-classification/
+    │   └── multiclass-classification/
+    ├── img-classification/ # Future image-classification projects
+    ├── nlp/                # Future NLP projects
+    └── nplm/               # Future NPLM projects
 ```
 
 Start with the [course](course/docs/index.md), verify the installation with Hello World, then choose an example to explore and run a complete workflow.

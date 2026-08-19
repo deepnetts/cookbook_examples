@@ -112,7 +112,7 @@ MAVEN_OPTS="--add-modules jdk.incubator.vector" mvn clean compile exec:java
 From this project directory:
 
 ```bash
-cd examples/linear-regression
+cd examples/regression/linear-regression
 MAVEN_OPTS="--add-modules jdk.incubator.vector" mvn clean compile exec:java
 ```
 
