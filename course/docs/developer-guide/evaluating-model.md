@@ -46,6 +46,9 @@ Accuracy alone can hide poor behavior when classes are imbalanced. Inspect preci
     - Treat unexpectedly strong results as a reason to check for leakage.
 
 ??? info "See it in practice"
-    - [Logistic Regression](../examples/classification/logistic-regression.md) evaluates rock-or-mine decisions with binary classification metrics.
-    - [Multiclass Classification](../examples/classification/multiclass-classification.md) evaluates a three-class Softmax model.
+    - [Logistic Regression](../examples/classification/sonar-rock-mine-classification.md) evaluates rock-or-mine decisions with binary classification metrics.
+    - [Multiclass Classification](../examples/classification/iris-flower-classification.md) evaluates a three-class Softmax model.
     - [Duke Logo Recognition](../examples/image-classification/duke-logo-recognition.md) evaluates a binary CNN on held-out images.
+    - [Credit Card Fraud Detection](../examples/classification/credit-card-fraud-detection.md) highlights precision and recall for a fraud classifier.
+    - [Insurance Payment Prediction](../examples/regression/insurance-payment-prediction.md) evaluates a one-feature regression model.
+    - [House Price Prediction](../examples/regression/house-price-prediction.md) evaluates nonlinear regression on held-out housing data.

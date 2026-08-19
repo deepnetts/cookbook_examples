@@ -21,16 +21,16 @@ Enter one of the project directories:
 
 | Project | Directory | Result |
 | --- | --- | --- |
-| Simple Linear Regression | `examples/regression/linear-regression` | Sorting execution time |
-| Multiple Linear Regression | `examples/regression/multiple-linear-regression` | Relative computer performance |
-| Logistic Regression | `examples/classification/logistic-regression` | Sonar rock-or-mine probability and class |
-| Spam Classification | `examples/classification/spam-classification` | Spam probability and class |
-| Multiclass Classification | `examples/classification/multiclass-classification` | Iris species probabilities and class |
+| Simple Linear Regression | `examples/regression/sorting-execution-time-prediction` | Sorting execution time |
+| Multiple Linear Regression | `examples/regression/computer-hardware-performance-prediction` | Relative computer performance |
+| Logistic Regression | `examples/classification/sonar-rock-mine-classification` | Sonar rock-or-mine probability and class |
+| Spam Classification | `examples/classification/email-spam-detection` | Spam probability and class |
+| Multiclass Classification | `examples/classification/iris-flower-classification` | Iris species probabilities and class |
 
 For example:
 
 ```bash
-cd examples/regression/linear-regression
+cd examples/regression/sorting-execution-time-prediction
 ```
 
 All following commands must be run from the selected project directory because datasets and generated models use project-relative paths.

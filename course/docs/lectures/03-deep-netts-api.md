@@ -116,7 +116,7 @@ The training set teaches the model. The test set measures performance on data th
 
 Deep Netts provides preprocessing objects that can be fitted on training data and then applied consistently to other data.
 
-The multiple-linear-regression example uses standardization:
+The computer-hardware-performance-prediction example uses standardization:
 
 ```java
 Standardizer standardizer = new Standardizer(trainingSet);
@@ -139,7 +139,7 @@ In both cases, preprocessing parameters are learned from the training set only. 
 
 `FeedForwardNetwork.builder()` provides a fluent API for defining layers and model behavior.
 
-A linear-regression model can be expressed as:
+A sorting-execution-time-prediction model can be expressed as:
 
 ```java
 FeedForwardNetwork neuralNet =
@@ -329,10 +329,10 @@ The complete runnable projects show these calls in context. The next lesson expl
 
 ## See the API in practice
 
-- [Simple Linear Regression](../examples/regression/linear-regression.md) shows the smallest complete API pipeline.
-- [Logistic Regression](../examples/classification/logistic-regression.md) shows a zero-hidden-layer binary classifier with a Sigmoid output.
-- [Spam Classification](../examples/classification/spam-classification.md) shows a multi-layer binary classifier and probability threshold.
-- [Multiclass Classification](../examples/classification/multiclass-classification.md) shows one-hot targets and a Softmax output.
+- [Simple Linear Regression](../examples/regression/sorting-execution-time-prediction.md) shows the smallest complete API pipeline.
+- [Logistic Regression](../examples/classification/sonar-rock-mine-classification.md) shows a zero-hidden-layer binary classifier with a Sigmoid output.
+- [Spam Classification](../examples/classification/email-spam-detection.md) shows a multi-layer binary classifier and probability threshold.
+- [Multiclass Classification](../examples/classification/iris-flower-classification.md) shows one-hot targets and a Softmax output.
 - [Hot Dog or Not Hot Dog](../examples/image-classification/hotdog-nothotdog.md) shows `ImageSet` and a compact convolutional network.
 - [Parking Lot Occupancy](../examples/image-classification/parking-lot-occupancy.md) shows mini-batch CNN training on a larger image dataset.
 

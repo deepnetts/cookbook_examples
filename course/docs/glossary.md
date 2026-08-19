@@ -89,7 +89,7 @@ A classification metric that combines precision and recall into one value. It is
 
 ## Feature
 
-An input value that describes a sample. For example, `num_links` is one feature in the spam-classification dataset.
+An input value that describes a sample. For example, `num_links` is one feature in the email-spam-detection dataset.
 
 ## Feed-forward network
 

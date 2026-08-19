@@ -82,7 +82,7 @@ spam probability
 
 The notation provides a compact system-level view before we inspect what happens inside each layer.
 
-[Explore Spam Classification](../examples/classification/spam-classification.md)
+[Explore Spam Classification](../examples/classification/email-spam-detection.md)
 
 ## Layer responsibilities
 
@@ -102,7 +102,7 @@ The spam network uses layers of 32 and 16 neurons. These layers allow the model 
 
 A network can have no hidden layers, one hidden layer, or several hidden layers. More layers and neurons create more trainable parameters and greater capacity, but they may also require more data and careful training.
 
-The [Logistic Regression example](../examples/classification/logistic-regression.md) demonstrates the zero-hidden-layer case. Its `60 -> 1` architecture learns a linear decision boundary, while the Spam network uses hidden layers to learn non-linear feature combinations.
+The [Logistic Regression example](../examples/classification/sonar-rock-mine-classification.md) demonstrates the zero-hidden-layer case. Its `60 -> 1` architecture learns a linear decision boundary, while the Spam network uses hidden layers to learn non-linear feature combinations.
 
 ### Output layer: match the prediction task
 
@@ -140,7 +140,7 @@ flower measurements -> hidden transformation -> three class probabilities
 
 The position of the largest output determines the predicted species.
 
-[Explore Multiclass Classification](../examples/classification/multiclass-classification.md)
+[Explore Multiclass Classification](../examples/classification/iris-flower-classification.md)
 
 ### Image classification: convolution and pooling
 
@@ -169,7 +169,7 @@ CHMAX -----/
 
 Because there are no hidden layers, the model learns a weighted linear combination of the six features. This is multiple linear regression represented with the Deep Netts neural-network API.
 
-[Explore Multiple Linear Regression](../examples/regression/multiple-linear-regression.md)
+[Explore Multiple Linear Regression](../examples/regression/computer-hardware-performance-prediction.md)
 
 At the system level, both models have the same responsibility:
 

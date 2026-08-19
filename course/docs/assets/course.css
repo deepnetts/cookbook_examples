@@ -416,6 +416,75 @@ textarea {
     margin: 10px 0 28px;
 }
 
+.markdown-body .ml-concept-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin: 18px 0 30px;
+}
+
+.markdown-body .ml-concept-cards article {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    background: linear-gradient(145deg, #ffffff, #f7fbfd);
+    border: 1px solid #d8e4ea;
+    border-top: 3px solid #16b8e9;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(31, 35, 40, 0.07);
+}
+
+.markdown-body .ml-concept-cards article > span {
+    color: #087ca7;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.markdown-body .ml-concept-cards h3,
+.markdown-body .ml-concept-cards p,
+.markdown-body .ml-concept-cards pre {
+    margin: 0;
+}
+
+.markdown-body .ml-concept-cards h3 {
+    padding: 0;
+    border: 0;
+    font-size: 19px;
+}
+
+.markdown-body .ml-concept-cards p {
+    color: #4b5563;
+    line-height: 1.55;
+}
+
+.markdown-body .ml-concept-cards pre {
+    padding: 12px 14px;
+    overflow-x: auto;
+    background: #eef5f8;
+    border: 1px solid #d7e4ea;
+    border-radius: 7px;
+    box-shadow: none;
+    font-size: 13px;
+}
+
+.markdown-body .ml-concept-cards article > a {
+    align-self: flex-start;
+    margin-top: auto;
+    padding-top: 2px;
+    font-weight: 750;
+    text-decoration: none;
+}
+
+@media (max-width: 760px) {
+    .markdown-body .ml-concept-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
 .markdown-body .example-categories a {
     position: relative;
     display: flex;

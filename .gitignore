@@ -5,6 +5,7 @@
 **/nbproject/private/
 **/nb-configuration.xml
 **/nbactions.xml
+!examples/regression/house-price-prediction/nbactions.xml
 course/.venv/
 course/site/
 documentation/

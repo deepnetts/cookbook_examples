@@ -63,8 +63,8 @@ String species = CLASS_NAMES[predictedClass];
 - Treat a model score as an estimate, not a guaranteed fact.
 
 ??? info "See complete examples"
-    - [Multiple Linear Regression](../examples/regression/multiple-linear-regression.md) predicts one numerical value.
-    - [Logistic Regression](../examples/classification/logistic-regression.md) converts a Sonar probability into `ROCK` or `MINE` with a binary threshold.
-    - [Spam Classification](../examples/classification/spam-classification.md) applies a binary threshold.
-    - [Multiclass Classification](../examples/classification/multiclass-classification.md) maps Softmax outputs to a class.
+    - [Multiple Linear Regression](../examples/regression/computer-hardware-performance-prediction.md) predicts one numerical value.
+    - [Logistic Regression](../examples/classification/sonar-rock-mine-classification.md) converts a Sonar probability into `ROCK` or `MINE` with a binary threshold.
+    - [Spam Classification](../examples/classification/email-spam-detection.md) applies a binary threshold.
+    - [Multiclass Classification](../examples/classification/iris-flower-classification.md) maps Softmax outputs to a class.
     - [Hot Dog or Not Hot Dog](../examples/image-classification/hotdog-nothotdog.md) converts a CNN probability into an image class.

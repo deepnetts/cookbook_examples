@@ -57,7 +57,7 @@ Each Example page explains the problem, dataset, model, and important code befor
 4. [Understand Neural Networks](lectures/02-neural-networks.md)
 5. [Learn the Deep Netts API](lectures/03-deep-netts-api.md)
 6. [Follow the Model Development workflow](lectures/04-model-development.md)
-7. [Start with Simple Linear Regression](examples/regression/linear-regression.md)
+7. [Start with Simple Linear Regression](examples/regression/sorting-execution-time-prediction.md)
 8. [Continue through the Examples gallery](examples/index.md)
 9. [Run a complete Maven project](examples/running-examples.md)
 

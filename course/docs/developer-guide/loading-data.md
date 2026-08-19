@@ -95,9 +95,12 @@ Compare this output with the CSV file you intended to load. This small check cat
     Check that the delimiter argument matches the file and that the data rows contain numerical values. Encode or otherwise prepare categorical values before using this recipe.
 
 ??? info "See complete examples"
-    - [Simple Linear Regression](../examples/regression/linear-regression.md) loads one input and one continuous target.
-    - [Multiple Linear Regression](../examples/regression/multiple-linear-regression.md) loads six inputs and one continuous target.
-    - [Logistic Regression](../examples/classification/logistic-regression.md) loads a headerless CSV with 60 inputs and one binary target.
-    - [Spam Classification](../examples/classification/spam-classification.md) loads five inputs and one binary target.
-    - [Multiclass Classification](../examples/classification/multiclass-classification.md) loads four inputs and three one-hot target columns.
+    - [Simple Linear Regression](../examples/regression/sorting-execution-time-prediction.md) loads one input and one continuous target.
+    - [Multiple Linear Regression](../examples/regression/computer-hardware-performance-prediction.md) loads six inputs and one continuous target.
+    - [Logistic Regression](../examples/classification/sonar-rock-mine-classification.md) loads a headerless CSV with 60 inputs and one binary target.
+    - [Spam Classification](../examples/classification/email-spam-detection.md) loads five inputs and one binary target.
+    - [Multiclass Classification](../examples/classification/iris-flower-classification.md) loads four inputs and three one-hot target columns.
     - [Hot Dog or Not Hot Dog](../examples/image-classification/hotdog-nothotdog.md) loads labeled images from class directories.
+    - [Credit Card Fraud Detection](../examples/classification/credit-card-fraud-detection.md) loads 29 transaction features and one binary target.
+    - [Insurance Payment Prediction](../examples/regression/insurance-payment-prediction.md) loads a headerless two-column CSV.
+    - [House Price Prediction](../examples/regression/house-price-prediction.md) loads prepared `LSTAT` and `MEDV` columns.

@@ -62,6 +62,8 @@ Keep an epoch limit even when using an error target so a run cannot continue ind
     - Training without the same preprocessing used in evaluation creates inconsistent inputs.
 
 ??? info "See it in practice"
-    - [Logistic Regression](../examples/classification/logistic-regression.md) trains a compact baseline with SGD.
-    - [Spam Classification](../examples/classification/spam-classification.md) demonstrates mini-batch training on a larger dataset.
+    - [Logistic Regression](../examples/classification/sonar-rock-mine-classification.md) trains a compact baseline with SGD.
+    - [Spam Classification](../examples/classification/email-spam-detection.md) demonstrates mini-batch training on a larger dataset.
     - [Parking Lot Occupancy](../examples/image-classification/parking-lot-occupancy.md) demonstrates why an image epoch takes longer than a tabular epoch.
+    - [Credit Card Fraud Detection](../examples/classification/credit-card-fraud-detection.md) demonstrates mini-batch SGD training on balanced transaction data.
+    - [House Price Prediction](../examples/regression/house-price-prediction.md) trains a nonlinear regressor with SGD.
