@@ -39,4 +39,4 @@ If this is your first complete Machine Learning project, start with Simple Linea
 
 When you are ready to run the projects locally, open the complete guide for cloning the repository, choosing a project, compiling it, enabling the Vector API, and troubleshooting common setup problems.
 
-<a class="explanation-button" href="running-examples.md">Open Running All Examples</a>
+<a class="explanation-button" href="running-examples/">Open Running All Examples</a>
