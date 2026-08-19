@@ -14,6 +14,10 @@ extra_css:
 extra_javascript:
   - assets/course.js
 
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+
 nav:
   - Getting Started: getting-started/index.md
 

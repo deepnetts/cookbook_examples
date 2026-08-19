@@ -55,12 +55,11 @@ neuralNet.getTrainer()
 
 Keep an epoch limit even when using an error target so a run cannot continue indefinitely.
 
-## Common mistakes
-
-- Training with `testSet` invalidates the later evaluation.
-- Changing several settings at once makes experiments difficult to compare.
-- A lower training error does not guarantee better performance on unseen data.
-- Training without the same preprocessing used in evaluation creates inconsistent inputs.
+??? danger "Common mistakes"
+    - Training with `testSet` invalidates the later evaluation.
+    - Changing several settings at once makes experiments difficult to compare.
+    - A lower training error does not guarantee better performance on unseen data.
+    - Training without the same preprocessing used in evaluation creates inconsistent inputs.
 
 ## See it in practice
 

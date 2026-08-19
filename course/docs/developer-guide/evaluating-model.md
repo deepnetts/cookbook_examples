@@ -39,12 +39,11 @@ System.out.println("F1: " + metrics.getF1Score());
 
 Accuracy alone can hide poor behavior when classes are imbalanced. Inspect precision, recall, F1, and the confusion matrix according to the cost of false positives and false negatives.
 
-## Evaluation rules
-
-- Apply the preprocessing fitted on `trainingSet` to `testSet`.
-- Never tune repeatedly against the final test result.
-- Compare models using the same split and random seeds.
-- Treat unexpectedly strong results as a reason to check for leakage.
+??? warning "Evaluation rules"
+    - Apply the preprocessing fitted on `trainingSet` to `testSet`.
+    - Never tune repeatedly against the final test result.
+    - Compare models using the same split and random seeds.
+    - Treat unexpectedly strong results as a reason to check for leakage.
 
 ## See it in practice
 

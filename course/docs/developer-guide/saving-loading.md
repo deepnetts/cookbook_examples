@@ -55,7 +55,3 @@ FeedForwardNetwork neuralNet = FileIO.createFromFile(
 - Preserve the feature order and class-name mapping used during training.
 - Run a known prediction after loading and compare it with the original model.
 - Do not attach a newly fitted preprocessor when the saved model already contains the original one.
-
-## See it in practice
-
-[Logistic Regression](../examples/classification/logistic-regression.md) creates the model directory and saves its trained network with `FileIO` as the final reusable artifact.

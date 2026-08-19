@@ -818,6 +818,126 @@ textarea {
     outline-offset: 2px;
 }
 
+.markdown-body :is(.admonition, details.info, details.warning, details.danger) {
+    overflow: hidden;
+    margin: 24px 0;
+    padding: 0 18px 14px;
+    border: 1px solid;
+    border-left-width: 4px;
+    border-radius: 9px;
+    box-shadow: 0 3px 10px rgba(31, 35, 40, 0.07);
+}
+
+.markdown-body :is(.admonition-title, details.info > summary, details.warning > summary, details.danger > summary) {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 -18px 14px;
+    padding: 11px 16px;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.markdown-body :is(details.info, details.warning, details.danger) > summary {
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+}
+
+.markdown-body :is(details.info, details.warning, details.danger):not([open]) {
+    padding-bottom: 0;
+}
+
+.markdown-body :is(details.info, details.warning, details.danger):not([open]) > summary {
+    margin-bottom: 0;
+}
+
+.markdown-body :is(details.info, details.warning, details.danger) > summary::-webkit-details-marker {
+    display: none;
+}
+
+.markdown-body :is(details.info, details.warning, details.danger) > summary::after {
+    margin-left: auto;
+    content: "⌄";
+    font-size: 19px;
+    line-height: 1;
+    transition: transform 0.18s ease;
+}
+
+.markdown-body :is(details.info, details.warning, details.danger)[open] > summary::after {
+    transform: rotate(180deg);
+}
+
+.markdown-body :is(.admonition-title, details.info > summary, details.warning > summary, details.danger > summary)::before {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+    border-radius: 50%;
+    content: "!";
+    font-size: 14px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.markdown-body details.info {
+    color: #075985;
+    background: #f7fcfe;
+    border-color: #67c4e3;
+}
+
+.markdown-body details.info > summary {
+    color: #075985;
+    background: #e3f5fb;
+}
+
+.markdown-body details.info > summary::before {
+    color: #ffffff;
+    background: #087ca7;
+    content: "i";
+    font-family: Georgia, serif;
+}
+
+.markdown-body :is(.admonition.warning, details.warning) {
+    color: #4d3a05;
+    background: #fffdf4;
+    border-color: #e5be45;
+}
+
+.markdown-body :is(.admonition.warning .admonition-title, details.warning > summary) {
+    color: #4d3a05;
+    background: #fff3c4;
+}
+
+.markdown-body :is(.admonition.warning .admonition-title, details.warning > summary)::before {
+    color: #ffffff;
+    background: #b77900;
+}
+
+.markdown-body :is(.admonition.danger, details.danger) {
+    color: #5f1d1d;
+    background: #fff8f8;
+    border-color: #e36b6b;
+}
+
+.markdown-body :is(.admonition.danger .admonition-title, details.danger > summary) {
+    color: #721c24;
+    background: #ffe1e1;
+}
+
+.markdown-body :is(.admonition.danger .admonition-title, details.danger > summary)::before {
+    color: #ffffff;
+    background: #c62828;
+    content: "▲";
+    font-size: 11px;
+}
+
+.markdown-body :is(.admonition, details.info, details.warning, details.danger) > :last-child {
+    margin-bottom: 0;
+}
+
 @media only screen and (max-width: 620px) {
     .markdown-body .resource-actions {
         align-items: stretch;

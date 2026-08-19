@@ -77,23 +77,22 @@ System.out.println(
 
 Compare this output with the CSV file you intended to load. This small check catches incorrect paths, unexpected headers, and schema mistakes early.
 
-## Common problems
+??? warning "Common problems"
+    **The file cannot be found**
 
-### The file cannot be found
+    A relative path is resolved from the process working directory, which may differ between a terminal and an IDE. Run the program from the Maven project directory or configure the IDE working directory explicitly.
 
-A relative path is resolved from the process working directory, which may differ between a terminal and an IDE. Run the program from the Maven project directory or configure the IDE working directory explicitly.
+    **Inputs and targets are reversed**
 
-### Inputs and targets are reversed
+    `readCsv(...)` expects the input columns first and the target columns last. Reorder a prepared CSV before loading it if its target appears elsewhere.
 
-`readCsv(...)` expects the input columns first and the target columns last. Reorder a prepared CSV before loading it if its target appears elsewhere.
+    **The column count is wrong**
 
-### The column count is wrong
+    `NUM_INPUTS + NUM_OUTPUTS` must match the number of columns in each data row. For multiclass classification, `NUM_OUTPUTS` is commonly greater than one because every class has its own target column.
 
-`NUM_INPUTS + NUM_OUTPUTS` must match the number of columns in each data row. For multiclass classification, `NUM_OUTPUTS` is commonly greater than one because every class has its own target column.
+    **Values cannot be parsed**
 
-### Values cannot be parsed
-
-Check that the delimiter argument matches the file and that the data rows contain numerical values. Encode or otherwise prepare categorical values before using this recipe.
+    Check that the delimiter argument matches the file and that the data rows contain numerical values. Encode or otherwise prepare categorical values before using this recipe.
 
 ## See complete examples
 

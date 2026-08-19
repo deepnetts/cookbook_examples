@@ -52,11 +52,10 @@ scaler.apply(testSet);
 
 `scaleToMinMax(trainingSet)` fits the scaler and transforms the training set. Apply that same scaler to the test set.
 
-## Avoid data leakage
+??? danger "Avoid data leakage"
+    Do not fit a standardizer or scaler on the complete dataset before splitting. Doing so lets information from the test samples influence training and makes evaluation look more reliable than it is.
 
-Do not fit a standardizer or scaler on the complete dataset before splitting. Doing so lets information from the test samples influence training and makes evaluation look more reliable than it is.
-
-Keep the fitted preprocessing object. Attach it to the trained model before saving so new prediction inputs receive the same transformation.
+    Keep the fitted preprocessing object. Attach it to the trained model before saving so new prediction inputs receive the same transformation.
 
 ## See complete examples
 
