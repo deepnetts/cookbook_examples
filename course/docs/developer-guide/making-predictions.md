@@ -67,3 +67,4 @@ String species = CLASS_NAMES[predictedClass];
     - [Logistic Regression](../examples/classification/logistic-regression.md) converts a Sonar probability into `ROCK` or `MINE` with a binary threshold.
     - [Spam Classification](../examples/classification/spam-classification.md) applies a binary threshold.
     - [Multiclass Classification](../examples/classification/multiclass-classification.md) maps Softmax outputs to a class.
+    - [Hot Dog or Not Hot Dog](../examples/image-classification/hotdog-nothotdog.md) converts a CNN probability into an image class.

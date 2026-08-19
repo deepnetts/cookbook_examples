@@ -1072,3 +1072,11 @@ textarea {
   justify-content: flex-end;
   margin: 16px 0 4px;
 }
+
+.markdown-body .github-project-action {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0 4px;
+}

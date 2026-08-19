@@ -57,8 +57,8 @@ scaler.apply(testSet);
 
     Keep the fitted preprocessing object. Attach it to the trained model before saving so new prediction inputs receive the same transformation.
 
-## See complete examples
-
-- [Simple Linear Regression](../examples/regression/linear-regression.md) uses `Standardizer`.
-- [Logistic Regression](../examples/classification/logistic-regression.md) fits `MinMaxScaler` on training data before transforming the test set.
-- [Spam Classification](../examples/classification/spam-classification.md) uses `MinMaxScaler`.
+??? info "See complete examples"
+    - [Simple Linear Regression](../examples/regression/linear-regression.md) uses `Standardizer`.
+    - [Logistic Regression](../examples/classification/logistic-regression.md) fits `MinMaxScaler` on training data before transforming the test set.
+    - [Spam Classification](../examples/classification/spam-classification.md) uses `MinMaxScaler`.
+    - [Duke Logo Recognition](../examples/image-classification/duke-logo-recognition.md) resizes images and converts RGB channels to values in `[0, 1]`.

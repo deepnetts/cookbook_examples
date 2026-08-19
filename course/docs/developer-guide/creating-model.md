@@ -63,7 +63,7 @@ The order of the outputs must match the order of the one-hot target columns and 
 
 Use a fixed random seed when you want reproducible weight initialization while comparing changes.
 
-## See it in practice
-
-- [Logistic Regression](../examples/classification/logistic-regression.md) uses no hidden layers and connects 60 inputs directly to one Sigmoid output.
-- [Spam Classification](../examples/classification/spam-classification.md) adds two hidden layers for a nonlinear binary classifier.
+??? info "See it in practice"
+    - [Logistic Regression](../examples/classification/logistic-regression.md) uses no hidden layers and connects 60 inputs directly to one Sigmoid output.
+    - [Spam Classification](../examples/classification/spam-classification.md) adds two hidden layers for a nonlinear binary classifier.
+    - [Hot Dog or Not Hot Dog](../examples/image-classification/hotdog-nothotdog.md) uses convolution and pooling before a binary Sigmoid output.

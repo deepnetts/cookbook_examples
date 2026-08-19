@@ -103,6 +103,10 @@ Instead of one binary target, each known species is represented by three one-hot
 
 [Explore Multiclass Classification](../examples/classification/multiclass-classification.md)
 
+Images can also be classification inputs. Instead of a short feature array, every sample contains RGB pixel values arranged by width, height, and color channel. The Hot Dog, Duke, and Parking examples still predict binary targets, but use convolutional networks to learn local visual patterns.
+
+[Explore Image Classification](../examples/image-classification/index.md)
+
 ## Regression or classification?
 
 The target determines the type of supervised learning problem:

@@ -194,6 +194,34 @@ This corresponds to `4 -> 16 -> 3`. Softmax turns the three outputs into compara
 
 The builder keeps architecture decisions together: layer sizes, output activation, loss function, and random seed.
 
+## Image data and convolutional networks
+
+`ImageSet` stores labeled `ExampleImage` samples. Each image is resized to a fixed input shape and represented as scaled RGB channels:
+
+```java
+ImageSet imageSet = new ImageSet(IMAGE_WIDTH, IMAGE_HEIGHT);
+
+ExampleImage image = new ExampleImage(
+        imagePath.toFile(), resizedImage, className);
+image.setTargetOutput(new Tensor1D(target));
+imageSet.add(image);
+```
+
+Build a `ConvolutionalNetwork` when local spatial patterns matter:
+
+```java
+ConvolutionalNetwork neuralNet = ConvolutionalNetwork.builder()
+        .addInputLayer(IMAGE_WIDTH, IMAGE_HEIGHT, 3)
+        .addConvolutionalLayer(6, Filters.ofSize(3))
+        .addMaxPoolingLayer(2, 2)
+        .addFullyConnectedLayer(16)
+        .addOutputLayer(1, ActivationType.SIGMOID)
+        .lossFunction(LossType.CROSS_ENTROPY)
+        .build();
+```
+
+[Explore Duke Logo Recognition](../examples/image-classification/duke-logo-recognition.md)
+
 ## Matching the output to the problem
 
 The output activation and loss function should match the prediction task:
@@ -305,6 +333,8 @@ The complete runnable projects show these calls in context. The next lesson expl
 - [Logistic Regression](../examples/classification/logistic-regression.md) shows a zero-hidden-layer binary classifier with a Sigmoid output.
 - [Spam Classification](../examples/classification/spam-classification.md) shows a multi-layer binary classifier and probability threshold.
 - [Multiclass Classification](../examples/classification/multiclass-classification.md) shows one-hot targets and a Softmax output.
+- [Hot Dog or Not Hot Dog](../examples/image-classification/hotdog-nothotdog.md) shows `ImageSet` and a compact convolutional network.
+- [Parking Lot Occupancy](../examples/image-classification/parking-lot-occupancy.md) shows mini-batch CNN training on a larger image dataset.
 
 ## Continue learning
 

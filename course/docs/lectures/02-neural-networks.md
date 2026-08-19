@@ -142,6 +142,18 @@ The position of the largest output determines the predicted species.
 
 [Explore Multiclass Classification](../examples/classification/multiclass-classification.md)
 
+### Image classification: convolution and pooling
+
+Image models preserve spatial structure instead of flattening pixels immediately:
+
+```text
+RGB image -> convolution -> max pooling -> fully connected -> class probability
+```
+
+Convolutional filters learn local visual patterns such as edges, shapes, and textures. Pooling reduces spatial dimensions while retaining strong activations. A final Sigmoid output supports binary tasks such as hot dog detection, Duke recognition, or parking occupancy.
+
+[Explore Hot Dog or Not Hot Dog](../examples/image-classification/hotdog-nothotdog.md)
+
 ### Linear regression: `6 -> 1`
 
 The computer hardware example uses six inputs, no hidden layers, and one linear output:

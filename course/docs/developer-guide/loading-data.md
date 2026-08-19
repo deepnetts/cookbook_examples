@@ -94,10 +94,10 @@ Compare this output with the CSV file you intended to load. This small check cat
 
     Check that the delimiter argument matches the file and that the data rows contain numerical values. Encode or otherwise prepare categorical values before using this recipe.
 
-## See complete examples
-
-- [Simple Linear Regression](../examples/regression/linear-regression.md) loads one input and one continuous target.
-- [Multiple Linear Regression](../examples/regression/multiple-linear-regression.md) loads six inputs and one continuous target.
-- [Logistic Regression](../examples/classification/logistic-regression.md) loads a headerless CSV with 60 inputs and one binary target.
-- [Spam Classification](../examples/classification/spam-classification.md) loads five inputs and one binary target.
-- [Multiclass Classification](../examples/classification/multiclass-classification.md) loads four inputs and three one-hot target columns.
+??? info "See complete examples"
+    - [Simple Linear Regression](../examples/regression/linear-regression.md) loads one input and one continuous target.
+    - [Multiple Linear Regression](../examples/regression/multiple-linear-regression.md) loads six inputs and one continuous target.
+    - [Logistic Regression](../examples/classification/logistic-regression.md) loads a headerless CSV with 60 inputs and one binary target.
+    - [Spam Classification](../examples/classification/spam-classification.md) loads five inputs and one binary target.
+    - [Multiclass Classification](../examples/classification/multiclass-classification.md) loads four inputs and three one-hot target columns.
+    - [Hot Dog or Not Hot Dog](../examples/image-classification/hotdog-nothotdog.md) loads labeled images from class directories.

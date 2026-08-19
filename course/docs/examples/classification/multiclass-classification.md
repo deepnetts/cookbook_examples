@@ -249,11 +249,7 @@ Classification evaluation
 Saved model and species prediction
 ```
 
-## Run the complete project
-
-The complete Java class, dataset, `pom.xml`, and detailed README are available here:
-
-<div class="github-action-right">
+<div class="github-project-action">
 
 <a href="https://github.com/deepnetts/cookbook-examples/tree/main/examples/classification/multiclass-classification">View Example on GitHub</a>
 

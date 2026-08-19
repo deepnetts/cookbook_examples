@@ -45,7 +45,7 @@ Accuracy alone can hide poor behavior when classes are imbalanced. Inspect preci
     - Compare models using the same split and random seeds.
     - Treat unexpectedly strong results as a reason to check for leakage.
 
-## See it in practice
-
-- [Logistic Regression](../examples/classification/logistic-regression.md) evaluates rock-or-mine decisions with binary classification metrics.
-- [Multiclass Classification](../examples/classification/multiclass-classification.md) evaluates a three-class Softmax model.
+??? info "See it in practice"
+    - [Logistic Regression](../examples/classification/logistic-regression.md) evaluates rock-or-mine decisions with binary classification metrics.
+    - [Multiclass Classification](../examples/classification/multiclass-classification.md) evaluates a three-class Softmax model.
+    - [Duke Logo Recognition](../examples/image-classification/duke-logo-recognition.md) evaluates a binary CNN on held-out images.
