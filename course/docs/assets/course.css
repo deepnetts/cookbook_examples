@@ -19,11 +19,15 @@ textarea {
 .header {
     z-index: 1000;
     align-items: center;
-    height: 64px;
-    padding: 0 22px;
+    height: 76px;
+    padding: 0 30px;
     background: linear-gradient(105deg, #031b35 0%, #064e72 52%, #075985 100%);
     border-bottom: 1px solid rgba(56, 189, 248, 0.24);
     box-shadow: 0 5px 18px rgba(3, 27, 53, 0.28);
+}
+
+.spacer {
+    padding: 38px;
 }
 
 .header .pizza {
@@ -62,8 +66,8 @@ textarea {
     display: flex;
     align-items: center;
     flex: 0 0 auto;
-    width: 184px;
-    height: 40px;
+    width: 214px;
+    height: 48px;
     margin: 0;
     float: none;
     overflow: hidden;
@@ -71,7 +75,7 @@ textarea {
 
 .title .logo img {
     display: block;
-    width: 184px;
+    width: 214px;
     height: auto;
     margin: 0;
     float: none;
@@ -98,7 +102,7 @@ textarea {
 
 .header .search input {
     box-sizing: border-box;
-    width: min(310px, 27vw);
+    width: min(310px, 22vw);
     height: 38px;
     padding: 8px 13px;
     color: #ffffff;
@@ -160,10 +164,10 @@ textarea {
 .page-toc {
     box-sizing: border-box;
     position: fixed;
-    top: 70px;
+    top: 82px;
     left: calc(350px + min(980px, calc(100vw - 700px)) + 28px);
     width: 320px;
-    max-height: calc(100vh - 94px);
+    max-height: calc(100vh - 106px);
     padding: 16px 18px;
     overflow-y: auto;
     background: #fafbfc;
@@ -232,13 +236,13 @@ textarea {
 .markdown-body h2[id],
 .markdown-body h3[id],
 .markdown-body h4[id] {
-    scroll-margin-top: 76px;
+    scroll-margin-top: 88px;
 }
 
 .side {
     box-sizing: border-box;
     width: 310px;
-    padding-top: 66px;
+    padding-top: 78px;
     padding-left: 0;
     padding-right: 0;
     background: #ffffff;
@@ -1241,7 +1245,7 @@ textarea {
         left: auto;
         width: auto;
         max-height: none;
-        margin: 70px 25px 20px 340px;
+        margin: 82px 25px 20px 340px;
     }
 }
 
@@ -1252,7 +1256,7 @@ textarea {
     }
 
     .page-toc {
-        margin: 70px 15px 0;
+        margin: 82px 15px 0;
     }
 }
 .markdown-body .github-action-right {
@@ -1394,5 +1398,165 @@ textarea {
 
   .header .scrh {
     margin-left: 3px;
+  }
+}
+
+/* Keras-style primary navigation and contextual section sidebar. */
+.header-navigation {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  gap: clamp(18px, 1.75vw, 34px);
+  margin-left: 18px;
+}
+
+.header-navigation a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.045em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.header-navigation a::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: #38c8ef;
+  border-radius: 3px 3px 0 0;
+  content: "";
+  opacity: 0;
+  transform: scaleX(0.55);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.header-navigation a:hover,
+.header-navigation a:focus-visible,
+.header-navigation a.active {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.header-navigation a:hover::after,
+.header-navigation a:focus-visible::after,
+.header-navigation a.active::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.header-navigation a:focus-visible {
+  outline: 2px solid rgba(125, 211, 252, 0.9);
+  outline-offset: 5px;
+}
+
+.mobile-full-navigation {
+  display: none;
+}
+
+.desktop-section-navigation ul {
+  margin: 0;
+  padding: 8px 0;
+}
+
+.desktop-section-navigation li {
+  border-bottom: 1px solid #eef2f5;
+}
+
+.desktop-section-navigation li:last-child {
+  border-bottom: 0;
+}
+
+.desktop-section-navigation a {
+  min-height: 46px;
+  box-sizing: border-box;
+  padding: 13px 24px;
+}
+
+@media only screen and (min-width: 1101px) {
+  .header .pizza {
+    display: none;
+  }
+
+  .has-section-sidebar .side,
+  .has-section-sidebar .side.chess {
+    display: block;
+    visibility: visible;
+  }
+
+  .no-section-sidebar .side {
+    display: none;
+  }
+
+  .no-section-sidebar .markdown-body,
+  .no-section-sidebar .markdown-body.cake {
+    margin-left: 40px !important;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .header .search {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .header-navigation {
+    display: none;
+  }
+
+  .header .pizza {
+    display: inline-flex;
+  }
+
+  .desktop-section-navigation {
+    display: none;
+  }
+
+  .mobile-full-navigation {
+    display: block;
+  }
+
+  .side {
+    display: none;
+    visibility: hidden;
+  }
+
+  .side.chess {
+    display: block;
+    visibility: visible;
+  }
+
+  .markdown-body,
+  .markdown-body.cake,
+  .has-section-sidebar .markdown-body,
+  .no-section-sidebar .markdown-body {
+    margin-right: 25px !important;
+    margin-left: 25px !important;
+  }
+
+  .page-toc {
+    margin-left: 25px;
+  }
+}
+
+@media only screen and (max-width: 620px) {
+  .header .title {
+    min-width: 0;
+  }
+
+  .header .header-download {
+    flex: 0 0 auto;
+  }
+
+  .side.chess {
+    width: min(310px, calc(100vw - 24px));
+    box-shadow: 8px 0 24px rgba(3, 27, 53, 0.18);
   }
 }

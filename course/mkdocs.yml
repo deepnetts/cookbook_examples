@@ -19,7 +19,12 @@ markdown_extensions:
   - pymdownx.details
 
 nav:
-  - Getting Started: getting-started/index.md
+  - Get Started:
+      - Overview: getting-started/index.md
+      - Prerequisites: getting-started/prerequisites.md
+      - Download: getting-started/download.md
+      - Installation: getting-started/installation.md
+      - Hello World: getting-started/hello-world.md
 
   - Examples:
       - Overview: examples/index.md
@@ -28,7 +33,12 @@ nav:
       - Image Classification: examples/image-classification/index.md
       - NLP: examples/nlp/index.md
 
-  - API Documentation: https://www.deepnetts.com/apidocs/index.html
+  - Course:
+      - Overview: index.md
+      - ML Basics: lectures/01-ml-basics.md
+      - Neural Networks: lectures/02-neural-networks.md
+      - Deep Netts API: lectures/03-deep-netts-api.md
+      - Model Development: lectures/04-model-development.md
 
   - Developer Guide:
       - Overview: developer-guide/index.md
@@ -40,11 +50,6 @@ nav:
       - Saving and Loading: developer-guide/saving-loading.md
       - Making Predictions: developer-guide/making-predictions.md
 
-  - Course:
-      - Overview: index.md
-      - ML Basics: lectures/01-ml-basics.md
-      - Neural Networks: lectures/02-neural-networks.md
-      - Deep Netts API: lectures/03-deep-netts-api.md
-      - Model Development: lectures/04-model-development.md
+  - API: https://www.deepnetts.com/apidocs/index.html
 
   - Glossary: glossary.md
