@@ -33,13 +33,6 @@ nav:
       - Image Classification: examples/image-classification/index.md
       - NLP: examples/nlp/index.md
 
-  - Course:
-      - Overview: course/index.md
-      - Machine Learning Basics: lectures/01-ml-basics.md
-      - Neural Networks: lectures/02-neural-networks.md
-      - Deep Netts API: lectures/03-deep-netts-api.md
-      - Model Development: lectures/04-model-development.md
-
   - Developer Guide:
       - Overview: developer-guide/index.md
       - Loading Data: developer-guide/loading-data.md
@@ -49,6 +42,14 @@ nav:
       - Evaluating a Model: developer-guide/evaluating-model.md
       - Saving and Loading: developer-guide/saving-loading.md
       - Making Predictions: developer-guide/making-predictions.md
+      - JSR 381 and Deep Netts: developer-guide/jsr381.md
+
+  - Course:
+      - Overview: course/index.md
+      - Machine Learning Basics: lectures/01-ml-basics.md
+      - Neural Networks: lectures/02-neural-networks.md
+      - Deep Netts API: lectures/03-deep-netts-api.md
+      - Model Development: lectures/04-model-development.md
 
   - API DOC: https://www.deepnetts.com/apidocs/index.html
 

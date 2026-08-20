@@ -1302,6 +1302,7 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  transform: translateY(-18px);
 }
 
 .markdown-body .home-hero-actions a {
@@ -1325,14 +1326,14 @@ textarea {
   background: #ffffff;
 }
 
-.markdown-body .home-secondary-action {
-  color: #ffffff;
+.markdown-body a.home-secondary-action {
+  color: #ffffff !important;
   background: rgba(3, 27, 53, 0.18);
 }
 
 .markdown-body .home-hero-actions a:hover,
 .markdown-body .home-hero-actions a:focus-visible {
-  color: #064e72;
+  color: #064e72 !important;
   background: #dff7ff;
   box-shadow: 0 8px 22px rgba(3, 27, 53, 0.24);
   outline: none;

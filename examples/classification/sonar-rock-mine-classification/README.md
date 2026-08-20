@@ -6,8 +6,8 @@ Unlike the Spam Classification neural network, this model has no hidden layers. 
 
 The dataset contains 60 numerical sonar-signal features and one binary target in the final column:
 
-- `0` — rock
-- `1` — mine
+- `0` - rock
+- `1` - mine
 
 The dataset is stored at `src/main/resources/datasets/sonar.csv`.
 

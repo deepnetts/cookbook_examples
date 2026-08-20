@@ -88,8 +88,8 @@
             <nav class="header-navigation" aria-label="Primary navigation">
                 <a href="{{ 'getting-started/'|url }}"{% if current_section == 'get-started' %} class="active" aria-current="page"{% endif %}>Get Started</a>
                 <a href="{{ 'examples/'|url }}"{% if current_section == 'examples' %} class="active" aria-current="page"{% endif %}>Examples</a>
-                <a href="{{ 'course/'|url }}"{% if current_section == 'course' %} class="active" aria-current="page"{% endif %}>Course</a>
                 <a href="{{ 'developer-guide/'|url }}"{% if current_section == 'developer-guide' %} class="active" aria-current="page"{% endif %}>Developer Guide</a>
+                <a href="{{ 'course/'|url }}"{% if current_section == 'course' %} class="active" aria-current="page"{% endif %}>Course</a>
                 <a href="https://www.deepnetts.com/apidocs/index.html" target="_blank" rel="noopener noreferrer">API DOC <span aria-hidden="true">↗</span></a>
                 <a href="{{ 'glossary/'|url }}"{% if current_section == 'glossary' %} class="active" aria-current="page"{% endif %}>Glossary</a>
             </nav>
@@ -133,6 +133,7 @@
               <li{% if current_url == 'developer-guide/evaluating-model/' %} class="active"{% endif %}><a href="{{ 'developer-guide/evaluating-model/'|url }}">Evaluating a Model</a></li>
               <li{% if current_url == 'developer-guide/saving-loading/' %} class="active"{% endif %}><a href="{{ 'developer-guide/saving-loading/'|url }}">Saving and Loading</a></li>
               <li{% if current_url == 'developer-guide/making-predictions/' %} class="active"{% endif %}><a href="{{ 'developer-guide/making-predictions/'|url }}">Making Predictions</a></li>
+              <li{% if current_url == 'developer-guide/jsr381/' %} class="active"{% endif %}><a href="{{ 'developer-guide/jsr381/'|url }}">JSR 381 and Deep Netts</a></li>
             </ul>
           {% elif current_section == 'course' %}
             <h2>Course</h2>
@@ -179,7 +180,7 @@
       {% endblock %}
       {% set hide_page_navigation = page and ((page.file and page.file.src_uri == "index.md") or page.url == "course/" or page.url == "getting-started/" or page.url == "examples/" or page.url == "examples/classification/" or page.url == "examples/regression/" or page.url == "examples/image-classification/" or page.url == "examples/nlp/" or page.url == "api-documentation/" or page.url == "developer-guide/") %}
       {% set show_previous = page and page.previous_page and not hide_page_navigation and page.url != "lectures/01-ml-basics/" and page.url != "developer-guide/loading-data/" %}
-      {% set show_next = page and page.next_page and not hide_page_navigation and page.url != "lectures/04-model-development/" and page.url != "developer-guide/making-predictions/" %}
+      {% set show_next = page and page.next_page and not hide_page_navigation and page.url != "lectures/04-model-development/" and page.url != "developer-guide/jsr381/" %}
       {% if show_previous or show_next %}
         <div class="page-navigation">
           {% if show_previous %}

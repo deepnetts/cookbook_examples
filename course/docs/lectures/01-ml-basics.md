@@ -54,7 +54,7 @@ The number of input features determines whether a problem uses simple or multipl
   <article>
     <span>Simple linear regression</span>
     <h3>Sorting Execution Time</h3>
-    <p>One numerical feature—the comparison count—is used to predict one continuous execution-time value.</p>
+    <p>One numerical feature - the comparison count - is used to predict one continuous execution-time value.</p>
     <pre><code>comparison count → model → execution time</code></pre>
     <a href="../../examples/regression/sorting-execution-time-prediction/">Explore Sorting Time Prediction →</a>
   </article>

@@ -19,7 +19,7 @@ This walkthrough reconstructs VGGNet16 in Deep Netts, imports TensorFlow/Keras I
 | **Preprocessing** | Resize, convert RGB to BGR, and subtract ImageNet channel means |
 | **Training** | None; pretrained TensorFlow weights are imported |
 | **Download** | Approximately 600 MB on the first run |
-| **Memory** | Approximately 7–8 GB Java heap |
+| **Memory** | Approximately 7-8 GB Java heap |
 | **Saved model** | `models/vggnet16.dnet` |
 
 ## 1. Configure the runtime

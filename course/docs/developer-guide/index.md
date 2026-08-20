@@ -33,6 +33,10 @@ Each guide contains a compact Java recipe, explains the important choices, and l
     <strong>Making predictions</strong>
     <span>Prepare new input and convert model output into a useful result.</span>
   </a>
+  <a href="jsr381/">
+    <strong>JSR 381 and Deep Netts</strong>
+    <span>Understand the standard VisRec interfaces and how Deep Netts supplies concrete Machine Learning functionality.</span>
+  </a>
 </div>
 
 For the wider conceptual context, continue with [Deep Netts API](../lectures/03-deep-netts-api.md) and [Model Development](../lectures/04-model-development.md). To see every step assembled into one application, choose a project from [Examples](../examples/index.md).

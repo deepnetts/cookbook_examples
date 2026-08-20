@@ -16,7 +16,7 @@ This walkthrough builds an email spam detector one part at a time. It demonstrat
 | **Level** | Beginner |
 | **Dataset** | 20,000 prepared email records |
 | **Inputs** | Five numerical email and sender features |
-| **Target** | `is_spam` — `0` for not spam, `1` for spam |
+| **Target** | `is_spam` - `0` for not spam, `1` for spam |
 | **Model** | `5 -> 32 -> 16 -> 1` feed-forward neural network with a Sigmoid output |
 | **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Neural Networks](../../lectures/02-neural-networks.md), [Model Development](../../lectures/04-model-development.md) |
 

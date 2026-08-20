@@ -16,7 +16,7 @@ This walkthrough builds a computer hardware performance predictor one part at a 
 | **Level** | Beginner |
 | **Dataset** | 209 computer hardware records |
 | **Inputs** | Six numerical hardware characteristics |
-| **Target** | `PRP` — Published Relative Performance |
+| **Target** | `PRP` - Published Relative Performance |
 | **Model** | `6 -> 1` feed-forward network with a linear output |
 | **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Model Development](../../lectures/04-model-development.md) |
 

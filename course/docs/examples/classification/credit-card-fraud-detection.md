@@ -13,7 +13,7 @@ This walkthrough builds a binary classifier that estimates whether a credit-card
 | | |
 |---|---|
 | **ML task** | Binary classification |
-| **Inputs** | `V1`–`V28` and `Amount` |
+| **Inputs** | `V1`-`V28` and `Amount` |
 | **Target** | `Class`: `0` legitimate, `1` fraud |
 | **Model** | `29 -> 32 -> 16 -> 1` with Sigmoid output |
 | **Preprocessing** | Min-max scaling fitted on training data |
