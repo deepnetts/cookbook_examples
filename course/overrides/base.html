@@ -64,7 +64,7 @@
   {% set current_section = 'examples' %}
 {% elif current_url.startswith('developer-guide/') %}
   {% set current_section = 'developer-guide' %}
-{% elif (page and page.file and page.file.src_uri == 'index.md') or current_url.startswith('lectures/') %}
+{% elif current_url.startswith('course/') or current_url.startswith('lectures/') %}
   {% set current_section = 'course' %}
 {% elif current_url == 'glossary/' %}
   {% set current_section = 'glossary' %}
@@ -72,7 +72,7 @@
   {% set current_section = '' %}
 {% endif %}
 {% set has_context_sidebar = current_section in ['get-started', 'examples', 'developer-guide', 'course'] %}
-<body class="{% if has_context_sidebar %}has-section-sidebar{% else %}no-section-sidebar{% endif %}">
+<body class="{% if has_context_sidebar %}has-section-sidebar{% else %}no-section-sidebar{% endif %}{% if page and page.file and page.file.src_uri == 'index.md' %} home-page{% endif %}">
     <header class="header">
         <a id="nav-toggle" class="pizza" aria-label="Toggle navigation" role="button">&#9776;</a>
         <div class="title">
@@ -88,9 +88,9 @@
             <nav class="header-navigation" aria-label="Primary navigation">
                 <a href="{{ 'getting-started/'|url }}"{% if current_section == 'get-started' %} class="active" aria-current="page"{% endif %}>Get Started</a>
                 <a href="{{ 'examples/'|url }}"{% if current_section == 'examples' %} class="active" aria-current="page"{% endif %}>Examples</a>
-                <a href="{{ ''|url }}"{% if current_section == 'course' %} class="active" aria-current="page"{% endif %}>Course</a>
+                <a href="{{ 'course/'|url }}"{% if current_section == 'course' %} class="active" aria-current="page"{% endif %}>Course</a>
                 <a href="{{ 'developer-guide/'|url }}"{% if current_section == 'developer-guide' %} class="active" aria-current="page"{% endif %}>Developer Guide</a>
-                <a href="https://www.deepnetts.com/apidocs/index.html" target="_blank" rel="noopener noreferrer">API <span aria-hidden="true">↗</span></a>
+                <a href="https://www.deepnetts.com/apidocs/index.html" target="_blank" rel="noopener noreferrer">API DOC <span aria-hidden="true">↗</span></a>
                 <a href="{{ 'glossary/'|url }}"{% if current_section == 'glossary' %} class="active" aria-current="page"{% endif %}>Glossary</a>
             </nav>
             <div class="header-actions">
@@ -137,8 +137,8 @@
           {% elif current_section == 'course' %}
             <h2>Course</h2>
             <ul>
-              <li{% if page and page.file and page.file.src_uri == 'index.md' %} class="active"{% endif %}><a href="{{ ''|url }}">Overview</a></li>
-              <li{% if current_url == 'lectures/01-ml-basics/' %} class="active"{% endif %}><a href="{{ 'lectures/01-ml-basics/'|url }}">ML Basics</a></li>
+              <li{% if current_url == 'course/' %} class="active"{% endif %}><a href="{{ 'course/'|url }}">Overview</a></li>
+              <li{% if current_url == 'lectures/01-ml-basics/' %} class="active"{% endif %}><a href="{{ 'lectures/01-ml-basics/'|url }}">Machine Learning Basics</a></li>
               <li{% if current_url == 'lectures/02-neural-networks/' %} class="active"{% endif %}><a href="{{ 'lectures/02-neural-networks/'|url }}">Neural Networks</a></li>
               <li{% if current_url == 'lectures/03-deep-netts-api/' %} class="active"{% endif %}><a href="{{ 'lectures/03-deep-netts-api/'|url }}">Deep Netts API</a></li>
               <li{% if current_url == 'lectures/04-model-development/' %} class="active"{% endif %}><a href="{{ 'lectures/04-model-development/'|url }}">Model Development</a></li>
@@ -177,7 +177,7 @@
             {{ page.content }}
         </div>
       {% endblock %}
-      {% set hide_page_navigation = page and ((page.file and page.file.src_uri == "index.md") or page.url == "getting-started/" or page.url == "examples/" or page.url == "examples/classification/" or page.url == "examples/regression/" or page.url == "examples/image-classification/" or page.url == "examples/nlp/" or page.url == "api-documentation/" or page.url == "developer-guide/") %}
+      {% set hide_page_navigation = page and ((page.file and page.file.src_uri == "index.md") or page.url == "course/" or page.url == "getting-started/" or page.url == "examples/" or page.url == "examples/classification/" or page.url == "examples/regression/" or page.url == "examples/image-classification/" or page.url == "examples/nlp/" or page.url == "api-documentation/" or page.url == "developer-guide/") %}
       {% set show_previous = page and page.previous_page and not hide_page_navigation and page.url != "lectures/01-ml-basics/" and page.url != "developer-guide/loading-data/" %}
       {% set show_next = page and page.next_page and not hide_page_navigation and page.url != "lectures/04-model-development/" and page.url != "developer-guide/making-predictions/" %}
       {% if show_previous or show_next %}

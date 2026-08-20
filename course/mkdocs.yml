@@ -1,4 +1,4 @@
-site_name: Machine Learning with Java and Deep Netts
+site_name: Machine Learning with Neural Networks in Java
 site_description: Deep Netts Machine Learning cookbook for Java developers
 site_author: Deep Netts
 
@@ -34,8 +34,8 @@ nav:
       - NLP: examples/nlp/index.md
 
   - Course:
-      - Overview: index.md
-      - ML Basics: lectures/01-ml-basics.md
+      - Overview: course/index.md
+      - Machine Learning Basics: lectures/01-ml-basics.md
       - Neural Networks: lectures/02-neural-networks.md
       - Deep Netts API: lectures/03-deep-netts-api.md
       - Model Development: lectures/04-model-development.md
@@ -50,6 +50,6 @@ nav:
       - Saving and Loading: developer-guide/saving-loading.md
       - Making Predictions: developer-guide/making-predictions.md
 
-  - API: https://www.deepnetts.com/apidocs/index.html
+  - API DOC: https://www.deepnetts.com/apidocs/index.html
 
   - Glossary: glossary.md

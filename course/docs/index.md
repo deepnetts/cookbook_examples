@@ -1,64 +1,52 @@
-# Machine Learning with Java and Deep Netts
+<section class="home-hero">
+  <div class="home-hero-content">
+    <span class="home-eyebrow">DEEP NETTS FOR JAVA</span>
+    <h1>Build neural networks in the language you already know</h1>
+    <p>Learn Machine Learning, create neural-network models, and run complete Deep Netts projects with modern Java.</p>
+    <div class="home-hero-actions">
+      <a class="home-primary-action" href="getting-started/">Get started</a>
+      <a class="home-secondary-action" href="examples/">View examples</a>
+      <a class="home-secondary-action" href="https://www.deepnetts.com/download-latest" target="_blank" rel="noopener noreferrer">Free download</a>
+    </div>
+  </div>
+  <div class="home-neural-visual" aria-hidden="true">
+    <span class="neural-ring neural-ring-one"></span>
+    <span class="neural-ring neural-ring-two"></span>
+    <span class="neural-node neural-node-one"></span>
+    <span class="neural-node neural-node-two"></span>
+    <span class="neural-node neural-node-three"></span>
+    <span class="neural-node neural-node-four"></span>
+    <span class="neural-line neural-line-one"></span>
+    <span class="neural-line neural-line-two"></span>
+    <span class="neural-line neural-line-three"></span>
+  </div>
+</section>
 
-Learn the foundations of Machine Learning with Java and Deep Netts.
+<section class="home-intro">
+  <span>THE DEEP NETTS COOKBOOK</span>
+  <h2>From your first model to a complete Java workflow</h2>
+  <p>Use focused guides, runnable Maven projects, and concept-first lessons to move from setup to training, evaluation, and prediction.</p>
+</section>
 
-This course is intended for experienced Java developers who are new to Machine Learning. It introduces the concepts first, then connects them to compact Java examples that demonstrate the complete model-development workflow.
-
-## Choose your starting point
-
-- **New to Deep Netts?** Follow [Getting Started](getting-started/index.md) through installation and Hello World.
-- **Ready to run code?** Choose a project from [Examples](examples/index.md).
-- **New to Machine Learning?** Begin with [Machine Learning Basics](lectures/01-ml-basics.md), then connect each concept to an example.
-
-## Learning flow
-
-<nav class="learning-path" aria-label="Recommended learning flow">
-  <a href="getting-started/">
-    <span>01</span>
-    <strong>Set up Deep Netts</strong>
-    <small>Install and verify the environment</small>
-  </a>
-  <a href="lectures/01-ml-basics/">
-    <span>02</span>
-    <strong>Learn the concepts</strong>
-    <small>Build your Machine Learning foundation</small>
+<nav class="home-feature-grid" aria-label="Explore Deep Netts resources">
+  <a href="course/">
+    <span>LEARN</span>
+    <strong>Machine Learning Course</strong>
+    <small>Build a practical foundation in neural networks and model development.</small>
   </a>
   <a href="examples/">
-    <span>03</span>
-    <strong>Explore an example</strong>
-    <small>Connect theory to focused Java code</small>
+    <span>BUILD</span>
+    <strong>Runnable Java Examples</strong>
+    <small>Follow complete walkthroughs for regression and classification projects.</small>
   </a>
-  <a href="examples/running-examples/">
-    <span>04</span>
-    <strong>Run the project</strong>
-    <small>Execute a complete Maven workflow</small>
+  <a href="developer-guide/">
+    <span>DEVELOP</span>
+    <strong>Developer Guide</strong>
+    <small>Find focused recipes for data preparation, training, evaluation, and prediction.</small>
+  </a>
+  <a href="https://www.deepnetts.com/apidocs/index.html" target="_blank" rel="noopener noreferrer">
+    <span>REFERENCE</span>
+    <strong>Deep Netts API</strong>
+    <small>Open the official Java API documentation when you need implementation details.</small>
   </a>
 </nav>
-
-### 1. Verify the environment
-
-Complete Prerequisites, Download, Installation, and Hello World. Hello World confirms that Java, Maven, Deep Netts, licensing, and the Vector API work together.
-
-### 2. Learn the concepts
-
-The lessons explain features, targets, regression, classification, neural-network architecture, the Deep Netts API, and the complete model-development workflow.
-
-### 3. Explore and run a project
-
-Each Example page explains the problem, dataset, model, and important code before linking to a standalone Maven project:
-
-[View Examples on GitHub](https://github.com/deepnetts/cookbook-examples/tree/main/examples/)
-
-## Recommended path
-
-1. [Start with Getting Started](getting-started/index.md)
-2. [Verify the setup with Hello World](getting-started/index.md#4-hello-world)
-3. [Learn Machine Learning Basics](lectures/01-ml-basics.md)
-4. [Understand Neural Networks](lectures/02-neural-networks.md)
-5. [Learn the Deep Netts API](lectures/03-deep-netts-api.md)
-6. [Follow the Model Development workflow](lectures/04-model-development.md)
-7. [Start with Simple Linear Regression](examples/regression/sorting-execution-time-prediction.md)
-8. [Continue through the Examples gallery](examples/index.md)
-9. [Run a complete Maven project](examples/running-examples.md)
-
-Use the [Glossary](glossary.md) whenever you encounter an unfamiliar Machine Learning or Deep Netts term.

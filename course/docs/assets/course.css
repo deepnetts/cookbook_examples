@@ -134,25 +134,29 @@ textarea {
     align-items: center;
     justify-content: center;
     min-height: 38px;
-    padding: 8px 17px;
+    padding: 10px 18px;
     color: #ffffff;
-    background: linear-gradient(135deg, #075985 0%, #087ca7 48%, #16b8e9 100%);
-    border: 1px solid rgba(125, 211, 252, 0.42);
-    border-radius: 999px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
-    font-size: 14px;
-    font-weight: 700;
+    background: rgba(3, 27, 53, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.54);
+    border-radius: 7px;
+    box-shadow: none;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
     line-height: 1;
     text-decoration: none;
-    transition: background 0.18s ease, box-shadow 0.18s ease,
+    text-transform: uppercase;
+    transition: background-color 0.18s ease, box-shadow 0.18s ease,
         transform 0.18s ease;
 }
 
 .header .header-download:hover {
-    color: #ffffff;
-    background: linear-gradient(135deg, #086a91 0%, #0a91bd 48%, #38c8ef 100%);
-    box-shadow: 0 7px 18px rgba(3, 105, 161, 0.32);
+    color: #064e72;
+    background: #dff7ff;
+    border-color: #dff7ff;
+    box-shadow: 0 8px 22px rgba(3, 27, 53, 0.24);
     text-decoration: none;
+    transform: translateY(-2px);
 }
 
 .header .header-download:focus-visible {
@@ -1143,6 +1147,363 @@ textarea {
     }
 }
 
+/* Course entry cards. */
+.markdown-body .course-start-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 8px 0 30px;
+}
+
+.markdown-body .course-start-cards > a {
+  position: relative;
+  display: flex;
+  min-height: 205px;
+  padding: 22px;
+  flex-direction: column;
+  color: #172b4d;
+  background: linear-gradient(150deg, #ffffff 12%, #effaff 100%);
+  border: 1px solid #c9e8f3;
+  border-radius: 12px;
+  box-shadow: 0 8px 22px rgba(3, 78, 114, 0.09);
+  text-decoration: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.markdown-body .course-start-cards > a:hover,
+.markdown-body .course-start-cards > a:focus-visible {
+  color: #075985;
+  border-color: #38bdf8;
+  box-shadow: 0 13px 30px rgba(3, 105, 161, 0.16);
+  outline: none;
+  text-decoration: none;
+  transform: translateY(-3px);
+}
+
+.course-start-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 18px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #075985, #16b8e9);
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.course-start-cards strong {
+  margin-bottom: 8px;
+  font-size: 17px;
+}
+
+.course-start-cards small {
+  color: #52657a;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.course-start-link {
+  margin-top: auto;
+  padding-top: 18px;
+  color: #087ca7;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* Dedicated Deep Netts home page. */
+.home-page .markdown-body,
+.home-page .markdown-body.cake {
+  width: auto;
+  max-width: none;
+  margin: 0 !important;
+  padding: 0 0 70px;
+}
+
+.home-page .page-toc,
+.home-page .markdown-body > hr {
+  display: none;
+}
+
+.home-page #body {
+  width: 100%;
+}
+
+.home-hero {
+  position: relative;
+  display: grid;
+  min-height: 560px;
+  padding: 82px max(7vw, 54px);
+  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+  align-items: center;
+  gap: 50px;
+  overflow: hidden;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 73% 27%, rgba(56, 189, 248, 0.28), transparent 25%),
+    linear-gradient(120deg, #031b35 0%, #064e72 48%, #0798c7 100%);
+}
+
+.home-hero::after {
+  position: absolute;
+  right: -5%;
+  bottom: -92px;
+  left: -5%;
+  height: 150px;
+  background: #ffffff;
+  content: "";
+  transform: rotate(3deg);
+}
+
+.home-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+}
+
+.home-eyebrow {
+  display: inline-flex;
+  margin-bottom: 24px;
+  padding: 8px 14px;
+  color: #d8f6ff;
+  background: rgba(56, 189, 248, 0.16);
+  border: 1px solid rgba(125, 211, 252, 0.32);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.markdown-body .home-hero h1 {
+  max-width: 760px;
+  margin: 0 0 22px !important;
+  padding: 0;
+  color: #ffffff;
+  border: 0;
+  font-size: clamp(42px, 5vw, 72px);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+}
+
+.markdown-body .home-hero p {
+  max-width: 650px;
+  margin-bottom: 30px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 19px;
+  line-height: 1.55;
+}
+
+.home-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.markdown-body .home-hero-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 12px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.54);
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.markdown-body .home-primary-action {
+  color: #064e72;
+  background: #ffffff;
+}
+
+.markdown-body .home-secondary-action {
+  color: #ffffff;
+  background: rgba(3, 27, 53, 0.18);
+}
+
+.markdown-body .home-hero-actions a:hover,
+.markdown-body .home-hero-actions a:focus-visible {
+  color: #064e72;
+  background: #dff7ff;
+  box-shadow: 0 8px 22px rgba(3, 27, 53, 0.24);
+  outline: none;
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.home-neural-visual {
+  position: relative;
+  z-index: 1;
+  width: min(430px, 36vw);
+  height: min(430px, 36vw);
+  justify-self: center;
+  border: 1px solid rgba(186, 230, 253, 0.2);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(125, 211, 252, 0.17), rgba(3, 27, 53, 0.06) 64%);
+}
+
+.neural-ring,
+.neural-node,
+.neural-line {
+  position: absolute;
+  display: block;
+}
+
+.neural-ring {
+  border: 1px solid rgba(186, 230, 253, 0.28);
+  border-radius: 50%;
+}
+
+.neural-ring-one { inset: 15%; }
+.neural-ring-two { inset: 32%; }
+
+.neural-node {
+  z-index: 2;
+  width: 24px;
+  height: 24px;
+  background: #e0f7ff;
+  border: 6px solid #16b8e9;
+  border-radius: 50%;
+  box-shadow: 0 0 28px rgba(125, 211, 252, 0.7);
+}
+
+.neural-node-one { top: 19%; left: 22%; }
+.neural-node-two { top: 29%; right: 18%; }
+.neural-node-three { right: 31%; bottom: 18%; }
+.neural-node-four { bottom: 27%; left: 17%; }
+
+.neural-line {
+  z-index: 1;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(186, 230, 253, 0.75), transparent);
+  transform-origin: left center;
+}
+
+.neural-line-one { top: 24%; left: 25%; width: 58%; transform: rotate(12deg); }
+.neural-line-two { top: 32%; left: 25%; width: 60%; transform: rotate(67deg); }
+.neural-line-three { top: 65%; left: 19%; width: 57%; transform: rotate(-18deg); }
+
+.home-intro {
+  max-width: 820px;
+  margin: 34px auto 38px;
+  padding: 0 28px;
+  text-align: center;
+}
+
+.home-intro > span,
+.home-feature-grid > a > span {
+  color: #0783af;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+}
+
+.markdown-body .home-intro h2 {
+  margin: 10px 0 14px;
+  border: 0;
+  font-size: clamp(28px, 3vw, 42px);
+}
+
+.markdown-body .home-intro p {
+  color: #52657a;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.home-feature-grid {
+  display: grid;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 28px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.markdown-body .home-feature-grid > a {
+  display: flex;
+  min-height: 190px;
+  padding: 24px;
+  flex-direction: column;
+  color: #172b4d;
+  background: #ffffff;
+  border: 1px solid #d6e8ef;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(3, 78, 114, 0.08);
+  text-decoration: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.markdown-body .home-feature-grid > a:hover,
+.markdown-body .home-feature-grid > a:focus-visible {
+  color: #075985;
+  border-color: #38bdf8;
+  box-shadow: 0 13px 30px rgba(3, 105, 161, 0.14);
+  outline: none;
+  text-decoration: none;
+  transform: translateY(-3px);
+}
+
+.home-feature-grid strong {
+  margin: 14px 0 9px;
+  font-size: 17px;
+}
+
+.home-feature-grid small {
+  color: #52657a;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+@media only screen and (max-width: 900px) {
+  .markdown-body .course-start-cards,
+  .home-feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-hero {
+    min-height: auto;
+    padding: 68px 34px 120px;
+    grid-template-columns: 1fr;
+  }
+
+  .home-neural-visual {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 620px) {
+  .markdown-body .course-start-cards,
+  .home-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-hero {
+    padding: 52px 22px 100px;
+  }
+
+  .markdown-body .home-hero h1 {
+    font-size: 40px;
+  }
+
+  .markdown-body .home-hero p {
+    font-size: 17px;
+  }
+
+  .home-hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+
 .markdown-body a:not(.github-example-button)[href*="github.com/deepnetts/cookbook-examples/"][href*="/examples/"] {
     display: inline-flex;
     align-items: center;
@@ -1559,4 +1920,14 @@ textarea {
     width: min(310px, calc(100vw - 24px));
     box-shadow: 8px 0 24px rgba(3, 27, 53, 0.18);
   }
+}
+
+/* Keep the dedicated home canvas full-width after global layout breakpoints. */
+.home-page.no-section-sidebar .markdown-body,
+.home-page.no-section-sidebar .markdown-body.cake {
+  width: auto;
+  max-width: none;
+  margin: 0 !important;
+  padding-right: 0;
+  padding-left: 0;
 }
