@@ -785,7 +785,7 @@ textarea {
     isolation: isolate;
     float: none;
     min-width: 126px;
-    padding: 10px 16px;
+    padding: 0;
     color: #ffffff;
     background: linear-gradient(135deg, #075985 0%, #087ca7 48%, #16b8e9 100%);
     border: 1px solid rgba(22, 184, 233, 0.8);
@@ -799,19 +799,45 @@ textarea {
 
 .page-navigation .prev a,
 .page-navigation .next a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 42px;
+    padding: 10px 16px;
     color: #ffffff;
     font-weight: 700;
+    line-height: 1;
     text-decoration: none;
+}
+
+.page-navigation .page-nav-arrow {
+    display: block;
+    flex: 0 0 auto;
+    width: 23px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .page-navigation .prev:hover,
 .page-navigation .next:hover,
+.page-navigation .prev:focus-within,
+.page-navigation .next:focus-within,
 .page-navigation .prev:focus-visible,
 .page-navigation .next:focus-visible {
     color: #ffffff;
     box-shadow: 0 9px 22px rgba(6, 78, 114, 0.42), 0 0 0 1px rgba(22, 184, 233, 0.22);
     filter: saturate(1.12) brightness(1.06);
     text-decoration: none;
+}
+
+.page-navigation .prev a:focus-visible,
+.page-navigation .next a:focus-visible {
+    outline: none;
 }
 
 .page-navigation .prev:hover a,
