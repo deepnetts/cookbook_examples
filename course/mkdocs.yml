@@ -28,7 +28,7 @@ nav:
       - Image Classification: examples/image-classification/index.md
       - NLP: examples/nlp/index.md
 
-  - API Documentation: api-documentation/index.md
+  - API Documentation: https://www.deepnetts.com/apidocs/index.html
 
   - Developer Guide:
       - Overview: developer-guide/index.md

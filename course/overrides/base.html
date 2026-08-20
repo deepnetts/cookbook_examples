@@ -59,7 +59,7 @@
 </head>
 <body>
     <header class="header">
-        <a id="nav-toggle" class="pizza">&#9776;</a>
+        <a id="nav-toggle" class="pizza" aria-label="Toggle navigation" role="button">&#9776;</a>
         <div class="title">
             <a href="{{ ''|url }}" class="logo" aria-label="{{ config.site_name }}">
                 <img src="{{ 'assets/deep-netts-logo.png'|url }}" alt="Deep Netts" width="166" height="34">
@@ -70,11 +70,14 @@
                 <img alt="GitHub stars" src="https://img.shields.io/github/stars/{{config.badge.github_user}}/{{config.badge.github_repo}}?style=social" class="stars">
                 </a>
             {% endif %}
-            <div role="search" class="search">
-                <form><input type="search" placeholder="Search" id="mkdocs-search-query" /></form>
+            <div class="header-actions">
+                <div role="search" class="search">
+                    <form><input type="search" placeholder="Search documentation" aria-label="Search documentation" id="mkdocs-search-query" /></form>
+                </div>
+                <a class="header-download" href="https://www.deepnetts.com/download-latest" target="_blank" rel="noopener noreferrer">Free download</a>
             </div>
         </div>
-         <a id="nav-scrh" class="scrh">&#8981;</a>
+        <a id="nav-scrh" class="scrh" aria-label="Toggle search" role="button">&#8981;</a>
     </header>
     <div class="side" id="side">
         <h2>Deep Netts Guide</h2>

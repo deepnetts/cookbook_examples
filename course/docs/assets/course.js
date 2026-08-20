@@ -29,6 +29,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const previousPage = document.querySelector(".markdown-body > .prev");
     const nextPage = document.querySelector(".markdown-body > .next");
 
+    if (pageBody) {
+        pageBody.querySelectorAll(":scope > .github-project-action")
+            .forEach(function (githubAction) {
+                const backContainer = githubAction.nextElementSibling;
+                const backButton = backContainer &&
+                    backContainer.querySelector(":scope > .back-button");
+
+                if (!backButton) {
+                    return;
+                }
+
+                const footerActions = document.createElement("div");
+
+                footerActions.className = "example-footer-actions";
+                githubAction.parentNode.insertBefore(footerActions, githubAction);
+                footerActions.appendChild(backContainer);
+                footerActions.appendChild(githubAction);
+            });
+    }
+
     if (pageBody && (previousPage || nextPage)) {
         const pageNavigation = document.createElement("nav");
 
