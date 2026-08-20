@@ -4,6 +4,8 @@
 
 This walkthrough uses simple linear regression to estimate total Swedish auto-insurance payments from the number of claims.
 
+**Problem:** Predict the normalized total insurance payment from the normalized number of claims.
+
 **Dataset:** 63 normalized claim-count and payment pairs from the Swedish Auto Insurance dataset.
 
 ## At a glance

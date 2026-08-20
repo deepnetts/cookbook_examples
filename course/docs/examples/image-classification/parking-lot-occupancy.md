@@ -2,139 +2,109 @@
 
 # Parking Lot Occupancy
 
-This walkthrough trains a convolutional network to determine whether a parking-space image is occupied.
+This walkthrough trains a CNN to recognize whether a cropped parking space is occupied or free.
 
-**Problem:** Predict `busy` or `negative` from a cropped parking-space image.
+**Problem:** Classify a parking-space image as occupied (`busy`) or free (`negative`).
 
-**Dataset:** 6,171 image patches: 3,621 occupied spaces and 2,550 free spaces.
+**Dataset:** 6,171 labeled image patches: 3,621 occupied spaces and 2,550 free spaces.
 
 ## At a glance
 
 | | |
 |---|---|
 | **ML task** | Binary image classification |
-| **Level** | Intermediate |
 | **Input** | `48 × 48 × 3` RGB image |
 | **Target** | `busy` or `negative` |
-| **Default training** | 3 CPU epochs |
 | **Model** | Convolution → Max Pooling → Fully Connected → Sigmoid |
+| **Preprocessing** | Resize to `48 × 48` and scale RGB values while loading |
+| **Default training** | 3 CPU epochs |
+| **Saved model** | `models/parking-occupancy.dnet` |
 
-[Back to Image Classification examples](index.md)
-
-## 1. Configure the larger dataset
+## 1. Configure and load
 
 ```java
-private static final String DATASET_PATH =
-        "src/main/resources/datasets/parking-lot";
-private static final String MODEL_PATH =
-        "models/parking-occupancy.dnet";
-private static final int IMAGE_WIDTH = 48;
-private static final int IMAGE_HEIGHT = 48;
-private static final int STOP_EPOCHS =
-        Integer.getInteger("deepnetts.epochs", 3);
+int width = 48, height = 48;
+int epochs = Integer.getInteger("deepnetts.epochs", 3);
+String dataset = "src/main/resources/datasets/parking-lot";
+System.setProperty("java.awt.headless", "true");
+DeepNetts.getInstance().setUseCuda(false);
+ImageSet images = ImageData.load(dataset, "index.txt", width, height, false, false);
 ```
 
-The configurable epoch limit supports both a quick smoke test and a longer accuracy experiment.
+The shared loader validates and resizes all 6,171 RGB images. The lower default epoch count reflects the larger dataset.
 
-## 2. Load, inspect, and split images
+## 2. Inspect, shuffle, and split
 
 ```java
-ImageSet imageSet = loadImageSet(Path.of(DATASET_PATH));
-System.out.println("Images: " + imageSet.size());
-System.out.println("Classes: " + imageSet.countByClasses());
-
-imageSet.shuffle(42);
-ImageSet[] split = imageSet.split(0.8, 0.2);
+System.out.println("Images: " + images.size());
+System.out.println("Images by class: " + images.countByClasses());
+images.shuffle(42);
+ImageSet[] split = images.split(0.8, 0.2);
 ImageSet trainingSet = split[0];
 ImageSet testSet = split[1];
 ```
 
-Images in `busy/` receive target `1`; those in `negative/` receive target `0`. Resizing reduces computation while preserving the local visual structure needed for occupancy detection.
-
-## 3. Build the occupancy CNN
+## 3. Build the CNN
 
 ```java
-ConvolutionalNetwork neuralNet = ConvolutionalNetwork.builder()
-        .addInputLayer(IMAGE_WIDTH, IMAGE_HEIGHT, 3)
+ConvolutionalNetwork network = ConvolutionalNetwork.builder()
+        .addInputLayer(width, height, 3)
         .addConvolutionalLayer(6, Filters.ofSize(3))
         .addMaxPoolingLayer(2, 2)
         .addFullyConnectedLayer(16)
         .addOutputLayer(1, ActivationType.SIGMOID)
         .hiddenActivationFunction(ActivationType.LEAKY_RELU)
         .lossFunction(LossType.CROSS_ENTROPY)
-        .randomSeed(42)
-        .build();
+        .randomSeed(42).build();
 ```
 
-## 4. Train without mistaking a long epoch for a freeze
+## 4. Train and evaluate
 
 ```java
-neuralNet.getTrainer()
-        .setStopEpochs(STOP_EPOCHS)
-        .setLearningRate(0.001f)
-        .setOptimizer(OptimizerType.ADAM)
-        .setBatchMode(true)
-        .setBatchSize(32)
-        .setShuffle(true);
-
-neuralNet.train(trainingSet);
+network.getTrainer().setStopEpochs(epochs).setLearningRate(0.001f)
+        .setOptimizer(OptimizerType.ADAM).setBatchMode(true)
+        .setBatchSize(32).setShuffle(true);
+network.train(trainingSet);
+System.out.println(network.test(testSet));
 ```
 
-On a CPU, one epoch can take approximately 45 seconds. Output appears after an epoch finishes, so a pause after `Initial Train Error` is expected.
+One CPU epoch may take roughly 45 seconds depending on the machine. Output can pause until the epoch finishes.
 
-For a complete one-epoch NetBeans smoke test, use:
+## 5. Save the model
+
+```java
+Files.createDirectories(Path.of("models"));
+network.save("models/parking-occupancy.dnet");
+```
+
+The saved network can be reused without repeating training.
+
+## 6. Make a prediction
+
+```java
+ExampleImage image = testSet.get(0);
+float probability = network.predict(image.getInput()).getValues()[0];
+String predicted = probability >= 0.5f ? "busy" : "negative";
+```
+
+The threshold converts occupied-space probability into `busy` or `negative`.
+
+## 7. Release resources
+
+```java
+network.getThreadPool().shutdown();
+```
+
+This stops the worker pool so the application terminates normally.
+
+## Run in NetBeans
 
 ```text
 --add-modules=jdk.incubator.vector -Ddeepnetts.epochs=1
 ```
 
-## 5. Evaluate the model
+One epoch still runs loading, training, evaluation, saving, and prediction over the full dataset.
 
-```java
-ClassificationMetrics metrics =
-        (ClassificationMetrics) neuralNet.test(testSet);
-System.out.println(metrics);
-```
+<div class="github-project-action"><a href="https://github.com/deepnetts/cookbook-examples/tree/main/examples/img-classification/parking-lot-occupancy">View Example on GitHub</a></div>
 
-Held-out evaluation reports accuracy, precision, recall, F1, specificity, and error rates.
-
-## 6. Save the trained model
-
-```java
-Files.createDirectories(Path.of("models"));
-neuralNet.save(MODEL_PATH);
-```
-
-The saved `.dnet` file can be retained as the trained occupancy-classification artifact.
-
-## 7. Predict parking occupancy
-
-```java
-ExampleImage image = testSet.get(0);
-float occupiedProbability =
-        neuralNet.predict(image.getInput()).getValues()[0];
-String predictedClass = occupiedProbability >= 0.5f
-        ? "busy" : "negative";
-```
-
-The probability retains confidence information; the threshold converts it into the final occupied/free decision.
-
-## What you built
-
-```text
-6,171 labeled parking images
-        ↓
-48x48 RGB preprocessing
-        ↓
-80/20 split and mini-batch CNN training
-        ↓
-Classification evaluation
-        ↓
-Saved occupancy model and prediction
-```
-
-<div class="github-project-action">
-<a href="https://github.com/deepnetts/cookbook-examples/tree/main/examples/img-classification/parking-lot-occupancy">View Example on GitHub</a>
-</div>
-
-<a class="back-button" href="../">← Back to Image Classification Examples</a>
+<a class="back-button" href="./">← Back to Image Classification Examples</a>

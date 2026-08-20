@@ -2,138 +2,122 @@
 
 # Duke Logo Recognition
 
-This walkthrough builds a compact convolutional network that recognizes the Java Duke logo.
+This walkthrough trains a compact CNN to decide whether an image contains the Java Duke logo.
 
-**Problem:** Decide whether an image contains Duke.
+**Problem:** Classify an image as `duke` or `negative`.
 
-**Dataset:** 49 Duke images and 54 negative images.
+**Dataset:** 103 labeled images: 49 Duke-logo images and 54 negative images.
 
 ## At a glance
 
 | | |
 |---|---|
 | **ML task** | Binary image classification |
-| **Level** | Intermediate |
 | **Input** | `64 × 64 × 3` RGB image |
 | **Target** | `duke` or `negative` |
 | **Model** | Convolution → Max Pooling → Fully Connected → Sigmoid |
+| **Preprocessing** | Resize to `64 × 64` and scale RGB values while loading |
+| **Default training** | 20 CPU epochs |
+| **Saved model** | `models/duke-logo-classifier.dnet` |
 
-[Back to Image Classification examples](index.md)
-
-## 1. Define the image contract
+## 1. Configure the runtime
 
 ```java
-private static final String DATASET_PATH =
-        "src/main/resources/datasets/duke-logo";
-private static final String MODEL_PATH =
-        "models/duke-logo-classifier.dnet";
-private static final int IMAGE_WIDTH = 64;
-private static final int IMAGE_HEIGHT = 64;
+int width = 64, height = 64;
+int epochs = Integer.getInteger("deepnetts.epochs", 20);
+String dataset = "src/main/resources/datasets/duke-logo";
+System.setProperty("java.awt.headless", "true");
+DeepNetts.getInstance().setUseCuda(false);
 ```
 
-Every image is resized to the same input shape. The positive Duke target is `1`; negative images use `0`.
+The system property lets NetBeans run a one-epoch smoke test without changing source.
 
-## 2. Load and inspect the dataset
+## 2. Load and preprocess
 
 ```java
-ImageSet imageSet = loadImageSet(Path.of(DATASET_PATH));
-
-System.out.println("Images: " + imageSet.size());
-System.out.println("Classes: " + imageSet.countByClasses());
+ImageSet images = ImageData.load(dataset, "index.txt", width, height, false, false);
 ```
 
-The loader reads `duke/` and `negative/`, resizes each file, and creates an `ExampleImage` with its known target.
+`index.txt` maps files to labels. The shared loader validates every entry, resizes images, and prepares three RGB channels. Grayscale conversion and inversion are disabled.
 
-## 3. Create held-out evaluation data
+## 3. Inspect, shuffle, and split
 
 ```java
-imageSet.shuffle(42);
-ImageSet[] split = imageSet.split(0.8, 0.2);
+System.out.println("Images: " + images.size());
+System.out.println("Images by class: " + images.countByClasses());
+images.shuffle(42);
+ImageSet[] split = images.split(0.8, 0.2);
 ImageSet trainingSet = split[0];
 ImageSet testSet = split[1];
 ```
 
-The small dataset makes the result sensitive to the split, so the test metrics should be treated as a learning demonstration rather than a production benchmark.
+The fixed seed makes the 80/20 split reproducible.
 
 ## 4. Build the CNN
 
 ```java
-ConvolutionalNetwork neuralNet = ConvolutionalNetwork.builder()
-        .addInputLayer(IMAGE_WIDTH, IMAGE_HEIGHT, 3)
+ConvolutionalNetwork network = ConvolutionalNetwork.builder()
+        .addInputLayer(width, height, 3)
         .addConvolutionalLayer(6, Filters.ofSize(3))
         .addMaxPoolingLayer(2, 2)
         .addFullyConnectedLayer(16)
         .addOutputLayer(1, ActivationType.SIGMOID)
         .hiddenActivationFunction(ActivationType.LEAKY_RELU)
         .lossFunction(LossType.CROSS_ENTROPY)
-        .randomSeed(42)
-        .build();
+        .randomSeed(42).build();
 ```
 
-The convolutional layer learns local logo patterns, pooling reduces spatial dimensions, and the Sigmoid output returns the probability that Duke is present.
+Convolution learns local logo patterns; the output represents Duke probability.
 
-## 5. Train the model
+## 5. Train and evaluate
 
 ```java
-
-neuralNet.getTrainer()
-        .setStopEpochs(STOP_EPOCHS)
-        .setLearningRate(0.001f)
-        .setOptimizer(OptimizerType.ADAM)
-        .setBatchMode(true)
-        .setBatchSize(8)
-        .setShuffle(true);
-
-neuralNet.train(trainingSet);
+network.getTrainer().setStopEpochs(epochs).setLearningRate(0.001f)
+        .setOptimizer(OptimizerType.ADAM).setBatchMode(true)
+        .setBatchSize(8).setShuffle(true);
+network.train(trainingSet);
+System.out.println(network.test(testSet));
 ```
 
-## 6. Evaluate the model
+Metrics use only held-out images. This small dataset is a learning example, not a production benchmark.
 
-```java
-ClassificationMetrics metrics =
-        (ClassificationMetrics) neuralNet.test(testSet);
-System.out.println(metrics);
-```
-
-Evaluation uses only held-out images and reports how reliably the network separates Duke from negative examples.
-
-## 7. Save the trained model
+## 6. Save the model
 
 ```java
 Files.createDirectories(Path.of("models"));
-neuralNet.save(MODEL_PATH);
+network.save("models/duke-logo-classifier.dnet");
 ```
 
-Saving produces a reusable `.dnet` model artifact without retraining the network.
+The `.dnet` file can be loaded later without retraining the network.
 
-## 8. Recognize Duke
-
-Use the same resized and scaled image representation for prediction:
+## 7. Make a prediction
 
 ```java
 ExampleImage image = testSet.get(0);
-float dukeProbability =
-        neuralNet.predict(image.getInput()).getValues()[0];
-String predictedClass = dukeProbability >= 0.5f
-        ? "duke" : "negative";
+float probability = network.predict(image.getInput()).getValues()[0];
+String predicted = probability >= 0.5f ? "duke" : "negative";
 ```
 
-## What you built
+The `0.5` threshold converts Duke probability into the final binary label.
+
+## 8. Release resources
+
+```java
+network.getThreadPool().shutdown();
+```
+
+Shutting down the worker pool allows the Java application to exit cleanly.
+
+## Run in NetBeans
+
+Use **Project Properties → Run → VM Options**:
 
 ```text
-Duke and negative images
-        ↓
-64x64 RGB preprocessing
-        ↓
-CNN training and held-out evaluation
-        ↓
-Saved Duke recognizer
-        ↓
-Probability and predicted class
+--add-modules=jdk.incubator.vector -Ddeepnetts.epochs=1
 ```
 
-<div class="github-project-action">
-<a href="https://github.com/deepnetts/cookbook-examples/tree/main/examples/img-classification/duke-logo-recognition">View Example on GitHub</a>
-</div>
+One epoch verifies the complete flow; remove the epoch override for the default run.
 
-<a class="back-button" href="../">← Back to Image Classification Examples</a>
+<div class="github-project-action"><a href="https://github.com/deepnetts/cookbook-examples/tree/main/examples/img-classification/duke-logo-recognition">View Example on GitHub</a></div>
+
+<a class="back-button" href="./">← Back to Image Classification Examples</a>

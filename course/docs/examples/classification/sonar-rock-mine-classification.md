@@ -8,8 +8,6 @@ This walkthrough builds a Sonar rock-or-mine classifier one part at a time. It u
 
 **Dataset:** 208 sonar observations with 60 numerical signal features and one binary target.
 
-**You will learn:** How logistic regression fits into the Deep Netts API, how to prevent data leakage during scaling, how to evaluate a binary classifier, save it, and use it for prediction.
-
 ## At a glance
 
 | | |
@@ -21,8 +19,6 @@ This walkthrough builds a Sonar rock-or-mine classifier one part at a time. It u
 | **Target** | `0` for rock, `1` for mine |
 | **Model** | `60 -> 1` sonar-rock-mine-classification network with a Sigmoid output |
 | **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Neural Networks](../../lectures/02-neural-networks.md), [Deep Netts API](../../lectures/03-deep-netts-api.md), [Model Development](../../lectures/04-model-development.md) |
-
-[Back to Classification examples](index.md)
 
 The complete flow is:
 

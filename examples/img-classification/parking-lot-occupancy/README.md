@@ -38,3 +38,21 @@ src/main/resources/datasets/parking-lot/
 ├── busy/       # 3,621 occupied spaces
 └── negative/   # 2,550 free spaces
 ```
+
+## Requirements and workflow
+
+Use Java 25, Maven, Deep Netts 4 Pro with a valid license, and the Vector API.
+The loader validates and resizes every indexed image to `48x48` RGB. After a
+seed-42 shuffle and 80/20 split, a compact convolution/pooling network trains
+with ADAM in mini-batches of 32. The program evaluates held-out images, saves
+the model, predicts one image, and shuts down its thread pool.
+
+From the project directory, run:
+
+```bash
+MAVEN_OPTS="--add-modules jdk.incubator.vector" \
+  mvn -Ddeepnetts.epochs=1 clean compile exec:java
+```
+
+One CPU epoch may take roughly 45 seconds depending on hardware. Generated
+`.dnet` models under `models/` are ignored by Git.

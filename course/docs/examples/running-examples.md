@@ -26,6 +26,12 @@ Enter one of the project directories:
 | Logistic Regression | `examples/classification/sonar-rock-mine-classification` | Sonar rock-or-mine probability and class |
 | Spam Classification | `examples/classification/email-spam-detection` | Spam probability and class |
 | Multiclass Classification | `examples/classification/iris-flower-classification` | Iris species probabilities and class |
+| Hot Dog or Not Hot Dog | `examples/img-classification/hotdog-nothotdog` | Hot-dog probability and class |
+| Duke Logo Recognition | `examples/img-classification/duke-logo-recognition` | Duke-logo probability and class |
+| Parking Lot Occupancy | `examples/img-classification/parking-lot-occupancy` | Occupancy probability and class |
+| Handwritten Digit Recognition | `examples/img-classification/handwritten-digit-recognition` | MNIST digit and confidence |
+| Lego Figure Recognition | `examples/img-classification/lego-figure-recognition` | Lego-figure probability and class |
+| TensorFlow VGGNet16 Import | `examples/img-classification/tensorflow-vggnet16-import` | ImageNet label and confidence |
 
 For example:
 
@@ -94,6 +100,25 @@ When running from an IDE, configure this VM option:
 ```
 
 Use the selected project directory as the working directory so that its relative dataset paths resolve correctly.
+
+For a one-epoch smoke test of an image-training example, use:
+
+```text
+--add-modules=jdk.incubator.vector -Ddeepnetts.epochs=1
+```
+
+This completes loading, training, evaluation, model saving, and prediction,
+but one epoch is not intended to produce final model accuracy.
+
+TensorFlow VGGNet16 is an import and inference example, so the epoch option
+does not apply. It needs a larger heap:
+
+```text
+--add-modules=jdk.incubator.vector -Xmx8g
+```
+
+Its first run downloads approximately 600 MB of exported TensorFlow weights.
+It does not download the ImageNet training dataset.
 
 ## Troubleshooting checklist
 

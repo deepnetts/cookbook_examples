@@ -8,8 +8,6 @@ This walkthrough builds an email spam detector one part at a time. It demonstrat
 
 **Dataset:** Prepared email records containing message and sender characteristics plus a binary target.
 
-**You will learn:** How to scale features, build a binary feed-forward neural network, interpret a spam probability, evaluate classification metrics, and apply a decision threshold.
-
 ## At a glance
 
 | | |
@@ -21,8 +19,6 @@ This walkthrough builds an email spam detector one part at a time. It demonstrat
 | **Target** | `is_spam` — `0` for not spam, `1` for spam |
 | **Model** | `5 -> 32 -> 16 -> 1` feed-forward neural network with a Sigmoid output |
 | **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Neural Networks](../../lectures/02-neural-networks.md), [Model Development](../../lectures/04-model-development.md) |
-
-[Back to all examples](../index.md)
 
 The model receives five email features:
 

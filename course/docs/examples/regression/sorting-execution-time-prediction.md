@@ -8,8 +8,6 @@ This walkthrough builds a sorting execution-time predictor one part at a time. I
 
 **Dataset:** 903 sorting benchmark measurements with one numerical feature and one continuous target.
 
-**You will learn:** How to select a feature and target, split and standardize data, build a `1 -> 1` linear model, evaluate regression metrics, save the model, and make a prediction.
-
 ## At a glance
 
 | | |
@@ -21,8 +19,6 @@ This walkthrough builds a sorting execution-time predictor one part at a time. I
 | **Target** | One continuous value: `execution_time_ms` |
 | **Model** | `1 -> 1` feed-forward network with a linear output |
 | **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Model Development](../../lectures/04-model-development.md) |
-
-[Back to all examples](../index.md)
 
 The model uses one numerical feature:
 

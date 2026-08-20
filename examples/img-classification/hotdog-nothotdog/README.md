@@ -21,7 +21,8 @@ It contains 467 RGB images:
 228 negative images
 ```
 
-`ImageSet` reads the class name from the image's parent directory:
+`ImageData` reads each path and class name from `index.txt`, validates the
+referenced file, and keeps the directory labels explicit:
 
 ```text
 src/main/resources/datasets/hotdog-dataset/

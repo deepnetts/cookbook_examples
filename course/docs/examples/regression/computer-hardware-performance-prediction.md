@@ -8,8 +8,6 @@ This walkthrough builds a computer hardware performance predictor one part at a 
 
 **Dataset:** 209 computers with six numerical features and the continuous `PRP` target.
 
-**You will learn:** How multiple inputs contribute to one prediction, how to standardize features without data leakage, and how to train and evaluate a linear regression model.
-
 ## At a glance
 
 | | |
@@ -21,8 +19,6 @@ This walkthrough builds a computer hardware performance predictor one part at a 
 | **Target** | `PRP` — Published Relative Performance |
 | **Model** | `6 -> 1` feed-forward network with a linear output |
 | **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Model Development](../../lectures/04-model-development.md) |
-
-[Back to all examples](../index.md)
 
 The model receives six hardware features:
 

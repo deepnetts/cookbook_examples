@@ -1142,10 +1142,36 @@ textarea {
   margin: 16px 0 4px;
 }
 
+.markdown-body #body > p:first-child:has(
+  > a[href*="github.com/deepnetts/cookbook-examples/"][href*="/examples/"]
+) {
+  float: right;
+  width: fit-content;
+  margin: 0 0 12px 20px;
+}
+
+.markdown-body #body > .github-example-button:first-child {
+  display: flex;
+  float: right;
+  width: fit-content;
+  margin: 0 0 12px 20px;
+}
+
 .markdown-body .github-project-action {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   flex-wrap: wrap;
   gap: 10px;
   margin: 16px 0 4px;
+}
+
+@media only screen and (max-width: 620px) {
+  .markdown-body #body > p:first-child:has(
+    > a[href*="github.com/deepnetts/cookbook-examples/"][href*="/examples/"]
+  ),
+  .markdown-body #body > .github-example-button:first-child {
+    float: none;
+    margin: 0 0 16px auto;
+  }
 }

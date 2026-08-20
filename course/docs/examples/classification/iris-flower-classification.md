@@ -8,8 +8,6 @@ This walkthrough builds an Iris flower classifier one part at a time. It demonst
 
 **Dataset:** 150 flowers with four numerical features and three one-hot encoded target columns.
 
-**You will learn:** How one-hot targets represent classes, how a Softmax output produces class probabilities, and how to select the most probable class.
-
 ## At a glance
 
 | | |
@@ -21,8 +19,6 @@ This walkthrough builds an Iris flower classifier one part at a time. It demonst
 | **Target** | One of three Iris species, represented by one-hot columns |
 | **Model** | `4 -> 16 -> 3` feed-forward neural network with a Softmax output |
 | **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Neural Networks](../../lectures/02-neural-networks.md), [Model Development](../../lectures/04-model-development.md) |
-
-[Back to all examples](../index.md)
 
 The model receives four flower measurements:
 
