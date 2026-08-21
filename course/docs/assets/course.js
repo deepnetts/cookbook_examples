@@ -29,6 +29,29 @@ document.addEventListener("DOMContentLoaded", function () {
     const previousPage = document.querySelector(".markdown-body > .prev");
     const nextPage = document.querySelector(".markdown-body > .next");
     const pageFeedback = document.querySelector("[data-page-feedback]");
+    const pageFeedbackAnchor = document.querySelector("[data-page-feedback-anchor]");
+    const pageFaq = document.querySelector("[data-page-faq]");
+
+    if (pageFaq) {
+        const faqDetails = Array.from(pageFaq.querySelectorAll("details"));
+        const allFaqDetails = [pageFaq].concat(faqDetails);
+
+        allFaqDetails.forEach(function (details) {
+            const summary = details.querySelector(":scope > summary");
+
+            details.addEventListener("toggle", function () {
+                summary.setAttribute("aria-expanded", String(details.open));
+
+                if (details.open && details !== pageFaq) {
+                    faqDetails.forEach(function (otherDetails) {
+                        if (otherDetails !== details) {
+                            otherDetails.open = false;
+                        }
+                    });
+                }
+            });
+        });
+    }
 
     if (pageFeedback) {
         const feedbackButtons = Array.from(
@@ -322,7 +345,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     pageToc.appendChild(heading);
     pageToc.appendChild(toc);
-    document.body.appendChild(pageToc);
+    const pageTocRail = document.createElement("div");
+    pageTocRail.className = "page-toc-rail";
+    pageTocRail.appendChild(pageToc);
+    document.body.appendChild(pageTocRail);
+
+    if (pageFeedback && pageFeedbackAnchor) {
+        const desktopFeedbackLayout = window.matchMedia("(min-width: 1281px)");
+        const placePageFeedback = function () {
+            if (desktopFeedbackLayout.matches) {
+                pageTocRail.appendChild(pageFeedback);
+                pageFeedback.classList.add("in-page-toc-rail");
+            } else {
+                pageFeedbackAnchor.insertAdjacentElement("afterend", pageFeedback);
+                pageFeedback.classList.remove("in-page-toc-rail");
+            }
+        };
+
+        desktopFeedbackLayout.addEventListener("change", placePageFeedback);
+        placePageFeedback();
+    }
 
     const tocLinks = Array.from(toc.querySelectorAll("a[href^='#']"));
     const trackedSections = tocLinks

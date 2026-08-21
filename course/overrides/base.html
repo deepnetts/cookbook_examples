@@ -178,9 +178,87 @@
             {{ page.content }}
         </div>
       {% endblock %}
+      {% if (current_section == 'get-started' and current_url == 'getting-started/') or (current_section == 'examples' and current_url == 'examples/') or (current_section == 'developer-guide' and current_url == 'developer-guide/') or (current_section == 'course' and current_url == 'course/') %}
+        <details class="page-faq" data-page-faq>
+          <summary aria-expanded="false"><span>Frequently Asked Questions</span><span class="page-faq-toggle" aria-hidden="true"></span></summary>
+          <div class="page-faq-questions">
+            {% if current_section == 'get-started' %}
+              <details>
+                <summary aria-expanded="false"><span>Which Java and Maven versions do I need?</span><span aria-hidden="true"></span></summary>
+                <p>The cookbook projects target Java 25 and use Maven. Confirm that both <code>java -version</code> and <code>mvn -version</code> report the expected JDK before running an example.</p>
+              </details>
+              <details>
+                <summary aria-expanded="false"><span>Why does Deep Netts need the Vector API module?</span><span aria-hidden="true"></span></summary>
+                <p>Deep Netts uses the JDK Vector API for optimized numerical operations. Add <code>--add-modules jdk.incubator.vector</code> to the runtime VM options.</p>
+              </details>
+              <details>
+                <summary aria-expanded="false"><span>Can I run the projects from NetBeans?</span><span aria-hidden="true"></span></summary>
+                <p>Yes. Open the example directory as a Maven project, select Java 25, add the Vector API module to VM options, and run its main class.</p>
+              </details>
+              <details>
+                <summary aria-expanded="false"><span>Where do I get Deep Netts?</span><span aria-hidden="true"></span></summary>
+                <p>Use the Free Download link in the header, then follow the Download and Installation pages to add the required artifacts and license.</p>
+              </details>
+            {% elif current_section == 'examples' %}
+              <details>
+                <summary aria-expanded="false"><span>How do I run a complete example?</span><span aria-hidden="true"></span></summary>
+                <p>Each example is a standalone Maven project. Open its directory in NetBeans or run it with Maven using Java 25 and the Vector API module.</p>
+              </details>
+              <details>
+                <summary aria-expanded="false"><span>How can I test training with only one epoch?</span><span aria-hidden="true"></span></summary>
+                <p>For examples that expose the shared training property, add <code>-Ddeepnetts.epochs=1</code> to the VM options.</p>
+              </details>
+              <details>
+                <summary aria-expanded="false"><span>Where are the datasets stored?</span><span aria-hidden="true"></span></summary>
+                <p>Small datasets are included under each project's <code>src/main/resources/datasets</code> directory. Large VGG weights are downloaded and cached separately.</p>
+              </details>
+              <details>
+                <summary aria-expanded="false"><span>Where are trained models saved?</span><span aria-hidden="true"></span></summary>
+                <p>Training examples create a local <code>models</code> directory and save the resulting <code>.dnet</code> model there.</p>
+              </details>
+            {% elif current_section == 'developer-guide' %}
+              <details>
+                <summary aria-expanded="false"><span>How does JSR 381 relate to Deep Netts?</span><span aria-hidden="true"></span></summary>
+                <p>JSR 381 defines standard Java Machine Learning contracts such as <code>DataSet</code>. Deep Netts provides concrete neural-network functionality and interoperates with those shared types.</p>
+              </details>
+              <details>
+                <summary aria-expanded="false"><span>How do I avoid preprocessing data leakage?</span><span aria-hidden="true"></span></summary>
+                <p>Split the dataset first, fit preprocessing only on the training set, and apply the fitted transformation to the test set and future inputs.</p>
+              </details>
+              <details>
+                <summary aria-expanded="false"><span>Should preprocessing be saved with the model?</span><span aria-hidden="true"></span></summary>
+                <p>Yes. A prediction must use the same transformation learned during training, so attach the fitted normalizer or scaler before saving the model.</p>
+              </details>
+              <details>
+                <summary aria-expanded="false"><span>When should I use the Developer Guide instead of Examples?</span><span aria-hidden="true"></span></summary>
+                <p>Use the Developer Guide for one focused API task. Use Examples when you need to see an entire workflow assembled into a runnable project.</p>
+              </details>
+            {% elif current_section == 'course' %}
+              <details>
+                <summary aria-expanded="false"><span>What is the recommended lesson order?</span><span aria-hidden="true"></span></summary>
+                <p>Start with Machine Learning Basics, continue with Neural Networks and the Deep Netts API, then finish with Model Development.</p>
+              </details>
+              <details>
+                <summary aria-expanded="false"><span>Do the lessons include runnable code?</span><span aria-hidden="true"></span></summary>
+                <p>The lessons explain concepts and compact code fragments. Use the Examples section for complete standalone Maven projects.</p>
+              </details>
+              <details>
+                <summary aria-expanded="false"><span>Should I learn regression or classification first?</span><span aria-hidden="true"></span></summary>
+                <p>Begin with regression to understand inputs, targets, training, and error. Then continue with binary and multiclass classification.</p>
+              </details>
+              <details>
+                <summary aria-expanded="false"><span>Where should I look up an unfamiliar term?</span><span aria-hidden="true"></span></summary>
+                <p>Use the Glossary for concise definitions and return to the relevant lesson for the full context.</p>
+              </details>
+            {% endif %}
+          </div>
+        </details>
+      {% endif %}
+      {% include "faq-pages.html" %}
       {% set feedback_excluded_pages = ["index.md", "glossary.md", "course/index.md", "getting-started/index.md", "examples/index.md", "examples/regression/index.md", "examples/classification/index.md", "examples/image-classification/index.md", "examples/nlp/index.md", "developer-guide/index.md"] %}
       {% set show_page_feedback = page and page.file and page.file.src_uri not in feedback_excluded_pages %}
       {% if show_page_feedback %}
+        <div class="page-feedback-anchor" data-page-feedback-anchor></div>
         <section class="page-feedback" data-page-feedback data-page="{{ page.url }}" aria-labelledby="page-feedback-title">
           <p id="page-feedback-title" class="page-feedback-title">Was this helpful?</p>
           <div class="page-feedback-choices" role="group" aria-label="Rate this page">
@@ -202,7 +280,7 @@
           <p class="page-feedback-thanks" data-feedback-thanks hidden><span aria-hidden="true">✓</span> Thank you!</p>
         </section>
       {% endif %}
-      {% set hide_page_navigation = page and ((page.file and page.file.src_uri == "index.md") or page.url == "course/" or page.url == "getting-started/" or page.url == "examples/" or page.url == "examples/classification/" or page.url == "examples/regression/" or page.url == "examples/image-classification/" or page.url == "examples/nlp/" or page.url == "api-documentation/" or page.url == "developer-guide/") %}
+      {% set hide_page_navigation = page and ((page.file and page.file.src_uri == "index.md") or page.url == "glossary/" or page.url == "course/" or page.url == "getting-started/" or page.url == "examples/" or page.url == "examples/classification/" or page.url == "examples/regression/" or page.url == "examples/image-classification/" or page.url == "examples/nlp/" or page.url == "api-documentation/" or page.url == "developer-guide/") %}
       {% set show_previous = page and page.previous_page and not hide_page_navigation and page.url != "lectures/01-ml-basics/" and page.url != "developer-guide/loading-data/" %}
       {% set show_next = page and page.next_page and not hide_page_navigation and page.url != "lectures/04-model-development/" and page.url != "developer-guide/jsr381/" %}
       {% if show_previous or show_next %}
