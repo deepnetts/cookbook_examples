@@ -28,6 +28,93 @@ document.addEventListener("DOMContentLoaded", function () {
     const pageBody = document.getElementById("body");
     const previousPage = document.querySelector(".markdown-body > .prev");
     const nextPage = document.querySelector(".markdown-body > .next");
+    const pageFeedback = document.querySelector("[data-page-feedback]");
+
+    if (pageFeedback) {
+        const feedbackButtons = Array.from(
+            pageFeedback.querySelectorAll("[data-feedback-value]")
+        );
+        const feedbackForm = pageFeedback.querySelector("[data-feedback-form]");
+        const feedbackComment = feedbackForm.querySelector("textarea");
+        const feedbackThanks = pageFeedback.querySelector("[data-feedback-thanks]");
+        const feedbackStorageKey = "deepnetts-page-feedback:" +
+            pageFeedback.dataset.page;
+        let selectedFeedback = "";
+
+        const saveFeedback = function (comment) {
+            const feedback = {
+                value: selectedFeedback,
+                comment: comment || "",
+                page: pageFeedback.dataset.page,
+                submittedAt: new Date().toISOString()
+            };
+
+            try {
+                window.localStorage.setItem(
+                    feedbackStorageKey,
+                    JSON.stringify(feedback)
+                );
+            } catch (error) {
+                // Feedback still completes when local storage is unavailable.
+            }
+        };
+
+        const showThankYou = function () {
+            pageFeedback.classList.add("submitted");
+            feedbackForm.hidden = true;
+            feedbackThanks.hidden = false;
+        };
+
+        try {
+            const storedFeedback = window.localStorage.getItem(feedbackStorageKey);
+
+            if (storedFeedback) {
+                const parsedFeedback = JSON.parse(storedFeedback);
+
+                selectedFeedback = parsedFeedback.value || "";
+                feedbackComment.value = parsedFeedback.comment || "";
+                feedbackButtons.forEach(function (button) {
+                    const isSelected =
+                        button.dataset.feedbackValue === selectedFeedback;
+
+                    button.classList.toggle("selected", isSelected);
+                    button.setAttribute("aria-pressed", String(isSelected));
+                });
+            }
+        } catch (error) {
+            // Ignore storage access errors and keep the component interactive.
+        }
+
+        feedbackButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                selectedFeedback = button.dataset.feedbackValue;
+                pageFeedback.classList.remove("submitted");
+                feedbackThanks.hidden = true;
+                feedbackButtons.forEach(function (choice) {
+                    const isSelected = choice === button;
+
+                    choice.classList.toggle("selected", isSelected);
+                    choice.setAttribute("aria-pressed", String(isSelected));
+                });
+
+                if (selectedFeedback === "neutral" ||
+                    selectedFeedback === "not-helpful") {
+                    feedbackForm.hidden = false;
+                    feedbackComment.focus();
+                    return;
+                }
+
+                saveFeedback("");
+                showThankYou();
+            });
+        });
+
+        feedbackForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            saveFeedback(feedbackComment.value.trim());
+            showThankYou();
+        });
+    }
 
     if (pageBody) {
         pageBody.querySelectorAll(":scope > .github-project-action")

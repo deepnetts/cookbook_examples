@@ -178,6 +178,30 @@
             {{ page.content }}
         </div>
       {% endblock %}
+      {% set feedback_excluded_pages = ["index.md", "glossary.md", "course/index.md", "getting-started/index.md", "examples/index.md", "examples/regression/index.md", "examples/classification/index.md", "examples/image-classification/index.md", "examples/nlp/index.md", "developer-guide/index.md"] %}
+      {% set show_page_feedback = page and page.file and page.file.src_uri not in feedback_excluded_pages %}
+      {% if show_page_feedback %}
+        <section class="page-feedback" data-page-feedback data-page="{{ page.url }}" aria-labelledby="page-feedback-title">
+          <p id="page-feedback-title" class="page-feedback-title">Was this helpful?</p>
+          <div class="page-feedback-choices" role="group" aria-label="Rate this page">
+            <button type="button" data-feedback-value="helpful" aria-label="Yes, this page was helpful" aria-pressed="false" title="Helpful">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle class="face-eye" cx="9" cy="10" r="1"/><circle class="face-eye" cx="15" cy="10" r="1"/><path class="face-mouth" d="M8.5 14c1.8 2 5.2 2 7 0"/></svg>
+            </button>
+            <button type="button" data-feedback-value="neutral" aria-label="This page was partly helpful" aria-pressed="false" title="Partly helpful">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle class="face-eye" cx="9" cy="10" r="1"/><circle class="face-eye" cx="15" cy="10" r="1"/><path class="face-mouth" d="M9 15h6"/></svg>
+            </button>
+            <button type="button" data-feedback-value="not-helpful" aria-label="No, this page was not helpful" aria-pressed="false" title="Not helpful">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle class="face-eye" cx="9" cy="10" r="1"/><circle class="face-eye" cx="15" cy="10" r="1"/><path class="face-mouth" d="M8.5 16c1.8-2 5.2-2 7 0"/></svg>
+            </button>
+          </div>
+          <form class="page-feedback-form" data-feedback-form hidden>
+            <label for="page-feedback-comment-{{ page.file.src_path|replace('/', '-')|replace('.', '-') }}">What could we improve?</label>
+            <textarea id="page-feedback-comment-{{ page.file.src_path|replace('/', '-')|replace('.', '-') }}" maxlength="500" rows="3" placeholder="Tell us what was missing"></textarea>
+            <button type="submit">Submit</button>
+          </form>
+          <p class="page-feedback-thanks" data-feedback-thanks hidden><span aria-hidden="true">✓</span> Thank you!</p>
+        </section>
+      {% endif %}
       {% set hide_page_navigation = page and ((page.file and page.file.src_uri == "index.md") or page.url == "course/" or page.url == "getting-started/" or page.url == "examples/" or page.url == "examples/classification/" or page.url == "examples/regression/" or page.url == "examples/image-classification/" or page.url == "examples/nlp/" or page.url == "api-documentation/" or page.url == "developer-guide/") %}
       {% set show_previous = page and page.previous_page and not hide_page_navigation and page.url != "lectures/01-ml-basics/" and page.url != "developer-guide/loading-data/" %}
       {% set show_next = page and page.next_page and not hide_page_navigation and page.url != "lectures/04-model-development/" and page.url != "developer-guide/jsr381/" %}
