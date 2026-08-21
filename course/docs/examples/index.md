@@ -8,25 +8,21 @@ If you have not run Deep Netts yet, complete [Hello World](../getting-started/in
 
 <div class="example-categories">
   <a href="regression/">
-    <span class="category-mark">01</span>
     <strong>Regression</strong>
     <small>Predict continuous numerical values from one or more features.</small>
     <span class="category-arrow" aria-hidden="true">→</span>
   </a>
   <a href="classification/">
-    <span class="category-mark">02</span>
     <strong>Classification</strong>
     <small>Predict binary or multiclass labels from structured data.</small>
     <span class="category-arrow" aria-hidden="true">→</span>
   </a>
   <a href="image-classification/">
-    <span class="category-mark">03</span>
     <strong>Image Classification</strong>
     <small>Build models that assign images to predefined classes.</small>
     <span class="category-arrow" aria-hidden="true">→</span>
   </a>
   <a href="nlp/">
-    <span class="category-mark">04</span>
     <strong>NLP</strong>
     <small>Process natural language, including neural probabilistic language models.</small>
     <span class="category-arrow" aria-hidden="true">→</span>

@@ -8,19 +8,16 @@ This course is intended for experienced Java developers who are new to Machine L
 
 <nav class="course-start-cards" aria-label="Choose your starting point">
   <a href="../getting-started/">
-    <span class="course-start-icon" aria-hidden="true">01</span>
     <strong>New to Deep Netts?</strong>
     <small>Install Deep Netts and verify your environment with Hello World.</small>
     <span class="course-start-link">Get started &rarr;</span>
   </a>
   <a href="../examples/">
-    <span class="course-start-icon" aria-hidden="true">02</span>
     <strong>Ready to run code?</strong>
     <small>Choose a complete Java project and follow its walkthrough.</small>
     <span class="course-start-link">Explore examples &rarr;</span>
   </a>
   <a href="../lectures/01-ml-basics/">
-    <span class="course-start-icon" aria-hidden="true">03</span>
     <strong>New to Machine Learning?</strong>
     <small>Learn the essential concepts, then connect them to working examples.</small>
     <span class="course-start-link">Learn ML basics &rarr;</span>
@@ -31,22 +28,18 @@ This course is intended for experienced Java developers who are new to Machine L
 
 <nav class="learning-path" aria-label="Recommended learning flow">
   <a href="../getting-started/">
-    <span>01</span>
     <strong>Set up Deep Netts</strong>
     <small>Install and verify the environment</small>
   </a>
   <a href="../lectures/01-ml-basics/">
-    <span>02</span>
     <strong>Learn the concepts</strong>
     <small>Build your Machine Learning foundation</small>
   </a>
   <a href="../examples/">
-    <span>03</span>
     <strong>Explore an example</strong>
     <small>Connect theory to focused Java code</small>
   </a>
   <a href="../examples/running-examples/">
-    <span>04</span>
     <strong>Run the project</strong>
     <small>Execute a complete Maven workflow</small>
   </a>

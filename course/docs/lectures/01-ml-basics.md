@@ -51,34 +51,34 @@ Regression predicts a numerical value. The result can take many possible values 
 The number of input features determines whether a problem uses simple or multiple linear regression. Compare both examples below.
 
 <div class="ml-concept-cards">
-  <article>
+  <a class="ml-concept-card" href="../../examples/regression/sorting-execution-time-prediction/">
     <span>Simple linear regression</span>
     <h3>Sorting Execution Time</h3>
     <p>One numerical feature - the comparison count - is used to predict one continuous execution-time value.</p>
     <pre><code>comparison count → model → execution time</code></pre>
-    <a href="../../examples/regression/sorting-execution-time-prediction/">Explore Sorting Time Prediction →</a>
-  </article>
-  <article>
+    <span class="ml-concept-card-action">Explore Sorting Time Prediction →</span>
+  </a>
+  <a class="ml-concept-card" href="../../examples/regression/computer-hardware-performance-prediction/">
     <span>Multiple linear regression</span>
     <h3>Computer Hardware Performance</h3>
     <p>Six hardware characteristics contribute to the predicted published relative performance (<code>PRP</code>).</p>
     <pre><code>hardware features → model → PRP: 347.25</code></pre>
-    <a href="../../examples/regression/computer-hardware-performance-prediction/">Explore Hardware Performance →</a>
-  </article>
-  <article>
+    <span class="ml-concept-card-action">Explore Hardware Performance →</span>
+  </a>
+  <a class="ml-concept-card" href="../../examples/regression/insurance-payment-prediction/">
     <span>Simple linear regression</span>
     <h3>Insurance Payment Prediction</h3>
     <p>One normalized claim-count feature is used to estimate the normalized total insurance payment.</p>
     <pre><code>claim count → model → total payment</code></pre>
-    <a href="../../examples/regression/insurance-payment-prediction/">Explore Insurance Prediction →</a>
-  </article>
-  <article>
+    <span class="ml-concept-card-action">Explore Insurance Prediction →</span>
+  </a>
+  <a class="ml-concept-card" href="../../examples/regression/house-price-prediction/">
     <span>Nonlinear regression</span>
     <h3>House Price Prediction</h3>
     <p>Hidden layers learn a nonlinear relationship between prepared <code>LSTAT</code> data and median house value.</p>
     <pre><code>LSTAT → neural network → MEDV</code></pre>
-    <a href="../../examples/regression/house-price-prediction/">Explore House Price Prediction →</a>
-  </article>
+    <span class="ml-concept-card-action">Explore House Price Prediction →</span>
+  </a>
 </div>
 
 ## Classification
@@ -88,45 +88,45 @@ Classification predicts which category a sample belongs to.
 The target may contain two classes, several classes, or categories inferred from image pixels. Compare the four common patterns below.
 
 <div class="ml-concept-cards">
-  <article>
+  <a class="ml-concept-card" href="../../examples/classification/email-spam-detection/">
     <span>Binary classification</span>
     <h3>Email Spam Detection</h3>
     <p>The model produces a probability, then a threshold converts it into <code>SPAM</code> or <code>NOT SPAM</code>.</p>
     <pre><code>email features → model → spam probability
 &lt; 0.5  → NOT SPAM
 ≥ 0.5  → SPAM</code></pre>
-    <a href="../../examples/classification/email-spam-detection/">Explore Email Spam Detection →</a>
-  </article>
-  <article>
+    <span class="ml-concept-card-action">Explore Email Spam Detection →</span>
+  </a>
+  <a class="ml-concept-card" href="../../examples/classification/sonar-rock-mine-classification/">
     <span>Logistic regression</span>
     <h3>Sonar Rock or Mine</h3>
     <p>A compact model connects 60 signal features directly to one Sigmoid output and applies the same binary threshold.</p>
     <pre><code>sonar signals → model → ROCK or MINE</code></pre>
-    <a href="../../examples/classification/sonar-rock-mine-classification/">Explore Sonar Classification →</a>
-  </article>
-  <article>
+    <span class="ml-concept-card-action">Explore Sonar Classification →</span>
+  </a>
+  <a class="ml-concept-card" href="../../examples/classification/iris-flower-classification/">
     <span>Multiclass classification</span>
     <h3>Iris Flower Classification</h3>
     <p>Three one-hot targets represent the known species. The model produces one probability per class and selects the largest.</p>
     <pre><code>flower measurements → SETOSA
                     → VERSICOLOR
                     → VIRGINICA</code></pre>
-    <a href="../../examples/classification/iris-flower-classification/">Explore Iris Classification →</a>
-  </article>
-  <article>
+    <span class="ml-concept-card-action">Explore Iris Classification →</span>
+  </a>
+  <a class="ml-concept-card" href="../../examples/classification/credit-card-fraud-detection/">
     <span>Binary classification</span>
     <h3>Credit Card Fraud Detection</h3>
     <p>A balanced transaction dataset trains a model to estimate fraud probability from 29 numerical features.</p>
     <pre><code>transaction features → FRAUD or LEGITIMATE</code></pre>
-    <a href="../../examples/classification/credit-card-fraud-detection/">Explore Fraud Detection →</a>
-  </article>
-  <article>
+    <span class="ml-concept-card-action">Explore Fraud Detection →</span>
+  </a>
+  <a class="ml-concept-card" href="../../examples/image-classification/">
     <span>Convolutional networks</span>
     <h3>Image Classification</h3>
     <p>Hot Dog, Duke, and Parking models learn local visual patterns from RGB pixels arranged by width, height, and color channel.</p>
     <pre><code>image pixels → CNN → predicted class</code></pre>
-    <a href="../../examples/image-classification/">Explore Image Classification →</a>
-  </article>
+    <span class="ml-concept-card-action">Explore Image Classification →</span>
+  </a>
 </div>
 
 ## Regression or classification?

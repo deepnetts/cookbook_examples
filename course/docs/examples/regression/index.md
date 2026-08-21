@@ -4,7 +4,7 @@ Explore complete Java projects that train neural networks to predict continuous 
 
 <div class="example-gallery">
   <a class="example-gallery-card" href="sorting-execution-time-prediction/">
-    <span class="example-gallery-media"><img src="../../assets/example-cards/sorting-execution-time.svg" alt="Simple linear regression for sorting execution time" loading="lazy"></span>
+    <span class="example-gallery-media"><img src="../../assets/example-cards/sorting-execution-time-white.png" alt="Linear regression between sorting comparisons and execution time" loading="lazy"></span>
     <span class="example-gallery-content">
       <span class="example-gallery-tag">Regression</span>
       <strong>Sorting Execution Time Prediction</strong>
