@@ -14,7 +14,7 @@
         {% if config.site_author %}<meta name="author" content="{{ config.site_author }}">{% endif %}
         {% if page and page.canonical_url %}<link rel="canonical" href="{{ page.canonical_url }}">{% endif %}
         {% if config.site_favicon %}<link rel="shortcut icon" href="{{ config.site_favicon|url }}">
-        {% else %}<link rel="shortcut icon" href="{{ 'img/favicon.ico'|url }}">{% endif %}
+        {% else %}<link rel="icon" type="image/png" href="{{ 'assets/favicon.png'|url }}?v=3">{% endif %}
       {%- endblock %}
 
       {%- block htmltitle %}
