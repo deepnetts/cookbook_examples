@@ -1681,6 +1681,36 @@ textarea {
     }
 }
 
+/* Let documentation use the extra canvas exposed by wide screens and browser
+   zoom-out, while keeping line lengths under control on very large displays. */
+@media only screen and (min-width: 1281px) {
+    .has-section-sidebar .markdown-body,
+    .has-section-sidebar .markdown-body.cake {
+        width: calc(100vw - 718px);
+        max-width: 1600px;
+        margin-right: 0 !important;
+        margin-left: 350px !important;
+    }
+
+    .no-section-sidebar:not(.home-page) .markdown-body,
+    .no-section-sidebar:not(.home-page) .markdown-body.cake {
+        width: calc(100vw - 408px);
+        max-width: 1600px;
+        margin-right: 0 !important;
+        margin-left: 40px !important;
+    }
+
+    .has-section-sidebar .page-toc {
+        right: auto;
+        left: calc(378px + min(1600px, calc(100vw - 718px)));
+    }
+
+    .no-section-sidebar:not(.home-page) .page-toc {
+        right: auto;
+        left: calc(68px + min(1600px, calc(100vw - 408px)));
+    }
+}
+
 /* Example category galleries */
 .example-gallery {
   display: grid;
@@ -1823,6 +1853,7 @@ textarea {
     flex-basis: 190px;
   }
 }
+
 .markdown-body .github-action-right {
   display: flex;
   justify-content: flex-end;
@@ -2469,5 +2500,153 @@ textarea {
   .page-feedback-form {
     box-sizing: border-box;
     width: min(280px, calc(100vw - 30px));
+  }
+}
+
+@media only screen and (min-width: 1281px) {
+  .has-section-sidebar .page-toc-rail {
+    right: auto;
+    left: calc(378px + min(1600px, calc(100vw - 718px)));
+  }
+
+  .no-section-sidebar:not(.home-page) .page-toc-rail {
+    right: auto;
+    left: calc(68px + min(1600px, calc(100vw - 408px)));
+  }
+}
+
+/* Compact header used on narrow viewports and at high browser zoom. */
+@media only screen and (max-width: 1100px) {
+  .header {
+    position: fixed;
+    justify-content: space-between;
+  }
+
+  .header .title {
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 0;
+  }
+
+  .title .logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 56px;
+    height: 56px;
+    margin: 0;
+    overflow: hidden;
+    transform: translate(-50%, -50%);
+  }
+
+  .title .logo img {
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    display: block;
+    width: 248px;
+    max-width: none;
+    height: auto;
+    margin: 0;
+    transform: translateY(-50%);
+  }
+
+  .header .header-download {
+    display: none;
+  }
+
+  .header .scrh {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    margin: 0;
+    color: #ffffff;
+    border-radius: 7px;
+    cursor: pointer;
+  }
+
+  .header .scrh:hover,
+  .header .scrh:focus-visible {
+    color: #ffffff;
+    background: rgba(56, 189, 248, 0.18);
+    outline: 2px solid rgba(125, 211, 252, 0.9);
+    outline-offset: 2px;
+  }
+
+  .header .scrh svg {
+    width: 25px;
+    height: 25px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+
+  .header .search.show {
+    position: fixed;
+    top: 84px;
+    right: 16px;
+    display: block !important;
+    z-index: 1100;
+    padding: 8px;
+    background: #064e72;
+    border: 1px solid rgba(125, 211, 252, 0.45);
+    border-radius: 9px;
+    box-shadow: 0 12px 28px rgba(3, 27, 53, 0.3);
+  }
+
+  .header .search.show input {
+    display: block;
+    width: min(360px, calc(100vw - 48px));
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .title .logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .title .logo img {
+    left: 3px;
+    width: 214px;
+  }
+}
+
+/* Keep the complete documentation canvas centered after it reaches its
+   maximum width, which is especially noticeable at strong zoom-out. */
+@media only screen and (min-width: 2299px) {
+  .header .title {
+    max-width: 2298px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .has-section-sidebar .side {
+    left: calc(50vw - 1149px);
+  }
+
+  .has-section-sidebar .markdown-body,
+  .has-section-sidebar .markdown-body.cake {
+    margin-left: calc(50vw - 799px) !important;
+  }
+
+  .has-section-sidebar .page-toc,
+  .has-section-sidebar .page-toc-rail {
+    left: calc(50vw + 829px);
+  }
+
+  .no-section-sidebar:not(.home-page) .markdown-body,
+  .no-section-sidebar:not(.home-page) .markdown-body.cake {
+    margin-left: calc(50vw - 974px) !important;
+  }
+
+  .no-section-sidebar:not(.home-page) .page-toc,
+  .no-section-sidebar:not(.home-page) .page-toc-rail {
+    left: calc(50vw + 654px);
   }
 }
