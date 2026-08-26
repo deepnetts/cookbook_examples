@@ -4,7 +4,7 @@ Explore Java classifiers that predict binary decisions and multiclass labels fro
 
 <div class="example-gallery">
   <a class="example-gallery-card" href="sonar-rock-mine-classification/">
-    <span class="example-gallery-media"><img src="../../assets/example-cards/sonar-rock-mine-illustrated.png" alt="Decision boundary separating a naval mine from a rock" loading="lazy"></span>
+    <span class="example-gallery-media"><img src="../../assets/example-cards/sonar-rock-mine-white.png" alt="Decision boundary separating a naval mine from a rock" loading="lazy"></span>
     <span class="example-gallery-content">
       <span class="example-gallery-tag">Binary classification</span>
       <strong>Sonar Rock or Mine Classification</strong>
