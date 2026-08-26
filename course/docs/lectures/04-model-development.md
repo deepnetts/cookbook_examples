@@ -174,6 +174,19 @@ neuralNet.getTrainer()
 neuralNet.train(trainingSet);
 ```
 
+### Diagnose the learning behavior
+
+Compare training behavior with evaluation on unseen data rather than reading training loss in isolation:
+
+| Observation | Likely diagnosis | Reasonable next check |
+|---|---|---|
+| Training and test performance are both weak | Underfitting | Features, preprocessing, epoch limit, learning rate, or model capacity |
+| Training is strong but test performance is much weaker | Overfitting | Data quantity, duplicates, leakage, excessive capacity, or too much training |
+| Loss changes sharply or does not settle | Unstable optimization | Learning rate, scaling, batch size, or invalid values |
+| Training improves extremely slowly | Slow convergence | Learning rate, preprocessing, activation choice, or architecture |
+
+Change one major factor at a time. Otherwise, even an improved result does not reveal which decision caused the improvement.
+
 ## 9. Evaluate on unseen data
 
 Evaluation should answer whether the model is useful for the real prediction problem, not only whether training completed.
@@ -243,16 +256,16 @@ Without this context, it is difficult to know whether a result changed because o
 
 Before considering an experiment complete, verify that you have:
 
-- [ ] defined the target and task type;
-- [ ] understood and inspected the dataset;
-- [ ] separated training and test data;
-- [ ] fitted preprocessing on training data only;
-- [ ] selected an appropriate architecture;
-- [ ] matched the output activation and loss to the task;
-- [ ] recorded the training configuration;
-- [ ] evaluated on unseen data with relevant metrics;
-- [ ] saved preprocessing with the model;
-- [ ] preserved the prediction input contract.
+- Defined the target and task type;
+- Understood and inspected the dataset;
+- Separated training and test data;
+- Fitted preprocessing on training data only;
+- Selected an appropriate architecture;
+- Matched the output activation and loss to the task;
+- Recorded the training configuration;
+- Evaluated on unseen data with relevant metrics;
+- Saved preprocessing with the model;
+- Preserved the prediction input contract.
 
 Model development is a pipeline. Every stage contributes to whether the final prediction can be trusted.
 

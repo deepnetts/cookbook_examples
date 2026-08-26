@@ -1,27 +1,6 @@
 {% set faq_items = [] %}
 
-{% if current_url == 'getting-started/prerequisites/' %}
-  {% set faq_items = [
-    ("Why does the cookbook require Java 25?", "The projects target Java 25 and use the incubating Vector API expected by the current Deep Netts runtime."),
-    ("How do I confirm Maven uses the correct JDK?", "Run <code>mvn -version</code> and check that its Java home points to the same Java 25 installation as <code>java -version</code>.")
-  ] %}
-{% elif current_url == 'getting-started/download/' %}
-  {% set faq_items = [
-    ("Which Deep Netts download should I choose?", "Choose the distribution that matches your license and operating system, then keep the extracted libraries together for installation."),
-    ("Do the example projects include the Deep Netts libraries?", "No. The projects declare Maven coordinates, while the Deep Netts artifacts are installed separately from the downloaded distribution.")
-  ] %}
-{% elif current_url == 'getting-started/installation/' %}
-  {% set faq_items = [
-    ("Why are the Deep Netts artifacts installed locally?", "The installation step makes the downloaded libraries available through your local Maven repository so the example projects can resolve them normally."),
-    ("What should I check when Maven cannot resolve Deep Netts?", "Verify the artifact version in <code>pom.xml</code>, confirm the installation command succeeded, and inspect the active Maven local repository.")
-  ] %}
-{% elif current_url == 'getting-started/hello-world/' %}
-  {% set faq_items = [
-    ("What does the Hello World project verify?", "It confirms Java, Maven, Deep Netts, licensing, and the Vector API runtime option before you start a larger example."),
-    ("Why can compilation succeed while running still fails?", "The Vector API module is a runtime requirement. Add <code>--add-modules jdk.incubator.vector</code> to the VM options used by the actual run configuration.")
-  ] %}
-
-{% elif current_url == 'examples/regression/' %}
+{% if current_url == 'examples/regression/' %}
   {% set faq_items = [
     ("When should I choose a regression example?", "Use regression when the target is a continuous numerical value such as time, price, payment, or performance."),
     ("Which regression example should I run first?", "Start with Sorting Execution Time because it uses one input and one output, then continue with the multivariable examples.")

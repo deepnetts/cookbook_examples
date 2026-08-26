@@ -145,6 +145,68 @@ A useful first question for any Machine Learning project is therefore:
 
 If the answer is a quantity, the problem is usually regression. If the answer is a category, the problem is classification.
 
+## Training, testing, and generalization
+
+A model must learn from one group of samples and be evaluated on different samples. This separation checks whether it learned a reusable pattern instead of memorizing the examples it already saw.
+
+```text
+complete dataset
+      |
+      +---- training set -> learn weights and biases
+      |
+      +---- test set -----> measure behavior on unseen samples
+```
+
+An `80/20` train/test split is a common starting point, although the right proportion depends on dataset size. The important rule is that the test set must not participate in training or in fitting preprocessing values.
+
+When a model performs very well on training data but poorly on unseen data, it is **overfitting**. When it performs poorly even on training data, it is usually **underfitting** and may need better features, more training, or a more suitable architecture.
+
+## Reading evaluation metrics
+
+Evaluation translates model behavior into measurements. A single metric rarely tells the complete story, so choose metrics that match the task and the cost of different mistakes.
+
+### Regression metrics
+
+| Metric | What it measures | Better result |
+|---|---|---|
+| Mean Absolute Error (MAE) | Average absolute prediction error | Lower |
+| Mean Squared Error (MSE) | Average squared error, with more emphasis on large misses | Lower |
+| Root Mean Squared Error (RMSE) | Square root of MSE, on the target's general scale | Lower |
+| R-squared (R²) | Improvement over always predicting the target mean | Usually closer to `1` |
+
+MSE can be written as:
+
+```text
+MSE = sum((actual - predicted)^2) / number of samples
+```
+
+Because the errors are squared, one large error influences MSE more strongly than several small errors.
+
+### Classification metrics
+
+A binary classifier produces four possible outcomes:
+
+| | Predicted positive | Predicted negative |
+|---|---|---|
+| **Actually positive** | True positive (TP) | False negative (FN) |
+| **Actually negative** | False positive (FP) | True negative (TN) |
+
+These counts form a **confusion matrix** and support several metrics:
+
+```text
+accuracy  = (TP + TN) / all predictions
+precision = TP / (TP + FP)
+recall    = TP / (TP + FN)
+F1        = 2 * precision * recall / (precision + recall)
+```
+
+- Accuracy describes overall correctness, but can hide poor behavior when classes are imbalanced.
+- Precision matters when a false alarm is expensive. In spam detection, it asks how many emails marked as spam really were spam.
+- Recall matters when missing a positive case is expensive. In fraud detection, it asks how much real fraud the model found.
+- F1 summarizes the balance between precision and recall.
+
+Always interpret these values in the context of the application rather than choosing a model only because one number is largest.
+
 ## Key terms
 
 | Term | Meaning |
@@ -155,6 +217,8 @@ If the answer is a quantity, the problem is usually regression. If the answer is
 | Model | A learned mapping from features to a prediction |
 | Training | The process of learning the model from known examples |
 | Prediction | The model output for new input data |
+| Generalization | Useful performance on samples not seen during training |
+| Overfitting | Strong training performance but weak unseen-data performance |
 
 ## Continue learning
 

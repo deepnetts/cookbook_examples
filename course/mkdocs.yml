@@ -21,10 +21,6 @@ markdown_extensions:
 nav:
   - Get Started:
       - Overview: getting-started/index.md
-      - Prerequisites: getting-started/prerequisites.md
-      - Download: getting-started/download.md
-      - Installation: getting-started/installation.md
-      - Hello World: getting-started/hello-world.md
 
   - Examples:
       - Overview: examples/index.md

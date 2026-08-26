@@ -62,7 +62,7 @@ Each Example page explains the problem, dataset, model, and important code befor
 ## Recommended path
 
 1. [Start with Getting Started](../getting-started/index.md)
-2. [Verify the setup with Hello World](../getting-started/hello-world.md)
+2. [Verify the setup with Hello World](../getting-started/index.md#4-hello-world)
 3. [Learn Machine Learning Basics](../lectures/01-ml-basics.md)
 4. [Understand Neural Networks](../lectures/02-neural-networks.md)
 5. [Learn the Deep Netts API](../lectures/03-deep-netts-api.md)

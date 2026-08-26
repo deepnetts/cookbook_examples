@@ -82,7 +82,7 @@ spam probability
 
 The notation provides a compact system-level view before we inspect what happens inside each layer.
 
-[Explore Spam Classification](../examples/classification/email-spam-detection.md)
+<a class="explanation-button" href="../../examples/classification/email-spam-detection/" target="_blank" rel="noopener noreferrer">Explore Spam Classification</a>
 
 ## Layer responsibilities
 
@@ -140,7 +140,7 @@ flower measurements -> hidden transformation -> three class probabilities
 
 The position of the largest output determines the predicted species.
 
-[Explore Multiclass Classification](../examples/classification/iris-flower-classification.md)
+<a class="explanation-button" href="../../examples/classification/iris-flower-classification/" target="_blank" rel="noopener noreferrer">Explore Multiclass Classification</a>
 
 ### Image classification: convolution and pooling
 
@@ -152,7 +152,7 @@ RGB image -> convolution -> max pooling -> fully connected -> class probability
 
 Convolutional filters learn local visual patterns such as edges, shapes, and textures. Pooling reduces spatial dimensions while retaining strong activations. A final Sigmoid output supports binary tasks such as hot dog detection, Duke recognition, or parking occupancy.
 
-[Explore Hot Dog or Not Hot Dog](../examples/image-classification/hotdog-nothotdog.md)
+<a class="explanation-button" href="../../examples/image-classification/hotdog-nothotdog/" target="_blank" rel="noopener noreferrer">Explore Hot Dog or Not Hot Dog</a>
 
 ### Linear regression: `6 -> 1`
 
@@ -169,7 +169,7 @@ CHMAX -----/
 
 Because there are no hidden layers, the model learns a weighted linear combination of the six features. This is multiple linear regression represented with the Deep Netts neural-network API.
 
-[Explore Multiple Linear Regression](../examples/regression/computer-hardware-performance-prediction.md)
+<a class="explanation-button" href="../../examples/regression/computer-hardware-performance-prediction/" target="_blank" rel="noopener noreferrer">Explore Multiple Linear Regression</a>
 
 At the system level, both models have the same responsibility:
 
@@ -249,6 +249,69 @@ In more specific terms, training:
 4. uses backpropagation and an optimizer to adjust parameters.
 
 The network architecture remains the same during this process. What changes are the learned weights and biases inside its neurons.
+
+### From loss to a parameter update
+
+One training update connects four operations:
+
+```text
+forward pass
+     |
+     v
+prediction and loss
+     |
+     v
+backpropagation calculates gradients
+     |
+     v
+optimizer updates weights and biases
+```
+
+A **gradient** describes how the loss would change if one parameter changed slightly. Backpropagation moves from the output toward earlier layers and applies the chain rule to calculate a gradient for every trainable weight and bias.
+
+The optimizer then uses those gradients. The simplest update is gradient descent:
+
+```text
+new weight = old weight - learning rate * gradient
+```
+
+The learning rate controls the size of each step. If it is too large, loss may oscillate or diverge. If it is too small, training may improve so slowly that it does not converge within the chosen epoch limit.
+
+### Epochs, batches, and updates
+
+An **epoch** is one complete pass through the training set. A **batch** is the group of samples used to calculate one parameter update.
+
+For `1,000` samples and a batch size of `100`:
+
+```text
+1 epoch = 10 batches = 10 parameter updates
+```
+
+Smaller batches update the model more frequently and introduce useful variation, while larger batches produce smoother estimates but require more memory. Epoch count and batch size are hyperparameters: neither is learned by the network.
+
+### Why ReLU helps deeper networks
+
+Backpropagation multiplies derivatives while moving through layers. With many Sigmoid or Tanh layers, these values can repeatedly shrink until early layers receive an almost-zero gradient. This is the **vanishing gradient** problem.
+
+ReLU is commonly used in hidden layers because its positive-side derivative does not shrink the gradient in the same way. It does not eliminate every training difficulty, but it is one reason ReLU is a practical default for deeper feed-forward and convolutional networks.
+
+### Count model parameters
+
+For two consecutive fully connected layers, the parameter count is:
+
+```text
+parameters = inputs * outputs + output biases
+```
+
+For the Iris architecture `4 -> 16 -> 3`:
+
+```text
+input to hidden: 4 * 16 + 16 = 80
+hidden to output: 16 * 3 + 3 = 51
+total: 131 trainable parameters
+```
+
+More parameters increase model capacity, but they also increase memory use and the risk of overfitting. Parameter count therefore helps compare architectures more meaningfully than layer count alone.
 
 ## Architecture decisions
 

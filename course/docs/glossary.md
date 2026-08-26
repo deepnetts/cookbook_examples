@@ -21,6 +21,8 @@ This glossary defines the main terms used throughout the Deep Netts course.
 [R](#r-squared-r2) ·
 [S](#sample) ·
 [T](#target) ·
+[U](#underfitting) ·
+[V](#vanishing-gradient) ·
 [W](#weight)
 
 ## Activation function
@@ -67,6 +69,10 @@ A table that counts correct and incorrect classification results for each class.
 
 A loss function commonly used for classification. It penalizes predicted probabilities that disagree with the known target class.
 
+## Convergence
+
+The state in which training updates have reached a stable region and the loss no longer improves substantially. Slow or unstable convergence can indicate an unsuitable learning rate, preprocessing, or architecture.
+
 ## Data leakage
 
 The accidental use of information during training that would not be available when predicting genuinely unseen data. Fitting preprocessing on the complete dataset before a train/test split is one example.
@@ -74,6 +80,10 @@ The accidental use of information during training that would not be available wh
 ## Dataset
 
 A collection of samples used for training, evaluation, or prediction. In the course examples, datasets are stored as CSV files.
+
+## Decision boundary
+
+The boundary that separates regions assigned to different classes. Logistic regression learns a linear decision boundary, while hidden layers can represent nonlinear boundaries.
 
 ## Epoch
 
@@ -91,6 +101,14 @@ A classification metric that combines precision and recall into one value. It is
 
 An input value that describes a sample. For example, `num_links` is one feature in the email-spam-detection dataset.
 
+## False negative
+
+A positive sample incorrectly predicted as negative. For fraud detection, this is a fraudulent transaction predicted as legitimate.
+
+## False positive
+
+A negative sample incorrectly predicted as positive. For spam detection, this is a legitimate email incorrectly marked as spam.
+
 ## Feed-forward network
 
 A neural network in which information flows from the input layer through any hidden layers to the output layer.
@@ -102,6 +120,14 @@ The process of sending input values through the network to calculate a predictio
 ## Generalization
 
 A model's ability to make useful predictions for samples that were not part of its training data.
+
+## Gradient
+
+A value describing how the loss changes with respect to a model parameter. Backpropagation calculates gradients so the optimizer knows how to adjust weights and biases.
+
+## Gradient descent
+
+An optimization method that updates parameters in the direction that reduces loss. The learning rate controls the size of each update.
 
 ## Hidden layer
 
@@ -139,6 +165,10 @@ A regression loss or metric that calculates the average squared difference betwe
 
 A preprocessing transformation that maps numerical features to a defined range, commonly from `0` to `1`.
 
+## Mini-batch
+
+A subset of training samples used to calculate one parameter update. Mini-batch training balances the noisy updates of one-sample training with the memory cost of processing the complete dataset at once.
+
 ## Model
 
 A learned mapping from input features to a prediction. In a neural network, the learned information is represented primarily by weights and biases.
@@ -154,6 +184,10 @@ A computational unit that combines weighted inputs and a bias, then usually appl
 ## Optimizer
 
 The algorithm that updates weights and biases during training. Stochastic Gradient Descent (`SGD`) is used in the introductory examples.
+
+## Overfitting
+
+A condition in which a model learns its training data too specifically and performs substantially worse on unseen samples.
 
 ## Output layer
 
@@ -231,9 +265,25 @@ The process of learning model parameters from examples by repeatedly calculating
 
 The subset of data used to fit preprocessing and learn model parameters.
 
+## True negative
+
+A negative sample correctly predicted as negative. For spam detection, this is a legitimate email correctly left outside the spam class.
+
+## True positive
+
+A positive sample correctly predicted as positive. For fraud detection, this is a fraudulent transaction correctly detected as fraud.
+
 ## Train/test split
 
 The division of a dataset into separate training and evaluation subsets.
+
+## Underfitting
+
+A condition in which a model has not learned the relevant pattern well enough and performs poorly even on its training data.
+
+## Vanishing gradient
+
+A training problem in which gradients become extremely small as they are propagated through many layers, causing early layers to learn very slowly or stop learning.
 
 ## Weight
 

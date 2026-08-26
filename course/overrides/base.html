@@ -71,7 +71,7 @@
 {% else %}
   {% set current_section = '' %}
 {% endif %}
-{% set has_context_sidebar = current_section in ['get-started', 'examples', 'developer-guide', 'course'] %}
+{% set has_context_sidebar = current_section in ['examples', 'developer-guide', 'course'] %}
 <body class="{% if has_context_sidebar %}has-section-sidebar{% else %}no-section-sidebar{% endif %}{% if page and page.file and page.file.src_uri == 'index.md' %} home-page{% endif %}">
     <header class="header">
         <a id="nav-toggle" class="pizza" aria-label="Toggle navigation" role="button">&#9776;</a>
@@ -104,16 +104,7 @@
     </header>
     <div class="side" id="side">
         <nav class="desktop-section-navigation" aria-label="Section navigation">
-          {% if current_section == 'get-started' %}
-            <h2>Get Started</h2>
-            <ul>
-              <li{% if current_url == 'getting-started/' %} class="active"{% endif %}><a href="{{ 'getting-started/'|url }}">Overview</a></li>
-              <li{% if current_url == 'getting-started/prerequisites/' %} class="active"{% endif %}><a href="{{ 'getting-started/prerequisites/'|url }}">Prerequisites</a></li>
-              <li{% if current_url == 'getting-started/download/' %} class="active"{% endif %}><a href="{{ 'getting-started/download/'|url }}">Download</a></li>
-              <li{% if current_url == 'getting-started/installation/' %} class="active"{% endif %}><a href="{{ 'getting-started/installation/'|url }}">Installation</a></li>
-              <li{% if current_url == 'getting-started/hello-world/' %} class="active"{% endif %}><a href="{{ 'getting-started/hello-world/'|url }}">Hello World</a></li>
-            </ul>
-          {% elif current_section == 'examples' %}
+          {% if current_section == 'examples' %}
             <h2>Examples</h2>
             <ul>
               <li{% if current_url == 'examples/' %} class="active"{% endif %}><a href="{{ 'examples/'|url }}">Overview</a></li>
@@ -197,7 +188,7 @@
               </details>
               <details>
                 <summary aria-expanded="false"><span>Where do I get Deep Netts?</span><span aria-hidden="true"></span></summary>
-                <p>Use the Free Download link in the header, then follow the Download and Installation pages to add the required artifacts and license.</p>
+                <p>Use the Free Download link in the header, then follow the Download and Installation sections on this page to add the required artifacts and license.</p>
               </details>
             {% elif current_section == 'examples' %}
               <details>
