@@ -1,45 +1,130 @@
 # Deep Netts Cookbook Examples
 
-Learn Machine Learning concepts and run complete Java examples with [Deep Netts](https://www.deepnetts.com/).
+Complete, runnable Machine Learning examples for Java developers using [Deep Netts](https://www.deepnetts.com/).
 
-This repository is intended primarily for experienced Java developers who are new to Machine Learning. It keeps the Java code compact while explaining the concepts and decisions behind the complete model-development workflow.
+This repository combines a guided course with 15 standalone Maven projects. The examples cover regression, binary and multiclass classification, convolutional neural networks, and TensorFlow model import. Each project includes its source code, dataset or sample assets, Maven configuration, and a detailed README.
 
-## Learning structure
+## Start here
 
-The repository provides three complementary levels:
+The projects require:
 
-```text
-Deep Netts Course
-LEARN THE CONCEPT
-        |
-        v
-Examples
-EXPLORE THE WORKFLOW
-        |
-        v
-Complete Maven Examples
-RUN THE PROJECT
+- Java 25;
+- Maven;
+- Deep Netts 4 Pro and a valid license installed in the local Maven repository;
+- the Java Vector API enabled at runtime.
+
+Follow the [Getting Started guide](course/docs/getting-started/index.md) to install the prerequisites, then verify the setup with the smallest example:
+
+```bash
+git clone https://github.com/deepnetts/cookbook-examples.git
+cd cookbook-examples/examples/hello-world
+MAVEN_OPTS="--add-modules jdk.incubator.vector" mvn clean compile exec:java
 ```
 
-The Examples pages use focused snippets to explain the important workflow steps, then link to the complete runnable projects and datasets.
+A successful run ends with `SUCCESS: Deep Netts is installed and configured correctly.`
 
-## Deep Netts Course
+## Example catalog
 
-The source for the hosted MkDocs course is located in [`course/`](course/). Learners follow the published website; they do not need to clone this repository just to read the course.
+All examples are independent Maven projects. Run commands from the selected project's directory because datasets and generated models use project-relative paths.
 
-The current course includes:
+### Setup check
 
-- Getting Started: prerequisites, download, installation, and Hello World;
-- an Examples gallery with regression and classification projects;
-- Machine Learning and neural-network learning material;
-- Deep Netts API and model-development introductions;
-- an essential Machine Learning glossary.
+| Example | What it demonstrates |
+| --- | --- |
+| [Hello World](examples/hello-world/) | Creates a minimal network and verifies Java, Maven, Deep Netts, licensing, and Vector API configuration. |
 
-The public course URL must be added here once its final deployment location is confirmed.
+### Regression
 
-### Preview the course locally
+| Example | Model and result |
+| --- | --- |
+| [Sorting Execution Time](examples/regression/sorting-execution-time-prediction/) | Simple linear regression that predicts execution time from the comparison count. |
+| [Insurance Payment](examples/regression/insurance-payment-prediction/) | Simple linear regression that predicts total insurance payments from the number of claims. |
+| [Computer Hardware Performance](examples/regression/computer-hardware-performance-prediction/) | Multiple linear regression that predicts relative CPU performance from six hardware features. |
+| [House Price](examples/regression/house-price-prediction/) | Feed-forward regression that predicts normalized house value from the `LSTAT` feature. |
 
-The following commands are for course contributors and maintainers:
+### Classification
+
+| Example | Model and result |
+| --- | --- |
+| [Sonar Rock or Mine](examples/classification/sonar-rock-mine-classification/) | Logistic regression that classifies sonar signals as rock or mine. |
+| [Email Spam Detection](examples/classification/email-spam-detection/) | Binary feed-forward network that predicts whether an email is spam. |
+| [Credit Card Fraud Detection](examples/classification/credit-card-fraud-detection/) | Binary feed-forward network that identifies fraudulent transactions. |
+| [Iris Flower Classification](examples/classification/iris-flower-classification/) | Multiclass network with Softmax output that predicts one of three Iris species. |
+
+### Image classification
+
+| Example | Model and result |
+| --- | --- |
+| [Hot Dog or Not Hot Dog](examples/img-classification/hotdog-nothotdog/) | Binary CNN that detects hot dogs in images. |
+| [Duke Logo Recognition](examples/img-classification/duke-logo-recognition/) | Binary CNN that recognizes the Java Duke logo. |
+| [Parking Lot Occupancy](examples/img-classification/parking-lot-occupancy/) | Binary CNN that classifies parking spaces as occupied or free. |
+| [Handwritten Digit Recognition](examples/img-classification/handwritten-digit-recognition/) | Multiclass CNN that recognizes MNIST digits from 0 to 9. |
+| [Lego Figure Recognition](examples/img-classification/lego-figure-recognition/) | Binary CNN that detects Lego figures. |
+| [TensorFlow VGGNet16 Import](examples/img-classification/tensorflow-vggnet16-import/) | Imports TensorFlow/ImageNet weights and runs VGGNet16 inference. |
+
+[NLP examples](examples/nlp/) are planned but not yet available.
+
+## Run an example
+
+Choose a project, open its directory, and run its configured main class:
+
+```bash
+cd examples/classification/iris-flower-classification
+MAVEN_OPTS="--add-modules jdk.incubator.vector" mvn clean compile exec:java
+```
+
+On Windows Command Prompt:
+
+```bat
+set MAVEN_OPTS=--add-modules jdk.incubator.vector
+mvn clean compile exec:java
+```
+
+On Windows PowerShell:
+
+```powershell
+$env:MAVEN_OPTS="--add-modules jdk.incubator.vector"
+mvn clean compile exec:java
+```
+
+Most training examples follow the same end-to-end workflow:
+
+```text
+load -> inspect -> split -> preprocess -> build -> train -> evaluate -> save -> predict
+```
+
+Trained `.dnet` files are written to the example's local `models/` directory. A later run may replace an existing generated model.
+
+### Image example smoke tests
+
+CNN training takes longer than the tabular examples. To verify the full workflow with one epoch, add `-Ddeepnetts.epochs=1`:
+
+```bash
+MAVEN_OPTS="--add-modules jdk.incubator.vector" \
+  mvn -Ddeepnetts.epochs=1 clean compile exec:java
+```
+
+One epoch is a functional check, not a meaningful accuracy benchmark. The VGGNet16 project performs import and inference instead of training; it requires a larger heap and downloads approximately 600 MB of weights on its first run. See its [project README](examples/img-classification/tensorflow-vggnet16-import/) for the exact command.
+
+### Run from an IDE
+
+Import the selected directory as a Maven project, keep that project directory as the working directory, and add this VM option:
+
+```text
+--add-modules=jdk.incubator.vector
+```
+
+## Course and documentation
+
+The MkDocs course in [`course/`](course/) explains the concepts used by the runnable projects:
+
+- installation and environment verification;
+- Machine Learning and neural-network fundamentals;
+- the Deep Netts model-development workflow;
+- regression, classification, and image-classification walkthroughs;
+- the developer guide, JSR 381 overview, and glossary.
+
+To preview it locally:
 
 ```bash
 cd course
@@ -51,72 +136,34 @@ mkdocs serve -a 127.0.0.1:8002
 
 Then open <http://127.0.0.1:8002>.
 
-## Complete examples
-
-Each example is a standalone Maven project with its own Java program, dataset, and detailed README.
-
-### [Deep Netts Hello World](examples/hello-world/)
-
-Creates a minimal neural network and runs one prediction to verify Java, Maven, the Deep Netts dependencies, licensing, and Vector API runtime configuration before starting a complete Machine Learning workflow.
-
-### [Sorting Execution Time - Simple Linear Regression](examples/regression/linear-regression/)
-
-Predicts sorting execution time from one numerical feature, `comparison_count`. It demonstrates simple linear regression and the workflow:
-
-```text
-load -> inspect -> split -> standardize -> train -> evaluate -> save -> predict
-```
-
-### [Computer Hardware Performance - Multiple Linear Regression](examples/regression/multiple-linear-regression/)
-
-Predicts published relative computer performance (`PRP`) from six hardware characteristics. It demonstrates multiple linear regression and the workflow:
-
-```text
-load -> inspect -> split -> standardize -> train -> evaluate -> save -> predict
-```
-
-### [Email Spam Classification](examples/classification/spam-classification/)
-
-Predicts whether an email is spam from five numerical features. It demonstrates binary classification with a feed-forward neural network and the workflow:
-
-```text
-load -> inspect -> split -> scale -> train -> evaluate -> save -> predict
-```
-
-### [Logistic Regression](examples/classification/logistic-regression/)
-
-Provides a Java 25 binary-classification scaffold with a Sigmoid output and Cross-Entropy loss. Add a numerical CSV dataset and configure its feature count before running it.
-
-### [Iris Multiclass Classification](examples/classification/multiclass-classification/)
-
-Predicts one of three Iris flower species from four numerical measurements. It demonstrates multiclass classification with one-hot targets, a softmax output layer, and the workflow:
-
-```text
-load -> inspect -> split -> scale -> train -> evaluate -> save -> predict
-```
-
 ## Repository structure
 
 ```text
 cookbook-examples/
-├── course/
+├── course/                       # MkDocs course and developer guide
 │   ├── docs/
-│   │   ├── getting-started/ # Setup and installation verification
-│   │   ├── examples/        # Example gallery and walkthroughs
-│   │   ├── lectures/        # Machine Learning learning material
+│   │   ├── getting-started/
+│   │   ├── examples/
+│   │   ├── developer-guide/
+│   │   ├── lectures/
 │   │   └── glossary.md
-│   └── mkdocs.yml           # Website navigation and configuration
+│   └── mkdocs.yml
 └── examples/
-    ├── hello-world/        # Minimal installation verification project
-    ├── regression/
-    │   ├── linear-regression/
-    │   └── multiple-linear-regression/
-    ├── classification/
-    │   ├── logistic-regression/
-    │   ├── spam-classification/
-    │   └── multiclass-classification/
-    ├── img-classification/ # Future image-classification projects
-    └── nlp/                # Future NLP and language-model projects
+    ├── hello-world/              # Environment verification
+    ├── regression/               # Four tabular regression projects
+    ├── classification/           # Four tabular classification projects
+    ├── img-classification/       # Six CNN/import projects
+    └── nlp/                      # Placeholder for future NLP projects
 ```
 
-Start with the [course](course/docs/index.md), verify the installation with Hello World, then choose an example to explore and run a complete workflow.
+## Troubleshooting
+
+If a project does not start, verify that:
+
+- `mvn --version` reports Java 25;
+- `MAVEN_OPTS` includes `--add-modules jdk.incubator.vector`;
+- the Deep Netts Pro and license artifacts are available to Maven;
+- the command is running from the selected example directory;
+- the bundled dataset exists under `src/main/resources/datasets/`.
+
+For project-specific datasets, architectures, output, and runtime options, open the README linked in the catalog above. For API details, see the [Deep Netts API documentation](https://www.deepnetts.com/apidocs/index.html).
