@@ -112,33 +112,33 @@
           {% if current_section == 'examples' %}
             <h2>Examples</h2>
             <ul>
-              <li{% if current_url == 'examples/' %} class="active"{% endif %}><a href="{{ 'examples/'|url }}">Overview</a></li>
-              <li{% if current_url.startswith('examples/regression/') %} class="active"{% endif %}><a href="{{ 'examples/regression/'|url }}">Regression</a></li>
-              <li{% if current_url.startswith('examples/classification/') %} class="active"{% endif %}><a href="{{ 'examples/classification/'|url }}">Classification</a></li>
-              <li{% if current_url.startswith('examples/image-classification/') %} class="active"{% endif %}><a href="{{ 'examples/image-classification/'|url }}">Image Classification</a></li>
-              <li{% if current_url.startswith('examples/nlp/') %} class="active"{% endif %}><a href="{{ 'examples/nlp/'|url }}">NLP</a></li>
+              <li>{% if current_url == 'examples/' %} class="active"{% endif %}><a href="{{ 'examples/'|url }}">Overview</a></li>
+              <li>{% if current_url.startswith('examples/regression/') %} class="active"{% endif %}><a href="{{ 'examples/regression/'|url }}">Regression</a></li>
+              <li>{% if current_url.startswith('examples/classification/') %} class="active"{% endif %}><a href="{{ 'examples/classification/'|url }}">Classification</a></li>
+              <li>{% if current_url.startswith('examples/image-classification/') %} class="active"{% endif %}><a href="{{ 'examples/image-classification/'|url }}">Image Classification</a></li>
+              <li>{% if current_url.startswith('examples/nlp/') %} class="active"{% endif %}><a href="{{ 'examples/nlp/'|url }}">NLP</a></li>
             </ul>
           {% elif current_section == 'developer-guide' %}
             <h2>Developer Guide</h2>
             <ul>
-              <li{% if current_url == 'developer-guide/' %} class="active"{% endif %}><a href="{{ 'developer-guide/'|url }}">Overview</a></li>
-              <li{% if current_url == 'developer-guide/loading-data/' %} class="active"{% endif %}><a href="{{ 'developer-guide/loading-data/'|url }}">Loading Data</a></li>
-              <li{% if current_url == 'developer-guide/preparing-data/' %} class="active"{% endif %}><a href="{{ 'developer-guide/preparing-data/'|url }}">Preparing Data</a></li>
-              <li{% if current_url == 'developer-guide/creating-model/' %} class="active"{% endif %}><a href="{{ 'developer-guide/creating-model/'|url }}">Creating a Model</a></li>
-              <li{% if current_url == 'developer-guide/training-model/' %} class="active"{% endif %}><a href="{{ 'developer-guide/training-model/'|url }}">Training a Model</a></li>
-              <li{% if current_url == 'developer-guide/evaluating-model/' %} class="active"{% endif %}><a href="{{ 'developer-guide/evaluating-model/'|url }}">Evaluating a Model</a></li>
-              <li{% if current_url == 'developer-guide/saving-loading/' %} class="active"{% endif %}><a href="{{ 'developer-guide/saving-loading/'|url }}">Saving and Loading</a></li>
-              <li{% if current_url == 'developer-guide/making-predictions/' %} class="active"{% endif %}><a href="{{ 'developer-guide/making-predictions/'|url }}">Making Predictions</a></li>
-              <li{% if current_url == 'developer-guide/jsr381/' %} class="active"{% endif %}><a href="{{ 'developer-guide/jsr381/'|url }}">JSR 381 and Deep Netts</a></li>
+              <li>{% if current_url == 'developer-guide/' %} class="active"{% endif %}><a href="{{ 'developer-guide/'|url }}">Overview</a></li>
+              <li>{% if current_url == 'developer-guide/loading-data/' %} class="active"{% endif %}><a href="{{ 'developer-guide/loading-data/'|url }}">Loading Data</a></li>
+              <li>{% if current_url == 'developer-guide/preparing-data/' %} class="active"{% endif %}><a href="{{ 'developer-guide/preparing-data/'|url }}">Preparing Data</a></li>
+              <li>{% if current_url == 'developer-guide/creating-model/' %} class="active"{% endif %}><a href="{{ 'developer-guide/creating-model/'|url }}">Creating a Model</a></li>
+              <li>{% if current_url == 'developer-guide/training-model/' %} class="active"{% endif %}><a href="{{ 'developer-guide/training-model/'|url }}">Training a Model</a></li>
+              <li>{% if current_url == 'developer-guide/evaluating-model/' %} class="active"{% endif %}><a href="{{ 'developer-guide/evaluating-model/'|url }}">Evaluating a Model</a></li>
+              <li>{% if current_url == 'developer-guide/saving-loading/' %} class="active"{% endif %}><a href="{{ 'developer-guide/saving-loading/'|url }}">Saving and Loading</a></li>
+              <li>{% if current_url == 'developer-guide/making-predictions/' %} class="active"{% endif %}><a href="{{ 'developer-guide/making-predictions/'|url }}">Making Predictions</a></li>
+              <li>{% if current_url == 'developer-guide/jsr381/' %} class="active"{% endif %}><a href="{{ 'developer-guide/jsr381/'|url }}">JSR 381 and Deep Netts</a></li>
             </ul>
           {% elif current_section == 'course' %}
             <h2>Course</h2>
             <ul>
-              <li{% if current_url == 'course/' %} class="active"{% endif %}><a href="{{ 'course/'|url }}">Overview</a></li>
-              <li{% if current_url == 'lectures/01-ml-basics/' %} class="active"{% endif %}><a href="{{ 'lectures/01-ml-basics/'|url }}">Machine Learning Basics</a></li>
-              <li{% if current_url == 'lectures/02-neural-networks/' %} class="active"{% endif %}><a href="{{ 'lectures/02-neural-networks/'|url }}">Neural Networks</a></li>
-              <li{% if current_url == 'lectures/03-deep-netts-api/' %} class="active"{% endif %}><a href="{{ 'lectures/03-deep-netts-api/'|url }}">Deep Netts API</a></li>
-              <li{% if current_url == 'lectures/04-model-development/' %} class="active"{% endif %}><a href="{{ 'lectures/04-model-development/'|url }}">Model Development</a></li>
+              <li>{% if current_url == 'course/' %} class="active"{% endif %}><a href="{{ 'course/'|url }}">Overview</a></li>
+              <li>{% if current_url == 'lectures/01-ml-basics/' %} class="active"{% endif %}><a href="{{ 'lectures/01-ml-basics/'|url }}">Machine Learning Basics</a></li>
+              <li>{% if current_url == 'lectures/02-neural-networks/' %} class="active"{% endif %}><a href="{{ 'lectures/02-neural-networks/'|url }}">Neural Networks</a></li>
+              <li>{% if current_url == 'lectures/03-deep-netts-api/' %} class="active"{% endif %}><a href="{{ 'lectures/03-deep-netts-api/'|url }}">Deep Netts API</a></li>
+              <li>{% if current_url == 'lectures/04-model-development/' %} class="active"{% endif %}><a href="{{ 'lectures/04-model-development/'|url }}">Model Development</a></li>
             </ul>
           {% endif %}
         </nav>
