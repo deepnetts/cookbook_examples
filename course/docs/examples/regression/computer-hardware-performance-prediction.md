@@ -18,6 +18,7 @@ This walkthrough builds a computer hardware performance predictor one part at a 
 | **Inputs** | Six numerical hardware characteristics |
 | **Target** | `PRP` - Published Relative Performance |
 | **Model** | `6 -> 1` feed-forward network with a linear output |
+| **Default training** | 3000 CPU epochs |
 | **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Model Development](../../lectures/04-model-development.md) |
 
 The model receives six hardware features:
@@ -39,7 +40,7 @@ load -> inspect -> split -> standardize -> build -> train -> evaluate -> save ->
 ```
 
 
-## 1. Define the program configuration
+## 0. Define the program configuration
 
 Start by defining where the dataset and trained model are stored, along with the expected input and output sizes:
 
@@ -56,17 +57,21 @@ private static final int NUM_OUTPUTS = 1;
 
 `NUM_INPUTS` matches the six feature columns. `NUM_OUTPUTS` is one because the model predicts one `PRP` value. Keeping these values in constants makes the dataset contract visible at the top of the class.
 
-## 2. Select CPU execution
+## 1. Configure the runtime
 
-At the beginning of `main`, disable CUDA:
+Verify Java and disable CUDA at the beginning of `main`:
 
 ```java
+verifyJavaRuntime();
 DeepNetts.getInstance().setUseCuda(false);
 ```
 
-This model and dataset are small, so CPU execution is sufficient and easier to run on a development machine without a CUDA setup.
+<pre class="console-output">WARNING: Using incubator modules: jdk.incubator.vector</pre>
 
-## 3. Load the CSV dataset
+The example requires Java 25 with the Vector API enabled. This model and dataset
+are small, so CPU execution is sufficient and easier to run without CUDA.
+
+## 2. Load the CSV dataset
 
 Read the prepared CSV with the Deep Netts `DataSets` API:
 
@@ -83,7 +88,7 @@ TabularDataSet<MLDataItem> dataSet =
 
 The final two arguments say that the file contains a header and uses a comma delimiter. Deep Netts treats the first six columns as inputs and the final column as the output.
 
-## 4. Inspect what was loaded
+## 3. Inspect what was loaded
 
 Print the number of samples and column names:
 
@@ -94,9 +99,12 @@ System.out.println(
 );
 ```
 
+<pre class="console-output">Samples: 209
+Columns: [MYCT, MMIN, MMAX, CACH, CHMIN, CHMAX, PRP]</pre>
+
 This small check confirms that the program found the expected file and parsed its structure. It should report 209 samples and the seven expected CSV columns.
 
-## 5. Shuffle and create a train/test split
+## 4. Shuffle and create a train/test split
 
 Shuffle reproducibly, then reserve 20% of the data for testing:
 
@@ -111,7 +119,7 @@ DataSet<MLDataItem> testSet = split.getTestSet();
 
 The seed `42` makes the shuffle repeatable. The model learns from `trainingSet`; `testSet` stays unseen until evaluation.
 
-## 6. Standardize the numerical features
+## 5. Standardize the numerical features
 
 Fit a standardizer on the training data and apply the same transformation to both subsets:
 
@@ -124,7 +132,7 @@ standardizer.apply(testSet);
 
 Hardware features have very different ranges. Standardization puts them on comparable scales, which makes optimization easier. Fitting on training data only prevents test information from leaking into the training pipeline.
 
-## 7. Build the linear model
+## 6. Build the linear model
 
 Create a network with six inputs and one Linear output:
 
@@ -146,7 +154,7 @@ The architecture is:
 
 There are no hidden layers. The network therefore learns a weighted linear combination of the six inputs. Linear activation allows unrestricted numerical predictions, while Mean Squared Error measures regression error during training.
 
-## 8. Configure and run training
+## 7. Configure and run training
 
 Configure the trainer before passing it the training set:
 
@@ -160,22 +168,47 @@ neuralNet.getTrainer()
 neuralNet.train(trainingSet);
 ```
 
-Training may run for up to 3000 epochs. Stochastic Gradient Descent updates the model parameters, and shuffling changes the sample order between passes.
+<pre class="console-output">TRAINING NEURAL NETWORK
+------------------------------------------------------------------------
 
-## 9. Evaluate unseen data
+Initial Train Error:13374.919
+Epoch:1, Time:4ms, TrainError:10256.736, TrainErrorChange:-3118.1826, TrainAccuracy:0.10615444
+Epoch:2, Time:1ms, TrainError:6175.8213, TrainErrorChange:-4080.915, TrainAccuracy:0.40210462
+Epoch:3, Time:1ms, TrainError:4314.934, TrainErrorChange:-1860.8872, TrainAccuracy:0.56161463
+...
+Epoch:3000, Time:0ms, TrainError:1249.1343, TrainErrorChange:1.1842041, TrainAccuracy:0.8521152
+
+TRAINING COMPLETED
+Total Training Time: 475ms
+------------------------------------------------------------------------</pre>
+
+The middle epochs are omitted for readability. Training error falls sharply in
+the first few epochs and later stabilizes around 1,249. SGD completes all 3,000
+epochs in this run.
+
+## 8. Evaluate unseen data
 
 Test the trained network with the reserved test set:
 
 ```java
-RegressionMetrics metrics =
-        (RegressionMetrics) neuralNet.test(testSet);
-
+RegressionMetrics metrics = (RegressionMetrics) neuralNet.test(testSet);
 System.out.println(metrics);
 ```
 
-Regression metrics describe the difference between predicted and actual `PRP` values. Testing on unseen samples provides a better estimate of generalization than measuring only training performance.
+<pre class="console-output">RegressionMetrics{
+r2=0.84360945 Proportion of variance explained by the model. Intuitively how much the model prediction is better than using the mean value as prediction. A value between 0 and 1, where 1 is the best and 0 worst
+meanSquaredError=9912.942 Mean/average value of squared errors (the difference betwen actual and predicted value). Highly sensitive to large errors and outliers in inputs. The lower the better ideally 0.
+rootMeanSquaredError=99.56376 Squared root of the meanSquaredError. But in the same units as observerd value, makes it easier to interpret, and it is less sensitive to large error values. The lower the better ideally 0.
+squaredErrorSum=406430.66 Total sum of squared errors. The lower the better.
+meanAbsoluteError=45.59372 Average error. Less sensitive to larger errors and outliers than meanSquaredError. The lower the better ideally 0.
+meanAbsolutePercentageError=0.5898638 Mean/average of the absolute errors relative to their targets.Sensitive to relative erors
+maxError=504.1809 The biggest error in prediction by the regression model</pre>
 
-## 10. Save the model with preprocessing
+The held-out `r2` of about 0.844 means the model explains a substantial share
+of the PRP variance. RMSE, MAE, and the maximum error show that some numerical
+prediction errors remain large, so `r2` should not be read in isolation.
+
+## 9. Save the model with preprocessing
 
 Attach the fitted standardizer, create the model directory, and save:
 
@@ -188,7 +221,7 @@ neuralNet.save(MODEL_PATH);
 
 The network was trained on standardized values, so future inputs must use the same transformation. Attaching the standardizer keeps preprocessing together with the saved model.
 
-## 11. Predict computer performance
+## 10. Predict computer performance
 
 Represent a new computer using the same feature order as the CSV:
 
@@ -201,20 +234,22 @@ float[] computer = {
         16,       // CHMIN
         24        // CHMAX
 };
-```
-
-Pass the array to the trained network and read its first output:
-
-```java
 float predictedPerformance = neuralNet.predict(computer)[0];
-
-System.out.printf(
-        "Predicted relative performance: %.2f%n",
-        predictedPerformance
-);
+System.out.printf("Predicted relative performance: %.2f%n", predictedPerformance);
 ```
 
-The result is a continuous predicted `PRP` value. Feature order must remain identical to the order used during training.
+<pre class="console-output">Predicted relative performance: 404.55</pre>
+
+The result is a continuous predicted `PRP` value. Feature order must remain
+identical to the order used during training.
+
+## Run in NetBeans
+
+Add this under **Project Properties → Run → VM Options**:
+
+```text
+--add-modules=jdk.incubator.vector
+```
 
 ## What you built
 

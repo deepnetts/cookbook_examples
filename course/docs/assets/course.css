@@ -2180,6 +2180,20 @@ textarea {
   padding-left: 0;
 }
 
+/* Give the standalone Getting Started guide more breathing room on desktop. */
+@media only screen and (min-width: 1101px) {
+  .getting-started-page.no-section-sidebar .markdown-body,
+  .getting-started-page.no-section-sidebar .markdown-body.cake {
+    width: calc(100vw - 448px);
+    margin-left: 80px !important;
+  }
+
+  .getting-started-page.no-section-sidebar .page-toc,
+  .getting-started-page.no-section-sidebar .page-toc-rail {
+    left: calc(108px + min(1600px, calc(100vw - 448px)));
+  }
+}
+
 /* Contextual FAQ at the end of relevant sections. */
 .page-faq {
   box-sizing: border-box;

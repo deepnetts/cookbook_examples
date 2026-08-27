@@ -72,7 +72,7 @@
   {% set current_section = '' %}
 {% endif %}
 {% set has_context_sidebar = current_section in ['examples', 'developer-guide', 'course'] %}
-<body class="{% if has_context_sidebar %}has-section-sidebar{% else %}no-section-sidebar{% endif %}{% if page and page.file and page.file.src_uri == 'index.md' %} home-page{% endif %}">
+<body class="{% if has_context_sidebar %}has-section-sidebar{% else %}no-section-sidebar{% endif %}{% if current_section == 'get-started' %} getting-started-page{% endif %}{% if page and page.file and page.file.src_uri == 'index.md' %} home-page{% endif %}">
     <header class="header">
         <a id="nav-toggle" class="pizza" aria-label="Toggle navigation" role="button">&#9776;</a>
         <div class="title">

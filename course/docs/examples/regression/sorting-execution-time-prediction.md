@@ -18,6 +18,7 @@ This walkthrough builds a sorting execution-time predictor one part at a time. I
 | **Input** | One numerical feature: `comparison_count` |
 | **Target** | One continuous value: `execution_time_ms` |
 | **Model** | `1 -> 1` feed-forward network with a linear output |
+| **Default training** | 3000 CPU epochs |
 | **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Model Development](../../lectures/04-model-development.md) |
 
 The model uses one numerical feature:
@@ -39,7 +40,7 @@ select columns -> load -> inspect -> split -> standardize -> build -> train -> e
 ```
 
 
-## 1. Configure the program
+## 0. Configure the program
 
 Define the dataset and model paths, followed by the expected input and output sizes:
 
@@ -59,17 +60,20 @@ private static final int NUM_OUTPUTS = 1;
 
 One input represents `comparison_count`. One output represents the predicted `execution_time_ms`.
 
-## 2. Select CPU execution
+## 1. Configure the runtime
 
-Disable CUDA at the start of `main`:
+Verify Java and disable CUDA at the start of `main`:
 
 ```java
+verifyJavaRuntime();
 DeepNetts.getInstance().setUseCuda(false);
 ```
 
-This introductory model and dataset are small enough to run efficiently on CPU.
+<pre class="console-output">WARNING: Using incubator modules: jdk.incubator.vector</pre>
 
-## 3. Select the model columns
+The warning confirms that the required incubating Vector API is enabled. This introductory model and dataset are small enough to run efficiently on CPU.
+
+## 2. Select the model columns
 
 Use DFLib to select one feature and one target from the original CSV:
 
@@ -85,7 +89,7 @@ Csv.saver()
 
 The selection order defines the model contract. The generated file lives under `target/`, so only the original dataset is stored in the repository.
 
-## 4. Load the dataset
+## 3. Load the dataset
 
 Read the generated two-column CSV with Deep Netts:
 
@@ -96,7 +100,7 @@ TabularDataSet<MLDataItem> dataSet =
 
 Deep Netts interprets the first column as the input and the final column as the target.
 
-## 5. Inspect the data
+## 4. Inspect the data
 
 Confirm the number of samples and column order:
 
@@ -105,9 +109,12 @@ System.out.println("Samples: " + dataSet.size());
 System.out.println("Columns: " + Arrays.toString(dataSet.getColumnNames()));
 ```
 
-The output should report 903 samples and the columns `comparison_count` and `execution_time_ms`.
+<pre class="console-output">Samples: 903
+Columns: [comparison_count, execution_time_ms]</pre>
 
-## 6. Create train and test sets
+The output confirms that all 903 samples and the two selected columns were loaded in the expected order.
+
+## 5. Create train and test sets
 
 Shuffle reproducibly, then reserve 20% of the samples for evaluation:
 
@@ -122,7 +129,7 @@ DataSet<MLDataItem> testSet = split.getTestSet();
 
 The model learns only from `trainingSet`. The fixed seed keeps repeated experiments comparable.
 
-## 7. Standardize the feature
+## 6. Standardize the feature
 
 Fit preprocessing only on training data and apply the same transformation to both subsets:
 
@@ -135,7 +142,7 @@ standardizer.apply(testSet);
 
 Keeping the test set out of the fitting step prevents data leakage.
 
-## 8. Build a 1 to 1 model
+## 7. Build a 1 to 1 model
 
 Create a network with one input, no hidden layer, and one linear output:
 
@@ -150,7 +157,7 @@ FeedForwardNetwork neuralNet = FeedForwardNetwork.builder()
 
 With no hidden layer, the network learns a straight-line relationship. This is what makes the example simple linear regression.
 
-## 9. Train the model
+## 8. Configure and train the model
 
 Configure the trainer and pass it the training set:
 
@@ -164,9 +171,23 @@ neuralNet.getTrainer()
 neuralNet.train(trainingSet);
 ```
 
-Mean Squared Error guides the optimizer toward a line that reduces squared prediction errors.
+<pre class="console-output">TRAINING NEURAL NETWORK
+-----------------------
 
-## 10. Evaluate on unseen data
+Initial Train Error:510122.28
+Epoch:1, Time:5ms, TrainError:287451.84, TrainErrorChange:-222670.44, TrainAccuracy:0.50591326
+Epoch:2, Time:1ms, TrainError:94482.77, TrainErrorChange:-192969.06, TrainAccuracy:0.79503703
+Epoch:3, Time:1ms, TrainError:49488.473, TrainErrorChange:-44994.3, TrainAccuracy:0.8597123
+...
+Epoch:3000, Time:0ms, TrainError:35741.2, TrainErrorChange:8.5859375, TrainAccuracy:0.88076025
+
+TRAINING COMPLETED
+Total Training Time: 2235ms
+---------------------------</pre>
+
+The middle epochs are omitted for readability. Mean Squared Error falls sharply during the first epochs, and this run completes all 3,000 configured epochs.
+
+## 9. Evaluate on unseen data
 
 Test the model with the reserved samples:
 
@@ -175,9 +196,18 @@ RegressionMetrics metrics = (RegressionMetrics) neuralNet.test(testSet);
 System.out.println(metrics);
 ```
 
-Evaluation on `testSet` gives a more honest estimate than evaluating on the data used for training.
+<pre class="console-output">RegressionMetrics{
+r2=0.8672889 Proportion of variance explained by the model. Intuitively how much the model prediction is better than using the mean value as prediction. A value between 0 and 1, where 1 is the best and 0 worst
+meanSquaredError=78743.37 Mean/average value of squared errors (the difference betwen actual and predicted value). Highly sensitive to large errors and outliers in inputs. The lower the better ideally 0.
+rootMeanSquaredError=280.6125 Squared root of the meanSquaredError. But in the same units as observerd value, makes it easier to interpret, and it is less sensitive to large error values. The lower the better ideally 0.
+squaredErrorSum=1.4173806E7 Total sum of squared errors. The lower the better.
+meanAbsoluteError=181.06033 Average error. Less sensitive to larger errors and outliers than meanSquaredError. The lower the better ideally 0.
+meanAbsolutePercentageError=0.7629041 Mean/average of the absolute errors relative to their targets.Sensitive to relative erors
+maxError=689.8218 The biggest error in prediction by the regression model</pre>
 
-## 11. Save the complete pipeline
+These are held-out test metrics, not training results. The `r2` of about 0.867 shows that the linear model explains most of the observed execution-time variance, while the error metrics quantify the remaining differences in milliseconds.
+
+## 10. Save the complete pipeline
 
 Attach the fitted standardizer before saving the trained network:
 
@@ -190,7 +220,7 @@ neuralNet.save(MODEL_PATH);
 
 The saved model now carries the preprocessing expected by future input.
 
-## 12. Predict execution time
+## 11. Predict execution time
 
 Supply a new comparison count and read the continuous prediction:
 
@@ -202,7 +232,17 @@ System.out.printf("Predicted execution time for %.0f comparisons: %.2f ms%n",
         comparisonCount, predictedExecutionTime);
 ```
 
-The result estimates execution time in milliseconds for the supplied comparison count.
+<pre class="console-output">Predicted execution time for 100000 comparisons: 337.74 ms</pre>
+
+The result estimates an execution time of `337.74 ms` for 100,000 comparisons.
+
+## Run in NetBeans
+
+Add this under **Project Properties → Run → VM Options**:
+
+```text
+--add-modules=jdk.incubator.vector
+```
 
 ## What you built
 
