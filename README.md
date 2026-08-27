@@ -10,6 +10,8 @@ The projects require:
 
 - Java 25;
 - Maven;
+- [Apache NetBeans](https://netbeans.apache.org/front/main/download/)
+  (recommended for following the walkthroughs);
 - Deep Netts 4 Pro and a valid license installed in the local Maven repository;
 - the Java Vector API enabled at runtime.
 

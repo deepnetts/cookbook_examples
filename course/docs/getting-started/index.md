@@ -10,7 +10,12 @@ Install or configure:
 
 - [JDK 25](https://www.oracle.com/java/technologies/downloads/);
 - [Apache Maven](https://maven.apache.org/download.cgi);
-- a Java IDE of your choice (optional).
+- [Apache NetBeans](https://netbeans.apache.org/front/main/download/)
+  (recommended), or another Java IDE of your choice.
+
+The course examples and screenshots use Apache NetBeans, so NetBeans is the
+recommended IDE when following the walkthroughs. The projects are standard
+Maven applications and can still be opened in another Java IDE.
 
 ### 1.1. Verify Java 25
 
@@ -49,7 +54,8 @@ Deep Netts 4 uses the incubating Java Vector API. It must be enabled when runnin
 
 The Installation section shows how to apply this option from a terminal, NetBeans, or another IDE.
 
-You can use any Java IDE. Apache NetBeans is convenient for opening the standalone Maven projects and storing the Vector API option in the run configuration.
+In NetBeans, store the Vector API option under **Project Properties → Run → VM
+Options**. Other IDEs provide an equivalent run-configuration field.
 
 ## 2. Download
 
