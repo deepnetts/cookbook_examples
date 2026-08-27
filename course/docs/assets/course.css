@@ -180,6 +180,16 @@ textarea {
     transition: transform 0.2s ease;
 }
 
+/* Keep the source TOC hidden until JavaScript moves it into the right rail. */
+.side > .page-toc-source-heading,
+.side > #toc {
+    display: none;
+}
+
+.page-toc #toc {
+    display: block;
+}
+
 .page-toc h2 {
     margin: 0 0 10px;
     padding-bottom: 8px;
@@ -910,6 +920,16 @@ textarea {
     border-left: 4px solid #16a8d5;
     border-radius: 8px;
     box-shadow: 0 3px 10px rgba(31, 35, 40, 0.08);
+}
+
+/* Concept diagrams are explanatory visuals, not executable code. */
+.markdown-body pre:has(> code.language-text) {
+    color: #374151;
+    background: #f7f7f7;
+    border: 1px dashed #c9cdd2;
+    border-left: 1px dashed #c9cdd2;
+    border-radius: 6px;
+    box-shadow: none;
 }
 
 .markdown-body :not(pre) > code {

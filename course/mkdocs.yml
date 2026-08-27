@@ -13,10 +13,14 @@ extra_css:
 
 extra_javascript:
   - assets/course.js
+  - assets/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 markdown_extensions:
   - admonition
   - pymdownx.details
+  - pymdownx.arithmatex:
+      generic: true
 
 nav:
   - Get Started:
@@ -43,9 +47,12 @@ nav:
   - Course:
       - Overview: course/index.md
       - Machine Learning Basics: lectures/01-ml-basics.md
+      - Linear Regression: lectures/02-linear-regression.md
       - Neural Networks: lectures/02-neural-networks.md
+      - Backpropagation: lectures/05-backpropagation.md
       - Deep Netts API: lectures/03-deep-netts-api.md
       - Model Development: lectures/04-model-development.md
+      - Generative AI: lectures/06-generative-ai.md
 
   - API DOC: https://www.deepnetts.com/apidocs/index.html
 

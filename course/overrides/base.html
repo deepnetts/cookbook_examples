@@ -136,9 +136,12 @@
             <ul>
               <li{% if current_url == 'course/' %} class="active"{% endif %}><a href="{{ 'course/'|url }}">Overview</a></li>
               <li{% if current_url == 'lectures/01-ml-basics/' %} class="active"{% endif %}><a href="{{ 'lectures/01-ml-basics/'|url }}">Machine Learning Basics</a></li>
+              <li{% if current_url == 'lectures/02-linear-regression/' %} class="active"{% endif %}><a href="{{ 'lectures/02-linear-regression/'|url }}">Linear Regression</a></li>
               <li{% if current_url == 'lectures/02-neural-networks/' %} class="active"{% endif %}><a href="{{ 'lectures/02-neural-networks/'|url }}">Neural Networks</a></li>
+              <li{% if current_url == 'lectures/05-backpropagation/' %} class="active"{% endif %}><a href="{{ 'lectures/05-backpropagation/'|url }}">Backpropagation</a></li>
               <li{% if current_url == 'lectures/03-deep-netts-api/' %} class="active"{% endif %}><a href="{{ 'lectures/03-deep-netts-api/'|url }}">Deep Netts API</a></li>
               <li{% if current_url == 'lectures/04-model-development/' %} class="active"{% endif %}><a href="{{ 'lectures/04-model-development/'|url }}">Model Development</a></li>
+              <li{% if current_url == 'lectures/06-generative-ai/' %} class="active"{% endif %}><a href="{{ 'lectures/06-generative-ai/'|url }}">Generative AI</a></li>
             </ul>
           {% endif %}
         </nav>
@@ -150,14 +153,14 @@
            {% endfor %}
           </ul>
         </nav>
-          <h2>Table Of Contents</h2>
-          <ul id="toc" class="current">
-            {% for toc_item in page.toc %}
-              <li><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
-              {% for toc_item in toc_item.children %}
-                  <li class="child"><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
-              {% endfor %}
+        <h2 class="page-toc-source-heading">Table Of Contents</h2>
+        <ul id="toc" class="current">
+          {% for toc_item in page.toc %}
+            <li><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
+            {% for toc_item in toc_item.children %}
+              <li class="child"><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
             {% endfor %}
+          {% endfor %}
         </ul>
         <div class="about">
             <hr/>
@@ -232,7 +235,7 @@
             {% elif current_section == 'course' %}
               <details>
                 <summary aria-expanded="false"><span>What is the recommended lesson order?</span><span aria-hidden="true"></span></summary>
-                <p>Start with Machine Learning Basics, continue with Neural Networks and the Deep Netts API, then finish with Model Development.</p>
+                <p>Start with Machine Learning Basics and Linear Regression, continue with Neural Networks, Backpropagation, the Deep Netts API, and Model Development, then finish with Generative AI.</p>
               </details>
               <details>
                 <summary aria-expanded="false"><span>Do the lessons include runnable code?</span><span aria-hidden="true"></span></summary>
@@ -278,7 +281,7 @@
       {% endif %}
       {% set hide_page_navigation = page and ((page.file and page.file.src_uri == "index.md") or page.url == "glossary/" or page.url == "course/" or page.url == "getting-started/" or page.url == "examples/" or page.url == "examples/classification/" or page.url == "examples/regression/" or page.url == "examples/image-classification/" or page.url == "examples/nlp/" or page.url == "api-documentation/" or page.url == "developer-guide/") %}
       {% set show_previous = page and page.previous_page and not hide_page_navigation and page.url != "lectures/01-ml-basics/" and page.url != "developer-guide/loading-data/" %}
-      {% set show_next = page and page.next_page and not hide_page_navigation and page.url != "lectures/04-model-development/" and page.url != "developer-guide/jsr381/" %}
+      {% set show_next = page and page.next_page and not hide_page_navigation and page.url != "lectures/06-generative-ai/" and page.url != "developer-guide/jsr381/" %}
       {% if show_previous or show_next %}
         <div class="page-navigation">
           {% if show_previous %}

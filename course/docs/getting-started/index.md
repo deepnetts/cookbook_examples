@@ -8,9 +8,9 @@ The course is written for Java developers who are new to Machine Learning. You d
 
 Install or configure:
 
-- [JDK 25](https://www.oracle.com/java/technologies/downloads/);
-- [Apache Maven](https://maven.apache.org/download.cgi);
-- [Apache NetBeans](https://netbeans.apache.org/front/main/download/)
+- <a href="https://www.oracle.com/java/technologies/downloads/" target="_blank" rel="noopener noreferrer">JDK 25</a>;
+- <a href="https://maven.apache.org/download.cgi" target="_blank" rel="noopener noreferrer">Apache Maven</a>;
+- <a href="https://netbeans.apache.org/front/main/download/" target="_blank" rel="noopener noreferrer">Apache NetBeans</a>
   (recommended), or another Java IDE of your choice.
 
 The course examples and screenshots use Apache NetBeans, so NetBeans is the
@@ -70,9 +70,9 @@ com.deepnetts:deepnetts-core-pro:4.0.0
 com.deepnetts:deepnetts-license:1.0
 ```
 
-Download Deep Netts through the [official Deep Netts download page](https://www.deepnetts.com/checkout/). Use the distribution and license provided for your Deep Netts account or organization.
+Download Deep Netts through the <a href="https://www.deepnetts.com/checkout/" target="_blank" rel="noopener noreferrer">official Deep Netts download page</a>. Use the distribution and license provided for your Deep Netts account or organization.
 
-[Deep Netts Community Edition](https://www.deepnetts.com/deep-netts-community-edition/) is available separately from Maven Central, but it uses the `deepnetts-core` artifact. The course projects use `deepnetts-core-pro`; do not substitute one artifact for the other and assume the code will work unchanged.
+<a href="https://www.deepnetts.com/deep-netts-community-edition/" target="_blank" rel="noopener noreferrer">Deep Netts Community Edition</a> is available separately from Maven Central, but it uses the `deepnetts-core` artifact. The course projects use `deepnetts-core-pro`; do not substitute one artifact for the other and assume the code will work unchanged.
 
 Before continuing, make sure you have:
 
@@ -274,10 +274,10 @@ The exact Java patch version and prediction are not important. `Vector API enabl
 
 ## 5. Learning resources
 
-Are you a Java developer looking for a concise introduction to Machine Learning with Deep Netts? Start with [Machine Learning Basics](../lectures/01-ml-basics.md) to learn how samples, features, targets, regression, and classification connect to Java code.
+Are you a Java developer looking for a concise introduction to Machine Learning with Deep Netts? Start with <a href="../lectures/01-ml-basics/" target="_blank" rel="noopener noreferrer">Machine Learning Basics</a> to learn how samples, features, targets, regression, and classification connect to Java code.
 
-Want to understand Deep Netts 4 and its main capabilities? Read the [Deep Netts API lesson](../lectures/03-deep-netts-api.md) for an overview of datasets, preprocessing, model creation, training, evaluation, saving, and prediction.
+Want to understand Deep Netts 4 and its main capabilities? Read the <a href="../lectures/03-deep-netts-api/" target="_blank" rel="noopener noreferrer">Deep Netts API lesson</a> for an overview of datasets, preprocessing, model creation, training, evaluation, saving, and prediction.
 
-Are you looking for focused guides covering in-depth usage of individual parts of the Deep Netts API? Open the [Deep Netts developer guides](../developer-guide/index.md) and choose the task you want to add to your workflow.
+Are you looking for focused guides covering in-depth usage of individual parts of the Deep Netts API? Open the <a href="../developer-guide/" target="_blank" rel="noopener noreferrer">Deep Netts developer guides</a> and choose the task you want to add to your workflow.
 
-Are you looking for complete tutorials showing Deep Netts in action across different Machine Learning problems? Browse the [Deep Netts examples](../examples/index.md) for explained regression and classification walkthroughs linked to runnable Java 25 Maven projects.
+Are you looking for complete tutorials showing Deep Netts in action across different Machine Learning problems? Browse the <a href="../examples/" target="_blank" rel="noopener noreferrer">Deep Netts examples</a> for explained regression and classification walkthroughs linked to runnable Java 25 Maven projects.

@@ -39,4 +39,4 @@ Each guide contains a compact Java recipe, explains the important choices, and l
   </a>
 </div>
 
-For the wider conceptual context, continue with [Deep Netts API](../lectures/03-deep-netts-api.md) and [Model Development](../lectures/04-model-development.md). To see every step assembled into one application, choose a project from [Examples](../examples/index.md).
+For the wider conceptual context, continue with <a href="../lectures/03-deep-netts-api/" target="_blank" rel="noopener noreferrer"><strong>Deep Netts API</strong></a> and <a href="../lectures/04-model-development/" target="_blank" rel="noopener noreferrer"><strong>Model Development</strong></a>. To see every step assembled into one application, choose a project from <a href="../examples/" target="_blank" rel="noopener noreferrer"><strong>Examples</strong></a>.
