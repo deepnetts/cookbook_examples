@@ -64,6 +64,13 @@ The model can learn only from information represented in the dataset. Before tra
 
 A program can execute successfully while learning the wrong relationship if the dataset is misunderstood.
 
+??? info "Need to clean an incomplete tabular dataset?"
+    Use optional Java dataframe tools such as DFLib or Tablesaw to inspect,
+    select, clean, and export model-ready columns before Deep Netts loads the
+    data. See [Preparing Data: Clean incomplete tabular data before Deep
+    Netts](../developer-guide/preparing-data.md#clean-incomplete-tabular-data-before-deep-netts)
+    for examples and data-leakage rules.
+
 ```java
 TabularDataSet<MLDataItem> dataSet =
         DataSets.readCsv(
