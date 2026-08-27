@@ -9,17 +9,6 @@
       <a class="home-secondary-action" href="https://www.deepnetts.com/download-latest" target="_blank" rel="noopener noreferrer">Free download</a>
     </div>
   </div>
-  <div class="home-neural-visual" aria-hidden="true">
-    <span class="neural-ring neural-ring-one"></span>
-    <span class="neural-ring neural-ring-two"></span>
-    <span class="neural-node neural-node-one"></span>
-    <span class="neural-node neural-node-two"></span>
-    <span class="neural-node neural-node-three"></span>
-    <span class="neural-node neural-node-four"></span>
-    <span class="neural-line neural-line-one"></span>
-    <span class="neural-line neural-line-two"></span>
-    <span class="neural-line neural-line-three"></span>
-  </div>
 </section>
 
 <section class="home-intro">

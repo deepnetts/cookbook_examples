@@ -1336,6 +1336,7 @@ textarea {
   position: relative;
   z-index: 2;
   max-width: 720px;
+  transform: translateY(-24px);
 }
 
 .home-eyebrow {
@@ -1375,7 +1376,6 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  transform: translateY(-18px);
 }
 
 .markdown-body .home-hero-actions a {
