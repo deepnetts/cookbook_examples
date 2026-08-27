@@ -67,6 +67,8 @@ DeepNetts.getInstance().setUseCuda(false);
 DeepNetts.getInstance().setMaxThreads(1);
 ```
 
+**Output:**
+
 <pre class="console-output">WARNING: Using incubator modules: jdk.incubator.vector</pre>
 
 The example requires Java 25 with the Vector API enabled. The dataset and
@@ -100,6 +102,8 @@ System.out.println(
         "Columns: " + Arrays.toString(dataSet.getColumnNames())
 );
 ```
+
+**Output:**
 
 <pre class="console-output">Samples: 20000
 Columns: [num_links, num_words, has_offer, sender_score, all_caps, is_spam]</pre>
@@ -173,6 +177,8 @@ neuralNet.getTrainer()
 neuralNet.train(trainingSet);
 ```
 
+**Output:**
+
 <pre class="console-output">TRAINING NEURAL NETWORK
 ------------------------------------------------------------------------
 
@@ -200,6 +206,8 @@ ClassificationMetrics metrics = (ClassificationMetrics) neuralNet.test(testSet);
 
 System.out.println(metrics);
 ```
+
+**Output:**
 
 <pre class="console-output">Class: is_spam
 Total items: 3999
@@ -251,6 +259,8 @@ float spamProbability = neuralNet.predict(email)[0];
 System.out.printf("Spam probability: %.4f%n", spamProbability);
 System.out.println(spamProbability >= 0.5f ? "SPAM" : "NOT SPAM");
 ```
+
+**Output:**
 
 <pre class="console-output">Spam probability: 0.9259
 SPAM</pre>

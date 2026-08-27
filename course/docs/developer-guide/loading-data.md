@@ -95,12 +95,12 @@ Compare this output with the CSV file you intended to load. This small check cat
     Check that the delimiter argument matches the file and that the data rows contain numerical values. Encode or otherwise prepare categorical values before using this recipe.
 
 ??? info "See complete examples"
-    - [Simple Linear Regression](../examples/regression/sorting-execution-time-prediction.md) loads one input and one continuous target.
-    - [Multiple Linear Regression](../examples/regression/computer-hardware-performance-prediction.md) loads six inputs and one continuous target.
-    - [Logistic Regression](../examples/classification/sonar-rock-mine-classification.md) loads a headerless CSV with 60 inputs and one binary target.
-    - [Spam Classification](../examples/classification/email-spam-detection.md) loads five inputs and one binary target.
-    - [Multiclass Classification](../examples/classification/iris-flower-classification.md) loads four inputs and three one-hot target columns.
-    - [Hot Dog or Not Hot Dog](../examples/image-classification/hotdog-nothotdog.md) loads labeled images from class directories.
-    - [Credit Card Fraud Detection](../examples/classification/credit-card-fraud-detection.md) loads 29 transaction features and one binary target.
-    - [Insurance Payment Prediction](../examples/regression/insurance-payment-prediction.md) loads a headerless two-column CSV.
-    - [House Price Prediction](../examples/regression/house-price-prediction.md) loads prepared `LSTAT` and `MEDV` columns.
+    - <a href="../../examples/regression/sorting-execution-time-prediction/" target="_blank" rel="noopener noreferrer">Simple Linear Regression</a> loads one input and one continuous target.
+    - <a href="../../examples/regression/computer-hardware-performance-prediction/" target="_blank" rel="noopener noreferrer">Multiple Linear Regression</a> loads six inputs and one continuous target.
+    - <a href="../../examples/classification/sonar-rock-mine-classification/" target="_blank" rel="noopener noreferrer">Logistic Regression</a> loads a headerless CSV with 60 inputs and one binary target.
+    - <a href="../../examples/classification/email-spam-detection/" target="_blank" rel="noopener noreferrer">Spam Classification</a> loads five inputs and one binary target.
+    - <a href="../../examples/classification/iris-flower-classification/" target="_blank" rel="noopener noreferrer">Multiclass Classification</a> loads four inputs and three one-hot target columns.
+    - <a href="../../examples/image-classification/hotdog-nothotdog/" target="_blank" rel="noopener noreferrer">Hot Dog or Not Hot Dog</a> loads labeled images from class directories.
+    - <a href="../../examples/classification/credit-card-fraud-detection/" target="_blank" rel="noopener noreferrer">Credit Card Fraud Detection</a> loads 29 transaction features and one binary target.
+    - <a href="../../examples/regression/insurance-payment-prediction/" target="_blank" rel="noopener noreferrer">Insurance Payment Prediction</a> loads a headerless two-column CSV.
+    - <a href="../../examples/regression/house-price-prediction/" target="_blank" rel="noopener noreferrer">House Price Prediction</a> loads prepared `LSTAT` and `MEDV` columns.

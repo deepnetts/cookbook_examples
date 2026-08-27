@@ -49,6 +49,8 @@ System.out.println("Images: " + images.size());
 System.out.println("Images by class: " + images.countByClasses());
 ```
 
+**Output:**
+
 <pre class="console-output">Images: 634
 Number of images by label/class
 negativ : 6
@@ -69,6 +71,8 @@ ImageSet[] split = images.split(0.8, 0.2);
 ImageSet trainingSet = split[0];
 ImageSet testSet = split[1];
 ```
+
+**Output:**
 
 <pre class="console-output">Splitting data set: [0.8, 0.2]</pre>
 
@@ -99,6 +103,8 @@ network.getTrainer().setStopEpochs(epochs).setLearningRate(0.001f)
 network.train(trainingSet);
 ```
 
+**Output:**
+
 <pre class="console-output">TRAINING NEURAL NETWORK
 --------------------------------------------------------------
 
@@ -123,6 +129,8 @@ training accuracy. A longer run is still needed to assess final model quality.
 ```java
 System.out.println(network.test(testSet));
 ```
+
+**Output:**
 
 <pre class="console-output">Class: legoman
 Total items: 126
@@ -162,6 +170,8 @@ System.out.println("Predicted: " + predicted);
 System.out.printf("Lego probability: %.4f%n", probability);
 ```
 
+**Output:**
+
 <pre class="console-output">Actual: negative
 Predicted: legoman
 Lego probability: 0.7656</pre>
@@ -183,6 +193,8 @@ The final call stops the network's background worker threads.
 ```text
 --add-modules=jdk.incubator.vector -Ddeepnetts.epochs=1
 ```
+
+**Output:**
 
 <pre class="console-output">WARNING: Using incubator modules: jdk.incubator.vector</pre>
 

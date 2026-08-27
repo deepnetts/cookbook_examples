@@ -69,6 +69,8 @@ verifyJavaRuntime();
 DeepNetts.getInstance().setUseCuda(false);
 ```
 
+**Output:**
+
 <pre class="console-output">WARNING: Using incubator modules: jdk.incubator.vector</pre>
 
 The warning confirms that the required incubating Vector API is enabled. This introductory model and dataset are small enough to run efficiently on CPU.
@@ -108,6 +110,8 @@ Confirm the number of samples and column order:
 System.out.println("Samples: " + dataSet.size());
 System.out.println("Columns: " + Arrays.toString(dataSet.getColumnNames()));
 ```
+
+**Output:**
 
 <pre class="console-output">Samples: 903
 Columns: [comparison_count, execution_time_ms]</pre>
@@ -171,6 +175,8 @@ neuralNet.getTrainer()
 neuralNet.train(trainingSet);
 ```
 
+**Output:**
+
 <pre class="console-output">TRAINING NEURAL NETWORK
 -----------------------
 
@@ -195,6 +201,8 @@ Test the model with the reserved samples:
 RegressionMetrics metrics = (RegressionMetrics) neuralNet.test(testSet);
 System.out.println(metrics);
 ```
+
+**Output:**
 
 <pre class="console-output">RegressionMetrics{
 r2=0.8672889 Proportion of variance explained by the model. Intuitively how much the model prediction is better than using the mean value as prediction. A value between 0 and 1, where 1 is the best and 0 worst
@@ -231,6 +239,8 @@ float predictedExecutionTime = neuralNet.predict(comparisonCount)[0];
 System.out.printf("Predicted execution time for %.0f comparisons: %.2f ms%n",
         comparisonCount, predictedExecutionTime);
 ```
+
+**Output:**
 
 <pre class="console-output">Predicted execution time for 100000 comparisons: 337.74 ms</pre>
 

@@ -47,6 +47,8 @@ System.out.println("Images: " + images.size());
 System.out.println("Images by class: " + images.countByClasses());
 ```
 
+**Output:**
+
 <pre class="console-output">Images: 6171
 Number of images by label/class
 negative : 2550
@@ -64,6 +66,8 @@ ImageSet[] split = images.split(0.8, 0.2);
 ImageSet trainingSet = split[0];
 ImageSet testSet = split[1];
 ```
+
+**Output:**
 
 <pre class="console-output">Splitting data set: [0.8, 0.2]</pre>
 
@@ -95,6 +99,8 @@ network.getTrainer().setStopEpochs(epochs).setLearningRate(0.001f)
 network.train(trainingSet);
 ```
 
+**Output:**
+
 <pre class="console-output">TRAINING NEURAL NETWORK
 --------------------------------------------------------------
 
@@ -120,6 +126,8 @@ evaluation is needed to judge generalization.
 ```java
 System.out.println(network.test(testSet));
 ```
+
+**Output:**
 
 <pre class="console-output">Class: busy
 Total items: 1234
@@ -159,6 +167,8 @@ System.out.println("Predicted: " + predicted);
 System.out.printf("Occupied probability: %.4f%n", probability);
 ```
 
+**Output:**
+
 <pre class="console-output">Actual: busy
 Predicted: busy
 Occupied probability: 0.9958</pre>
@@ -179,6 +189,8 @@ This stops the worker pool so the application terminates normally.
 ```text
 --add-modules=jdk.incubator.vector -Ddeepnetts.epochs=1
 ```
+
+**Output:**
 
 <pre class="console-output">WARNING: Using incubator modules: jdk.incubator.vector</pre>
 

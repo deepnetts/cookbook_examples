@@ -53,6 +53,8 @@ verifyJavaRuntime();
 DeepNetts.getInstance().setUseCuda(false);
 ```
 
+**Output:**
+
 <pre class="console-output">WARNING: Using incubator modules: jdk.incubator.vector</pre>
 
 The example requires Java 25 with the Vector API enabled. This compact dataset
@@ -82,6 +84,8 @@ Confirm that all observations were loaded:
 ```java
 System.out.println("Samples: " + dataSet.size());
 ```
+
+**Output:**
 
 <pre class="console-output">Samples: 208</pre>
 
@@ -149,6 +153,8 @@ neuralNet.getTrainer()
 neuralNet.train(trainingSet);
 ```
 
+**Output:**
+
 <pre class="console-output">TRAINING NEURAL NETWORK
 ------------------------------------------------------------------------
 
@@ -175,6 +181,8 @@ Evaluate predictions on the held-out test set:
 ClassificationMetrics metrics = (ClassificationMetrics) neuralNet.test(testSet);
 System.out.println(metrics);
 ```
+
+**Output:**
 
 <pre class="console-output">Class: out1
 Total items: 41
@@ -222,6 +230,8 @@ System.out.println("Predicted: "
 System.out.println("Actual: "
         + (actualTarget >= 0.5f ? "MINE" : "ROCK"));
 ```
+
+**Output:**
 
 <pre class="console-output">Mine probability: 0.8297
 Predicted: MINE

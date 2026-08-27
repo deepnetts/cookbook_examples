@@ -28,6 +28,8 @@ DeepNetts.getInstance().setUseCuda(false);
 DeepNetts.getInstance().setMaxThreads(1);
 ```
 
+**Output:**
+
 <pre class="console-output">WARNING: Using incubator modules: jdk.incubator.vector</pre>
 
 The warning confirms that the required incubating Vector API module is enabled.
@@ -39,6 +41,8 @@ TabularDataSet<MLDataItem> dataSet = DataSets.readCsv(
         DATASET_PATH, NUM_INPUTS, NUM_OUTPUTS, false, ",");
 System.out.println("Samples: " + dataSet.size());
 ```
+
+**Output:**
 
 <pre class="console-output">Samples: 63</pre>
 
@@ -89,6 +93,8 @@ neuralNet.getTrainer()
 neuralNet.train(trainingSet);
 ```
 
+**Output:**
+
 <pre class="console-output">TRAINING NEURAL NETWORK
 -----------------------
 
@@ -111,6 +117,8 @@ The middle epochs are omitted for readability. `setStopEpochs(1500)` defines the
 RegressionMetrics metrics = (RegressionMetrics) neuralNet.test(testSet);
 System.out.println(metrics);
 ```
+
+**Output:**
 
 <pre class="console-output">RegressionMetrics{
 r2=0.35352463 Proportion of variance explained by the model. Intuitively how much the model prediction is better than using the mean value as prediction. A value between 0 and 1, where 1 is the best and 0 worst
@@ -140,6 +148,8 @@ float normalizedClaimCount = 0.25f;
 float predictedPayment = neuralNet.predict(normalizedClaimCount)[0];
 System.out.printf("Predicted normalized payment: %.4f%n", predictedPayment);
 ```
+
+**Output:**
 
 <pre class="console-output">Predicted normalized payment: 0.2446</pre>
 

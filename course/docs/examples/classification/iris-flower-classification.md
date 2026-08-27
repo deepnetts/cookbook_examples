@@ -78,6 +78,8 @@ DeepNetts.getInstance().setUseCuda(false);
 DeepNetts.getInstance().setMaxThreads(1);
 ```
 
+**Output:**
+
 <pre class="console-output">WARNING: Using incubator modules: jdk.incubator.vector</pre>
 
 The example requires Java 25 with the Vector API enabled. CPU execution keeps
@@ -111,6 +113,8 @@ System.out.println(
         "Columns: " + Arrays.toString(dataSet.getColumnNames())
 );
 ```
+
+**Output:**
 
 <pre class="console-output">Samples: 150
 Columns: [sepal_length, sepal_width, petal_length, petal_width, setosa, versicolor, virginica]</pre>
@@ -173,6 +177,8 @@ neuralNet.getTrainer()
 neuralNet.train(trainingSet);
 ```
 
+**Output:**
+
 <pre class="console-output">TRAINING NEURAL NETWORK
 ------------------------------------------------------------------------
 
@@ -199,6 +205,8 @@ Measure performance on the test set:
 ClassificationMetrics metrics = (ClassificationMetrics) neuralNet.test(testSet);
 System.out.println(metrics);
 ```
+
+**Output:**
 
 <pre class="console-output">Class: Macro Average
 Total items: 32
@@ -250,6 +258,8 @@ int predictedClass = indexOfLargest(probabilities);
 System.out.println("Class probabilities: " + Arrays.toString(probabilities));
 System.out.println("Predicted species: " + CLASS_NAMES[predictedClass]);
 ```
+
+**Output:**
 
 <pre class="console-output">Class probabilities: [0.99999917, 8.8696953E-7, 1.34597316E-17]
 Predicted species: SETOSA</pre>

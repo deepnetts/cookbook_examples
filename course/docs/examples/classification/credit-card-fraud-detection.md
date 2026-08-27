@@ -27,6 +27,8 @@ DeepNetts.getInstance().setUseCuda(false);
 DeepNetts.getInstance().setMaxThreads(1);
 ```
 
+**Output:**
+
 <pre class="console-output">WARNING: Using incubator modules: jdk.incubator.vector</pre>
 
 The example requires Java 25 with the Vector API enabled. It selects CPU
@@ -42,6 +44,8 @@ System.out.println("Samples: " + dataSet.size());
 System.out.println("Columns: " + Arrays.toString(dataSet.getColumnNames()));
 float[] exampleTransaction = dataSet.get(0).getInput().getValues().clone();
 ```
+
+**Output:**
 
 <pre class="console-output">Samples: 999
 Columns: [V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, Amount, Class]</pre>
@@ -100,6 +104,8 @@ neuralNet.getTrainer()
 neuralNet.train(trainingSet);
 ```
 
+**Output:**
+
 <pre class="console-output">TRAINING NEURAL NETWORK
 ------------------------------------------------------------------------
 
@@ -124,6 +130,8 @@ ClassificationMetrics metrics =
         (ClassificationMetrics) neuralNet.test(testSet);
 System.out.println(metrics);
 ```
+
+**Output:**
 
 <pre class="console-output">Class: Class
 Total items: 199
@@ -161,6 +169,8 @@ float fraudProbability = neuralNet.predict(exampleTransaction)[0];
 System.out.printf("Fraud probability: %.4f%n", fraudProbability);
 System.out.println(fraudProbability >= 0.5f ? "FRAUD" : "LEGITIMATE");
 ```
+
+**Output:**
 
 <pre class="console-output">Fraud probability: 0.9978
 FRAUD</pre>

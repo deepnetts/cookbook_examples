@@ -28,6 +28,8 @@ DeepNetts.getInstance().setUseCuda(false);
 DeepNetts.getInstance().setMaxThreads(1);
 ```
 
+**Output:**
+
 <pre class="console-output">WARNING: Using incubator modules: jdk.incubator.vector</pre>
 
 The warning confirms that the required incubating Vector API module is enabled.
@@ -40,6 +42,8 @@ TabularDataSet<MLDataItem> dataSet = DataSets.readCsv(
 System.out.println("Samples: " + dataSet.size());
 System.out.println("Columns: " + Arrays.toString(dataSet.getColumnNames()));
 ```
+
+**Output:**
 
 <pre class="console-output">Samples: 506
 Columns: [LSTAT, MEDV]</pre>
@@ -93,6 +97,8 @@ neuralNet.getTrainer()
 neuralNet.train(trainingSet);
 ```
 
+**Output:**
+
 <pre class="console-output">TRAINING NEURAL NETWORK
 -----------------------
 
@@ -115,6 +121,8 @@ Total Training Time: 55ms
 RegressionMetrics metrics = (RegressionMetrics) neuralNet.test(testSet);
 System.out.println(metrics);
 ```
+
+**Output:**
 
 <pre class="console-output">RegressionMetrics{
 r2=0.2624389 Proportion of variance explained by the model. Intuitively how much the model prediction is better than using the mean value as prediction. A value between 0 and 1, where 1 is the best and 0 worst
@@ -144,6 +152,8 @@ float normalizedLstat = 0.12f;
 float predictedValue = neuralNet.predict(normalizedLstat)[0];
 System.out.printf("Predicted normalized MEDV: %.4f%n", predictedValue);
 ```
+
+**Output:**
 
 <pre class="console-output">Predicted normalized MEDV: 0.6008</pre>
 

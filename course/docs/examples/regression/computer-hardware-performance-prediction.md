@@ -66,6 +66,8 @@ verifyJavaRuntime();
 DeepNetts.getInstance().setUseCuda(false);
 ```
 
+**Output:**
+
 <pre class="console-output">WARNING: Using incubator modules: jdk.incubator.vector</pre>
 
 The example requires Java 25 with the Vector API enabled. This model and dataset
@@ -98,6 +100,8 @@ System.out.println(
         "Columns: " + Arrays.toString(dataSet.getColumnNames())
 );
 ```
+
+**Output:**
 
 <pre class="console-output">Samples: 209
 Columns: [MYCT, MMIN, MMAX, CACH, CHMIN, CHMAX, PRP]</pre>
@@ -168,6 +172,8 @@ neuralNet.getTrainer()
 neuralNet.train(trainingSet);
 ```
 
+**Output:**
+
 <pre class="console-output">TRAINING NEURAL NETWORK
 ------------------------------------------------------------------------
 
@@ -194,6 +200,8 @@ Test the trained network with the reserved test set:
 RegressionMetrics metrics = (RegressionMetrics) neuralNet.test(testSet);
 System.out.println(metrics);
 ```
+
+**Output:**
 
 <pre class="console-output">RegressionMetrics{
 r2=0.84360945 Proportion of variance explained by the model. Intuitively how much the model prediction is better than using the mean value as prediction. A value between 0 and 1, where 1 is the best and 0 worst
@@ -237,6 +245,8 @@ float[] computer = {
 float predictedPerformance = neuralNet.predict(computer)[0];
 System.out.printf("Predicted relative performance: %.2f%n", predictedPerformance);
 ```
+
+**Output:**
 
 <pre class="console-output">Predicted relative performance: 404.55</pre>
 

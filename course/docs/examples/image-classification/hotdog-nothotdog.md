@@ -45,6 +45,8 @@ System.out.println("Images: " + images.size());
 System.out.println("Images by class: " + images.countByClasses());
 ```
 
+**Output:**
+
 <pre class="console-output">Images: 467
 Number of images by label/class
 negative : 228
@@ -62,6 +64,8 @@ ImageSet[] split = images.split(0.8, 0.2);
 ImageSet trainingSet = split[0];
 ImageSet testSet = split[1];
 ```
+
+**Output:**
 
 <pre class="console-output">Splitting data set: [0.8, 0.2]</pre>
 
@@ -94,6 +98,8 @@ network.getTrainer().setStopEpochs(epochs).setLearningRate(0.001f)
 network.train(trainingSet);
 ```
 
+**Output:**
+
 <pre class="console-output">TRAINING NEURAL NETWORK
 --------------------------------------------------------------
 
@@ -118,6 +124,8 @@ training accuracy stayed near chance level, so the model has not converged.
 ```java
 System.out.println(network.test(testSet));
 ```
+
+**Output:**
 
 <pre class="console-output">Class: hot_dog
 Total items: 93
@@ -158,6 +166,8 @@ System.out.println("Predicted: " + predicted);
 System.out.printf("Hot-dog probability: %.4f%n", probability);
 ```
 
+**Output:**
+
 <pre class="console-output">Actual: hot_dog
 Predicted: hot_dog
 Hot-dog probability: 0.6097</pre>
@@ -179,6 +189,8 @@ This safely stops the network's background worker threads.
 ```text
 --add-modules=jdk.incubator.vector -Ddeepnetts.epochs=1
 ```
+
+**Output:**
 
 <pre class="console-output">WARNING: Using incubator modules: jdk.incubator.vector</pre>
 

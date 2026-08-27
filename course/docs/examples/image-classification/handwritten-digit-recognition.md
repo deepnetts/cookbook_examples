@@ -45,6 +45,8 @@ System.out.println("Images: " + images.size());
 System.out.println("Images by class: " + images.countByClasses());
 ```
 
+**Output:**
+
 <pre class="console-output">Images: 1000
 Number of images by label/class
 0 : 100
@@ -70,6 +72,8 @@ ImageSet[] split = images.split(0.8, 0.2);
 ImageSet trainingSet = split[0];
 ImageSet testSet = split[1];
 ```
+
+**Output:**
 
 <pre class="console-output">Splitting data set: [0.8, 0.2]</pre>
 
@@ -103,6 +107,8 @@ network.getTrainer().setStopEpochs(epochs).setLearningRate(0.001f)
 network.train(trainingSet);
 ```
 
+**Output:**
+
 <pre class="console-output">TRAINING NEURAL NETWORK
 --------------------------------------------------------------
 
@@ -127,6 +133,8 @@ network normally needs more epochs to learn reliable digit features.
 ```java
 System.out.println(network.test(testSet));
 ```
+
+**Output:**
 
 <pre class="console-output">Class: Macro Average
 Total items: 253
@@ -165,6 +173,8 @@ System.out.println("Predicted digit: " + prediction);
 System.out.printf("Confidence: %.4f%n", probabilities[prediction]);
 ```
 
+**Output:**
+
 <pre class="console-output">Actual digit: 7
 Predicted digit: 3
 Confidence: 0.6999</pre>
@@ -196,6 +206,8 @@ This stops the worker pool after evaluation and prediction are complete.
 ```text
 --add-modules=jdk.incubator.vector -Ddeepnetts.epochs=1
 ```
+
+**Output:**
 
 <pre class="console-output">WARNING: Using incubator modules: jdk.incubator.vector</pre>
 

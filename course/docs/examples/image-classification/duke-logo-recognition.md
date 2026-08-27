@@ -47,6 +47,8 @@ System.out.println("Images: " + images.size());
 System.out.println("Images by class: " + images.countByClasses());
 ```
 
+**Output:**
+
 <pre class="console-output">Images: 103
 Number of images by label/class
 negative : 54
@@ -64,6 +66,8 @@ ImageSet[] split = images.split(0.8, 0.2);
 ImageSet trainingSet = split[0];
 ImageSet testSet = split[1];
 ```
+
+**Output:**
 
 <pre class="console-output">Splitting data set: [0.8, 0.2]</pre>
 
@@ -94,6 +98,8 @@ network.getTrainer().setStopEpochs(epochs).setLearningRate(0.001f)
 network.train(trainingSet);
 ```
 
+**Output:**
+
 <pre class="console-output">TRAINING NEURAL NETWORK
 --------------------------------------------------------------
 
@@ -116,6 +122,8 @@ training error and rising accuracy show how the model fits the training split.
 ```java
 System.out.println(network.test(testSet));
 ```
+
+**Output:**
 
 <pre class="console-output">Class: duke
 Total items: 20
@@ -153,6 +161,8 @@ System.out.println("Predicted: " + predicted);
 System.out.printf("Duke probability: %.4f%n", probability);
 ```
 
+**Output:**
+
 <pre class="console-output">Actual: duke
 Predicted: duke
 Duke probability: 0.9824</pre>
@@ -174,6 +184,8 @@ Use **Project Properties → Run → VM Options**:
 ```text
 --add-modules=jdk.incubator.vector -Ddeepnetts.epochs=1
 ```
+
+**Output:**
 
 <pre class="console-output">WARNING: Using incubator modules: jdk.incubator.vector</pre>
 
