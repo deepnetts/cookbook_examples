@@ -18,6 +18,7 @@ This walkthrough builds an email spam detector one part at a time. It demonstrat
 | **Inputs** | Five numerical email and sender features |
 | **Target** | `is_spam` - `0` for not spam, `1` for spam |
 | **Model** | `5 -> 32 -> 16 -> 1` feed-forward neural network with a Sigmoid output |
+| **Default training** | 50 CPU epochs |
 | **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Neural Networks](../../lectures/02-neural-networks.md), [Model Development](../../lectures/04-model-development.md) |
 
 The model receives five email features:
@@ -39,7 +40,7 @@ load -> inspect -> split -> scale -> build -> train -> evaluate -> save -> predi
 ```
 
 
-## 1. Define the program configuration
+## 0. Define the program configuration
 
 Start with the dataset path, model path, and expected data shape:
 
@@ -56,17 +57,23 @@ private static final int NUM_OUTPUTS = 1;
 
 Five input columns describe each email. One output represents the probability that the email belongs to the spam class.
 
-## 2. Select CPU execution
+## 1. Configure the runtime
 
-Disable CUDA at the start of the program:
+Verify Java and select deterministic CPU execution:
 
 ```java
+verifyJavaRuntime();
 DeepNetts.getInstance().setUseCuda(false);
+DeepNetts.getInstance().setMaxThreads(1);
 ```
 
-The dataset and network are small enough for CPU execution. This keeps the example easy to run without requiring GPU configuration.
+<pre class="console-output">WARNING: Using incubator modules: jdk.incubator.vector</pre>
 
-## 3. Load the labeled emails
+The example requires Java 25 with the Vector API enabled. The dataset and
+network are small enough for CPU execution, and one worker thread keeps the run
+easy to reproduce.
+
+## 2. Load the labeled emails
 
 Read the CSV dataset:
 
@@ -83,7 +90,7 @@ TabularDataSet<MLDataItem> dataSet =
 
 The first five columns are features and the final `is_spam` column is the known target. These labels make this a supervised learning problem.
 
-## 4. Inspect the dataset
+## 3. Inspect the dataset
 
 Print basic structural information:
 
@@ -94,9 +101,12 @@ System.out.println(
 );
 ```
 
+<pre class="console-output">Samples: 20000
+Columns: [num_links, num_words, has_offer, sender_score, all_caps, is_spam]</pre>
+
 This confirms that the CSV was found and parsed. The expected columns are the five email features followed by `is_spam`.
 
-## 5. Shuffle and split the samples
+## 4. Shuffle and split the samples
 
 Shuffle with a fixed seed and create training and test sets:
 
@@ -111,7 +121,7 @@ DataSet<MLDataItem> testSet = split.getTestSet();
 
 The network learns from 80% of the samples. The remaining 20% measures how it handles emails that were not used to update its parameters.
 
-## 6. Scale the features
+## 5. Scale the features
 
 Fit Min-Max scaling on the training set, then transform the test set with the same scaler:
 
@@ -123,7 +133,7 @@ scaler.apply(testSet);
 
 The features use different numerical ranges. Scaling prevents a large-valued feature such as `num_words` from dominating only because of its magnitude. The scaler must be fitted before touching the test data to avoid leakage.
 
-## 7. Build the classification network
+## 6. Build the classification network
 
 Create the feed-forward architecture:
 
@@ -147,7 +157,7 @@ The architecture is:
 
 The hidden layers use ReLU by default and learn non-linear feature combinations. The Sigmoid output produces a value between `0` and `1`, while Cross-Entropy supplies the classification training objective.
 
-## 8. Configure mini-batch training
+## 7. Configure and train
 
 Set the main hyperparameters and train:
 
@@ -163,22 +173,54 @@ neuralNet.getTrainer()
 neuralNet.train(trainingSet);
 ```
 
-Mini-batch mode updates the model using groups of 64 samples. Each epoch shuffles the data, and SGD adjusts the weights and biases to reduce classification loss.
+<pre class="console-output">TRAINING NEURAL NETWORK
+------------------------------------------------------------------------
 
-## 9. Evaluate the classifier
+Initial Train Error:1.3577209
+Epoch:1, Time:242ms, TrainError:0.262803, TrainErrorChange:-1.0949179, TrainAccuracy:0.912625
+Epoch:2, Time:156ms, TrainError:0.21086535, TrainErrorChange:-0.05193764, TrainAccuracy:0.917
+Epoch:3, Time:120ms, TrainError:0.17802352, TrainErrorChange:-0.03284183, TrainAccuracy:0.923625
+...
+Epoch:50, Time:101ms, TrainError:0.118475, TrainErrorChange:-8.9000165E-4, TrainAccuracy:0.955625
+
+TRAINING COMPLETED
+Total Training Time: 6212ms
+------------------------------------------------------------------------</pre>
+
+Mini-batch mode updates the model using groups of 64 samples. The middle epochs
+are omitted for readability. Across all 50 epochs, SGD reduced training error
+from about 1.36 to 0.12 and reached about 95.6% training accuracy.
+
+## 8. Evaluate the classifier
 
 Test the trained network on unseen samples:
 
 ```java
-ClassificationMetrics metrics =
-        (ClassificationMetrics) neuralNet.test(testSet);
+ClassificationMetrics metrics = (ClassificationMetrics) neuralNet.test(testSet);
 
 System.out.println(metrics);
 ```
 
-Classification metrics can report more than overall accuracy. Precision, recall, F1 score, and the confusion matrix help explain which kinds of classification errors the model makes.
+<pre class="console-output">Class: is_spam
+Total items: 3999
+True positive:261.0 Number of examples correctly classified as positive
+True negative:3576.0 Number of examples correctly classified as negative
+False positive:76.0 Number of examples incorrectly classified as positive
+False negative:86.0 Number of examples incorrectly classified as negative
+Accuracy (ACC): 0.9594899 How often is a classifier correct in total (percent of correct classifications)
+Precision (PPV): 0.7744807 How often is a classifier correct when it gives positive prediction
+Recall: 0.7521614 When it is actually positive class, how often does it give positive prediction
+F1 Score: 0.7631579 Harmonic average (balance) of precision and recall
+Specificity (TNR): 0.97918946 When it is actually negative class, how often does it give negative prediction
+Fall-out (FPR): 0.020810515 How often it gives false positive prediction in total (percent of false positive predictions)
+False negative rate (FNR): 0.24783862 How often it gives false negative prediction in total (percent of false negative predictions)</pre>
 
-## 10. Save the model and scaler
+The classifier reached about 95.9% accuracy, but the confusion matrix adds
+important context: it incorrectly marked 76 legitimate emails as spam and
+missed 86 spam emails. Precision, recall, and F1 therefore give a more complete
+picture than accuracy alone.
+
+## 9. Save the model and scaler
 
 Attach preprocessing before saving the trained network:
 
@@ -191,9 +233,10 @@ neuralNet.save(MODEL_PATH);
 
 New emails must be scaled exactly like the training samples. Saving the scaler with the model keeps that rule inside the reusable prediction pipeline.
 
-## 11. Describe a new email
+## 10. Use the trained model
 
-Create an input array in the same order as the dataset columns:
+Create an input array in the same order as the dataset columns, then predict
+its spam probability and class:
 
 ```java
 float[] email = {
@@ -203,29 +246,26 @@ float[] email = {
         0.35f, // sender_score
         1      // all_caps
 };
-```
 
-Each number describes one email characteristic. A correct array length is not enough-the feature order must also match training.
-
-## 12. Predict probability and class
-
-Read the Sigmoid output:
-
-```java
 float spamProbability = neuralNet.predict(email)[0];
-
 System.out.printf("Spam probability: %.4f%n", spamProbability);
+System.out.println(spamProbability >= 0.5f ? "SPAM" : "NOT SPAM");
 ```
 
-Convert the probability into a class with a `0.5` threshold:
+<pre class="console-output">Spam probability: 0.9259
+SPAM</pre>
 
-```java
-System.out.println(
-        spamProbability >= 0.5f ? "SPAM" : "NOT SPAM"
-);
+Each number describes one email characteristic, so the feature order must
+match training. The probability is above the `0.5` threshold and produces the
+final `SPAM` decision.
+
+## Run in NetBeans
+
+Add this under **Project Properties → Run → VM Options**:
+
+```text
+--add-modules=jdk.incubator.vector
 ```
-
-The probability preserves the model's confidence, while the threshold produces the final binary decision.
 
 ## What you built
 

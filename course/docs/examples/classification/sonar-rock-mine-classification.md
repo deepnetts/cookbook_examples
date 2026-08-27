@@ -18,6 +18,7 @@ This walkthrough builds a Sonar rock-or-mine classifier one part at a time. It u
 | **Inputs** | 60 numerical sonar-signal features |
 | **Target** | `0` for rock, `1` for mine |
 | **Model** | `60 -> 1` sonar-rock-mine-classification network with a Sigmoid output |
+| **Default training** | 200 CPU epochs |
 | **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Neural Networks](../../lectures/02-neural-networks.md), [Deep Netts API](../../lectures/03-deep-netts-api.md), [Model Development](../../lectures/04-model-development.md) |
 
 The complete flow is:
@@ -26,7 +27,7 @@ The complete flow is:
 load -> inspect -> split -> scale -> build -> train -> evaluate -> save -> predict
 ```
 
-## 1. Define the program configuration
+## 0. Define the program configuration
 
 Set the dataset path, model path, and expected data shape:
 
@@ -43,17 +44,21 @@ private static final int NUM_OUTPUTS = 1;
 
 Every CSV row contains 60 input values followed by one binary target.
 
-## 2. Select CPU execution
+## 1. Configure the runtime
 
-Disable CUDA before creating the model:
+Verify Java and disable CUDA before creating the model:
 
 ```java
+verifyJavaRuntime();
 DeepNetts.getInstance().setUseCuda(false);
 ```
 
-This compact dataset and model run quickly on a CPU and do not require GPU configuration.
+<pre class="console-output">WARNING: Using incubator modules: jdk.incubator.vector</pre>
 
-## 3. Load the Sonar dataset
+The example requires Java 25 with the Vector API enabled. This compact dataset
+and model run quickly on a CPU and do not require GPU configuration.
+
+## 2. Load the Sonar dataset
 
 Read the numerical CSV file:
 
@@ -70,7 +75,7 @@ TabularDataSet<MLDataItem> dataSet =
 
 The file has no header, so the fourth argument is `false`. Setting it to `true` would incorrectly discard the first observation as column names.
 
-## 4. Inspect the data
+## 3. Inspect the data
 
 Confirm that all observations were loaded:
 
@@ -78,9 +83,11 @@ Confirm that all observations were loaded:
 System.out.println("Samples: " + dataSet.size());
 ```
 
+<pre class="console-output">Samples: 208</pre>
+
 The expected result is `208`. This small check catches missing files and incorrect CSV-header configuration early.
 
-## 5. Shuffle and split the observations
+## 4. Shuffle and split the observations
 
 Shuffle reproducibly and reserve 20% of the data for testing:
 
@@ -95,7 +102,7 @@ DataSet<MLDataItem> testSet = split.getTestSet();
 
 The model learns only from the training set. The test set estimates how well it handles sonar observations that did not update its weights.
 
-## 6. Scale the input features
+## 5. Scale the input features
 
 Fit Min-Max scaling on the training set and apply the same transformation to the test set:
 
@@ -107,7 +114,7 @@ scaler.apply(testSet);
 
 Fitting the scaler only on training data prevents information from the test set leaking into model development.
 
-## 7. Build logistic regression
+## 6. Build logistic regression
 
 Create a network with no hidden layers:
 
@@ -128,7 +135,7 @@ The architecture is:
 
 With no hidden layer, the network is logistic regression rather than a multilayer neural network. The Sigmoid output represents the estimated probability of the positive class.
 
-## 8. Configure and train
+## 7. Configure and train
 
 Set the training parameters and fit the model:
 
@@ -142,22 +149,52 @@ neuralNet.getTrainer()
 neuralNet.train(trainingSet);
 ```
 
-SGD updates the output weights and bias to reduce Cross-Entropy loss. The fixed model and data seeds make repeated runs easier to compare.
+<pre class="console-output">TRAINING NEURAL NETWORK
+------------------------------------------------------------------------
 
-## 9. Evaluate the classifier
+Initial Train Error:0.69915146
+Epoch:1, Time:8ms, TrainError:0.6907358, TrainErrorChange:-0.008415639, TrainAccuracy:0.5903614
+Epoch:2, Time:2ms, TrainError:0.6626929, TrainErrorChange:-0.028042912, TrainAccuracy:0.62650603
+Epoch:3, Time:2ms, TrainError:0.64100194, TrainErrorChange:-0.021690965, TrainAccuracy:0.6626506
+...
+Epoch:200, Time:1ms, TrainError:0.31379443, TrainErrorChange:-0.0015623271, TrainAccuracy:0.87349397
+
+TRAINING COMPLETED
+Total Training Time: 124ms
+------------------------------------------------------------------------</pre>
+
+SGD updates the output weights and bias to reduce Cross-Entropy loss. The
+middle epochs are omitted for readability. Across all 200 epochs, training
+error fell from about 0.70 to 0.31 and training accuracy reached about 87.3%.
+
+## 8. Evaluate the classifier
 
 Evaluate predictions on the held-out test set:
 
 ```java
-ClassificationMetrics metrics =
-        (ClassificationMetrics) neuralNet.test(testSet);
-
+ClassificationMetrics metrics = (ClassificationMetrics) neuralNet.test(testSet);
 System.out.println(metrics);
 ```
 
-Accuracy summarizes all correct decisions. Precision, recall, F1 score, specificity, false-positive rate, and false-negative rate reveal which errors the classifier makes.
+<pre class="console-output">Class: out1
+Total items: 41
+True positive:15.0 Number of examples correctly classified as positive
+True negative:15.0 Number of examples correctly classified as negative
+False positive:2.0 Number of examples incorrectly classified as positive
+False negative:9.0 Number of examples incorrectly classified as negative
+Accuracy (ACC): 0.73170733 How often is a classifier correct in total (percent of correct classifications)
+Precision (PPV): 0.88235295 How often is a classifier correct when it gives positive prediction
+Recall: 0.625 When it is actually positive class, how often does it give positive prediction
+F1 Score: 0.7317073 Harmonic average (balance) of precision and recall
+Specificity (TNR): 0.88235295 When it is actually negative class, how often does it give negative prediction
+Fall-out (FPR): 0.11764706 How often it gives false positive prediction in total (percent of false positive predictions)
+False negative rate (FNR): 0.375 How often it gives false negative prediction in total (percent of false negative predictions)</pre>
 
-## 10. Save the trained model
+The model correctly classified about 73.2% of the 41 held-out observations. Its
+high precision but lower recall means mine predictions are usually correct,
+while nine actual mines were missed.
+
+## 9. Save the trained model
 
 Create the output directory and serialize the model:
 
@@ -168,23 +205,15 @@ FileIO.writeToFile(neuralNet, MODEL_PATH);
 
 The example saves `models/sonar-rock-mine-classification.dnet`. Loading is intentionally not demonstrated while the Deep Netts 4 beta runtime is still finalizing model deserialization.
 
-## 11. Select an example from the test set
+## 10. Use the trained model
 
-Use a real, already-preprocessed observation rather than a hard-coded 60-value array:
+Use a real, already-preprocessed test observation, predict its mine
+probability, and compare the predicted and actual classes:
 
 ```java
 MLDataItem sonarExample = testSet.get(0);
 float[] sonarSignal = sonarExample.getInput().getValues();
 float actualTarget = sonarExample.getTargetOutput().getValues()[0];
-```
-
-The known target is retained only so the displayed prediction can be compared with the expected class.
-
-## 12. Predict probability and class
-
-Use the trained model instance:
-
-```java
 float mineProbability = neuralNet.predict(sonarSignal)[0];
 
 System.out.printf("Mine probability: %.4f%n", mineProbability);
@@ -194,7 +223,20 @@ System.out.println("Actual: "
         + (actualTarget >= 0.5f ? "MINE" : "ROCK"));
 ```
 
-The Sigmoid output is converted into a class using a `0.5` decision threshold.
+<pre class="console-output">Mine probability: 0.8297
+Predicted: MINE
+Actual: MINE</pre>
+
+The Sigmoid output is above the `0.5` threshold, so this held-out observation
+is correctly classified as `MINE`.
+
+## Run in NetBeans
+
+Add this under **Project Properties → Run → VM Options**:
+
+```text
+--add-modules=jdk.incubator.vector
+```
 
 ## Logistic regression or a neural network?
 

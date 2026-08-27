@@ -18,6 +18,7 @@ This walkthrough builds an Iris flower classifier one part at a time. It demonst
 | **Inputs** | Four numerical flower measurements |
 | **Target** | One of three Iris species, represented by one-hot columns |
 | **Model** | `4 -> 16 -> 3` feed-forward neural network with a Softmax output |
+| **Default training** | Up to 350 CPU epochs, with an error-based stop condition |
 | **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Neural Networks](../../lectures/02-neural-networks.md), [Model Development](../../lectures/04-model-development.md) |
 
 The model receives four flower measurements:
@@ -38,7 +39,7 @@ The complete flow is:
 load -> inspect -> split -> scale -> build -> train -> evaluate -> save -> predict
 ```
 
-## 1. Define the configuration
+## 0. Define the configuration
 
 Set the dataset path, model path, and expected shape:
 
@@ -55,7 +56,7 @@ private static final int NUM_OUTPUTS = 3;
 
 Four inputs describe a flower. Three outputs represent the three possible species.
 
-## 2. Map the class order
+### Map the class order
 
 Define names in the same order as the target columns:
 
@@ -67,17 +68,23 @@ private static final String[] CLASS_NAMES = {
 
 Index `0` maps to Setosa, index `1` to Versicolor, and index `2` to Virginica. This order must stay aligned with the CSV header.
 
-## 3. Select CPU execution
+## 1. Configure the runtime
 
-Disable CUDA for this small example:
+Verify Java and select deterministic CPU execution:
 
 ```java
+verifyJavaRuntime();
 DeepNetts.getInstance().setUseCuda(false);
+DeepNetts.getInstance().setMaxThreads(1);
 ```
 
-CPU execution keeps the project easy to run without a CUDA installation.
+<pre class="console-output">WARNING: Using incubator modules: jdk.incubator.vector</pre>
 
-## 4. Load the flowers
+The example requires Java 25 with the Vector API enabled. CPU execution keeps
+the project easy to run without CUDA, and one worker thread makes results easier
+to reproduce.
+
+## 2. Load the flowers
 
 Read four input columns and three output columns:
 
@@ -94,7 +101,7 @@ TabularDataSet<MLDataItem> dataSet =
 
 The three target columns are one-hot encoded. A Setosa row ends with `1,0,0`, while the other species activate a different target column.
 
-## 5. Inspect the dataset
+## 3. Inspect the dataset
 
 Print the number of samples and parsed column names:
 
@@ -105,9 +112,12 @@ System.out.println(
 );
 ```
 
+<pre class="console-output">Samples: 150
+Columns: [sepal_length, sepal_width, petal_length, petal_width, setosa, versicolor, virginica]</pre>
+
 The expected result is 150 samples and seven columns: four inputs followed by three targets.
 
-## 6. Shuffle and split
+## 4. Shuffle and split
 
 Shuffle reproducibly, then reserve test samples:
 
@@ -122,7 +132,7 @@ DataSet<MLDataItem> testSet = split.getTestSet();
 
 The network learns only from the training set. The test set measures how it handles unseen flowers.
 
-## 7. Scale the measurements
+## 5. Scale the measurements
 
 Fit Min-Max scaling on training data and reuse it for testing:
 
@@ -133,7 +143,7 @@ scaler.apply(testSet);
 
 All four features are measured in centimeters but use different ranges. Fitting the scaler only on training data prevents data leakage.
 
-## 8. Build a Softmax network
+## 6. Build a Softmax network
 
 Create the `4 -> 16 -> 3` architecture:
 
@@ -149,7 +159,7 @@ FeedForwardNetwork neuralNet = FeedForwardNetwork.builder()
 
 The hidden layer learns non-linear relationships between flower measurements. Softmax produces three comparable probabilities, and Cross-Entropy trains them against the one-hot targets.
 
-## 9. Train with ADAM
+## 7. Configure and train
 
 Configure the trainer and start learning:
 
@@ -163,22 +173,52 @@ neuralNet.getTrainer()
 neuralNet.train(trainingSet);
 ```
 
-ADAM adapts parameter updates during training. Training stops after reaching the target error or the maximum number of epochs.
+<pre class="console-output">TRAINING NEURAL NETWORK
+------------------------------------------------------------------------
 
-## 10. Evaluate the model
+Initial Train Error:1.0736417
+Epoch:1, Time:10ms, TrainError:1.0048019, TrainErrorChange:-0.06883979, TrainAccuracy:0.41945544
+Epoch:2, Time:3ms, TrainError:0.9104093, TrainErrorChange:-0.0943926, TrainAccuracy:0.53105694
+Epoch:3, Time:2ms, TrainError:0.8589118, TrainErrorChange:-0.05149746, TrainAccuracy:0.54152936
+...
+Epoch:350, Time:1ms, TrainError:0.04522642, TrainErrorChange:-3.0234456E-5, TrainAccuracy:0.9670732
+
+TRAINING COMPLETED
+Total Training Time: 320ms
+------------------------------------------------------------------------</pre>
+
+ADAM adapts parameter updates during training. The middle epochs are omitted
+for readability. This run reached the 350-epoch limit, reducing training error
+from about 1.07 to 0.045 and reaching about 96.7% training accuracy.
+
+## 8. Evaluate the model
 
 Measure performance on the test set:
 
 ```java
-ClassificationMetrics metrics =
-        (ClassificationMetrics) neuralNet.test(testSet);
-
+ClassificationMetrics metrics = (ClassificationMetrics) neuralNet.test(testSet);
 System.out.println(metrics);
 ```
 
-Accuracy gives an overall result, while precision, recall, and F1 help describe classification errors.
+<pre class="console-output">Class: Macro Average
+Total items: 32
+True positive:26.0 Number of examples correctly classified as positive
+True negative:0.0 Number of examples correctly classified as negative
+False positive:3.0 Number of examples incorrectly classified as positive
+False negative:3.0 Number of examples incorrectly classified as negative
+Accuracy (ACC): 0.8125 How often is a classifier correct in total (percent of correct classifications)
+Precision (PPV): 0.8965517 How often is a classifier correct when it gives positive prediction
+Recall: 0.8965517 When it is actually positive class, how often does it give positive prediction
+F1 Score: 0.8965517 Harmonic average (balance) of precision and recall
+Specificity (TNR): 0.0 When it is actually negative class, how often does it give negative prediction
+Fall-out (FPR): 1.0 How often it gives false positive prediction in total (percent of false positive predictions)
+False negative rate (FNR): 0.10344828 How often it gives false negative prediction in total (percent of false negative predictions)</pre>
 
-## 11. Save model and scaler
+These are macro-averaged multiclass metrics over 32 held-out flowers. Accuracy
+shows the overall result, while precision, recall, F1, and the error counts
+describe performance across the three classes.
+
+## 9. Save model and scaler
 
 Attach preprocessing before saving:
 
@@ -191,9 +231,10 @@ neuralNet.save(MODEL_PATH);
 
 The saved model retains the same scaling required for future raw flower measurements.
 
-## 12. Predict probabilities
+## 10. Use the trained model
 
-Describe a new flower and run inference:
+Describe a new flower, run inference, and select the largest Softmax
+probability:
 
 ```java
 float[] flower = {
@@ -204,23 +245,25 @@ float[] flower = {
 };
 
 float[] probabilities = neuralNet.predict(flower);
-```
-
-The result contains one probability for each class in `CLASS_NAMES` order.
-
-## 13. Select the species
-
-Find the position of the largest probability:
-
-```java
 int predictedClass = indexOfLargest(probabilities);
 
-System.out.println(
-        "Predicted species: " + CLASS_NAMES[predictedClass]
-);
+System.out.println("Class probabilities: " + Arrays.toString(probabilities));
+System.out.println("Predicted species: " + CLASS_NAMES[predictedClass]);
 ```
 
-`indexOfLargest` is the `argmax` operation. It converts the probability vector into the final class label.
+<pre class="console-output">Class probabilities: [0.99999917, 8.8696953E-7, 1.34597316E-17]
+Predicted species: SETOSA</pre>
+
+The values follow the `CLASS_NAMES` order. `indexOfLargest` performs
+`argmax`, selecting the first probability and producing `SETOSA`.
+
+## Run in NetBeans
+
+Add this under **Project Properties → Run → VM Options**:
+
+```text
+--add-modules=jdk.incubator.vector
+```
 
 ## What you built
 
