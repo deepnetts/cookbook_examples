@@ -15,6 +15,7 @@ import java.nio.file.Path;
 /** Binary image classification: Duke logo or negative image. */
 public class DukeLogoRecognitionDeepNetts {
     public static void main(String[] args) throws Exception {
+        
         int width = 64, height = 64;
         int epochs = Integer.getInteger("deepnetts.epochs", 20);
         String dataset = "src/main/resources/datasets/duke-logo";

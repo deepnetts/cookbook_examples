@@ -1174,6 +1174,20 @@ textarea {
     border-color: #e5be45;
 }
 
+.markdown-body pre.console-output {
+    margin: 12px 0 20px;
+    padding: 14px 16px;
+    overflow-x: auto;
+    color: #24292f;
+    background: #eeeeee;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    font-family: "Liberation Mono", "DejaVu Sans Mono", Consolas, monospace;
+    font-size: 13px;
+    line-height: 1.45;
+}
+
 .markdown-body :is(.admonition.warning .admonition-title, details.warning > summary) {
     color: #4d3a05;
     background: #fff3c4;
