@@ -10,3 +10,5 @@ course/.venv/
 course/site/
 documentation/
 DNC-main/
+.idea/
+
