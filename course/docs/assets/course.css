@@ -743,6 +743,115 @@ textarea {
     transform: translateX(3px);
 }
 
+/* Compact comparison table used for classification approaches. */
+.markdown-body .classification-comparison {
+    margin: 1.35rem 0 1.75rem;
+    overflow-x: auto;
+    border: 1px solid #c9e5ef;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(16, 57, 83, 0.07);
+}
+
+.markdown-body .classification-comparison:focus-visible {
+    outline: 3px solid rgba(0, 183, 221, 0.3);
+    outline-offset: 3px;
+}
+
+.markdown-body .classification-comparison table {
+    width: 100%;
+    min-width: 920px;
+    margin: 0;
+    border: 0;
+    border-collapse: collapse;
+}
+
+.markdown-body .classification-comparison th {
+    padding: 0.85rem 1rem;
+    border: 0;
+    border-bottom: 2px solid #72d4e8;
+    background: #073b61;
+    color: #fff;
+    font-size: 0.78rem;
+    letter-spacing: 0.035em;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.markdown-body .classification-comparison td {
+    padding: 0.9rem 1rem;
+    border: 0;
+    border-bottom: 1px solid #dcebf1;
+    color: #263f53;
+    line-height: 1.45;
+    vertical-align: top;
+}
+
+.markdown-body .classification-comparison tbody tr:nth-child(even) {
+    background: #f4fafc;
+}
+
+.markdown-body .classification-comparison tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.markdown-body .classification-comparison td:first-child strong {
+    color: #073b61;
+}
+
+.markdown-body .classification-comparison .target-name {
+    color: #183b52;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-weight: 400;
+}
+
+.markdown-body .classification-comparison .classification-outcomes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0;
+}
+
+.markdown-body .classification-comparison .classification-outcomes code {
+    padding: 0.16rem 0.46rem;
+    border: 1px solid #a9dce8;
+    border-radius: 999px;
+    background: #eaf8fb;
+    color: #075f7d;
+    font-size: 0.74rem;
+    font-weight: 750;
+    white-space: nowrap;
+}
+
+.markdown-body .classification-comparison:not(.regression-comparison) table {
+    min-width: 1080px;
+}
+
+.markdown-body .architecture-comparison table {
+    min-width: 1050px;
+}
+
+.markdown-body .classification-comparison td:last-child {
+    white-space: nowrap;
+}
+
+.markdown-body .classification-comparison td:last-child a {
+    color: #007ba7;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.markdown-body .classification-comparison td:last-child a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.markdown-body .classification-comparison td:last-child a:focus-visible {
+    border-radius: 3px;
+    outline: 3px solid rgba(0, 183, 221, 0.3);
+    outline-offset: 3px;
+}
+
 @media (max-width: 760px) {
     .markdown-body .ml-concept-cards {
         grid-template-columns: 1fr;

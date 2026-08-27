@@ -30,11 +30,10 @@ The model learns the overall relationship instead of memorizing each row.
 
 A single Linear neuron calculates the same equation:
 
-```text
-input x -- weight w --+
-                      +--> weighted sum + bias --> linear output
-constant 1 -- bias b -+
-```
+<figure class="course-figure">
+  <img src="../../assets/course-figures/linear-neuron.svg" alt="Input x multiplied by weight w and constant one multiplied by bias b, combined into a Linear output">
+  <figcaption>A Linear neuron combines the weighted input and bias into the same equation used by simple linear regression: ŷ = wx + b.</figcaption>
+</figure>
 
 In Deep Netts this is a `1 -> 1` network: one input, no hidden layers, and one output with Linear activation. It is the smallest useful neural network.
 
@@ -178,10 +177,10 @@ $\eta$ is the learning rate. The gradient describes how the loss changes when th
 
 Linear regression cannot bend around a nonlinear relationship. Hidden layers with nonlinear activations change the model family:
 
-```text
-Linear regression:    input -> Linear output
-Nonlinear regression: input -> Tanh/ReLU hidden layers -> Linear output
-```
+<figure class="course-figure">
+  <img src="../../assets/course-figures/linear-vs-nonlinear-regression.svg" alt="Comparison of Linear regression without hidden layers and nonlinear regression with Tanh or ReLU hidden layers">
+  <figcaption>Both architectures use a Linear output for a continuous target, but only the hidden nonlinear activations can represent a relationship that bends.</figcaption>
+</figure>
 
 The [House Price Prediction walkthrough](../examples/regression/house-price-prediction.md) demonstrates a `1 -> 16 -> 8 -> 1` nonlinear regression network.
 

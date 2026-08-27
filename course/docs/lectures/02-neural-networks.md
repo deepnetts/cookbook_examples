@@ -4,9 +4,10 @@ A neural network is a model that transforms input features into a prediction. Be
 
 For a Java developer, the high-level idea resembles a processing pipeline:
 
-```text
-input data -> model -> output
-```
+<figure class="course-figure">
+  <img src="../../assets/course-figures/neural-network-pipeline.svg" alt="Input feature data passing through a neural network model to produce an output prediction">
+  <figcaption>A neural network receives a defined set of feature values, applies its learned transformations, and returns a prediction.</figcaption>
+</figure>
 
 The model has an expected input structure, performs a sequence of transformations, and returns a result. Training determines the internal parameters used by those transformations.
 
@@ -58,8 +59,6 @@ Data flows forward through the complete network shown above: from five input fea
 
 The notation provides a compact system-level view before we inspect what happens inside each layer.
 
-<a class="explanation-button" href="../../examples/classification/email-spam-detection/" target="_blank" rel="noopener noreferrer">Explore Spam Classification</a>
-
 ## Layer responsibilities
 
 A feed-forward network organizes its transformations into layers.
@@ -96,64 +95,65 @@ The Iris classifier uses three Softmax outputs. Together they represent the prob
 
 ## Compare network designs
 
-The two projects demonstrate how architecture follows the prediction problem.
+These four examples demonstrate how architecture follows the prediction problem.
 
-### Binary classification: `5 -> 32 -> 16 -> 1`
+<div class="classification-comparison architecture-comparison" role="region" aria-label="Neural network architecture comparison" tabindex="0">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Problem</th>
+        <th scope="col">Example</th>
+        <th scope="col">Features</th>
+        <th scope="col">Architecture</th>
+        <th scope="col">Output</th>
+        <th scope="col">Walkthrough</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Binary classification</strong></td>
+        <td>Spam classifier</td>
+        <td>5 email features</td>
+        <td><code>5 → 32 → 16 → 1</code></td>
+        <td>1 Sigmoid probability</td>
+        <td><a href="../../examples/classification/email-spam-detection/" target="_blank" rel="noopener">View example →</a></td>
+      </tr>
+      <tr>
+        <td><strong>Multiclass classification</strong></td>
+        <td>Iris classifier</td>
+        <td>4 flower measurements</td>
+        <td><code>4 → 16 → 3</code></td>
+        <td>3 Softmax probabilities</td>
+        <td><a href="../../examples/classification/iris-flower-classification/" target="_blank" rel="noopener">View example →</a></td>
+      </tr>
+      <tr>
+        <td><strong>Image classification</strong></td>
+        <td>Hot Dog classifier</td>
+        <td>RGB image pixels</td>
+        <td><code>convolution → pooling → fully connected</code></td>
+        <td>1 Sigmoid probability</td>
+        <td><a href="../../examples/image-classification/hotdog-nothotdog/" target="_blank" rel="noopener">View example →</a></td>
+      </tr>
+      <tr>
+        <td><strong>Multiple linear regression</strong></td>
+        <td>Computer Hardware predictor</td>
+        <td>6 hardware features</td>
+        <td><code>6 → 1</code></td>
+        <td>1 Linear value</td>
+        <td><a href="../../examples/regression/computer-hardware-performance-prediction/" target="_blank" rel="noopener">View example →</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-The spam classifier contains hidden layers because it is intended to learn non-linear relationships between email features.
+At the system level, all of these models have the same responsibility:
 
-```text
-email characteristics -> hidden transformations -> spam probability
-```
+<figure class="course-figure">
+  <img src="../../assets/course-figures/model-responsibility.svg" alt="Input features passing through a learned model transformation to produce a prediction">
+  <figcaption>Different architectures learn different transformations, but every predictive model maps an agreed input contract to an output.</figcaption>
+</figure>
 
-### Multiclass classification: `4 -> 16 -> 3`
-
-The Iris classifier receives four flower measurements and returns three class probabilities:
-
-```text
-flower measurements -> hidden transformation -> three class probabilities
-```
-
-The position of the largest output determines the predicted species.
-
-<a class="explanation-button" href="../../examples/classification/iris-flower-classification/" target="_blank" rel="noopener noreferrer">Explore Multiclass Classification</a>
-
-### Image classification: convolution and pooling
-
-Image models preserve spatial structure instead of flattening pixels immediately:
-
-```text
-RGB image -> convolution -> max pooling -> fully connected -> class probability
-```
-
-Convolutional filters learn local visual patterns such as edges, shapes, and textures. Pooling reduces spatial dimensions while retaining strong activations. A final Sigmoid output supports binary tasks such as hot dog detection, Duke recognition, or parking occupancy.
-
-<a class="explanation-button" href="../../examples/image-classification/hotdog-nothotdog/" target="_blank" rel="noopener noreferrer">Explore Hot Dog or Not Hot Dog</a>
-
-### Linear regression: `6 -> 1`
-
-The computer hardware example uses six inputs, no hidden layers, and one linear output:
-
-```text
-MYCT  ----\
-MMIN  -----\
-MMAX  ------\
-CACH  -------+-> LINEAR OUTPUT -> predicted PRP
-CHMIN ------/
-CHMAX -----/
-```
-
-Because there are no hidden layers, the model learns a weighted linear combination of the six features. This is multiple linear regression represented with the Deep Netts neural-network API.
-
-<a class="explanation-button" href="../../examples/regression/computer-hardware-performance-prediction/" target="_blank" rel="noopener noreferrer">Explore Multiple Linear Regression</a>
-
-At the system level, both models have the same responsibility:
-
-```text
-features -> learned transformation -> prediction
-```
-
-They differ in their internal structure because they solve different kinds of problems.
+Their internal structures differ because they solve different kinds of prediction problems.
 
 ## Inside one neuron
 
@@ -179,9 +179,10 @@ One neuron performs a small calculation. A layer performs many such calculations
 
 After calculating its weighted sum, a neuron usually applies an **activation function**:
 
-```text
-inputs -> weighted sum + bias -> activation -> output
-```
+<figure class="course-figure">
+  <img src="../../assets/course-figures/neuron-computation.svg" alt="Neuron inputs entering a weighted sum with bias, followed by an activation function and output">
+  <figcaption>A neuron first combines its inputs with learned weights and a bias, then applies an activation function to the result.</figcaption>
+</figure>
 
 Common activation functions have different responsibilities:
 
@@ -206,21 +207,10 @@ Defining the architecture creates an untrained network. Its initial weights and 
 
 Training repeatedly performs this high-level loop:
 
-```text
-input samples
-      |
-      v
-forward prediction
-      |
-      v
-compare with known targets
-      |
-      v
-measure loss
-      |
-      v
-adjust weights and biases
-```
+<figure class="course-figure">
+  <img src="../../assets/course-figures/neural-network-training-cycle.svg" alt="Training cycle from input samples and forward prediction to loss measurement and parameter adjustment">
+  <figcaption>Each cycle uses the current parameters to make predictions, measures their error, and produces updated weights and biases for the next pass.</figcaption>
+</figure>
 
 In more specific terms, training:
 
@@ -235,18 +225,10 @@ The network architecture remains the same during this process. What changes are 
 
 One training update connects four operations:
 
-```text
-forward pass
-     |
-     v
-prediction and loss
-     |
-     v
-backpropagation calculates gradients
-     |
-     v
-optimizer updates weights and biases
-```
+<figure class="course-figure">
+  <img src="../../assets/course-figures/neural-network-parameter-update.svg" alt="Forward pass, prediction and loss, backpropagation gradients, and optimizer parameter update">
+  <figcaption>Backpropagation calculates gradients with the chain rule; the optimizer combines those gradients with the learning rate to update the parameters.</figcaption>
+</figure>
 
 A **gradient** describes how the loss would change if one parameter changed slightly. Backpropagation moves from the output toward earlier layers and applies the chain rule to calculate a gradient for every trainable weight and bias.
 

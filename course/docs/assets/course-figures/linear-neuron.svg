@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 330" role="img" aria-labelledby="title description">
+  <title id="title">A single linear neuron</title>
+  <desc id="description">Input x is multiplied by weight w, while constant one is multiplied by bias b. The two values are added and passed through a Linear activation to produce the prediction y hat.</desc>
+  <rect width="880" height="330" rx="18" fill="#f8fdff"/>
+  <g font-family="Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+    <text x="45" y="48" fill="#172b4d" font-size="21" font-weight="700">The smallest neural network</text>
+
+    <g fill="#ffffff" stroke="#c9e8f3" stroke-width="2">
+      <rect x="45" y="78" width="135" height="64" rx="12"/>
+      <rect x="45" y="200" width="135" height="64" rx="12"/>
+      <rect x="245" y="78" width="145" height="64" rx="12"/>
+      <rect x="245" y="200" width="145" height="64" rx="12"/>
+      <rect x="470" y="124" width="165" height="94" rx="47"/>
+    </g>
+    <rect x="710" y="124" width="130" height="94" rx="12" fill="#edf8f1" stroke="#75bd8c" stroke-width="2"/>
+
+    <g fill="#172b4d" font-size="16" font-weight="600" text-anchor="middle">
+      <text x="112" y="116">Input x</text>
+      <text x="112" y="238">Constant 1</text>
+      <text x="317" y="105">Multiply by</text><text x="317" y="127">weight w</text>
+      <text x="317" y="227">Multiply by</text><text x="317" y="249">bias b</text>
+      <text x="552" y="160">Weighted sum</text><text x="552" y="183">wx + b</text>
+    </g>
+    <g fill="#215f36" font-size="16" font-weight="700" text-anchor="middle">
+      <text x="775" y="158">Linear</text><text x="775" y="181">output</text><text x="775" y="204">ŷ</text>
+    </g>
+
+    <g fill="none" stroke="#087ca7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M180 110h57M225 102l12 8-12 8M180 232h57M225 224l12 8-12 8M390 110h35v61h37M450 163l12 8-12 8M390 232h35v-61M635 171h67M690 163l12 8-12 8"/>
+    </g>
+    <g fill="#e5f7fc" stroke="#67c4e3" stroke-width="2"><circle cx="425" cy="171" r="17"/></g>
+    <text x="425" y="178" fill="#075985" font-size="23" font-weight="700" text-anchor="middle">+</text>
+
+    <g fill="#52657a" font-size="14" text-anchor="middle">
+      <text x="205" y="98">x</text><text x="205" y="220">1</text>
+      <text x="425" y="98">wx</text><text x="425" y="253">b</text>
+    </g>
+  </g>
+</svg>

@@ -37,85 +37,129 @@ Here, one row represents one email. The model uses the five features to predict 
 
 Regression predicts a numerical value. The result can take many possible values rather than belonging to a fixed category.
 
-The number of input features determines whether a problem uses simple or multiple linear regression. Compare both examples below.
+The number of input features and the relationship in the data determine which regression model fits the problem. Compare the examples below.
 
-<div class="ml-concept-cards">
-  <a class="ml-concept-card" href="../../examples/regression/sorting-execution-time-prediction/">
-    <span>Simple linear regression</span>
-    <h3>Sorting Execution Time</h3>
-    <p>One numerical feature - the comparison count - is used to predict one continuous execution-time value.</p>
-    <pre><code>comparison count → model → execution time</code></pre>
-    <span class="ml-concept-card-action">Explore Sorting Time Prediction →</span>
-  </a>
-  <a class="ml-concept-card" href="../../examples/regression/computer-hardware-performance-prediction/">
-    <span>Multiple linear regression</span>
-    <h3>Computer Hardware Performance</h3>
-    <p>Six hardware characteristics contribute to the predicted published relative performance (<code>PRP</code>).</p>
-    <pre><code>hardware features → model → PRP: 347.25</code></pre>
-    <span class="ml-concept-card-action">Explore Hardware Performance →</span>
-  </a>
-  <a class="ml-concept-card" href="../../examples/regression/insurance-payment-prediction/">
-    <span>Simple linear regression</span>
-    <h3>Insurance Payment Prediction</h3>
-    <p>One normalized claim-count feature is used to estimate the normalized total insurance payment.</p>
-    <pre><code>claim count → model → total payment</code></pre>
-    <span class="ml-concept-card-action">Explore Insurance Prediction →</span>
-  </a>
-  <a class="ml-concept-card" href="../../examples/regression/house-price-prediction/">
-    <span>Nonlinear regression</span>
-    <h3>House Price Prediction</h3>
-    <p>Hidden layers learn a nonlinear relationship between prepared <code>LSTAT</code> data and median house value.</p>
-    <pre><code>LSTAT → neural network → MEDV</code></pre>
-    <span class="ml-concept-card-action">Explore House Price Prediction →</span>
-  </a>
+<div class="classification-comparison regression-comparison" role="region" aria-label="Regression approaches comparison" tabindex="0">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Approach</th>
+        <th scope="col">Example</th>
+        <th scope="col">Features</th>
+        <th scope="col">Target</th>
+        <th scope="col">Walkthrough</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Simple linear regression</strong></td>
+        <td>Sorting Execution Time</td>
+        <td>Comparison count</td>
+        <td><span class="classification-outcomes"><code>execution_time_ms</code></span></td>
+        <td><a href="../../examples/regression/sorting-execution-time-prediction/" target="_blank" rel="noopener">View example →</a></td>
+      </tr>
+      <tr>
+        <td><strong>Multiple linear regression</strong></td>
+        <td>Computer Hardware Performance</td>
+        <td>Six hardware characteristics</td>
+        <td><span class="classification-outcomes"><code>PRP</code></span></td>
+        <td><a href="../../examples/regression/computer-hardware-performance-prediction/" target="_blank" rel="noopener">View example →</a></td>
+      </tr>
+      <tr>
+        <td><strong>Simple linear regression</strong></td>
+        <td>Insurance Payment Prediction</td>
+        <td>Normalized claim count</td>
+        <td><span class="classification-outcomes"><code>total payment</code></span></td>
+        <td><a href="../../examples/regression/insurance-payment-prediction/" target="_blank" rel="noopener">View example →</a></td>
+      </tr>
+      <tr>
+        <td><strong>Nonlinear regression</strong></td>
+        <td>House Price Prediction</td>
+        <td>Prepared LSTAT data</td>
+        <td><span class="classification-outcomes"><code>MEDV</code></span></td>
+        <td><a href="../../examples/regression/house-price-prediction/" target="_blank" rel="noopener">View example →</a></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 ## Classification
 
 Classification predicts which category a sample belongs to.
 
-The target may contain two classes, several classes, or categories inferred from image pixels. Compare the four common patterns below.
+The target may contain two classes, several classes, or categories inferred from image pixels. Compare the common patterns below.
 
-<div class="ml-concept-cards">
-  <a class="ml-concept-card" href="../../examples/classification/email-spam-detection/">
-    <span>Binary classification</span>
-    <h3>Email Spam Detection</h3>
-    <p>The model produces a probability, then a threshold converts it into <code>SPAM</code> or <code>NOT SPAM</code>.</p>
-    <pre><code>email features → model → spam probability
-&lt; 0.5  → NOT SPAM
-≥ 0.5  → SPAM</code></pre>
-    <span class="ml-concept-card-action">Explore Email Spam Detection →</span>
-  </a>
-  <a class="ml-concept-card" href="../../examples/classification/sonar-rock-mine-classification/">
-    <span>Logistic regression</span>
-    <h3>Sonar Rock or Mine</h3>
-    <p>A compact model connects 60 signal features directly to one Sigmoid output and applies the same binary threshold.</p>
-    <pre><code>sonar signals → model → ROCK or MINE</code></pre>
-    <span class="ml-concept-card-action">Explore Sonar Classification →</span>
-  </a>
-  <a class="ml-concept-card" href="../../examples/classification/iris-flower-classification/">
-    <span>Multiclass classification</span>
-    <h3>Iris Flower Classification</h3>
-    <p>Three one-hot targets represent the known species. The model produces one probability per class and selects the largest.</p>
-    <pre><code>flower measurements → SETOSA
-                    → VERSICOLOR
-                    → VIRGINICA</code></pre>
-    <span class="ml-concept-card-action">Explore Iris Classification →</span>
-  </a>
-  <a class="ml-concept-card" href="../../examples/classification/credit-card-fraud-detection/">
-    <span>Binary classification</span>
-    <h3>Credit Card Fraud Detection</h3>
-    <p>A balanced transaction dataset trains a model to estimate fraud probability from 29 numerical features.</p>
-    <pre><code>transaction features → FRAUD or LEGITIMATE</code></pre>
-    <span class="ml-concept-card-action">Explore Fraud Detection →</span>
-  </a>
-  <a class="ml-concept-card" href="../../examples/image-classification/">
-    <span>Convolutional networks</span>
-    <h3>Image Classification</h3>
-    <p>Hot Dog, Duke, and Parking models learn local visual patterns from RGB pixels arranged by width, height, and color channel.</p>
-    <pre><code>image pixels → CNN → predicted class</code></pre>
-    <span class="ml-concept-card-action">Explore Image Classification →</span>
-  </a>
+<div class="classification-comparison" role="region" aria-label="Classification approaches comparison" tabindex="0">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Approach</th>
+        <th scope="col">Example</th>
+        <th scope="col">Features</th>
+        <th scope="col">Target</th>
+        <th scope="col">Classes</th>
+        <th scope="col">Walkthrough</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Binary classification</strong></td>
+        <td>Email Spam Detection</td>
+        <td>Email and sender characteristics</td>
+        <td><span class="target-name">is_spam</span></td>
+        <td><span class="classification-outcomes"><code>NOT SPAM</code><code>SPAM</code></span></td>
+        <td><a href="../../examples/classification/email-spam-detection/" target="_blank" rel="noopener">View example →</a></td>
+      </tr>
+      <tr>
+        <td><strong>Logistic regression</strong></td>
+        <td>Sonar Rock or Mine</td>
+        <td>60 numerical sonar-signal values</td>
+        <td>Binary label</td>
+        <td><span class="classification-outcomes"><code>ROCK</code><code>MINE</code></span></td>
+        <td><a href="../../examples/classification/sonar-rock-mine-classification/" target="_blank" rel="noopener">View example →</a></td>
+      </tr>
+      <tr>
+        <td><strong>Multiclass classification</strong></td>
+        <td>Iris Flower Classification</td>
+        <td>Four flower measurements</td>
+        <td>Species (one-hot)</td>
+        <td><span class="classification-outcomes"><code>SETOSA</code><code>VERSICOLOR</code><code>VIRGINICA</code></span></td>
+        <td><a href="../../examples/classification/iris-flower-classification/" target="_blank" rel="noopener">View example →</a></td>
+      </tr>
+      <tr>
+        <td><strong>Binary classification</strong></td>
+        <td>Credit Card Fraud Detection</td>
+        <td>29 numerical transaction features</td>
+        <td><span class="target-name">Class</span></td>
+        <td><span class="classification-outcomes"><code>LEGITIMATE</code><code>FRAUD</code></span></td>
+        <td><a href="../../examples/classification/credit-card-fraud-detection/" target="_blank" rel="noopener">View example →</a></td>
+      </tr>
+      <tr>
+        <td><strong>Convolutional network</strong></td>
+        <td>Hot Dog Detection</td>
+        <td>RGB image pixels</td>
+        <td>Image label</td>
+        <td><span class="classification-outcomes"><code>HOT DOG</code><code>NOT HOT DOG</code></span></td>
+        <td><a href="../../examples/image-classification/hotdog-nothotdog/" target="_blank" rel="noopener">View example →</a></td>
+      </tr>
+      <tr>
+        <td><strong>Convolutional network</strong></td>
+        <td>Duke Logo Recognition</td>
+        <td>RGB image pixels</td>
+        <td>Image label</td>
+        <td><span class="classification-outcomes"><code>DUKE</code><code>NEGATIVE</code></span></td>
+        <td><a href="../../examples/image-classification/duke-logo-recognition/" target="_blank" rel="noopener">View example →</a></td>
+      </tr>
+      <tr>
+        <td><strong>Convolutional network</strong></td>
+        <td>Parking Lot Occupancy</td>
+        <td>RGB image pixels</td>
+        <td>Image label</td>
+        <td><span class="classification-outcomes"><code>BUSY</code><code>NEGATIVE</code></span></td>
+        <td><a href="../../examples/image-classification/parking-lot-occupancy/" target="_blank" rel="noopener">View example →</a></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 ## Regression or classification?
@@ -138,13 +182,10 @@ If the answer is a quantity, the problem is usually regression. If the answer is
 
 A model must learn from one group of samples and be evaluated on different samples. This separation checks whether it learned a reusable pattern instead of memorizing the examples it already saw.
 
-```text
-complete dataset
-      |
-      +---- training set -> learn weights and biases
-      |
-      +---- test set -----> measure behavior on unseen samples
-```
+<figure class="course-figure">
+  <img src="../../assets/course-figures/train-test-split.svg" alt="A complete dataset split into a training set for learning weights and biases and a test set for evaluation on unseen samples">
+  <figcaption>The training set teaches the model; the separate test set checks whether what it learned generalizes to unseen samples.</figcaption>
+</figure>
 
 An `80/20` train/test split is a common starting point, although the right proportion depends on dataset size. The important rule is that the test set must not participate in training or in fitting preprocessing values.
 
@@ -175,10 +216,10 @@ Because the errors are squared, one large error influences MSE more strongly tha
 
 A binary classifier produces four possible outcomes:
 
-| | Predicted positive | Predicted negative |
-|---|---|---|
-| **Actually positive** | True positive (TP) | False negative (FN) |
-| **Actually negative** | False positive (FP) | True negative (TN) |
+<figure class="course-figure">
+  <img src="../../assets/course-figures/confusion-matrix.svg" alt="Confusion matrix with actual labels in rows and predicted labels in columns, showing true positive, false negative, false positive, and true negative outcomes">
+  <figcaption>Rows show the actual label and columns show the predicted label. Green cells are correct predictions; amber cells are classification errors.</figcaption>
+</figure>
 
 These counts form a **confusion matrix** and support several metrics:
 
