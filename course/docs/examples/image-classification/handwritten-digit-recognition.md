@@ -19,6 +19,7 @@ This walkthrough trains a multiclass CNN to recognize handwritten digits from `0
 | **Preprocessing** | Resize to `28 × 28`, convert to grayscale, and invert intensity |
 | **Default training** | 10 CPU epochs |
 | **Saved model** | `models/mnist-classifier.dnet` |
+| **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Neural Networks](../../lectures/02-neural-networks.md), [Backpropagation](../../lectures/05-backpropagation.md), [Deep Netts API](../../lectures/03-deep-netts-api.md), [Model Development](../../lectures/04-model-development.md) |
 
 ## 1. Configure the runtime
 

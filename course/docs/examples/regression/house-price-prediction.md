@@ -17,6 +17,7 @@ This walkthrough builds a nonlinear regression model for prepared Boston Housing
 | **Target** | Normalized `MEDV` |
 | **Model** | `1 -> 16 -> 8 -> 1` |
 | **Maximum training** | 1000 CPU epochs |
+| **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Linear Regression](../../lectures/02-linear-regression.md), [Neural Networks](../../lectures/02-neural-networks.md), [Backpropagation](../../lectures/05-backpropagation.md), [Deep Netts API](../../lectures/03-deep-netts-api.md), [Model Development](../../lectures/04-model-development.md) |
 
 ## 0. Configure the runtime
 

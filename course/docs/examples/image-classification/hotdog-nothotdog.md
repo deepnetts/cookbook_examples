@@ -19,6 +19,7 @@ This walkthrough trains a CNN to distinguish hot-dog images from unrelated image
 | **Preprocessing** | Resize to `64 × 64` and scale RGB values while loading |
 | **Default training** | 10 CPU epochs |
 | **Saved model** | `models/hotdog-classifier.dnet` |
+| **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Neural Networks](../../lectures/02-neural-networks.md), [Backpropagation](../../lectures/05-backpropagation.md), [Deep Netts API](../../lectures/03-deep-netts-api.md), [Model Development](../../lectures/04-model-development.md) |
 
 ## 1. Configure the runtime
 

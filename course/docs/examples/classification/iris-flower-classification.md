@@ -19,7 +19,7 @@ This walkthrough builds an Iris flower classifier one part at a time. It demonst
 | **Target** | One of three Iris species, represented by one-hot columns |
 | **Model** | `4 -> 16 -> 3` feed-forward neural network with a Softmax output |
 | **Default training** | Up to 350 CPU epochs, with an error-based stop condition |
-| **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Neural Networks](../../lectures/02-neural-networks.md), [Model Development](../../lectures/04-model-development.md) |
+| **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Neural Networks](../../lectures/02-neural-networks.md), [Backpropagation](../../lectures/05-backpropagation.md), [Deep Netts API](../../lectures/03-deep-netts-api.md), [Model Development](../../lectures/04-model-development.md) |
 
 The model receives four flower measurements:
 

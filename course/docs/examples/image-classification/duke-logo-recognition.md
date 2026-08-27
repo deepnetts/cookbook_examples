@@ -19,6 +19,7 @@ This walkthrough trains a compact CNN to decide whether an image contains the Ja
 | **Preprocessing** | Resize to `64 × 64` and scale RGB values while loading |
 | **Default training** | 20 CPU epochs |
 | **Saved model** | `models/duke-logo-classifier.dnet` |
+| **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Neural Networks](../../lectures/02-neural-networks.md), [Backpropagation](../../lectures/05-backpropagation.md), [Deep Netts API](../../lectures/03-deep-netts-api.md), [Model Development](../../lectures/04-model-development.md) |
 
 ## 1. Configure the runtime
 

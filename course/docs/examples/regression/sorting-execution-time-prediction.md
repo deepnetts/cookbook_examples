@@ -19,7 +19,7 @@ This walkthrough builds a sorting execution-time predictor one part at a time. I
 | **Target** | One continuous value: `execution_time_ms` |
 | **Model** | `1 -> 1` feed-forward network with a linear output |
 | **Default training** | 3000 CPU epochs |
-| **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Model Development](../../lectures/04-model-development.md) |
+| **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Linear Regression](../../lectures/02-linear-regression.md), [Backpropagation](../../lectures/05-backpropagation.md), [Deep Netts API](../../lectures/03-deep-netts-api.md), [Model Development](../../lectures/04-model-development.md) |
 
 The model uses one numerical feature:
 

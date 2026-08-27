@@ -19,7 +19,7 @@ This walkthrough builds an email spam detector one part at a time. It demonstrat
 | **Target** | `is_spam` - `0` for not spam, `1` for spam |
 | **Model** | `5 -> 32 -> 16 -> 1` feed-forward neural network with a Sigmoid output |
 | **Default training** | 50 CPU epochs |
-| **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Neural Networks](../../lectures/02-neural-networks.md), [Model Development](../../lectures/04-model-development.md) |
+| **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Neural Networks](../../lectures/02-neural-networks.md), [Backpropagation](../../lectures/05-backpropagation.md), [Deep Netts API](../../lectures/03-deep-netts-api.md), [Model Development](../../lectures/04-model-development.md) |
 
 The model receives five email features:
 

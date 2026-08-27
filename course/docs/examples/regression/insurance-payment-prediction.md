@@ -17,6 +17,7 @@ This walkthrough uses simple linear regression to estimate total Swedish auto-in
 | **Target** | Normalized total payment |
 | **Model** | `1 -> 1` linear network |
 | **Maximum training** | 1500 CPU epochs |
+| **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Linear Regression](../../lectures/02-linear-regression.md), [Backpropagation](../../lectures/05-backpropagation.md), [Deep Netts API](../../lectures/03-deep-netts-api.md), [Model Development](../../lectures/04-model-development.md) |
 
 ## 0. Configure the runtime
 

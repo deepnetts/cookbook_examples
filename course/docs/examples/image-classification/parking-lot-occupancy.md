@@ -19,6 +19,7 @@ This walkthrough trains a CNN to recognize whether a cropped parking space is oc
 | **Preprocessing** | Resize to `48 × 48` and scale RGB values while loading |
 | **Default training** | 3 CPU epochs |
 | **Saved model** | `models/parking-occupancy.dnet` |
+| **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Neural Networks](../../lectures/02-neural-networks.md), [Backpropagation](../../lectures/05-backpropagation.md), [Deep Netts API](../../lectures/03-deep-netts-api.md), [Model Development](../../lectures/04-model-development.md) |
 
 ## 1. Configure the runtime
 

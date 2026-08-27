@@ -21,6 +21,7 @@ This walkthrough reconstructs VGGNet16 in Deep Netts, imports TensorFlow/Keras I
 | **Download** | Approximately 600 MB on the first run |
 | **Memory** | Approximately 7-8 GB Java heap |
 | **Saved model** | `models/vggnet16.dnet` |
+| **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Neural Networks](../../lectures/02-neural-networks.md), [Deep Netts API](../../lectures/03-deep-netts-api.md), [Model Development](../../lectures/04-model-development.md) |
 
 ## 1. Configure the runtime
 
