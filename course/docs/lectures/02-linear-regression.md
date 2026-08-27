@@ -8,14 +8,10 @@ Linear regression is the clearest bridge between basic Machine Learning and neur
 
 Suppose a benchmark records sorting comparisons and execution time. Measurements vary, but the overall trend can be represented by a line:
 
-```text
-execution time
-     ^                       *
-     |                  *   /
-     |             *       /  fitted line
-     |        *           /
-     +------------------------> comparison count
-```
+<figure class="course-figure">
+  <img src="../../assets/course-figures/linear-regression-fit.svg" alt="Scatter plot of sorting comparison count and execution time with a fitted regression line and residuals">
+  <figcaption>The fitted line captures the overall trend; each residual is the distance between an observed measurement and its prediction.</figcaption>
+</figure>
 
 For one input feature, the model is:
 

@@ -15,7 +15,7 @@ This course is intended for experienced Java developers who are new to Machine L
     <strong>Learn the concepts</strong>
     <small>Build your Machine Learning foundation</small>
   </a>
-  <a href="../examples/" target="_blank" rel="noopener noreferrer">
+  <a href="../examples/index.html" target="_blank" rel="noopener noreferrer">
     <strong>Explore an example</strong>
     <small>Connect theory to focused Java code</small>
   </a>

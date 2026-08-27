@@ -24,18 +24,10 @@ all_caps
 
 The complete prediction flow is:
 
-```text
-email features
-      |
-      v
-neural network
-      |
-      v
-spam probability
-      |
-      v
-SPAM or NOT SPAM
-```
+<figure class="course-figure">
+  <img src="../../assets/course-figures/neural-network-architecture.svg" alt="Five email features passing through two hidden layers to a spam-probability output">
+  <figcaption>The architecture describes both the input contract and the transformations that lead to one Sigmoid probability.</figcaption>
+</figure>
 
 At this level, the network can be treated as a function:
 
@@ -62,23 +54,7 @@ Each number describes the size of one layer:
 - `16` neurons in the second hidden layer,
 - `1` output value.
 
-Data flows forward through the complete network:
-
-```text
-5 input features
-       |
-       v
-32 hidden neurons (ReLU)
-       |
-       v
-16 hidden neurons (ReLU)
-       |
-       v
-1 output neuron (Sigmoid)
-       |
-       v
-spam probability
-```
+Data flows forward through the complete network shown above: from five input features, through `32` and `16` ReLU hidden neurons, to one Sigmoid probability.
 
 The notation provides a compact system-level view before we inspect what happens inside each layer.
 
@@ -214,6 +190,11 @@ Common activation functions have different responsibilities:
 | Linear | Predicting an unrestricted numerical value |
 | ReLU | Learning non-linear patterns in hidden layers |
 | Sigmoid | Producing a value between `0` and `1` |
+
+<figure class="course-figure">
+  <img src="../../assets/course-figures/activation-functions.svg" alt="Plots comparing Linear, ReLU, and Sigmoid activation functions">
+  <figcaption>Linear preserves the full numerical range, ReLU introduces a simple non-linearity, and Sigmoid compresses its output into a probability-like value between 0 and 1.</figcaption>
+</figure>
 
 The spam network uses ReLU in its hidden layers and Sigmoid in its output layer. The regression network uses a Linear output.
 

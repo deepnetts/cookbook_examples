@@ -197,6 +197,67 @@ textarea {
     font-size: 18px;
 }
 
+.glossary-search label {
+    display: block;
+    margin-bottom: 7px;
+    color: #172b4d;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.glossary-search input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    padding: 8px 11px;
+    color: #172b4d;
+    background: #ffffff;
+    border: 1px solid #a8cede;
+    border-radius: 7px;
+    font: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.glossary-search input:focus {
+    border-color: #087ca7;
+    box-shadow: 0 0 0 3px rgba(22, 184, 233, 0.18);
+}
+
+.glossary-search-status {
+    margin: 10px 0 0;
+    color: #075985;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.glossary-search-hint {
+    margin: 5px 0 0;
+    color: #57606a;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.glossary-page .page-toc #toc {
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid #d8dee4;
+}
+
+.glossary-page .markdown-body h2.glossary-term-highlight {
+    margin-left: -14px;
+    padding: 9px 12px 9px 10px;
+    color: #172b4d;
+    background: #fff3c4;
+    border-bottom-color: #e5be45;
+    border-left: 4px solid #b77900;
+    border-radius: 0 7px 7px 0;
+    box-shadow: 0 3px 10px rgba(128, 81, 0, 0.1);
+    transition: background-color 0.18s ease, border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
 .page-toc ul {
     margin: 0;
     padding: 0;
@@ -394,6 +455,23 @@ textarea {
     line-height: 1.35;
     transition: color 0.15s ease, background-color 0.15s ease,
         box-shadow 0.15s ease;
+}
+
+.side .course-nav-badge,
+.mobile-full-navigation .course-nav-badge {
+    display: inline-block;
+    margin-left: 7px;
+    padding: 2px 7px;
+    color: #805100;
+    background: #fff3cf;
+    border: 1px solid #e5be45;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    vertical-align: 1px;
 }
 
 .side .nav-section .nav-section {
@@ -930,6 +1008,42 @@ textarea {
     border-left: 1px dashed #c9cdd2;
     border-radius: 6px;
     box-shadow: none;
+}
+
+/* Reusable theory figures use the course palette and remain separate from code. */
+.markdown-body .course-figure {
+    width: min(100%, 880px);
+    margin: 24px auto 30px;
+}
+
+.markdown-body .course-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid #c9e8f3;
+    border-radius: 12px;
+    background: #f8fdff;
+}
+
+.markdown-body .course-figure figcaption {
+    max-width: 760px;
+    margin: 10px auto 0;
+    color: #52657a;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .markdown-body .course-figure {
+        margin: 20px auto 26px;
+    }
+
+    .markdown-body .course-figure figcaption {
+        padding: 0 6px;
+        font-size: 0.86rem;
+        text-align: left;
+    }
 }
 
 .markdown-body :not(pre) > code {

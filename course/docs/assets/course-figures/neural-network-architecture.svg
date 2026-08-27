@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 500" role="img" aria-labelledby="title description">
+  <title id="title">Email spam neural network architecture</title>
+  <desc id="description">Five email features pass through hidden layers of 32 and 16 ReLU neurons to one Sigmoid output that represents spam probability.</desc>
+  <rect width="880" height="500" rx="18" fill="#f8fdff"/>
+  <g font-family="Inter,system-ui,sans-serif" text-anchor="middle">
+    <text x="130" y="54" fill="#172b4d" font-size="19" font-weight="700">Input features</text><text x="360" y="54" fill="#172b4d" font-size="19" font-weight="700">Hidden 32</text><text x="570" y="54" fill="#172b4d" font-size="19" font-weight="700">Hidden 16</text><text x="770" y="54" fill="#172b4d" font-size="19" font-weight="700">Output</text>
+    <text x="360" y="79" fill="#52657a" font-size="14">ReLU</text><text x="570" y="79" fill="#52657a" font-size="14">ReLU</text><text x="770" y="79" fill="#52657a" font-size="14">Sigmoid</text>
+    <g stroke="#b8d9e6" stroke-width="2" opacity=".9">
+      <path d="M160 125L330 120M160 125L330 210M160 125L330 300M160 195L330 120M160 195L330 210M160 195L330 300M160 265L330 120M160 265L330 210M160 265L330 300M160 335L330 210M160 335L330 390M390 120L540 145M390 120L540 235M390 210L540 145M390 210L540 235M390 300L540 325M390 390L540 325M600 145L740 250M600 235L740 250M600 325L740 250"/>
+    </g>
+    <g fill="#fff" stroke="#087ca7" stroke-width="3"><circle cx="360" cy="120" r="30"/><circle cx="360" cy="210" r="30"/><circle cx="360" cy="300" r="30"/><circle cx="360" cy="390" r="30"/><circle cx="570" cy="145" r="30"/><circle cx="570" cy="235" r="30"/><circle cx="570" cy="325" r="30"/></g>
+    <g fill="#edf8f1" stroke="#2f9b53" stroke-width="3"><circle cx="770" cy="250" r="38"/></g>
+    <g fill="#e5f7fc" stroke="#67c4e3" stroke-width="2"><rect x="55" y="101" width="105" height="48" rx="10"/><rect x="55" y="171" width="105" height="48" rx="10"/><rect x="55" y="241" width="105" height="48" rx="10"/><rect x="55" y="311" width="105" height="48" rx="10"/><rect x="55" y="381" width="105" height="48" rx="10"/></g>
+    <g fill="#075985" font-size="13" font-weight="600"><text x="107" y="130">num_links</text><text x="107" y="200">num_words</text><text x="107" y="270">has_offer</text><text x="107" y="340">sender_score</text><text x="107" y="410">all_caps</text></g>
+    <text x="770" y="245" fill="#215f36" font-size="15" font-weight="700">spam</text><text x="770" y="265" fill="#215f36" font-size="15" font-weight="700">probability</text>
+    <text x="107" y="466" fill="#52657a" font-size="15">5</text><text x="234" y="466" fill="#087ca7" font-size="18">→</text><text x="360" y="466" fill="#52657a" font-size="15">32</text><text x="465" y="466" fill="#087ca7" font-size="18">→</text><text x="570" y="466" fill="#52657a" font-size="15">16</text><text x="675" y="466" fill="#087ca7" font-size="18">→</text><text x="770" y="466" fill="#52657a" font-size="15">1</text>
+  </g>
+</svg>

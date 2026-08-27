@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 430" role="img" aria-labelledby="title description">
+  <title id="title">Deep Netts API model-development pipeline</title>
+  <desc id="description">A CSV dataset is loaded and split, preprocessing is fitted on training data, a feed-forward network is trained and evaluated, then the complete model is saved and used for predictions.</desc>
+  <rect width="880" height="430" rx="18" fill="#f8fdff"/>
+  <g font-family="Inter,system-ui,sans-serif">
+    <g fill="#fff" stroke="#c9e8f3" stroke-width="2"><rect x="45" y="64" width="180" height="82" rx="12"/><rect x="350" y="64" width="180" height="82" rx="12"/><rect x="655" y="64" width="180" height="82" rx="12"/><rect x="655" y="274" width="180" height="82" rx="12"/><rect x="350" y="274" width="180" height="82" rx="12"/><rect x="45" y="274" width="180" height="82" rx="12"/></g>
+    <g fill="#075985" font-size="17" font-weight="700" text-anchor="middle"><text x="135" y="99">DataSets</text><text x="135" y="122">TabularDataSet</text><text x="440" y="99">TrainTestSplit</text><text x="440" y="122">80 / 20</text><text x="745" y="99">Standardizer</text><text x="745" y="122">or MinMaxScaler</text><text x="745" y="309">FeedForwardNetwork</text><text x="745" y="332">and Trainer</text><text x="440" y="309">RegressionMetrics</text><text x="440" y="332">ClassificationMetrics</text><text x="135" y="309">Saved model</text><text x="135" y="332">and predictions</text></g>
+    <g stroke="#087ca7" stroke-width="3" fill="none" stroke-linecap="round"><path d="M225 105h117M330 97l12 8-12 8M530 105h117M635 97l12 8-12 8M745 146v120M737 254l8 12 8-12M655 315H538M550 307l-12 8 12 8M350 315H233M245 307l-12 8 12 8"/></g>
+    <g fill="#e5f7fc" stroke="#67c4e3"><rect x="54" y="39" width="80" height="28" rx="14"/><rect x="664" y="249" width="76" height="28" rx="14"/></g>
+    <g fill="#075985" font-size="13" font-weight="700" text-anchor="middle"><text x="94" y="58">CSV input</text><text x="702" y="268">train</text></g>
+    <path d="M135 356v42h610v-34" fill="none" stroke="#2f9b53" stroke-width="3" stroke-linecap="round" stroke-dasharray="7 7"/>
+    <text x="440" y="402" fill="#215f36" font-size="14" text-anchor="middle">the fitted preprocessing travels with the prediction pipeline</text>
+  </g>
+</svg>

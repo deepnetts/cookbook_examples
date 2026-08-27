@@ -72,7 +72,7 @@
   {% set current_section = '' %}
 {% endif %}
 {% set has_context_sidebar = current_section in ['examples', 'developer-guide', 'course'] %}
-<body class="{% if has_context_sidebar %}has-section-sidebar{% else %}no-section-sidebar{% endif %}{% if current_section == 'get-started' %} getting-started-page{% endif %}{% if page and page.file and page.file.src_uri == 'index.md' %} home-page{% endif %}">
+<body class="{% if has_context_sidebar %}has-section-sidebar{% else %}no-section-sidebar{% endif %}{% if current_section == 'get-started' %} getting-started-page{% endif %}{% if current_section == 'glossary' %} glossary-page{% endif %}{% if page and page.file and page.file.src_uri == 'index.md' %} home-page{% endif %}">
     <header class="header">
         <a id="nav-toggle" class="pizza" aria-label="Toggle navigation" role="button">&#9776;</a>
         <div class="title">
@@ -141,7 +141,7 @@
               <li{% if current_url == 'lectures/05-backpropagation/' %} class="active"{% endif %}><a href="{{ 'lectures/05-backpropagation/'|url }}">Backpropagation</a></li>
               <li{% if current_url == 'lectures/03-deep-netts-api/' %} class="active"{% endif %}><a href="{{ 'lectures/03-deep-netts-api/'|url }}">Deep Netts API</a></li>
               <li{% if current_url == 'lectures/04-model-development/' %} class="active"{% endif %}><a href="{{ 'lectures/04-model-development/'|url }}">Model Development</a></li>
-              <li{% if current_url == 'lectures/06-generative-ai/' %} class="active"{% endif %}><a href="{{ 'lectures/06-generative-ai/'|url }}">Generative AI</a></li>
+              <li{% if current_url == 'lectures/06-generative-ai/' %} class="active"{% endif %}><a href="{{ 'lectures/06-generative-ai/'|url }}">Generative AI <span class="course-nav-badge">Optional</span></a></li>
             </ul>
           {% endif %}
         </nav>

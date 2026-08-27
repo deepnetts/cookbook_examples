@@ -102,19 +102,10 @@ Different heads can learn local syntax, long-range references, or other relation
 
 ## Transformer block
 
-```text
-input representations
-        |
-multi-head attention
-        |
-residual connection + normalization
-        |
-feed-forward neural network
-        |
-residual connection + normalization
-        |
-output representations
-```
+<figure class="course-figure">
+  <img src="../../assets/course-figures/transformer-block.svg" alt="Transformer block showing query, key, and value inputs, multi-head attention, residual normalization, and a feed-forward network">
+  <figcaption>Attention mixes information across token positions; residual paths, normalization, and a feed-forward network turn it into the next contextual representation.</figcaption>
+</figure>
 
 The feed-forward component uses the same weighted sums, nonlinear activations, and backpropagation principles as the Deep Netts models in this course. Attention adds sequence-aware context that the simple cookbook networks do not implement.
 

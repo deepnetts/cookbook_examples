@@ -4,27 +4,10 @@ Training a neural network is only one part of Machine Learning. A useful model c
 
 This lesson explains **why the stages exist and why their order matters**. For focused Java implementation recipes, use the [Developer Guide](../developer-guide/index.md).
 
-```text
-Define the problem
-        |
-        v
-Load and understand data
-        |
-        v
-Split before preprocessing
-        |
-        v
-Build and train a suitable model
-        |
-        v
-Evaluate on unseen data
-        |
-        v
-Save the complete pipeline
-        |
-        v
-Predict new samples
-```
+<figure class="course-figure">
+  <img src="../../assets/course-figures/model-development-workflow.svg" alt="Leakage-safe model-development workflow from defining a problem to prediction">
+  <figcaption>Split before fitting preprocessing, evaluate on unseen data, and save preprocessing together with the trained model.</figcaption>
+</figure>
 
 Changing this order carelessly can produce misleading evaluation results or a model that behaves differently after deployment.
 

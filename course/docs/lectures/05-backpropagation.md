@@ -4,9 +4,10 @@ When `neuralNet.train(trainingSet)` runs, Deep Netts performs a forward pass, ca
 
 ## The learning loop
 
-```text
-input -> forward pass -> prediction -> loss -> backpropagation -> optimizer update -> next pass
-```
+<figure class="course-figure">
+  <img src="../../assets/course-figures/backpropagation-loop.svg" alt="Neural-network learning loop with a forward pass, loss, backward gradients, and optimizer update">
+  <figcaption>Predictions and loss move forward; gradients move backward; the optimizer applies the update before the next pass.</figcaption>
+</figure>
 
 The network is not told the correct weights. It learns through many small parameter changes that reduce prediction error.
 

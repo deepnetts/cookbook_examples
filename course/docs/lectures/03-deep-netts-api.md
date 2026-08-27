@@ -8,30 +8,10 @@ This lesson maps the concepts from the previous lectures to the Deep Netts API. 
 
 The main workflow can be viewed as a sequence of responsibilities:
 
-```text
-CSV dataset
-    |
-    v
-DataSets and TabularDataSet
-    |
-    v
-TrainTestSplit
-    |
-    v
-Standardizer or MinMaxScaler
-    |
-    v
-FeedForwardNetwork
-    |
-    v
-Trainer
-    |
-    v
-RegressionMetrics or ClassificationMetrics
-    |
-    v
-Saved model and predictions
-```
+<figure class="course-figure">
+  <img src="../../assets/course-figures/deep-netts-api-pipeline.svg" alt="Deep Netts API workflow from CSV loading and splitting to training, evaluation, saving, and prediction">
+  <figcaption>Each Deep Netts object owns one stage of the workflow, while fitted preprocessing remains part of the complete prediction pipeline.</figcaption>
+</figure>
 
 Each object represents one recognizable part of the model-development process.
 

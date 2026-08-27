@@ -338,13 +338,119 @@ document.addEventListener("DOMContentLoaded", function () {
     const originalHeading = toc.previousElementSibling;
     const pageToc = document.createElement("aside");
     const heading = document.createElement("h2");
+    const isGlossaryPage = document.body.classList.contains("glossary-page");
 
     pageToc.className = "page-toc";
-    pageToc.setAttribute("aria-label", "On this page");
-    heading.textContent = "On this page";
+    pageToc.setAttribute(
+        "aria-label",
+        isGlossaryPage ? "Search glossary" : "On this page"
+    );
+    heading.textContent = isGlossaryPage ? "Search glossary" : "On this page";
 
     pageToc.appendChild(heading);
-    pageToc.appendChild(toc);
+
+    if (isGlossaryPage) {
+        const searchWrap = document.createElement("div");
+        const searchLabel = document.createElement("label");
+        const searchInput = document.createElement("input");
+        const searchStatus = document.createElement("p");
+        const searchHint = document.createElement("p");
+        const glossaryLinks = Array.from(toc.querySelectorAll("a[href^='#']"));
+        const utilityLinks = glossaryLinks.filter(function (link) {
+            const target = link.getAttribute("href");
+            return target === "#machine-learning-glossary" ||
+                target === "#quick-navigation";
+        });
+        const termLinks = glossaryLinks.filter(function (link) {
+            return !utilityLinks.includes(link);
+        });
+
+        searchWrap.className = "glossary-search";
+        searchLabel.setAttribute("for", "glossary-search-input");
+        searchLabel.textContent = "Find a term";
+        searchInput.id = "glossary-search-input";
+        searchInput.type = "search";
+        searchInput.placeholder = "e.g. backpropagation";
+        searchInput.maxLength = 30;
+        searchInput.autocomplete = "off";
+        searchInput.spellcheck = false;
+        searchStatus.className = "glossary-search-status";
+        searchStatus.setAttribute("aria-live", "polite");
+        searchHint.className = "glossary-search-hint";
+        searchHint.textContent = "Search term names, then select a result. Press Esc to clear.";
+        let highlightedTerm = null;
+
+        const clearGlossaryHighlight = function () {
+            if (highlightedTerm) {
+                highlightedTerm.classList.remove("glossary-term-highlight");
+                highlightedTerm = null;
+            }
+        };
+
+        termLinks.forEach(function (link) {
+            link.addEventListener("click", function (event) {
+                const targetId = decodeURIComponent(
+                    link.getAttribute("href").slice(1)
+                );
+                const termHeading = document.getElementById(targetId);
+
+                clearGlossaryHighlight();
+
+                if (termHeading) {
+                    termHeading.classList.add("glossary-term-highlight");
+                    highlightedTerm = termHeading;
+                }
+
+                event.stopPropagation();
+            });
+        });
+
+        document.addEventListener("click", clearGlossaryHighlight);
+
+        const filterGlossary = function () {
+            const query = searchInput.value.trim().toLocaleLowerCase();
+            let matchCount = 0;
+
+            termLinks.forEach(function (link) {
+                const termName = link.textContent.trim().toLocaleLowerCase();
+                const matches = !query || termName.includes(query);
+
+                link.closest("li").hidden = !matches;
+                if (matches) {
+                    matchCount += 1;
+                }
+            });
+
+            utilityLinks.forEach(function (link) {
+                link.closest("li").hidden = Boolean(query);
+            });
+            searchStatus.textContent = query
+                ? matchCount + (matchCount === 1 ? " result" : " results")
+                : termLinks.length + " terms";
+        };
+
+        searchInput.addEventListener("input", filterGlossary);
+        searchInput.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                if (searchInput.value) {
+                    searchInput.value = "";
+                    filterGlossary();
+                }
+
+                clearGlossaryHighlight();
+            }
+        });
+
+        searchWrap.appendChild(searchLabel);
+        searchWrap.appendChild(searchInput);
+        searchWrap.appendChild(searchStatus);
+        searchWrap.appendChild(searchHint);
+        pageToc.appendChild(searchWrap);
+        pageToc.appendChild(toc);
+        filterGlossary();
+    } else {
+        pageToc.appendChild(toc);
+    }
     const pageTocRail = document.createElement("div");
     pageTocRail.className = "page-toc-rail";
     pageTocRail.appendChild(pageToc);

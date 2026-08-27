@@ -29,6 +29,10 @@ This glossary defines the main terms used throughout the Deep Netts course.
 
 A function applied to a neuron's weighted sum. It determines how that value is transformed before being passed to the next layer or returned as an output. Examples include Linear, ReLU, and Sigmoid.
 
+## Attention
+
+A mechanism that lets a model assign different importance to parts of its input when creating a representation. In text models, attention helps one token use relevant information from other token positions.
+
 ## Accuracy
 
 The proportion of classification predictions that are correct. Accuracy can be misleading when one class is much more common than another.
@@ -52,6 +56,10 @@ A classification problem with two possible classes, such as `SPAM` and `NOT SPAM
 ## Classification
 
 A supervised learning task in which the target is one of a fixed set of categories.
+
+## Chain rule
+
+A calculus rule for differentiating nested functions. Backpropagation applies the chain rule from the loss toward earlier layers to calculate a gradient for every trainable parameter.
 
 ## Multiclass classification
 
@@ -85,6 +93,10 @@ A collection of samples used for training, evaluation, or prediction. In the cou
 
 The boundary that separates regions assigned to different classes. Logistic regression learns a linear decision boundary, while hidden layers can represent nonlinear boundaries.
 
+## Diffusion model
+
+A generative-model family that learns to create data by reversing a gradual noising process. Diffusion models are commonly used for image, audio, and video generation.
+
 ## Epoch
 
 One complete pass through the training dataset.
@@ -92,6 +104,10 @@ One complete pass through the training dataset.
 ## Evaluation
 
 The process of measuring a trained model using suitable metrics, preferably on data that was not used for training.
+
+## Fine-tuning
+
+Additional training that adapts a pretrained model to a narrower task, domain, or behavior using a more focused dataset.
 
 ## F1 score
 
@@ -117,6 +133,14 @@ A neural network in which information flows from the input layer through any hid
 
 The process of sending input values through the network to calculate a prediction.
 
+## Generative AI
+
+Machine Learning systems designed to produce new content such as text, images, audio, or code. Generative systems still rely on model parameters, loss functions, backpropagation, and optimization, but use objectives and architectures suited to generation.
+
+## Generative Adversarial Network (GAN)
+
+A generative architecture in which a generator creates samples and a discriminator learns to distinguish generated samples from real ones. The two models improve through competing objectives.
+
 ## Generalization
 
 A model's ability to make useful predictions for samples that were not part of its training data.
@@ -141,6 +165,14 @@ A configuration value chosen by the developer rather than learned as a model wei
 
 The first neural-network layer. It receives the feature values and defines the expected number of model inputs.
 
+## Inference
+
+Using a trained model to produce a prediction for new input data. Inference must apply the same feature order and fitted preprocessing used during training.
+
+## Large Language Model (LLM)
+
+A language model trained at large scale to predict and generate token sequences. An external LLM service is not an integrated Deep Netts feature unless an application connects to it explicitly.
+
 ## Learning rate
 
 A training hyperparameter that controls the size of each parameter update. A value that is too large can make training unstable, while a value that is too small can make learning slow.
@@ -148,6 +180,10 @@ A training hyperparameter that controls the size of each parameter update. A val
 ## Linear activation
 
 An activation that returns its input without restricting its range. It is commonly used in an output layer for regression.
+
+## Logit
+
+A model's raw score before a probability-producing function such as Sigmoid or Softmax is applied. Temperature changes the scale of logits before sampling in a generative model.
 
 ## Loss function
 
@@ -172,6 +208,14 @@ A subset of training samples used to calculate one parameter update. Mini-batch 
 ## Model
 
 A learned mapping from input features to a prediction. In a neural network, the learned information is represented primarily by weights and biases.
+
+## Multi-head attention
+
+Several attention operations performed in parallel with different learned projections. Their results are combined so the model can represent multiple kinds of relationships between token positions.
+
+## Multiple linear regression
+
+Linear regression with two or more input features. It learns one weight per feature and a shared bias to predict a continuous target.
 
 ## Neural network
 
@@ -201,6 +245,10 @@ A value learned during training, such as a weight or bias.
 
 Of all samples predicted as belonging to a class, the proportion that actually belongs to that class. For spam detection, it answers: of all emails marked as spam, how many were really spam?
 
+## Pre-training
+
+The initial training phase in which a model learns broad patterns from a large dataset before any task- or domain-specific fine-tuning.
+
 ## Prediction
 
 The output produced by a trained model for new input features.
@@ -221,6 +269,10 @@ Of all samples that actually belong to a class, the proportion correctly identif
 
 A commonly used hidden-layer activation function. It returns zero for negative inputs and returns positive inputs unchanged.
 
+## Residual connection
+
+A shortcut that adds a block's original input to its transformed output. Residual connections help information and gradients travel through deep architectures such as Transformers.
+
 ## Regression
 
 A supervised learning task in which the target is a continuous numerical value, such as computer performance or house price.
@@ -233,9 +285,21 @@ The square root of Mean Squared Error. It expresses prediction error on the same
 
 One observation in a dataset. In tabular data, one row usually represents one sample.
 
+## Sampling
+
+Selecting an output from a model's probability distribution instead of always choosing the highest-probability option. Generative systems use sampling controls such as temperature to vary output diversity.
+
+## Self-attention
+
+Attention in which queries, keys, and values are derived from the same input sequence. It creates context-aware token representations by comparing positions within that sequence.
+
 ## Sigmoid
 
 An activation function that produces a value between `0` and `1`. It is commonly used for the output of a binary classifier.
+
+## Simple linear regression
+
+Linear regression with one input feature and one continuous target. It learns the slope and intercept of a fitted line, represented by $\hat{y}=wx+b$.
 
 ## Softmax
 
@@ -253,9 +317,21 @@ A type of Machine Learning in which the training data contains both input featur
 
 The value or class that a supervised model learns to predict. `PRP` and `is_spam` are targets in the course examples.
 
+## Tanh
+
+An activation function that smoothly maps values into the range from `-1` to `1`. Its zero-centered output can be useful in hidden layers.
+
+## Temperature
+
+A sampling control that rescales logits before Softmax. Lower values concentrate probability on likely outputs, while higher values produce a flatter distribution and more varied choices.
+
 ## Test set
 
 The subset of data reserved for evaluating a trained model on unseen samples. It must not influence model training or fitted preprocessing parameters.
+
+## Token
+
+A unit processed by a language model, such as a word, part of a word, punctuation mark, or other encoded text fragment. Next-token prediction estimates a probability distribution for the token that follows the current context.
 
 ## Training
 
@@ -277,6 +353,10 @@ A positive sample correctly predicted as positive. For fraud detection, this is 
 
 The division of a dataset into separate training and evaluation subsets.
 
+## Transformer
+
+A sequence-model architecture built from attention, learned projections, feed-forward networks, residual connections, normalization, and positional information. The current cookbook explains the concept but does not include a runnable Deep Netts Transformer project.
+
 ## Underfitting
 
 A condition in which a model has not learned the relevant pattern well enough and performs poorly even on its training data.
@@ -284,6 +364,10 @@ A condition in which a model has not learned the relevant pattern well enough an
 ## Vanishing gradient
 
 A training problem in which gradients become extremely small as they are propagated through many layers, causing early layers to learn very slowly or stop learning.
+
+## Variational Autoencoder (VAE)
+
+A generative model that learns a structured probability distribution in a latent space and decodes sampled latent values into new data.
 
 ## Weight
 

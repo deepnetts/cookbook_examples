@@ -2,23 +2,12 @@
 
 Machine Learning is a way of building software that learns patterns from examples instead of relying only on rules written by a developer.
 
-In traditional programming, you provide data and explicit rules:
+In traditional programming, you provide data and explicit rules. In supervised Machine Learning, you provide data together with known results, and a training algorithm uses those examples to create a model. The trained model can then make predictions for new data:
 
-```text
-data + rules -> result
-```
-
-In supervised Machine Learning, you provide data together with known results. A training algorithm uses those examples to create a model:
-
-```text
-training data + known results -> trained model
-```
-
-The trained model can then make predictions for new data:
-
-```text
-new data + trained model -> prediction
-```
+<figure class="course-figure">
+  <img src="../../assets/course-figures/ml-learning-workflow.svg" alt="Comparison of traditional programming and supervised Machine Learning workflows">
+  <figcaption>Traditional software executes rules written by a developer; supervised learning derives a reusable model from examples with known targets.</figcaption>
+</figure>
 
 ## Samples, features, and targets
 
