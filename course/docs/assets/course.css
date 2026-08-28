@@ -2553,6 +2553,10 @@ textarea {
 }
 
 /* Lightweight per-page feedback. */
+.page-feedback.awaiting-placement {
+  visibility: hidden;
+}
+
 .page-feedback {
   width: fit-content;
   min-width: 210px;

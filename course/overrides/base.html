@@ -32,6 +32,7 @@
       {% for path in config.extra_css %}
         <link href="{{ path|url }}" rel="stylesheet">
       {% endfor %}
+      <noscript><style>.page-feedback.awaiting-placement{visibility:visible}</style></noscript>
 
       {%- block scripts %}
         <script> var base_url = {{ base_url | tojson | safe }} </script>
@@ -258,7 +259,7 @@
       {% set show_page_feedback = page and page.file and page.file.src_uri not in feedback_excluded_pages %}
       {% if show_page_feedback %}
         <div class="page-feedback-anchor" data-page-feedback-anchor></div>
-        <section class="page-feedback" data-page-feedback data-page="{{ page.url }}" aria-labelledby="page-feedback-title">
+        <section class="page-feedback awaiting-placement" data-page-feedback data-page="{{ page.url }}" aria-labelledby="page-feedback-title">
           <p id="page-feedback-title" class="page-feedback-title">Was this helpful?</p>
           <div class="page-feedback-choices" role="group" aria-label="Rate this page">
             <button type="button" data-feedback-value="helpful" aria-label="Yes, this page was helpful" aria-pressed="false" title="Helpful">

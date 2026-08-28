@@ -240,6 +240,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (!toc) {
+        if (pageFeedback) {
+            pageFeedback.classList.remove("awaiting-placement");
+        }
         return;
     }
 
@@ -470,6 +473,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         desktopFeedbackLayout.addEventListener("change", placePageFeedback);
         placePageFeedback();
+        pageFeedback.classList.remove("awaiting-placement");
     }
 
     const tocLinks = Array.from(toc.querySelectorAll("a[href^='#']"));
