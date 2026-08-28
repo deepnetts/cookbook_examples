@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" role="img" aria-labelledby="title description">
+  <title id="title">Bag of Words example</title>
+  <desc id="description">Three short documents are converted into a vocabulary and a matrix whose cells contain token occurrence counts.</desc>
+  <rect width="900" height="500" rx="18" fill="#f8fdff"/>
+  <g font-family="Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+    <text x="450" y="42" fill="#172b4d" font-size="22" font-weight="700" text-anchor="middle">Bag of Words: documents become count vectors</text>
+
+    <g font-size="14">
+      <rect x="38" y="72" width="252" height="58" rx="10" fill="#fff" stroke="#8dd8ea" stroke-width="2"/>
+      <rect x="38" y="143" width="252" height="58" rx="10" fill="#fff" stroke="#8dd8ea" stroke-width="2"/>
+      <rect x="38" y="214" width="252" height="58" rx="10" fill="#fff" stroke="#8dd8ea" stroke-width="2"/>
+      <text x="58" y="106" fill="#075985" font-weight="700">D1</text><text x="92" y="106" fill="#172b4d">java neural network</text>
+      <text x="58" y="177" fill="#075985" font-weight="700">D2</text><text x="92" y="177" fill="#172b4d">java network training</text>
+      <text x="58" y="248" fill="#075985" font-weight="700">D3</text><text x="92" y="248" fill="#172b4d">java virtual machine</text>
+    </g>
+
+    <path d="M310 172 H365" fill="none" stroke="#087ca7" stroke-width="3"/>
+    <path d="M355 163 L366 172 L355 181" fill="none" stroke="#087ca7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="385" y="86" width="477" height="239" rx="14" fill="#fff" stroke="#8dd8ea" stroke-width="2"/>
+    <text x="623" y="116" fill="#075985" font-size="16" font-weight="700" text-anchor="middle">Vocabulary features</text>
+
+    <g font-size="12" text-anchor="middle" fill="#52657a">
+      <text x="507" y="150">java</text><text x="570" y="150">neural</text><text x="640" y="150">network</text>
+      <text x="713" y="150">training</text><text x="783" y="150">virtual</text><text x="837" y="150">machine</text>
+    </g>
+    <g stroke="#d3e4eb" stroke-width="1">
+      <path d="M466 160 H850 M466 205 H850 M466 250 H850 M466 295 H850"/>
+      <path d="M478 135 V295 M536 135 V295 M604 135 V295 M675 135 V295 M749 135 V295 M813 135 V295"/>
+    </g>
+    <g fill="#172b4d" font-size="14" text-anchor="middle">
+      <text x="428" y="190" fill="#075985" font-weight="700">D1</text><text x="507" y="190">1</text><text x="570" y="190">1</text><text x="640" y="190">1</text><text x="713" y="190">0</text><text x="783" y="190">0</text><text x="837" y="190">0</text>
+      <text x="428" y="235" fill="#075985" font-weight="700">D2</text><text x="507" y="235">1</text><text x="570" y="235">0</text><text x="640" y="235">1</text><text x="713" y="235">1</text><text x="783" y="235">0</text><text x="837" y="235">0</text>
+      <text x="428" y="280" fill="#075985" font-weight="700">D3</text><text x="507" y="280">1</text><text x="570" y="280">0</text><text x="640" y="280">0</text><text x="713" y="280">0</text><text x="783" y="280">1</text><text x="837" y="280">1</text>
+    </g>
+
+    <rect x="92" y="360" width="716" height="88" rx="14" fill="#edf8f1" stroke="#75bd8c" stroke-width="2"/>
+    <text x="450" y="393" fill="#215f36" font-size="17" font-weight="700" text-anchor="middle">Each cell answers: “How many times does this vocabulary term occur?”</text>
+    <text x="450" y="424" fill="#3e6850" font-size="15" text-anchor="middle">D1 → [1, 1, 1, 0, 0, 0]</text>
+  </g>
+</svg>

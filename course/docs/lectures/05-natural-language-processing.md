@@ -59,7 +59,7 @@ A **vocabulary** gives each known token a stable index:
 
 Unknown or rare tokens are commonly mapped to a reserved value instead of silently changing the input shape.
 
-!!! warning "Fit text preprocessing on training data only"
+??? warning "Fit text preprocessing on training data only"
     Build the vocabulary and calculate corpus-derived statistics only from the training documents. Reusing information from test documents during vocabulary selection or TF-IDF fitting is data leakage.
 
 ## Numerical text representations
@@ -75,33 +75,109 @@ The representation determines what the model can learn from the text.
 
 Bag of Words creates one feature per vocabulary term and stores a count or presence value. It is simple and interpretable, but it discards token order.
 
-For vocabulary $V$ and document $d$:
+For vocabulary $V$ and document $d$, feature $j$ is the number of times vocabulary term $V_j$ occurs in that document:
 
 $$
-x_j=\operatorname{count}(V_j,d)
+x_j(d)=\operatorname{count}(V_j,d)
 $$
+
+Consider this training corpus:
+
+- $D_1$: `java neural network`
+- $D_2$: `java network training`
+- $D_3$: `java virtual machine`
+
+The vocabulary fixes the column order: `java`, `neural`, `network`, `training`, `virtual`, `machine`. Each document then becomes a vector of counts.
+
+<figure class="course-figure">
+  <img src="../../assets/course-figures/bag-of-words-example.svg" alt="Three documents converted into a Bag of Words count matrix using a shared six-term vocabulary">
+  <figcaption>Bag of Words preserves term occurrence counts, but not the order in which those terms appeared.</figcaption>
+</figure>
+
+The vocabulary must be fitted on the training set and reused unchanged for test and future documents. A term outside that vocabulary needs an explicit policy, such as an unknown-token feature or omission.
 
 ### TF-IDF
 
-Term Frequency–Inverse Document Frequency reduces the influence of terms that occur in many documents and emphasizes terms that are more distinctive:
+Raw counts can overemphasize words that occur throughout the corpus. Term Frequency–Inverse Document Frequency separates the calculation into three parts.
+
+**1. Term frequency (TF)** measures how prominent term $t$ is inside document $d$:
 
 $$
-\operatorname{tfidf}(t,d)=\operatorname{tf}(t,d)\log\left(\frac{N}{\operatorname{df}(t)}\right)
+\operatorname{tf}(t,d)=\frac{\operatorname{count}(t,d)}{|d|}
 $$
 
-$N$ is the number of training documents and $\operatorname{df}(t)$ counts training documents containing token $t$.
+$|d|$ is the number of tokens in the document. Dividing by document length makes counts from documents of different sizes easier to compare.
+
+**2. Inverse document frequency (IDF)** measures how distinctive the term is across the training corpus:
+
+$$
+\operatorname{idf}(t)=\ln\left(\frac{N}{\operatorname{df}(t)}\right)
+$$
+
+$N$ is the number of training documents, while $\operatorname{df}(t)$ is the number of those documents containing $t$. A term found in fewer documents receives a larger IDF value.
+
+**3. TF-IDF** combines local prominence and corpus-wide distinctiveness:
+
+$$
+\operatorname{tfidf}(t,d)=\operatorname{tf}(t,d)\times\operatorname{idf}(t)
+$$
+
+For `neural` in $D_1$, $\operatorname{tf}=1/3$, $\operatorname{idf}=\ln(3/1)$, and the resulting TF-IDF weight is approximately $0.366$. By contrast, `java` occurs in every document, so this unsmoothed formula gives it an IDF of zero.
+
+<figure class="course-figure">
+  <img src="../../assets/course-figures/tf-idf-example.svg" alt="Step-by-step TF, IDF, and TF-IDF calculation for the word neural, with comparison to the common word java">
+  <figcaption>TF rewards relevance inside one document; IDF reduces the influence of terms shared by many training documents.</figcaption>
+</figure>
+
+This is the clearest educational form of TF-IDF. Production libraries may add smoothing, use another logarithm base, apply sublinear TF, and normalize the final vector. Whichever variant is selected becomes part of the model contract and must remain identical during training and prediction.
 
 ### Embeddings
 
 An embedding maps a token, sentence, or document to a dense numerical vector. Similar language units can occupy nearby regions of the learned vector space.
 
-Embeddings may be:
+#### Word2Vec
+
+**Word2Vec** is a family of shallow neural models that learns one dense vector for every word in a vocabulary. Instead of using a manually assigned meaning, it learns from context: words that occur in similar surroundings tend to receive nearby vectors.
+
+Training examples are created by sliding a fixed-size context window through a text corpus. Word2Vec can then use either of two learning objectives:
+
+- **Continuous Bag of Words (CBOW)** receives the surrounding context words and predicts the word in the center;
+- **Skip-gram** receives the center word and predicts its surrounding context words.
+
+For the fragment `java neural network training`, a CBOW example could use `java` and `network` to predict `neural`. A Skip-gram example reverses that relationship and uses `neural` to predict nearby words such as `java` and `network`.
+
+<figure class="course-figure">
+  <img src="../../assets/course-figures/word2vec-learning.svg" alt="Word2Vec context window with CBOW predicting a center word and Skip-gram predicting surrounding words">
+  <figcaption>CBOW and Skip-gram reverse the prediction direction, but both learn their word vectors from recurring local context.</figcaption>
+</figure>
+
+The trained hidden-layer weights become the word vectors. Their useful dimensions are learned rather than named manually, and vector similarity—often cosine similarity—can be used to find words that occur in related contexts.
+
+Word2Vec produces **static embeddings**: `java` receives the same vector in every sentence. Contextual models can instead produce a different representation according to the surrounding text.
+
+!!! info "Deep Netts Word2Vec support"
+    Native Word2Vec support is currently being developed for Deep Netts. It is not part of the stable API used by the runnable examples in this cookbook yet.
+
+#### What can an embedding represent?
+
+The same general idea—representing an item with a dense vector—extends beyond individual words:
+
+| Data represented | What the vector can capture | Example approaches |
+|---|---|---|
+| Word or token | Usage and relationships between vocabulary items | Word2Vec, GloVe, FastText, contextual token embeddings |
+| Sentence or document | Overall topic, meaning, or context | Doc2Vec, sentence encoders, pooled Transformer representations |
+| Audio | Acoustic and speech characteristics | Wav2Vec-style encoders |
+| Image | Visual shapes, objects, and textures | CNN or vision-encoder features |
+| Graph | Node properties and relationships | Node2Vec, DeepWalk, graph neural networks |
+| Structured record | Latent patterns in tabular features | Autoencoder bottleneck representations |
+
+High-dimensional embeddings can be projected into two dimensions with methods such as **t-SNE** for exploratory visualization. A visible cluster can suggest similar representations, but the projection distorts some distances and is not a substitute for task-specific evaluation.
+
+Embeddings used by an NLP application may be:
 
 - learned together with a task-specific model;
 - produced by a separately trained model;
 - supplied by an external embedding service.
-
-**Word2Vec** is a classic method for learning word embeddings from nearby-word patterns in a text corpus. Words used in similar contexts receive nearby vectors. Word2Vec produces a static embedding, so a word has the same vector wherever it appears. Contextual embedding models can instead produce different vectors for the same word according to its surrounding sentence.
 
 An external embedding model or service is not an integrated Deep Netts feature unless the application connects and validates it explicitly.
 

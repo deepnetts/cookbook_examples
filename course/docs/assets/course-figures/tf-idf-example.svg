@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title description">
+  <title id="title">TF-IDF calculation example</title>
+  <desc id="description">The TF-IDF weight for neural in the first document is calculated from term frequency and inverse document frequency, then compared with the common word java.</desc>
+  <rect width="900" height="520" rx="18" fill="#f8fdff"/>
+  <g font-family="Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+    <text x="450" y="42" fill="#172b4d" font-size="22" font-weight="700" text-anchor="middle">TF-IDF: reward local relevance, reduce corpus-wide frequency</text>
+
+    <rect x="48" y="76" width="804" height="66" rx="12" fill="#fff" stroke="#8dd8ea" stroke-width="2"/>
+    <text x="450" y="104" fill="#075985" font-size="15" font-weight="700" text-anchor="middle">Term “neural” in D1: java neural network</text>
+    <text x="450" y="127" fill="#52657a" font-size="13" text-anchor="middle">The corpus contains N = 3 documents; “neural” occurs in df = 1 document.</text>
+
+    <g>
+      <rect x="48" y="177" width="242" height="142" rx="14" fill="#fff" stroke="#8dd8ea" stroke-width="2"/>
+      <rect x="329" y="177" width="242" height="142" rx="14" fill="#fff" stroke="#8dd8ea" stroke-width="2"/>
+      <rect x="610" y="177" width="242" height="142" rx="14" fill="#edf8f1" stroke="#75bd8c" stroke-width="2"/>
+      <text x="169" y="211" fill="#075985" font-size="17" font-weight="700" text-anchor="middle">Term frequency</text>
+      <text x="450" y="211" fill="#075985" font-size="17" font-weight="700" text-anchor="middle">Inverse document frequency</text>
+      <text x="731" y="211" fill="#215f36" font-size="17" font-weight="700" text-anchor="middle">TF-IDF weight</text>
+      <text x="169" y="248" fill="#172b4d" font-size="16" text-anchor="middle">TF = 1 / 3</text>
+      <text x="169" y="278" fill="#52657a" font-size="14" text-anchor="middle">≈ 0.333</text>
+      <text x="450" y="248" fill="#172b4d" font-size="16" text-anchor="middle">IDF = ln(3 / 1)</text>
+      <text x="450" y="278" fill="#52657a" font-size="14" text-anchor="middle">≈ 1.099</text>
+      <text x="731" y="248" fill="#215f36" font-size="16" font-weight="700" text-anchor="middle">0.333 × 1.099</text>
+      <text x="731" y="278" fill="#2f9b53" font-size="18" font-weight="800" text-anchor="middle">≈ 0.366</text>
+    </g>
+    <path d="M291 248 H326 M572 248 H607" stroke="#087ca7" stroke-width="3"/>
+    <path d="M316 239 L327 248 L316 257 M597 239 L608 248 L597 257" fill="none" stroke="#087ca7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <rect x="91" y="360" width="718" height="105" rx="14" fill="#fff" stroke="#d3e4eb" stroke-width="2"/>
+    <circle cx="135" cy="401" r="17" fill="#e5f7fc" stroke="#67c4e3"/>
+    <text x="135" y="407" fill="#075985" font-size="15" font-weight="800" text-anchor="middle">i</text>
+    <text x="171" y="393" fill="#172b4d" font-size="15" font-weight="700">Compare the common term “java”</text>
+    <text x="171" y="421" fill="#52657a" font-size="14">It appears in all three documents: IDF = ln(3 / 3) = 0, so its unsmoothed TF-IDF weight is 0.</text>
+    <text x="450" y="493" fill="#52657a" font-size="13" text-anchor="middle">Distinctive terms receive more weight than terms shared by the entire training corpus.</text>
+  </g>
+</svg>
