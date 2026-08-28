@@ -2,9 +2,10 @@
 
 Prepare data after loading it and before building or training a model. The safe order is:
 
-```text
-shuffle -> split -> fit preprocessing on training data -> apply it to test data
-```
+<figure class="course-figure">
+  <img src="../../assets/course-figures/leakage-safe-preprocessing.svg" alt="Dataset shuffled and split before preprocessing is fitted on training data and applied unchanged to test data">
+  <figcaption>Fit preprocessing only from training data, then reuse the fitted transformation for the test set and future samples.</figcaption>
+</figure>
 
 ## Clean incomplete tabular data before Deep Netts
 
@@ -13,10 +14,10 @@ missing cells, invalid sentinel values, duplicated rows, inconsistent types, or
 extra columns, clean it with a dataframe tool before calling
 `DataSets.readCsv`.
 
-```text
-raw dataset -> inspect and clean with DFLib or Tablesaw -> model-ready CSV
-             -> Deep Netts DataSets -> train/test split -> fitted preprocessing
-```
+<figure class="course-figure">
+  <img src="../../assets/course-figures/tabular-cleaning-pipeline.svg" alt="Raw dataset cleaned with DFLib or Tablesaw, exported to CSV, loaded with Deep Netts DataSets, split, and safely preprocessed">
+  <figcaption>DFLib or Tablesaw handles incomplete tabular data before Deep Netts loads the resulting numerical dataset.</figcaption>
+</figure>
 
 Before exporting the model-ready CSV, confirm:
 

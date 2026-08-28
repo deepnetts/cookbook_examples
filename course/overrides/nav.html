@@ -1,7 +1,7 @@
 {% if nav_item.title != "Home" %}
   {% if not nav_item.children %}
     <li{% if nav_item.active %} class="active"{% endif %}>
-      <a href="{{ nav_item.url|url }}"{% if nav_item.url.startswith('http://') or nav_item.url.startswith('https://') %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ nav_item.title }}{% if nav_item.url == 'lectures/06-generative-ai/' %} <span class="course-nav-badge">Optional</span>{% endif %}{% if nav_item.url.startswith('http://') or nav_item.url.startswith('https://') %} <span aria-hidden="true">↗</span>{% endif %}</a>
+      <a href="{{ nav_item.url|url }}"{% if nav_item.url.startswith('http://') or nav_item.url.startswith('https://') %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ nav_item.title }}{% if nav_item.url == 'lectures/05-natural-language-processing/' or nav_item.url == 'lectures/06-generative-ai/' %} <span class="course-nav-badge">Optional</span>{% endif %}{% if nav_item.url.startswith('http://') or nav_item.url.startswith('https://') %} <span aria-hidden="true">↗</span>{% endif %}</a>
     </li>
   {% else %}
     {% set landing_page = nav_item.children | first %}

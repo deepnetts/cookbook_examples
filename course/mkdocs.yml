@@ -31,7 +31,6 @@ nav:
       - Regression: examples/regression/index.md
       - Classification: examples/classification/index.md
       - Image Classification: examples/image-classification/index.md
-      - NLP: examples/nlp/index.md
 
   - Developer Guide:
       - Overview: developer-guide/index.md

@@ -474,6 +474,18 @@ textarea {
     vertical-align: 1px;
 }
 
+.desktop-section-navigation .course-optional-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.desktop-section-navigation .course-optional-link .course-nav-badge {
+    flex: 0 0 auto;
+    margin-left: auto;
+}
+
 .side .nav-section .nav-section {
     border-bottom: 0;
 }
@@ -2305,6 +2317,24 @@ textarea {
   min-height: 46px;
   box-sizing: border-box;
   padding: 13px 24px;
+}
+
+.desktop-section-navigation .example-context-group.active-section > .example-category-link {
+  color: #075985;
+  font-weight: 650;
+}
+
+.desktop-section-navigation .example-context-group > ul {
+  padding: 0;
+  background: #fbfdfe;
+  border-top: 1px solid #eef2f5;
+}
+
+.desktop-section-navigation .example-context-group > ul a {
+  min-height: 40px;
+  padding: 10px 24px 10px 38px;
+  font-size: 13px;
+  font-weight: 450;
 }
 
 @media only screen and (min-width: 1101px) {

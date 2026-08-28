@@ -114,10 +114,41 @@
             <h2>Examples</h2>
             <ul>
               <li{% if current_url == 'examples/' %} class="active"{% endif %}><a href="{{ 'examples/'|url }}">Overview</a></li>
-              <li{% if current_url.startswith('examples/regression/') %} class="active"{% endif %}><a href="{{ 'examples/regression/'|url }}">Regression</a></li>
-              <li{% if current_url.startswith('examples/classification/') %} class="active"{% endif %}><a href="{{ 'examples/classification/'|url }}">Classification</a></li>
-              <li{% if current_url.startswith('examples/image-classification/') %} class="active"{% endif %}><a href="{{ 'examples/image-classification/'|url }}">Image Classification</a></li>
-              <li{% if current_url.startswith('examples/nlp/') %} class="active"{% endif %}><a href="{{ 'examples/nlp/'|url }}">NLP</a></li>
+              <li class="example-context-group{% if current_url == 'examples/regression/' %} active{% elif current_url.startswith('examples/regression/') %} active-section{% endif %}">
+                <a class="example-category-link" href="{{ 'examples/regression/'|url }}">Regression</a>
+                {% if current_url.startswith('examples/regression/') and current_url != 'examples/regression/' %}
+                  <ul>
+                    <li{% if current_url == 'examples/regression/sorting-execution-time-prediction/' %} class="active"{% endif %}><a href="{{ 'examples/regression/sorting-execution-time-prediction/'|url }}">Sorting Execution Time</a></li>
+                    <li{% if current_url == 'examples/regression/insurance-payment-prediction/' %} class="active"{% endif %}><a href="{{ 'examples/regression/insurance-payment-prediction/'|url }}">Insurance Payment</a></li>
+                    <li{% if current_url == 'examples/regression/computer-hardware-performance-prediction/' %} class="active"{% endif %}><a href="{{ 'examples/regression/computer-hardware-performance-prediction/'|url }}">Computer Hardware Performance</a></li>
+                    <li{% if current_url == 'examples/regression/house-price-prediction/' %} class="active"{% endif %}><a href="{{ 'examples/regression/house-price-prediction/'|url }}">House Price</a></li>
+                  </ul>
+                {% endif %}
+              </li>
+              <li class="example-context-group{% if current_url == 'examples/classification/' %} active{% elif current_url.startswith('examples/classification/') %} active-section{% endif %}">
+                <a class="example-category-link" href="{{ 'examples/classification/'|url }}">Classification</a>
+                {% if current_url.startswith('examples/classification/') and current_url != 'examples/classification/' %}
+                  <ul>
+                    <li{% if current_url == 'examples/classification/sonar-rock-mine-classification/' %} class="active"{% endif %}><a href="{{ 'examples/classification/sonar-rock-mine-classification/'|url }}">Sonar Rock or Mine</a></li>
+                    <li{% if current_url == 'examples/classification/email-spam-detection/' %} class="active"{% endif %}><a href="{{ 'examples/classification/email-spam-detection/'|url }}">Email Spam Detection</a></li>
+                    <li{% if current_url == 'examples/classification/credit-card-fraud-detection/' %} class="active"{% endif %}><a href="{{ 'examples/classification/credit-card-fraud-detection/'|url }}">Credit Card Fraud</a></li>
+                    <li{% if current_url == 'examples/classification/iris-flower-classification/' %} class="active"{% endif %}><a href="{{ 'examples/classification/iris-flower-classification/'|url }}">Iris Flower</a></li>
+                  </ul>
+                {% endif %}
+              </li>
+              <li class="example-context-group{% if current_url == 'examples/image-classification/' %} active{% elif current_url.startswith('examples/image-classification/') %} active-section{% endif %}">
+                <a class="example-category-link" href="{{ 'examples/image-classification/'|url }}">Image Classification</a>
+                {% if current_url.startswith('examples/image-classification/') and current_url != 'examples/image-classification/' %}
+                  <ul>
+                    <li{% if current_url == 'examples/image-classification/hotdog-nothotdog/' %} class="active"{% endif %}><a href="{{ 'examples/image-classification/hotdog-nothotdog/'|url }}">Hot Dog or Not Hot Dog</a></li>
+                    <li{% if current_url == 'examples/image-classification/duke-logo-recognition/' %} class="active"{% endif %}><a href="{{ 'examples/image-classification/duke-logo-recognition/'|url }}">Duke Logo Recognition</a></li>
+                    <li{% if current_url == 'examples/image-classification/parking-lot-occupancy/' %} class="active"{% endif %}><a href="{{ 'examples/image-classification/parking-lot-occupancy/'|url }}">Parking Lot Occupancy</a></li>
+                    <li{% if current_url == 'examples/image-classification/handwritten-digit-recognition/' %} class="active"{% endif %}><a href="{{ 'examples/image-classification/handwritten-digit-recognition/'|url }}">Handwritten Digits</a></li>
+                    <li{% if current_url == 'examples/image-classification/lego-figure-recognition/' %} class="active"{% endif %}><a href="{{ 'examples/image-classification/lego-figure-recognition/'|url }}">Lego Figure Recognition</a></li>
+                    <li{% if current_url == 'examples/image-classification/tensorflow-vggnet16-import/' %} class="active"{% endif %}><a href="{{ 'examples/image-classification/tensorflow-vggnet16-import/'|url }}">TensorFlow VGGNet16 Import</a></li>
+                  </ul>
+                {% endif %}
+              </li>
             </ul>
           {% elif current_section == 'developer-guide' %}
             <h2>Developer Guide</h2>
@@ -143,8 +174,8 @@
               <li{% if current_url == 'lectures/05-backpropagation/' %} class="active"{% endif %}><a href="{{ 'lectures/05-backpropagation/'|url }}">Backpropagation</a></li>
               <li{% if current_url == 'lectures/03-deep-netts-api/' %} class="active"{% endif %}><a href="{{ 'lectures/03-deep-netts-api/'|url }}">Deep Netts API</a></li>
               <li{% if current_url == 'lectures/04-model-development/' %} class="active"{% endif %}><a href="{{ 'lectures/04-model-development/'|url }}">Model Development</a></li>
-              <li{% if current_url == 'lectures/05-natural-language-processing/' %} class="active"{% endif %}><a href="{{ 'lectures/05-natural-language-processing/'|url }}">Natural Language Processing</a></li>
-              <li{% if current_url == 'lectures/06-generative-ai/' %} class="active"{% endif %}><a href="{{ 'lectures/06-generative-ai/'|url }}">Generative AI <span class="course-nav-badge">Optional</span></a></li>
+              <li{% if current_url == 'lectures/05-natural-language-processing/' %} class="active"{% endif %}><a class="course-optional-link" href="{{ 'lectures/05-natural-language-processing/'|url }}">Natural Language Processing <span class="course-nav-badge">Optional</span></a></li>
+              <li{% if current_url == 'lectures/06-generative-ai/' %} class="active"{% endif %}><a class="course-optional-link" href="{{ 'lectures/06-generative-ai/'|url }}">Generative AI <span class="course-nav-badge">Optional</span></a></li>
             </ul>
           {% endif %}
         </nav>
