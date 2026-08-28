@@ -15,8 +15,8 @@ extra columns, clean it with a dataframe tool before calling
 `DataSets.readCsv`.
 
 <figure class="course-figure">
-  <img src="../../assets/course-figures/tabular-cleaning-pipeline.svg" alt="Raw dataset cleaned with DFLib or Tablesaw, exported to CSV, loaded with Deep Netts DataSets, split, and safely preprocessed">
-  <figcaption>DFLib or Tablesaw handles incomplete tabular data before Deep Netts loads the resulting numerical dataset.</figcaption>
+  <img src="../../assets/course-figures/tabular-cleaning-pipeline.svg" alt="Raw dataset cleaned with DFLib, exported to CSV, loaded with Deep Netts DataSets, split, and safely preprocessed">
+  <figcaption>DFLib handles incomplete tabular data before Deep Netts loads the resulting numerical dataset.</figcaption>
 </figure>
 
 Before exporting the model-ready CSV, confirm:
@@ -27,17 +27,16 @@ Before exporting the model-ready CSV, confirm:
 - duplicates are understood and removed only when they are genuinely repeated observations;
 - no unhandled missing value reaches the Deep Netts loader.
 
-### Choose an optional dataframe tool
+### Prepare tabular data with DFLib
 
-| Tool | Good fit in this cookbook | Useful preparation operations |
-|---|---|---|
-| <a href="https://dflib.org/dflib/docs/2.x/" target="_blank" rel="noopener noreferrer">DFLib</a> | Already used by the Sorting Execution Time example | Select, rename, transform, join, drop, and fill columns or rows |
-| <a href="https://jtablesaw.github.io/tablesaw/userguide/" target="_blank" rel="noopener noreferrer">Tablesaw</a> | Optional Java dataframe alternative | CSV import, typed columns, missing-value selections, filtering, summaries, and export |
+<a href="https://dflib.org/dflib/docs/2.x/" target="_blank" rel="noopener noreferrer">DFLib</a>
+is already used by the Sorting Execution Time example. It can select, rename,
+transform, join, drop, and fill columns or rows before exporting model-ready data.
 
-These tools prepare the raw table. They do not replace Deep Netts
+DFLib prepares the raw table. It does not replace Deep Netts
 `Standardizer`, `MinMaxScaler`, dataset splitting, training, or evaluation.
 
-### Prepare columns and nulls with DFLib
+### Select columns and handle nulls
 
 The Sorting Execution Time project already uses DFLib to select the feature and
 target in their required order. The same pipeline can apply a
@@ -76,36 +75,9 @@ Forward or backward filling is appropriate only when row order has a real
 temporal or sequential meaning. It is usually wrong for independently sampled
 rows.
 
-### Detect and handle missing values with Tablesaw
-
-Tablesaw represents data with typed columns. You can create a selection of
-missing values and apply a domain-defined replacement:
-
-```java
-import tech.tablesaw.api.DoubleColumn;
-import tech.tablesaw.api.Table;
-
-Table modelData = Table.read().csv(RAW_DATASET_PATH);
-DoubleColumn payment = modelData.doubleColumn("payment");
-
-payment.set(payment.isMissing(), 0.0);
-modelData.write().csv(CLEAN_DATASET_PATH);
-```
-
-If incomplete rows cannot be used safely, create a complete-row table instead:
-
-```java
-Table completeRows = modelData.dropRowsWithMissingValues();
-completeRows.write().csv(CLEAN_DATASET_PATH);
-```
-
-Dropping rows reduces the amount of training data and can introduce bias when
-missingness is systematic. Record how many rows were removed and inspect which
-groups or target values were affected.
-
 ### Load the cleaned CSV with Deep Netts
 
-After DFLib or Tablesaw exports the expected numerical columns, continue with
+After DFLib exports the expected numerical columns, continue with
 the normal Deep Netts workflow:
 
 ```java

@@ -1541,8 +1541,8 @@ textarea {
   position: relative;
   display: grid;
   min-height: 560px;
-  padding: 82px max(7vw, 54px);
-  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+  padding: 82px max(7vw, 54px) 140px;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
   gap: 50px;
   overflow: hidden;
@@ -1554,13 +1554,13 @@ textarea {
 
 .home-hero::after {
   position: absolute;
-  right: -5%;
-  bottom: -92px;
-  left: -5%;
-  height: 150px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 80px;
   background: #ffffff;
+  clip-path: polygon(0 0, 100% 65%, 100% 100%, 0 100%);
   content: "";
-  transform: rotate(3deg);
 }
 
 .home-hero-content {
@@ -1776,7 +1776,7 @@ textarea {
 
   .home-hero {
     min-height: auto;
-    padding: 68px 34px 120px;
+    padding: 68px 34px 140px;
     grid-template-columns: 1fr;
   }
 
@@ -1792,7 +1792,7 @@ textarea {
   }
 
   .home-hero {
-    padding: 52px 22px 100px;
+    padding: 52px 22px 120px;
   }
 
   .markdown-body .home-hero h1 {
