@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 370" role="img" aria-labelledby="title description">
-  <title id="title">Binary cross-entropy penalizes confident wrong predictions</title>
+  <title id="title">Binary Cross-Entropy penalizes confident wrong predictions</title>
   <desc id="description">For an actual positive label, a prediction of 0.95 has low loss, 0.50 has moderate loss, and 0.05 has high loss.</desc>
   <rect width="900" height="370" rx="18" fill="#f8fdff"/>
   <g font-family="Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
-    <text x="450" y="45" fill="#172b4d" font-size="21" font-weight="700" text-anchor="middle">Cross-Entropy responds to confidence</text>
+    <text x="450" y="45" fill="#172b4d" font-size="21" font-weight="700" text-anchor="middle">Binary Cross-Entropy responds to confidence</text>
     <text x="450" y="72" fill="#52657a" font-size="14" text-anchor="middle">Example: the actual label is positive (y = 1)</text>
     <g>
       <rect x="55" y="102" width="240" height="218" rx="15" fill="#edf8f1" stroke="#75bd8c" stroke-width="2"/>

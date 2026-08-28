@@ -264,6 +264,7 @@ Generated explanations do not replace model metrics or domain validation. Send o
 ```text
 Machine Learning Basics -> data, targets, and evaluation
 Linear Regression       -> the smallest trainable neuron
+Logistic Regression     -> binary probabilities and decision boundaries
 Neural Networks         -> hidden layers and representations
 Backpropagation         -> gradients and parameter updates
 Deep Netts API          -> Java model-development components

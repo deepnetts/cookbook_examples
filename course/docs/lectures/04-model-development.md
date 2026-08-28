@@ -261,6 +261,10 @@ Model development is a pipeline. Every stage contributes to whether the final pr
 
 ## Continue learning
 
+Continue with [Generative AI](06-generative-ai.md) *(optional)* to connect these foundations to sequence generation, attention, Transformers, and hybrid Deep Netts + external LLM workflows.
+
+For implementation practice:
+
 - Use the [Developer Guide](../developer-guide/index.md) when implementing an individual step.
 - Choose an [Example](../examples/index.md) to see the complete workflow in context.
 - Compare [Hot Dog](../examples/image-classification/hotdog-nothotdog.md), [Duke](../examples/image-classification/duke-logo-recognition.md), and [Parking Occupancy](../examples/image-classification/parking-lot-occupancy.md) to see the same workflow applied to image data.

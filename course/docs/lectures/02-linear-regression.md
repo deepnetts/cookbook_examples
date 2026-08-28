@@ -196,4 +196,4 @@ The [House Price Prediction walkthrough](../examples/regression/house-price-pred
 
 ## Continue learning
 
-Continue with [Logistic Regression](03-logistic-regression.md) to turn a linear score into a binary-class probability. Then use [Neural Networks](02-neural-networks.md) to add hidden nonlinear transformations.
+Continue with [Logistic Regression](03-logistic-regression.md) to turn a weighted linear score into a binary-class probability and decision boundary.

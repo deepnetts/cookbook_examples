@@ -170,7 +170,7 @@ String predictedClass = mineProbability >= 0.5f ? "MINE" : "ROCK";
 
 The model returns evidence; the threshold turns that evidence into an application decision.
 
-## Why Cross-Entropy?
+## Why Binary Cross-Entropy?
 
 For one binary sample, Binary Cross-Entropy is:
 
@@ -185,8 +185,8 @@ L=-\frac{1}{n}\sum_{i=1}^{n}\left[y_i\log(\hat{y}_i)+(1-y_i)\log(1-\hat{y}_i)\ri
 $$
 
 <figure class="course-figure">
-  <img src="../../assets/course-figures/cross-entropy-confidence.svg" alt="Cross-Entropy loss increasing as a positive example receives a lower predicted probability">
-  <figcaption>Cross-Entropy gives a small penalty to confident correct predictions and a large penalty to confident wrong predictions.</figcaption>
+  <img src="../../assets/course-figures/cross-entropy-confidence.svg" alt="Binary Cross-Entropy loss increasing as a positive example receives a lower predicted probability">
+  <figcaption>Binary Cross-Entropy gives a small penalty to confident correct predictions and a large penalty to confident wrong predictions. In the Deep Netts builder, it is selected with <code>LossType.CROSS_ENTROPY</code>.</figcaption>
 </figure>
 
 Sigmoid and Cross-Entropy form a useful pair. For logistic regression, their gradient simplifies to an error term multiplied by the feature value:
@@ -221,4 +221,6 @@ This linear boundary is the model's main limitation. If the two classes require 
 
 ## Continue learning
 
-Continue with [Neural Networks](02-neural-networks.md) to add hidden layers and learn nonlinear feature transformations. Use the [Sonar Rock or Mine walkthrough](../examples/classification/sonar-rock-mine-classification.md) to run the complete Logistic Regression workflow.
+Continue with [Neural Networks](02-neural-networks.md) to add hidden layers and learn nonlinear feature transformations.
+
+To run the model from this lesson first, use the [Sonar Rock or Mine walkthrough](../examples/classification/sonar-rock-mine-classification.md).

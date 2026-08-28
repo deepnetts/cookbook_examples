@@ -304,4 +304,4 @@ How does training improve the complete system?
 
 ## Continue learning
 
-Now connect the network, layers, neurons, and training process to the Java classes and methods used to implement them.
+Continue with [Backpropagation](05-backpropagation.md) to see how loss gradients flow backward through these layers and update every trainable parameter.

@@ -252,4 +252,4 @@ Always interpret these values in the context of the application rather than choo
 
 ## Continue learning
 
-Next, look inside a neural network and see how it transforms features into predictions.
+Continue with [Linear Regression](02-linear-regression.md) to build the simplest trainable model for predicting a continuous value.
