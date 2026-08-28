@@ -48,6 +48,7 @@ nav:
       - Overview: course/index.md
       - Machine Learning Basics: lectures/01-ml-basics.md
       - Linear Regression: lectures/02-linear-regression.md
+      - Logistic Regression: lectures/03-logistic-regression.md
       - Neural Networks: lectures/02-neural-networks.md
       - Backpropagation: lectures/05-backpropagation.md
       - Deep Netts API: lectures/03-deep-netts-api.md

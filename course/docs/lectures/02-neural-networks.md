@@ -63,6 +63,11 @@ The notation provides a compact system-level view before we inspect what happens
 
 A feed-forward network organizes its transformations into layers.
 
+<figure class="course-figure">
+  <img src="../../assets/course-figures/network-layer-responsibilities.svg" alt="A feed-forward neural network divided into an input layer, hidden layers, and an output layer">
+  <figcaption>The input layer defines what enters the model, hidden layers learn useful transformations, and the output layer returns the prediction.</figcaption>
+</figure>
+
 ### Input layer: define the model contract
 
 The input layer receives feature values. Its size must match the number of features supplied for each sample.
@@ -77,17 +82,16 @@ The spam network uses layers of 32 and 16 neurons. These layers allow the model 
 
 A network can have no hidden layers, one hidden layer, or several hidden layers. More layers and neurons create more trainable parameters and greater capacity, but they may also require more data and careful training.
 
-The [Logistic Regression example](../examples/classification/sonar-rock-mine-classification.md) demonstrates the zero-hidden-layer case. Its `60 -> 1` architecture learns a linear decision boundary, while the Spam network uses hidden layers to learn non-linear feature combinations.
+The [Logistic Regression](03-logistic-regression.md) lesson demonstrates the zero-hidden-layer case with the runnable [Sonar walkthrough](../examples/classification/sonar-rock-mine-classification.md). Its `60 -> 1` architecture learns a linear decision boundary, while the Spam network uses hidden layers to learn non-linear feature combinations.
 
 ### Output layer: match the prediction task
 
 The output layer returns the final prediction. Its structure depends on the problem:
 
-```text
-Regression            -> one linear output
-Binary classification -> one sigmoid output
-Multiclass classification -> one softmax output per class
-```
+<figure class="course-figure">
+  <img src="../../assets/course-figures/output-layer-by-task.svg" alt="Regression mapped to one Linear output, binary classification to one Sigmoid output, and multiclass classification to one Softmax output per class">
+  <figcaption>The prediction task determines the output size and activation function.</figcaption>
+</figure>
 
 The spam classifier uses one Sigmoid output because it predicts the probability of one positive class: spam.
 

@@ -196,4 +196,4 @@ The [House Price Prediction walkthrough](../examples/regression/house-price-pred
 
 ## Continue learning
 
-Continue with [Neural Networks](02-neural-networks.md), then use [Backpropagation](05-backpropagation.md) to examine how Deep Netts calculates the gradients that train every layer.
+Continue with [Logistic Regression](03-logistic-regression.md) to turn a linear score into a binary-class probability. Then use [Neural Networks](02-neural-networks.md) to add hidden nonlinear transformations.

@@ -923,12 +923,11 @@ textarea {
 
 .markdown-body .developer-guides-list a {
     position: relative;
-    display: grid;
-    grid-template-columns: minmax(190px, 0.7fr) minmax(280px, 1.3fr);
-    gap: 22px;
+    display: flex;
     align-items: center;
+    justify-content: center;
     min-height: 72px;
-    padding: 14px 48px 14px 18px;
+    padding: 14px 48px;
     color: #24292f;
     border-bottom: 1px solid #eaeef2;
     text-decoration: none;
@@ -940,16 +939,6 @@ textarea {
     border-bottom: 0;
 }
 
-.markdown-body .developer-guides-list a::after {
-    position: absolute;
-    right: 20px;
-    color: #087ca7;
-    content: "→";
-    font-size: 21px;
-    font-weight: 700;
-    transition: color 0.18s ease, transform 0.18s ease;
-}
-
 .markdown-body .developer-guides-list a:hover,
 .markdown-body .developer-guides-list a:focus-visible {
     color: #24292f;
@@ -958,22 +947,11 @@ textarea {
     text-decoration: none;
 }
 
-.markdown-body .developer-guides-list a:hover::after,
-.markdown-body .developer-guides-list a:focus-visible::after {
-    color: #16a8d5;
-    transform: translateX(4px);
-}
-
 .markdown-body .developer-guides-list strong {
     color: #075985;
     font-size: 16px;
     line-height: 1.3;
-}
-
-.markdown-body .developer-guides-list span {
-    color: #57606a;
-    font-size: 14px;
-    line-height: 1.45;
+    text-align: center;
 }
 
 @media only screen and (max-width: 900px) {
@@ -1002,9 +980,7 @@ textarea {
     }
 
     .markdown-body .developer-guides-list a {
-        grid-template-columns: 1fr;
-        gap: 5px;
-        min-height: 84px;
+        min-height: 72px;
     }
 }
 

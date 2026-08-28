@@ -138,6 +138,7 @@
               <li{% if current_url == 'course/' %} class="active"{% endif %}><a href="{{ 'course/'|url }}">Overview</a></li>
               <li{% if current_url == 'lectures/01-ml-basics/' %} class="active"{% endif %}><a href="{{ 'lectures/01-ml-basics/'|url }}">Machine Learning Basics</a></li>
               <li{% if current_url == 'lectures/02-linear-regression/' %} class="active"{% endif %}><a href="{{ 'lectures/02-linear-regression/'|url }}">Linear Regression</a></li>
+              <li{% if current_url == 'lectures/03-logistic-regression/' %} class="active"{% endif %}><a href="{{ 'lectures/03-logistic-regression/'|url }}">Logistic Regression</a></li>
               <li{% if current_url == 'lectures/02-neural-networks/' %} class="active"{% endif %}><a href="{{ 'lectures/02-neural-networks/'|url }}">Neural Networks</a></li>
               <li{% if current_url == 'lectures/05-backpropagation/' %} class="active"{% endif %}><a href="{{ 'lectures/05-backpropagation/'|url }}">Backpropagation</a></li>
               <li{% if current_url == 'lectures/03-deep-netts-api/' %} class="active"{% endif %}><a href="{{ 'lectures/03-deep-netts-api/'|url }}">Deep Netts API</a></li>
@@ -236,7 +237,7 @@
             {% elif current_section == 'course' %}
               <details>
                 <summary aria-expanded="false"><span>What is the recommended lesson order?</span><span aria-hidden="true"></span></summary>
-                <p>Start with Machine Learning Basics and Linear Regression, continue with Neural Networks, Backpropagation, the Deep Netts API, and Model Development, then finish with Generative AI.</p>
+                <p>Start with Machine Learning Basics, Linear Regression, and Logistic Regression; continue with Neural Networks, Backpropagation, the Deep Netts API, and Model Development; then finish with Generative AI.</p>
               </details>
               <details>
                 <summary aria-expanded="false"><span>Do the lessons include runnable code?</span><span aria-hidden="true"></span></summary>

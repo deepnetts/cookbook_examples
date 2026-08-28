@@ -181,6 +181,10 @@ A training hyperparameter that controls the size of each parameter update. A val
 
 An activation that returns its input without restricting its range. It is commonly used in an output layer for regression.
 
+## Logistic regression
+
+A binary classification model that applies Sigmoid to a weighted linear score. It returns a positive-class probability and learns a linear decision boundary.
+
 ## Logit
 
 A model's raw score before a probability-producing function such as Sigmoid or Softmax is applied. Temperature changes the scale of logits before sampling in a generative model.

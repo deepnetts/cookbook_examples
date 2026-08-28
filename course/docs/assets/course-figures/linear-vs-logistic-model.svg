@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 370" role="img" aria-labelledby="title description">
+  <title id="title">Linear regression compared with logistic regression</title>
+  <desc id="description">Both models calculate a weighted sum plus bias. Linear regression returns the score directly, while logistic regression passes it through Sigmoid to return a probability.</desc>
+  <rect width="900" height="370" rx="18" fill="#f8fdff"/>
+  <g font-family="Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+    <text x="450" y="45" fill="#172b4d" font-size="21" font-weight="700" text-anchor="middle">The activation changes the prediction type</text>
+    <g>
+      <rect x="46" y="78" width="808" height="112" rx="15" fill="#ffffff" stroke="#8dd8ea" stroke-width="2"/>
+      <rect x="46" y="210" width="808" height="112" rx="15" fill="#ffffff" stroke="#75bd8c" stroke-width="2"/>
+    </g>
+    <g text-anchor="middle">
+      <text x="150" y="119" fill="#075985" font-size="17" font-weight="750">Linear regression</text>
+      <text x="150" y="251" fill="#215f36" font-size="17" font-weight="750">Logistic regression</text>
+      <rect x="260" y="101" width="170" height="66" rx="11" fill="#eaf8fb" stroke="#67c4e3" stroke-width="2"/>
+      <rect x="260" y="233" width="170" height="66" rx="11" fill="#eaf8fb" stroke="#67c4e3" stroke-width="2"/>
+      <text x="345" y="128" fill="#172b4d" font-size="15" font-weight="700">Weighted sum + bias</text><text x="345" y="150" fill="#52657a" font-size="13">z = w·x + b</text>
+      <text x="345" y="260" fill="#172b4d" font-size="15" font-weight="700">Weighted sum + bias</text><text x="345" y="282" fill="#52657a" font-size="13">z = w·x + b</text>
+      <rect x="500" y="101" width="125" height="66" rx="11" fill="#f5fbfd" stroke="#8dcfdf" stroke-width="2"/>
+      <rect x="500" y="233" width="125" height="66" rx="11" fill="#edf8f1" stroke="#75bd8c" stroke-width="2"/>
+      <text x="562" y="140" fill="#075985" font-size="16" font-weight="750">Linear</text>
+      <text x="562" y="272" fill="#215f36" font-size="16" font-weight="750">Sigmoid</text>
+      <rect x="695" y="101" width="125" height="66" rx="11" fill="#f5fbfd" stroke="#8dcfdf" stroke-width="2"/>
+      <rect x="695" y="233" width="125" height="66" rx="11" fill="#edf8f1" stroke="#75bd8c" stroke-width="2"/>
+      <text x="757" y="130" fill="#172b4d" font-size="15" font-weight="700">Value</text><text x="757" y="151" fill="#52657a" font-size="12">−∞ to +∞</text>
+      <text x="757" y="262" fill="#215f36" font-size="15" font-weight="700">Probability</text><text x="757" y="283" fill="#3e6850" font-size="12">0 to 1</text>
+    </g>
+    <g fill="none" stroke="#087ca7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M430 134h60"/><path d="m478 126 12 8-12 8"/><path d="M625 134h60"/><path d="m673 126 12 8-12 8"/>
+      <path d="M430 266h60"/><path d="m478 258 12 8-12 8"/><path d="M625 266h60"/><path d="m673 258 12 8-12 8"/>
+    </g>
+  </g>
+</svg>

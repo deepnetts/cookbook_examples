@@ -7,35 +7,27 @@ Each guide contains a compact Java recipe, explains the important choices, and l
 <div class="developer-guides-list">
   <a href="loading-data/">
     <strong>Loading data</strong>
-    <span>Read prepared tabular datasets and define their input and target columns.</span>
   </a>
   <a href="preparing-data/">
     <strong>Preparing data</strong>
-    <span>Shuffle, split, standardize, and scale data without leaking test information.</span>
   </a>
   <a href="creating-model/">
     <strong>Creating a model</strong>
-    <span>Match network inputs, outputs, activations, and loss to the prediction task.</span>
   </a>
   <a href="training-model/">
     <strong>Training a model</strong>
-    <span>Configure epochs, learning rate, optimizer, shuffling, and mini-batches.</span>
   </a>
   <a href="evaluating-model/">
     <strong>Evaluating a model</strong>
-    <span>Measure regression or classification performance on held-out samples.</span>
   </a>
   <a href="saving-loading/">
     <strong>Saving and loading</strong>
-    <span>Preserve a trained network and the preprocessing required for prediction.</span>
   </a>
   <a href="making-predictions/">
     <strong>Making predictions</strong>
-    <span>Prepare new input and convert model output into a useful result.</span>
   </a>
   <a href="jsr381/">
     <strong>JSR 381 and Deep Netts</strong>
-    <span>Understand the standard VisRec interfaces and how Deep Netts supplies concrete Machine Learning functionality.</span>
   </a>
 </div>
 

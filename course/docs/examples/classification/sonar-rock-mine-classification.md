@@ -19,7 +19,7 @@ This walkthrough builds a Sonar rock-or-mine classifier one part at a time. It u
 | **Target** | `0` for rock, `1` for mine |
 | **Model** | `60 -> 1` sonar-rock-mine-classification network with a Sigmoid output |
 | **Default training** | 200 CPU epochs |
-| **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Neural Networks](../../lectures/02-neural-networks.md), [Backpropagation](../../lectures/05-backpropagation.md), [Deep Netts API](../../lectures/03-deep-netts-api.md), [Model Development](../../lectures/04-model-development.md) |
+| **Related concepts** | [Machine Learning Basics](../../lectures/01-ml-basics.md), [Logistic Regression](../../lectures/03-logistic-regression.md), [Neural Networks](../../lectures/02-neural-networks.md), [Backpropagation](../../lectures/05-backpropagation.md), [Deep Netts API](../../lectures/03-deep-netts-api.md), [Model Development](../../lectures/04-model-development.md) |
 
 The complete flow is:
 

@@ -31,7 +31,7 @@ Complete Prerequisites, Download, Installation, and Hello World. Hello World con
 
 ### 2. Learn the concepts
 
-The lessons explain features, targets, regression, classification, neural-network architecture, backpropagation, the Deep Netts API, the complete model-development workflow, and how those foundations connect to Generative AI.
+The lessons explain features, targets, Linear and Logistic Regression, neural-network architecture, backpropagation, the Deep Netts API, the complete model-development workflow, and how those foundations connect to Generative AI.
 
 ### 3. Explore and run a project
 
@@ -45,13 +45,14 @@ Each Example page explains the problem, dataset, model, and important code befor
 2. [Verify the setup with Hello World](../getting-started/index.md#4-hello-world)
 3. [Learn Machine Learning Basics](../lectures/01-ml-basics.md)
 4. [Learn Linear Regression](../lectures/02-linear-regression.md)
-5. [Understand Neural Networks](../lectures/02-neural-networks.md)
-6. [Understand Backpropagation](../lectures/05-backpropagation.md)
-7. [Learn the Deep Netts API](../lectures/03-deep-netts-api.md)
-8. [Follow the Model Development workflow](../lectures/04-model-development.md)
-9. [Connect the foundations to Generative AI](../lectures/06-generative-ai.md)
-10. [Start with Simple Linear Regression](../examples/regression/sorting-execution-time-prediction.md)
-11. [Continue through the Examples gallery](../examples/index.md)
-12. [Run a complete Maven project](../examples/running-examples.md)
+5. [Learn Logistic Regression](../lectures/03-logistic-regression.md)
+6. [Understand Neural Networks](../lectures/02-neural-networks.md)
+7. [Understand Backpropagation](../lectures/05-backpropagation.md)
+8. [Learn the Deep Netts API](../lectures/03-deep-netts-api.md)
+9. [Follow the Model Development workflow](../lectures/04-model-development.md)
+10. [Connect the foundations to Generative AI](../lectures/06-generative-ai.md)
+11. [Start with Simple Linear Regression](../examples/regression/sorting-execution-time-prediction.md)
+12. [Continue through the Examples gallery](../examples/index.md)
+13. [Run a complete Maven project](../examples/running-examples.md)
 
 Use the [Glossary](../glossary.md) whenever you encounter an unfamiliar Machine Learning or Deep Netts term.
