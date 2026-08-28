@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 390" role="img" aria-labelledby="title description">
+  <title id="title">Three ways to represent text numerically</title>
+  <desc id="description">Bag of Words stores token counts, TF-IDF reweights informative tokens, and embeddings represent tokens or text as learned dense vectors.</desc>
+  <rect width="900" height="390" rx="18" fill="#f8fdff"/>
+  <g font-family="Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+    <text x="450" y="46" fill="#172b4d" font-size="21" font-weight="700" text-anchor="middle">Text must become numerical features</text>
+    <g>
+      <rect x="48" y="82" width="250" height="250" rx="15" fill="#ffffff" stroke="#8dd8ea" stroke-width="2"/>
+      <rect x="325" y="82" width="250" height="250" rx="15" fill="#ffffff" stroke="#8dd8ea" stroke-width="2"/>
+      <rect x="602" y="82" width="250" height="250" rx="15" fill="#edf8f1" stroke="#75bd8c" stroke-width="2"/>
+    </g>
+    <g text-anchor="middle">
+      <text x="173" y="123" fill="#075985" font-size="18" font-weight="750">Bag of Words</text>
+      <text x="450" y="123" fill="#075985" font-size="18" font-weight="750">TF-IDF</text>
+      <text x="727" y="123" fill="#215f36" font-size="18" font-weight="750">Embeddings</text>
+
+      <rect x="81" y="148" width="184" height="76" rx="10" fill="#f3f8fa" stroke="#d3e4eb"/>
+      <text x="173" y="175" fill="#172b4d" font-size="13" font-family="ui-monospace,monospace">[0, 2, 1, 0, ...]</text>
+      <text x="173" y="201" fill="#52657a" font-size="12">token occurrence counts</text>
+
+      <rect x="358" y="148" width="184" height="76" rx="10" fill="#f3f8fa" stroke="#d3e4eb"/>
+      <text x="450" y="175" fill="#172b4d" font-size="13" font-family="ui-monospace,monospace">[0, .74, .19, ...]</text>
+      <text x="450" y="201" fill="#52657a" font-size="12">importance-weighted counts</text>
+
+      <rect x="635" y="148" width="184" height="76" rx="10" fill="#ffffff" stroke="#b8dbc3"/>
+      <text x="727" y="175" fill="#172b4d" font-size="13" font-family="ui-monospace,monospace">[.18, −.42, .73, ...]</text>
+      <text x="727" y="201" fill="#3e6850" font-size="12">Word2Vec or contextual vectors</text>
+
+      <text x="173" y="255" fill="#52657a" font-size="13">Simple and interpretable</text><text x="173" y="277" fill="#52657a" font-size="13">but ignores token order</text>
+      <text x="450" y="255" fill="#52657a" font-size="13">Highlights distinctive terms</text><text x="450" y="277" fill="#52657a" font-size="13">but remains sparse</text>
+      <text x="727" y="255" fill="#3e6850" font-size="13">Can preserve similarity</text><text x="727" y="277" fill="#3e6850" font-size="13">and contextual information</text>
+    </g>
+  </g>
+</svg>

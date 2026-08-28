@@ -7,10 +7,10 @@ The cookbook examples predict numbers and classify existing inputs. Generative A
 
 ## From analysis to generation
 
-```text
-Traditional ML: features -> model -> class or number
-Generative AI:  context or noise -> model -> new content
-```
+<figure class="course-figure">
+  <img src="../../assets/course-figures/analysis-vs-generation.svg" alt="Traditional Machine Learning mapping features to a class or number compared with Generative AI mapping context or noise to new content">
+  <figcaption>Traditional models analyze an input to predict a result; generative models produce a new sample conditioned on context, noise, or both.</figcaption>
+</figure>
 
 Text generation is commonly next-token prediction. Given tokens $x_1,\ldots,x_t$, the model estimates:
 
@@ -269,6 +269,7 @@ Neural Networks         -> hidden layers and representations
 Backpropagation         -> gradients and parameter updates
 Deep Netts API          -> Java model-development components
 Model Development       -> reproducible end-to-end workflow
+Natural Language Processing -> tokens, representations, and language tasks
 Generative AI           -> sequence generation and attention at scale
 ```
 

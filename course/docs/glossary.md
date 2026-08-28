@@ -41,6 +41,10 @@ The proportion of classification predictions that are correct. Accuracy can be m
 
 The process used to calculate how much each network parameter contributed to the loss. These calculations allow the optimizer to update weights and biases during training.
 
+## Bag of Words
+
+A sparse text representation with one feature per vocabulary term. Each feature records whether or how often that term occurs, while token order is discarded.
+
 ## Batch
 
 A group of training samples processed before the model parameters are updated. A batch size of `64` means that 64 samples contribute to one update.
@@ -96,6 +100,10 @@ The boundary that separates regions assigned to different classes. Logistic regr
 ## Diffusion model
 
 A generative-model family that learns to create data by reversing a gradual noising process. Diffusion models are commonly used for image, audio, and video generation.
+
+## Embedding
+
+A dense numerical vector representing a token, sentence, document, or another item. Learned embeddings can place similar items near one another in vector space.
 
 ## Epoch
 
@@ -221,6 +229,10 @@ Several attention operations performed in parallel with different learned projec
 
 Linear regression with two or more input features. It learns one weight per feature and a shared bias to predict a continuous target.
 
+## Natural Language Processing (NLP)
+
+Machine Learning and software techniques for analyzing, representing, retrieving, or generating human language. NLP pipelines convert text into numerical representations before a model processes it.
+
 ## Neural network
 
 A model composed of connected layers of neurons that transform input features into predictions.
@@ -329,6 +341,10 @@ An activation function that smoothly maps values into the range from `-1` to `1`
 
 A sampling control that rescales logits before Softmax. Lower values concentrate probability on likely outputs, while higher values produce a flatter distribution and more varied choices.
 
+## TF-IDF
+
+Term Frequency–Inverse Document Frequency, a sparse text representation that emphasizes terms common in one document but less common across the training corpus.
+
 ## Test set
 
 The subset of data reserved for evaluating a trained model on unseen samples. It must not influence model training or fitted preprocessing parameters.
@@ -336,6 +352,10 @@ The subset of data reserved for evaluating a trained model on unseen samples. It
 ## Token
 
 A unit processed by a language model, such as a word, part of a word, punctuation mark, or other encoded text fragment. Next-token prediction estimates a probability distribution for the token that follows the current context.
+
+## Tokenization
+
+The process of converting text into an ordered sequence of tokens. Tokenization rules are part of the input contract and must remain consistent between training and inference.
 
 ## Training
 
@@ -373,6 +393,14 @@ A training problem in which gradients become extremely small as they are propaga
 
 A generative model that learns a structured probability distribution in a latent space and decodes sampled latent values into new data.
 
+## Vocabulary
+
+The stable mapping between known text tokens and their identifiers or feature positions. Vocabulary selection and corpus-derived statistics must be fitted on training data only.
+
 ## Weight
 
 A trainable parameter that controls how strongly an input or neuron output influences another neuron.
+
+## Word2Vec
+
+A method for learning static word embeddings from patterns of nearby words in a text corpus. Words used in similar contexts receive nearby vectors, but each word keeps the same vector across different sentences.

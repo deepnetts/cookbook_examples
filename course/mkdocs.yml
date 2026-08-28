@@ -53,6 +53,7 @@ nav:
       - Backpropagation: lectures/05-backpropagation.md
       - Deep Netts API: lectures/03-deep-netts-api.md
       - Model Development: lectures/04-model-development.md
+      - Natural Language Processing: lectures/05-natural-language-processing.md
       - Generative AI: lectures/06-generative-ai.md
 
   - API DOC: https://www.deepnetts.com/apidocs/index.html

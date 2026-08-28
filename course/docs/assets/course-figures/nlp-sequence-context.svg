@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 390" role="img" aria-labelledby="title description">
+  <title id="title">Context in sequence-aware NLP models</title>
+  <desc id="description">Independent vector models summarize a document into one fixed feature vector, recurrent models process tokens in order, and Transformer attention connects token positions directly.</desc>
+  <rect width="900" height="390" rx="18" fill="#f8fdff"/>
+  <g font-family="Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+    <text x="450" y="45" fill="#172b4d" font-size="21" font-weight="700" text-anchor="middle">Different models preserve different kinds of context</text>
+    <g>
+      <rect x="48" y="80" width="804" height="78" rx="13" fill="#ffffff" stroke="#8dd8ea" stroke-width="2"/>
+      <rect x="48" y="174" width="804" height="78" rx="13" fill="#ffffff" stroke="#8dd8ea" stroke-width="2"/>
+      <rect x="48" y="268" width="804" height="78" rx="13" fill="#edf8f1" stroke="#75bd8c" stroke-width="2"/>
+    </g>
+    <g font-size="16" font-weight="750">
+      <text x="72" y="111" fill="#075985">Fixed document vector</text>
+      <text x="72" y="205" fill="#075985">Recurrent sequence model</text>
+      <text x="72" y="299" fill="#215f36">Transformer attention</text>
+    </g>
+    <g fill="#52657a" font-size="12">
+      <text x="72" y="133">A document becomes one Bag-of-Words,</text><text x="72" y="150">TF-IDF, or pooled embedding vector.</text>
+      <text x="72" y="227">Tokens are processed in order; state carries</text><text x="72" y="244">information from earlier positions.</text>
+      <text x="72" y="321" fill="#3e6850">Each token can directly weigh relevant positions</text><text x="72" y="338" fill="#3e6850">while positional information preserves order.</text>
+    </g>
+    <g transform="translate(572 95)" fill="#eaf8fb" stroke="#67c4e3" stroke-width="1.5">
+      <rect width="48" height="46" rx="8"/><rect x="58" width="48" height="46" rx="8"/><rect x="116" width="48" height="46" rx="8"/><rect x="174" width="48" height="46" rx="8"/>
+    </g>
+    <path d="M616 189h48M652 181l12 8-12 8M674 189h48M710 181l12 8-12 8M732 189h48M768 181l12 8-12 8" fill="none" stroke="#087ca7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <g fill="#ffffff" stroke="#67c4e3" stroke-width="1.5"><rect x="568" y="190" width="38" height="38" rx="8"/><rect x="626" y="190" width="38" height="38" rx="8"/><rect x="684" y="190" width="38" height="38" rx="8"/><rect x="742" y="190" width="38" height="38" rx="8"/></g>
+    <g fill="#edf8f1" stroke="#75bd8c" stroke-width="1.5"><rect x="568" y="284" width="38" height="38" rx="8"/><rect x="626" y="284" width="38" height="38" rx="8"/><rect x="684" y="284" width="38" height="38" rx="8"/><rect x="742" y="284" width="38" height="38" rx="8"/></g>
+    <g fill="none" stroke="#2f9b53" stroke-width="1.8" opacity=".85"><path d="M587 303L645 303M587 303L703 303M587 303L761 303M645 303L703 303M645 303L761 303M703 303L761 303"/></g>
+  </g>
+</svg>

@@ -261,7 +261,7 @@ Model development is a pipeline. Every stage contributes to whether the final pr
 
 ## Continue learning
 
-Continue with [Generative AI](06-generative-ai.md) *(optional)* to connect these foundations to sequence generation, attention, Transformers, and hybrid Deep Netts + external LLM workflows.
+Continue with [Natural Language Processing](05-natural-language-processing.md) to learn how raw language becomes tokens, numerical representations, model input, and task-specific output.
 
 For implementation practice:
 

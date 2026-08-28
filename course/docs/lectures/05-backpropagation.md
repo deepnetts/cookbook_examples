@@ -59,9 +59,10 @@ Cross-entropy works naturally with Sigmoid or Softmax probability outputs.
 
 Backpropagation moves from the loss toward earlier layers. A gradient answers: if this parameter changed slightly, how would the loss change?
 
-```text
-loss -> output gradients -> hidden-layer gradients -> earlier layers
-```
+<figure class="course-figure">
+  <img src="../../assets/course-figures/backward-gradient-flow.svg" alt="Gradients flowing backward from loss through output and hidden-layer gradients toward earlier layers">
+  <figcaption>The loss starts the training signal, and the chain rule carries gradients from the output toward every earlier trainable layer.</figcaption>
+</figure>
 
 Backpropagation supplies gradients. The optimizer uses them to change parameters.
 
