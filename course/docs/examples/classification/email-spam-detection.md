@@ -269,9 +269,9 @@ Each number describes one email characteristic, so the feature order must
 match training. The probability is above the `0.5` threshold and produces the
 final `SPAM` decision.
 
-## Run in NetBeans
+## Run the example
 
-Add this under **Project Properties → Run → VM Options**:
+Pass this option to the Java process through your IDE's application run configuration or the command line:
 
 ```text
 --add-modules=jdk.incubator.vector

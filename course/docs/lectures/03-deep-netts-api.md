@@ -17,6 +17,16 @@ Each object represents one recognizable part of the model-development process.
 
 ## Runtime configuration
 
+Deep Netts 4 uses the JDK Vector API. Enable it when starting the Java process:
+
+```text
+--add-modules=jdk.incubator.vector
+```
+
+This is a Java runtime argument, not a Deep Netts API call. Pass it through the
+application run configuration in any Java IDE or through the command that starts
+the application.
+
 The examples explicitly disable CUDA:
 
 ```java
@@ -25,7 +35,17 @@ DeepNetts.getInstance().setUseCuda(false);
 
 This selects CPU execution. It is suitable for the small datasets and models used in the introductory examples and avoids requiring a local CUDA installation.
 
-Runtime configuration belongs at the beginning of the program so that the execution environment is clear before data loading and training begin.
+Unlike the Vector API argument, this setting belongs in Java source and must run
+before data loading or model construction. Some examples also accept optional JVM
+system properties, such as `-Ddeepnetts.epochs=1`, for a short smoke test without
+changing the default training configuration.
+
+!!! info "Run from any Java environment"
+
+    These are standard Maven projects. Use [Getting Started](../getting-started/index.md)
+    for terminal and IDE setup, or [Running Examples](../examples/running-examples.md)
+    for the complete standalone-project workflow. Those pages contain the
+    platform-specific commands, so they are not repeated in this lesson.
 
 ## Loading tabular data
 

@@ -246,9 +246,9 @@ System.out.printf("Predicted execution time for %.0f comparisons: %.2f ms%n",
 
 The result estimates an execution time of `337.74 ms` for 100,000 comparisons.
 
-## Run in NetBeans
+## Run the example
 
-Add this under **Project Properties → Run → VM Options**:
+Pass this option to the Java process through your IDE's application run configuration or the command line:
 
 ```text
 --add-modules=jdk.incubator.vector

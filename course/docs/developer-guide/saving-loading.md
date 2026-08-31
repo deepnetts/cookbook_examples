@@ -48,10 +48,26 @@ FeedForwardNetwork neuralNet = FileIO.createFromFile(
 
 `createFromFile(...)` can throw `IOException` and `ClassNotFoundException`; handle or declare them according to the surrounding application.
 
+Load a saved CNN with its own model class:
+
+```java
+import deepnetts.net.ConvolutionalNetwork;
+
+ConvolutionalNetwork network = FileIO.createFromFile(
+        "models/image-classifier.dnet",
+        ConvolutionalNetwork.class
+);
+```
+
+Saving the network does not remove the image input contract. Keep the expected
+width, height, channel order, value scaling, and class-label order alongside the
+model artifact.
+
 ## Verify the saved artifact
 
 - Keep the `.dnet` file outside temporary build directories.
 - Record which Deep Netts version created the model.
 - Preserve the feature order and class-name mapping used during training.
+- For a CNN, preserve image dimensions, channel count and order, scaling, and label mapping.
 - Run a known prediction after loading and compare it with the original model.
 - Do not attach a newly fitted preprocessor when the saved model already contains the original one.

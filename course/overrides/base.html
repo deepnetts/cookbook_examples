@@ -228,11 +228,11 @@
               </details>
               <details>
                 <summary aria-expanded="false"><span>Why does Deep Netts need the Vector API module?</span><span aria-hidden="true"></span></summary>
-                <p>Deep Netts uses the JDK Vector API for optimized numerical operations. Add <code>--add-modules jdk.incubator.vector</code> to the runtime VM options.</p>
+                <p>Deep Netts uses the JDK Vector API for optimized numerical operations. Pass <code>--add-modules jdk.incubator.vector</code> to the Java process as a runtime argument.</p>
               </details>
               <details>
-                <summary aria-expanded="false"><span>Can I run the projects from NetBeans?</span><span aria-hidden="true"></span></summary>
-                <p>Yes. Open the example directory as a Maven project, select Java 25, add the Vector API module to VM options, and run its main class.</p>
+                <summary aria-expanded="false"><span>Can I run the projects from any Java IDE?</span><span aria-hidden="true"></span></summary>
+                <p>Yes. Each example is a standard Maven project. Use Java 25, pass the Vector API option to the Java process through your IDE's run configuration or the command line, and run the main class.</p>
               </details>
               <details>
                 <summary aria-expanded="false"><span>Where do I get Deep Netts?</span><span aria-hidden="true"></span></summary>
@@ -241,11 +241,11 @@
             {% elif current_section == 'examples' %}
               <details>
                 <summary aria-expanded="false"><span>How do I run a complete example?</span><span aria-hidden="true"></span></summary>
-                <p>Each example is a standalone Maven project. Open its directory in NetBeans or run it with Maven using Java 25 and the Vector API module.</p>
+                <p>Each example is a standalone Maven project. Open its directory in any Maven-compatible Java IDE or run it from a terminal using Java 25 with the Vector API module enabled.</p>
               </details>
               <details>
                 <summary aria-expanded="false"><span>How can I test training with only one epoch?</span><span aria-hidden="true"></span></summary>
-                <p>For examples that expose the shared training property, add <code>-Ddeepnetts.epochs=1</code> to the VM options.</p>
+                <p>For examples that expose the shared training property, pass <code>-Ddeepnetts.epochs=1</code> as a JVM system property in the IDE run configuration or Maven command.</p>
               </details>
               <details>
                 <summary aria-expanded="false"><span>Where are the datasets stored?</span><span aria-hidden="true"></span></summary>

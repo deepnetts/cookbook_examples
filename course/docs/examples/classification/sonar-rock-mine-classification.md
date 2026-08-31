@@ -240,9 +240,9 @@ Actual: MINE</pre>
 The Sigmoid output is above the `0.5` threshold, so this held-out observation
 is correctly classified as `MINE`.
 
-## Run in NetBeans
+## Run the example
 
-Add this under **Project Properties → Run → VM Options**:
+Pass this option to the Java process through your IDE's application run configuration or the command line:
 
 ```text
 --add-modules=jdk.incubator.vector

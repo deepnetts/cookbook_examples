@@ -253,9 +253,9 @@ System.out.printf("Predicted relative performance: %.2f%n", predictedPerformance
 The result is a continuous predicted `PRP` value. Feature order must remain
 identical to the order used during training.
 
-## Run in NetBeans
+## Run the example
 
-Add this under **Project Properties → Run → VM Options**:
+Pass this option to the Java process through your IDE's application run configuration or the command line:
 
 ```text
 --add-modules=jdk.incubator.vector

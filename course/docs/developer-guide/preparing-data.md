@@ -125,6 +125,21 @@ DataSet<MLDataItem> testSet = split.getTestSet();
 
 The value `0.8` assigns 80% of the samples to training and reserves 20% for evaluation. Never train on `testSet`.
 
+For an `ImageSet`, use the corresponding image split:
+
+```java
+images.shuffle(42);
+ImageSet[] split = images.split(0.8, 0.2);
+ImageSet trainingSet = split[0];
+ImageSet testSet = split[1];
+```
+
+Image width, height, channel order, value scaling, and label mapping are part of
+the model input contract. Apply the same fixed transformations to training,
+test, and future prediction images. If a transformation learns statistics from
+the dataset, fit those statistics on `trainingSet` only. Apply data augmentation
+only to training images, after the split.
+
 ## Standardize numerical features
 
 Standardization is useful when numerical features have different means and scales:

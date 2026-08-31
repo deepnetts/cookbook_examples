@@ -41,6 +41,27 @@ neuralNet.getTrainer()
 neuralNet.train(trainingSet);
 ```
 
+## Train a CNN
+
+CNNs use the same trainer API, but image batches consume more memory and each
+epoch usually takes longer than it does for a small tabular model:
+
+```java
+network.getTrainer()
+        .setStopEpochs(20)
+        .setLearningRate(0.001f)
+        .setOptimizer(OptimizerType.ADAM)
+        .setBatchMode(true)
+        .setBatchSize(8)
+        .setShuffle(true);
+
+network.train(trainingSet);
+```
+
+Start with a batch size that fits available memory. Compare training and
+held-out metrics across epochs; a successful smoke test confirms that the
+pipeline runs, but one epoch is not evidence that the CNN has converged.
+
 ## Stop on an error target
 
 Training can also stop when it reaches a configured error:
@@ -60,6 +81,7 @@ Keep an epoch limit even when using an error target so a run cannot continue ind
     - Changing several settings at once makes experiments difficult to compare.
     - A lower training error does not guarantee better performance on unseen data.
     - Training without the same preprocessing used in evaluation creates inconsistent inputs.
+    - Augmenting or otherwise changing `testSet` prevents a clean held-out evaluation.
 
 ??? info "See it in practice"
     - [Logistic Regression](../examples/classification/sonar-rock-mine-classification.md) trains a compact baseline with SGD.

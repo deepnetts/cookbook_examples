@@ -29,6 +29,8 @@ This course is intended for experienced Java developers who are new to Machine L
 
 Complete Prerequisites, Download, Installation, and Hello World. Hello World confirms that Java, Maven, Deep Netts, licensing, and the Vector API work together.
 
+The examples are standard Maven projects and are not tied to a particular IDE. Run them from a terminal or any Maven-compatible Java IDE using Java 25, and make sure `--add-modules=jdk.incubator.vector` is passed to the Java process that starts the application.
+
 ### 2. Learn the concepts
 
 The lessons explain features, targets, Linear and Logistic Regression, neural-network architecture, backpropagation, Convolutional Neural Networks, the Deep Netts API, the complete model-development workflow, Natural Language Processing, and how those foundations connect to Generative AI.

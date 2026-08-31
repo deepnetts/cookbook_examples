@@ -96,7 +96,7 @@
 {% elif current_url == 'examples/running-examples/' %}
   {% set faq_items = [
     ("Can each example be run independently?", "Yes. Every example directory is a standalone Maven project with its own source, resources, and <code>pom.xml</code>."),
-    ("Where should VM options be configured?", "Add Java module and example-specific system properties to the run configuration used by Maven, NetBeans, or your chosen IDE.")
+    ("Where should runtime options be configured?", "Pass Java module options and example-specific system properties to the Java process through your IDE's run configuration or the Maven command used to start the example.")
   ] %}
 
 {% elif current_url == 'developer-guide/loading-data/' %}

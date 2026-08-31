@@ -53,6 +53,34 @@ String species = CLASS_NAMES[predictedClass];
 
 `CLASS_NAMES` must use the same order as the target columns used during training.
 
+## Image classification with a CNN
+
+Prepare an image with exactly the same dimensions, channels, and numerical
+transformation used during training. A held-out `ExampleImage` already contains
+the tensor expected by the network:
+
+```java
+import deepnetts.data.ExampleImage;
+
+ExampleImage image = testSet.get(0);
+float probability = network.predict(image.getInput()).getValues()[0];
+
+String predictedClass =
+        probability >= 0.5f ? "positive" : "negative";
+```
+
+For a multiclass CNN, select the index of the largest Softmax probability and
+map it through the original class-name order. A new external image must go
+through the same resize, grayscale/RGB conversion, channel order, and value
+scaling as the training images before calling `predict`.
+
+When the application has finished all predictions, release the network worker
+threads:
+
+```java
+network.getThreadPool().shutdown();
+```
+
 ## Prediction checklist
 
 - Supply the same number of features expected by the input layer.
@@ -60,6 +88,7 @@ String species = CLASS_NAMES[predictedClass];
 - Use the exact preprocessing fitted during training.
 - Map outputs to classes explicitly.
 - Validate missing, non-finite, and out-of-range input before prediction.
+- For images, preserve width, height, channel count and order, and value scaling.
 - Treat a model score as an estimate, not a guaranteed fact.
 
 ??? info "See complete examples"

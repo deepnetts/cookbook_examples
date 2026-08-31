@@ -115,8 +115,8 @@ Total Training Time: 46010ms
 !!! warning "Smoke-test output"
 
     This output was generated with `-Ddeepnetts.epochs=1` for faster training.
-    The example uses 3 epochs by default. In NetBeans, add the override under
-    **Project Properties → Run → VM Options**.
+    The example uses 3 epochs by default. Pass the override as a JVM system
+    property through your IDE's run configuration or the Maven command.
 
 One CPU epoch took about 46 seconds in this run. The falling error and 85.5%
 training accuracy show that the model learned useful patterns, but held-out
@@ -185,7 +185,9 @@ network.getThreadPool().shutdown();
 
 This stops the worker pool so the application terminates normally.
 
-## Run in NetBeans
+## Run the example
+
+Pass these options to the Java process through your IDE's application run configuration or the command line:
 
 ```text
 --add-modules=jdk.incubator.vector -Ddeepnetts.epochs=1

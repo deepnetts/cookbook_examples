@@ -81,9 +81,9 @@ System.out.println(labels[predictedIndex]);
 
 The complete example also warms up the JVM and reports confidence and measured inference time before shutting down the network thread pool.
 
-## Run in NetBeans
+## Run the example
 
-Use **Project Properties → Run → VM Options**:
+Pass these options to the Java process through your IDE's application run configuration or the command line:
 
 ```text
 --add-modules=jdk.incubator.vector -Xmx8g

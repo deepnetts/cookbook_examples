@@ -160,9 +160,9 @@ System.out.printf("Predicted normalized MEDV: %.4f%n", predictedValue);
 
 The result is a normalized `MEDV` prediction for normalized `LSTAT = 0.12`; it is not a price in dollars.
 
-## Run in NetBeans
+## Run the example
 
-Add this under **Project Properties → Run → VM Options**:
+Pass this option to the Java process through your IDE's application run configuration or the command line:
 
 ```text
 --add-modules=jdk.incubator.vector

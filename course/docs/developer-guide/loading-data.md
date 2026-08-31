@@ -1,8 +1,9 @@
 # Loading Data
 
-Use `DataSets.readCsv(...)` to load a prepared numerical CSV dataset into the tabular data structure consumed by Deep Netts models.
+Load tabular data with `DataSets.readCsv(...)`. For a CNN, load consistently
+sized and labeled images into an `ImageSet` instead.
 
-This recipe assumes that:
+The tabular CSV recipe assumes that:
 
 - every data row represents one sample;
 - input columns come first;
@@ -62,7 +63,48 @@ The arguments are:
 
 Use `false` instead of `true` when the file does not contain a header. Change the final argument when the file uses another delimiter, such as `";"`.
 
-## Verify the result
+## Load labeled images for a CNN
+
+The image-classification projects include an `ImageData` helper that reads an
+index file, validates each image, resizes it, optionally converts it to
+grayscale, and creates the `ExampleImage` objects stored in an `ImageSet`:
+
+```java
+import com.deepnetts.examples.image.ImageData;
+import deepnetts.data.ImageSet;
+
+int width = 64;
+int height = 64;
+
+ImageSet images = ImageData.load(
+        "src/main/resources/datasets/duke-logo",
+        "index.txt",
+        width,
+        height,
+        false,
+        false
+);
+```
+
+The final two arguments select grayscale conversion and value inversion. Keep
+both `false` for ordinary RGB input. Set grayscale to `true` for one-channel
+input, and enable inversion only when the dataset requires light and dark values
+to be reversed. The resulting CNN input has shape `width × height × 3` for RGB
+or `width × height × 1` for grayscale.
+
+The index file maps each relative image path to its label, while `labels.txt`
+defines the stable output-class order. Inspect the loaded set before continuing:
+
+```java
+System.out.println("Images: " + images.size());
+System.out.println("Images by class: " + images.countByClasses());
+```
+
+Check that every expected class is present, labels use one consistent spelling,
+and class counts are plausible. A typo in a label creates another class rather
+than a harmless display difference.
+
+## Verify the tabular result
 
 Do not continue directly to training. First confirm that Deep Netts loaded the expected number of samples and columns:
 
@@ -93,6 +135,12 @@ Compare this output with the CSV file you intended to load. This small check cat
     **Values cannot be parsed**
 
     Check that the delimiter argument matches the file and that the data rows contain numerical values. Encode or otherwise prepare categorical values before using this recipe.
+
+    **An image shape does not match the CNN input**
+
+    Resize and convert every training and prediction image with the same width,
+    height, and channel count. The third input-layer dimension is `3` for RGB
+    and `1` for grayscale in the current examples.
 
 ??? info "See complete examples"
     - <a href="../../examples/regression/sorting-execution-time-prediction/" target="_blank" rel="noopener noreferrer">Simple Linear Regression</a> loads one input and one continuous target.

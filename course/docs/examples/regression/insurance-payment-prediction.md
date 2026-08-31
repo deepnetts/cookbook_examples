@@ -156,9 +156,9 @@ System.out.printf("Predicted normalized payment: %.4f%n", predictedPayment);
 
 This is a normalized payment prediction for normalized claim count `0.25`; it is not a currency amount.
 
-## Run in NetBeans
+## Run the example
 
-Add this under **Project Properties → Run → VM Options**:
+Pass this option to the Java process through your IDE's application run configuration or the command line:
 
 ```text
 --add-modules=jdk.incubator.vector

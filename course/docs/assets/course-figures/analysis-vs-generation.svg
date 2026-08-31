@@ -17,7 +17,9 @@
       <rect x="250" y="101" width="150" height="66" rx="11" fill="#eaf8fb" stroke="#67c4e3" stroke-width="2"/>
       <rect x="250" y="233" width="150" height="66" rx="11" fill="#edf8f1" stroke="#75bd8c" stroke-width="2"/>
       <text x="325" y="129" fill="#075985" font-size="16" font-weight="700">Features</text><text x="325" y="151" fill="#52657a" font-size="12">numerical input</text>
-      <text x="325" y="261" fill="#215f36" font-size="16" font-weight="700">Context or noise</text><text x="325" y="283" fill="#3e6850" font-size="12">prompt, tokens, or latent input</text>
+      <text x="325" y="258" fill="#215f36" font-size="16" font-weight="700">Context or noise</text>
+      <text x="325" y="278" fill="#3e6850" font-size="11.5">prompt, tokens, or</text>
+      <text x="325" y="292" fill="#3e6850" font-size="11.5">latent input</text>
 
       <rect x="472" y="101" width="130" height="66" rx="11" fill="#ffffff" stroke="#8dcfdf" stroke-width="2"/>
       <rect x="472" y="233" width="130" height="66" rx="11" fill="#ffffff" stroke="#8dcfdf" stroke-width="2"/>

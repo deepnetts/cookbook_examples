@@ -31,7 +31,7 @@ System.setProperty("java.awt.headless", "true");
 DeepNetts.getInstance().setUseCuda(false);
 ```
 
-The system property lets NetBeans run a one-epoch smoke test without changing source.
+The system property enables a one-epoch smoke test without changing source, regardless of whether the example starts from an IDE or a terminal.
 
 ## 2. Load and preprocess
 
@@ -178,9 +178,9 @@ network.getThreadPool().shutdown();
 
 Shutting down the worker pool allows the Java application to exit cleanly.
 
-## Run in NetBeans
+## Run the example
 
-Use **Project Properties → Run → VM Options**:
+Pass these options to the Java process through your IDE's application run configuration or the command line:
 
 ```text
 --add-modules=jdk.incubator.vector -Ddeepnetts.epochs=1

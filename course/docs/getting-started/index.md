@@ -260,7 +260,7 @@ The exact Java patch version and prediction are not important. `Vector API enabl
 
 - If Maven cannot resolve the Deep Netts Pro or license artifact, repeat the local Maven import from section 3 and reload the Maven project.
 - If Java reports that `jdk.incubator.vector` is unavailable, confirm that Maven uses Java 25.
-- If the Vector API is not enabled, make sure `MAVEN_OPTS` is set in the same terminal used to run Maven or add the module to the IDE's VM options.
+- If the Vector API is not enabled, make sure `MAVEN_OPTS` is set in the same terminal used to run Maven or pass the module option through the IDE's application run configuration.
 - If compilation succeeds but running fails, inspect the runtime configuration: compilation alone does not enable the Vector API module.
 
 <div class="resource-actions">
