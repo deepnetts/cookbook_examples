@@ -1,4 +1,4 @@
-# Machine Learning with Neural Networks in Java
+# Learn Neural Networks with Java: A Code-First Machine Learning Course
 
 Learn the foundations of Machine Learning and build neural-network applications in Java with Deep Netts.
 
