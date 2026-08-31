@@ -9,13 +9,7 @@ The course is written for Java developers who are new to Machine Learning. You d
 Install or configure:
 
 - <a href="https://www.oracle.com/java/technologies/downloads/" target="_blank" rel="noopener noreferrer">JDK 25</a>;
-- <a href="https://maven.apache.org/download.cgi" target="_blank" rel="noopener noreferrer">Apache Maven</a>;
-- <a href="https://netbeans.apache.org/front/main/download/" target="_blank" rel="noopener noreferrer">Apache NetBeans</a>
-  (recommended), or another Java IDE of your choice.
-
-The course examples and screenshots use Apache NetBeans, so NetBeans is the
-recommended IDE when following the walkthroughs. The projects are standard
-Maven applications and can still be opened in another Java IDE.
+- <a href="https://maven.apache.org/download.cgi" target="_blank" rel="noopener noreferrer">Apache Maven</a>.
 
 ### 1.1. Verify Java 25
 
@@ -52,10 +46,11 @@ Deep Netts 4 uses the incubating Java Vector API. It must be enabled when runnin
 --add-modules jdk.incubator.vector
 ```
 
-The Installation section shows how to apply this option from a terminal, NetBeans, or another IDE.
+The Installation section shows how to apply this option from a terminal, an IDE, or a build-tool run configuration.
 
-In NetBeans, store the Vector API option under **Project Properties → Run → VM
-Options**. Other IDEs provide an equivalent run-configuration field.
+Add the Vector API option to the **VM options** (or **JVM arguments**) of the run
+configuration that starts the application. The exact field name depends on the
+IDE or build tool, but the option must be passed to the Java runtime.
 
 ## 2. Download
 

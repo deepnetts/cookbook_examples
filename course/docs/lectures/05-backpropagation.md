@@ -274,4 +274,4 @@ Practical responses include:
 
 ## Continue learning
 
-Continue with [Deep Netts API](03-deep-netts-api.md) to connect the training loop to datasets, model builders, trainers, metrics, saving, and prediction.
+Continue with [Convolutional Neural Networks](06-convolutional-neural-networks.md) to see how the same training process learns reusable spatial filters for images.

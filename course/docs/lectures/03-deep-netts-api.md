@@ -29,7 +29,7 @@ Runtime configuration belongs at the beginning of the program so that the execut
 
 ## Loading tabular data
 
-All current examples load a CSV file using `DataSets.readCsv`:
+The current tabular examples load a CSV file using `DataSets.readCsv`:
 
 ```java
 TabularDataSet<MLDataItem> dataSet =

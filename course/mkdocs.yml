@@ -50,6 +50,7 @@ nav:
       - Logistic Regression: lectures/03-logistic-regression.md
       - Neural Networks: lectures/02-neural-networks.md
       - Backpropagation: lectures/05-backpropagation.md
+      - Convolutional Neural Networks: lectures/06-convolutional-neural-networks.md
       - Deep Netts API: lectures/03-deep-netts-api.md
       - Model Development: lectures/04-model-development.md
       - Natural Language Processing: lectures/05-natural-language-processing.md

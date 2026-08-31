@@ -7,19 +7,19 @@ This course is intended for experienced Java developers who are new to Machine L
 ## Learning flow
 
 <nav class="learning-path" aria-label="Recommended learning flow">
-  <a href="../getting-started/" target="_blank" rel="noopener noreferrer">
+  <a href="../getting-started/">
     <strong>Set up Deep Netts</strong>
     <small>Install and verify the environment</small>
   </a>
-  <a href="../lectures/01-ml-basics/" target="_blank" rel="noopener noreferrer">
+  <a href="../lectures/01-ml-basics/">
     <strong>Learn the concepts</strong>
     <small>Build your Machine Learning foundation</small>
   </a>
-  <a href="../examples/index.html" target="_blank" rel="noopener noreferrer">
+  <a href="../examples/">
     <strong>Explore an example</strong>
     <small>Connect theory to focused Java code</small>
   </a>
-  <a href="../examples/running-examples/" target="_blank" rel="noopener noreferrer">
+  <a href="../examples/running-examples/">
     <strong>Run the project</strong>
     <small>Execute a complete Maven workflow</small>
   </a>
@@ -31,7 +31,7 @@ Complete Prerequisites, Download, Installation, and Hello World. Hello World con
 
 ### 2. Learn the concepts
 
-The lessons explain features, targets, Linear and Logistic Regression, neural-network architecture, backpropagation, the Deep Netts API, the complete model-development workflow, Natural Language Processing, and how those foundations connect to Generative AI.
+The lessons explain features, targets, Linear and Logistic Regression, neural-network architecture, backpropagation, Convolutional Neural Networks, the Deep Netts API, the complete model-development workflow, Natural Language Processing, and how those foundations connect to Generative AI.
 
 ### 3. Explore and run a project
 
@@ -48,12 +48,13 @@ Each Example page explains the problem, dataset, model, and important code befor
 5. [Learn Logistic Regression](../lectures/03-logistic-regression.md)
 6. [Understand Neural Networks](../lectures/02-neural-networks.md)
 7. [Understand Backpropagation](../lectures/05-backpropagation.md)
-8. [Learn the Deep Netts API](../lectures/03-deep-netts-api.md)
-9. [Follow the Model Development workflow](../lectures/04-model-development.md)
-10. [Learn Natural Language Processing](../lectures/05-natural-language-processing.md)
-11. [Connect the foundations to Generative AI](../lectures/06-generative-ai.md)
-12. [Start with Simple Linear Regression](../examples/regression/sorting-execution-time-prediction.md)
-13. [Continue through the Examples gallery](../examples/index.md)
-14. [Run a complete Maven project](../examples/running-examples.md)
+8. [Learn Convolutional Neural Networks](../lectures/06-convolutional-neural-networks.md)
+9. [Learn the Deep Netts API](../lectures/03-deep-netts-api.md)
+10. [Follow the Model Development workflow](../lectures/04-model-development.md)
+11. [Learn Natural Language Processing](../lectures/05-natural-language-processing.md)
+12. [Connect the foundations to Generative AI](../lectures/06-generative-ai.md)
+13. [Start with Simple Linear Regression](../examples/regression/sorting-execution-time-prediction.md)
+14. [Continue through the Examples gallery](../examples/index.md)
+15. [Run a complete Maven project](../examples/running-examples.md)
 
 Use the [Glossary](../glossary.md) whenever you encounter an unfamiliar Machine Learning or Deep Netts term.
