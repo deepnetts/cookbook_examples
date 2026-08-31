@@ -319,7 +319,7 @@
           <p class="page-feedback-thanks" data-feedback-thanks hidden><span aria-hidden="true">✓</span> Thank you!</p>
         </section>
       {% endif %}
-      {% set hide_page_navigation = page and ((page.file and page.file.src_uri == "index.md") or page.url == "glossary/" or page.url == "course/" or page.url == "getting-started/" or page.url == "examples/" or page.url == "examples/classification/" or page.url == "examples/regression/" or page.url == "examples/image-classification/" or page.url == "examples/nlp/" or page.url == "api-documentation/" or page.url == "developer-guide/") %}
+      {% set hide_page_navigation = page and (current_section == "course" or (page.file and page.file.src_uri == "index.md") or page.url == "glossary/" or page.url == "getting-started/" or page.url == "examples/" or page.url == "examples/classification/" or page.url == "examples/regression/" or page.url == "examples/image-classification/" or page.url == "examples/nlp/" or page.url == "api-documentation/" or page.url == "developer-guide/") %}
       {% set show_previous = page and page.previous_page and not hide_page_navigation and page.url != "lectures/01-ml-basics/" and page.url != "developer-guide/loading-data/" %}
       {% set show_next = page and page.next_page and not hide_page_navigation and page.url != "lectures/06-generative-ai/" and page.url != "developer-guide/jsr381/" %}
       {% if show_previous or show_next %}

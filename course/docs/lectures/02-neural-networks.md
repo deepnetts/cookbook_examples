@@ -308,4 +308,6 @@ How does training improve the complete system?
 
 ## Continue learning
 
-Continue with [Backpropagation](05-backpropagation.md) to see how loss gradients flow backward through these layers and update every trainable parameter.
+See how loss gradients flow backward through these layers and update every trainable parameter.
+
+<a class="course-next-lesson" href="../05-backpropagation/"><span>Next lesson</span><strong>Backpropagation</strong><span aria-hidden="true">→</span></a>

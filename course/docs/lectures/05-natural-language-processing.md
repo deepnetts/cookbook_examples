@@ -280,4 +280,6 @@ Saving only the neural network is insufficient. A deployable NLP system must als
 
 ## Continue learning
 
-Continue with [Generative AI](06-generative-ai.md) *(optional)* to see how next-token prediction, Transformer attention, sampling, and external LLM integration extend these NLP foundations into text generation.
+See how next-token prediction, Transformer attention, sampling, and external LLM integration extend these NLP foundations into text generation.
+
+<a class="course-next-lesson" href="../06-generative-ai/"><span>Next lesson</span><strong>Generative AI <small>Optional</small></strong><span aria-hidden="true">→</span></a>

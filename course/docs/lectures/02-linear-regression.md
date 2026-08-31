@@ -198,4 +198,6 @@ Looking for complete projects? Browse all [Regression examples →](../examples/
 
 ## Continue learning
 
-Continue with [Logistic Regression](03-logistic-regression.md) to turn a weighted linear score into a binary-class probability and decision boundary.
+Turn a weighted linear score into a binary-class probability and decision boundary.
+
+<a class="course-next-lesson" href="../03-logistic-regression/"><span>Next lesson</span><strong>Logistic Regression</strong><span aria-hidden="true">→</span></a>

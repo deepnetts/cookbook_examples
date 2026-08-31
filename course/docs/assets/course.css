@@ -1573,7 +1573,7 @@ textarea {
 .home-hero-mark {
   position: absolute;
   top: 50%;
-  right: max(6vw, 54px);
+  right: max(8vw, 72px);
   z-index: 1;
   width: clamp(280px, 30vw, 480px);
   aspect-ratio: 1;
@@ -1668,13 +1668,88 @@ textarea {
   transform: translateY(-2px);
 }
 
+.markdown-body a.course-next-lesson {
+  display: inline-grid;
+  align-items: center;
+  box-sizing: border-box;
+  width: min(430px, 100%);
+  margin: 8px 0 12px;
+  padding: 13px 16px;
+  color: #ffffff;
+  background: linear-gradient(105deg, #064e72, #087ca7);
+  border: 1px solid #16b8e9;
+  border-radius: 8px;
+  box-shadow: 0 7px 18px rgba(3, 27, 53, 0.16);
+  grid-template-columns: auto 1fr auto;
+  gap: 14px;
+  text-decoration: none;
+  transition: box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+@media only screen and (max-width: 520px) {
+  .markdown-body a.course-next-lesson {
+    grid-template-columns: 1fr auto;
+    gap: 4px 12px;
+  }
+
+  .markdown-body .course-next-lesson > span:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+.markdown-body .course-next-lesson > span:first-child {
+  color: #bcefff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.markdown-body .course-next-lesson strong {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 750;
+}
+
+.markdown-body .course-next-lesson strong small {
+  margin-left: 6px;
+  padding: 2px 6px;
+  color: #805100;
+  background: #fff3cf;
+  border-radius: 999px;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: 2px;
+}
+
+.markdown-body .course-next-lesson > span:last-child {
+  font-size: 22px;
+  transition: transform 0.18s ease;
+}
+
+.markdown-body a.course-next-lesson:hover,
+.markdown-body a.course-next-lesson:focus-visible {
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(3, 27, 53, 0.24);
+  outline: 3px solid rgba(56, 189, 248, 0.32);
+  outline-offset: 3px;
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.markdown-body .course-next-lesson:hover > span:last-child,
+.markdown-body .course-next-lesson:focus-visible > span:last-child {
+  transform: translateX(4px);
+}
+
 @media only screen and (min-width: 901px) and (max-width: 1280px) {
   .home-hero-content {
     max-width: 60vw;
   }
 
   .home-hero-mark {
-    right: 4vw;
+    right: 6vw;
     width: 28vw;
   }
 }

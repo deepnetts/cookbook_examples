@@ -338,4 +338,6 @@ The complete runnable projects show these calls in context. The next lesson expl
 
 ## Continue learning
 
-Continue with [Model Development](04-model-development.md) to place these API calls into a complete, reproducible, and trustworthy workflow.
+Place these API calls into a complete, reproducible, and trustworthy workflow.
+
+<a class="course-next-lesson" href="../04-model-development/"><span>Next lesson</span><strong>Model Development</strong><span aria-hidden="true">→</span></a>

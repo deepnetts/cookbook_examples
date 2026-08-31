@@ -153,4 +153,6 @@ Browse the complete [Image Classification examples gallery →](../examples/imag
 
 ## Continue learning
 
-Continue with [Deep Netts API](03-deep-netts-api.md) to connect datasets, model builders, trainers, metrics, saving, and prediction across tabular and image models.
+Connect datasets, model builders, trainers, metrics, saving, and prediction across tabular and image models.
+
+<a class="course-next-lesson" href="../03-deep-netts-api/"><span>Next lesson</span><strong>Deep Netts API</strong><span aria-hidden="true">→</span></a>

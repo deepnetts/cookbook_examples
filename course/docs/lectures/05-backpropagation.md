@@ -274,4 +274,6 @@ Practical responses include:
 
 ## Continue learning
 
-Continue with [Convolutional Neural Networks](06-convolutional-neural-networks.md) to see how the same training process learns reusable spatial filters for images.
+See how the same training process learns reusable spatial filters for images.
+
+<a class="course-next-lesson" href="../06-convolutional-neural-networks/"><span>Next lesson</span><strong>Convolutional Neural Networks</strong><span aria-hidden="true">→</span></a>

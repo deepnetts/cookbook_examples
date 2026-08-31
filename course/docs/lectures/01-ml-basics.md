@@ -252,4 +252,6 @@ Always interpret these values in the context of the application rather than choo
 
 ## Continue learning
 
-Continue with [Linear Regression](02-linear-regression.md) to build the simplest trainable model for predicting a continuous value.
+Build the simplest trainable model for predicting a continuous value.
+
+<a class="course-next-lesson" href="../02-linear-regression/"><span>Next lesson</span><strong>Linear Regression</strong><span aria-hidden="true">→</span></a>

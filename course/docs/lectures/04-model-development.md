@@ -260,7 +260,9 @@ Model development is a pipeline. Every stage contributes to whether the final pr
 
 ## Continue learning
 
-Continue with [Natural Language Processing](05-natural-language-processing.md) to learn how raw language becomes tokens, numerical representations, model input, and task-specific output.
+Learn how raw language becomes tokens, numerical representations, model input, and task-specific output.
+
+<a class="course-next-lesson" href="../05-natural-language-processing/"><span>Next lesson</span><strong>Natural Language Processing <small>Optional</small></strong><span aria-hidden="true">→</span></a>
 
 For implementation practice:
 

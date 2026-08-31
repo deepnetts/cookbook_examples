@@ -223,6 +223,8 @@ Looking for complete projects? Browse all [Classification examples →](../examp
 
 ## Continue learning
 
-Continue with [Neural Networks](02-neural-networks.md) to add hidden layers and learn nonlinear feature transformations.
+Add hidden layers and learn nonlinear feature transformations.
+
+<a class="course-next-lesson" href="../02-neural-networks/"><span>Next lesson</span><strong>Neural Networks</strong><span aria-hidden="true">→</span></a>
 
 To run the model from this lesson first, use the [Sonar Rock or Mine walkthrough](../examples/classification/sonar-rock-mine-classification.md).
