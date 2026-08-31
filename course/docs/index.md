@@ -9,6 +9,9 @@
       <a class="home-secondary-action" href="https://www.deepnetts.com/download-latest" target="_blank" rel="noopener noreferrer">Free download</a>
     </div>
   </div>
+  <div class="home-hero-mark" aria-hidden="true">
+    <img src="assets/favicon.png" alt="">
+  </div>
 </section>
 
 <section class="home-intro">

@@ -144,6 +144,8 @@ Evaluate on images excluded from training. Accuracy alone may hide class imbalan
 
 ## Runnable image examples
 
+Browse the complete [Image Classification examples gallery →](../examples/image-classification/index.md)
+
 - [Duke Logo Recognition](../examples/image-classification/duke-logo-recognition.md) demonstrates a compact binary CNN.
 - [Handwritten Digit Recognition](../examples/image-classification/handwritten-digit-recognition.md) demonstrates a deeper multiclass CNN.
 - [Hot Dog or Not Hot Dog](../examples/image-classification/hotdog-nothotdog.md) connects a binary image dataset to a complete training workflow.

@@ -194,6 +194,8 @@ The [House Price Prediction walkthrough](../examples/regression/house-price-pred
 - Save preprocessing with the trained model.
 - Add hidden layers only when a linear relationship is insufficient.
 
+Looking for complete projects? Browse all [Regression examples →](../examples/regression/index.md)
+
 ## Continue learning
 
 Continue with [Logistic Regression](03-logistic-regression.md) to turn a weighted linear score into a binary-class probability and decision boundary.

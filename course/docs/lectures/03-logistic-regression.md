@@ -219,6 +219,8 @@ This linear boundary is the model's main limitation. If the two classes require 
 - Evaluate precision, recall, F1, and specificity alongside accuracy.
 - Add hidden layers only when a linear decision boundary is insufficient.
 
+Looking for complete projects? Browse all [Classification examples →](../examples/classification/index.md)
+
 ## Continue learning
 
 Continue with [Neural Networks](02-neural-networks.md) to add hidden layers and learn nonlinear feature transformations.

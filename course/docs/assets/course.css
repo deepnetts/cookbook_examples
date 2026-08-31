@@ -1570,6 +1570,29 @@ textarea {
   transform: translateY(-24px);
 }
 
+.home-hero-mark {
+  position: absolute;
+  top: 50%;
+  right: max(6vw, 54px);
+  z-index: 1;
+  width: clamp(280px, 30vw, 480px);
+  aspect-ratio: 1;
+  overflow: hidden;
+  opacity: 1;
+  pointer-events: none;
+  transform: translateY(-57%);
+}
+
+.markdown-body .home-hero-mark img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  margin: 0;
+  background: transparent;
+  object-fit: contain;
+}
+
 .home-eyebrow {
   display: inline-flex;
   margin-bottom: 24px;
@@ -1643,6 +1666,17 @@ textarea {
   outline: none;
   text-decoration: none;
   transform: translateY(-2px);
+}
+
+@media only screen and (min-width: 901px) and (max-width: 1280px) {
+  .home-hero-content {
+    max-width: 60vw;
+  }
+
+  .home-hero-mark {
+    right: 4vw;
+    width: 28vw;
+  }
 }
 
 .home-neural-visual {
@@ -1778,6 +1812,10 @@ textarea {
     min-height: auto;
     padding: 68px 34px 140px;
     grid-template-columns: 1fr;
+  }
+
+  .home-hero-mark {
+    display: none;
   }
 
   .home-neural-visual {

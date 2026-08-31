@@ -150,6 +150,10 @@ These four examples demonstrate how architecture follows the prediction problem.
   </table>
 </div>
 
+Explore related projects: [Classification examples →](../examples/classification/index.md),
+[Image Classification examples →](../examples/image-classification/index.md), and
+[Regression examples →](../examples/regression/index.md).
+
 At the system level, all of these models have the same responsibility:
 
 <figure class="course-figure">
