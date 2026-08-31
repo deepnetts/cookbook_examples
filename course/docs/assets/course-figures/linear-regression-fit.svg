@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 500" role="img" aria-labelledby="title description">
   <title id="title">Linear regression fitted to sorting benchmark measurements</title>
-  <desc id="description">A scatter plot of comparison count against execution time. A rising fitted line passes through the measurements, while dashed vertical residual lines show the difference between observed and predicted values.</desc>
+  <desc id="description">A scatter plot of comparison count against execution time. A rising fitted line passes between measurements above and below it, while dashed vertical residual lines show the difference between observed and predicted values.</desc>
 
   <rect width="880" height="500" rx="18" fill="#f8fdff"/>
   <rect x="84" y="48" width="730" height="350" rx="12" fill="#ffffff" stroke="#c9e8f3" stroke-width="2"/>
@@ -29,19 +29,19 @@
   <path d="M156 337L746 103" fill="none" stroke="#087ca7" stroke-width="5" stroke-linecap="round"/>
 
   <g fill="none" stroke="#7c8d9c" stroke-width="2" stroke-dasharray="5 6">
-    <path d="M200 307V320M264 267V294M326 250V269M390 219V243M454 183V218M518 190V192M582 132V167M646 113V142M710 91V117"/>
+    <path d="M200 302V320M264 311V294M326 250V270M390 260V244M454 198V219M518 210V193M582 150V168M646 160V142M710 99V117"/>
   </g>
 
   <g fill="#2f9b53" stroke="#ffffff" stroke-width="3">
-    <circle cx="200" cy="307" r="8"/>
-    <circle cx="264" cy="294" r="8"/>
+    <circle cx="200" cy="302" r="8"/>
+    <circle cx="264" cy="311" r="8"/>
     <circle cx="326" cy="250" r="8"/>
-    <circle cx="390" cy="243" r="8"/>
-    <circle cx="454" cy="183" r="8"/>
-    <circle cx="518" cy="190" r="8"/>
-    <circle cx="582" cy="132" r="8"/>
-    <circle cx="646" cy="142" r="8"/>
-    <circle cx="710" cy="91" r="8"/>
+    <circle cx="390" cy="260" r="8"/>
+    <circle cx="454" cy="198" r="8"/>
+    <circle cx="518" cy="210" r="8"/>
+    <circle cx="582" cy="150" r="8"/>
+    <circle cx="646" cy="160" r="8"/>
+    <circle cx="710" cy="99" r="8"/>
   </g>
 
   <g font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">

@@ -1,6 +1,65 @@
 document.addEventListener("DOMContentLoaded", function () {
     const toc = document.getElementById("toc");
     const sideNavigation = document.getElementById("side");
+    const navigationToggle = document.getElementById("nav-toggle");
+    const navigationClose = document.querySelector(".mobile-navigation-close");
+    const searchToggle = document.getElementById("nav-scrh");
+    const headerSearch = document.querySelector(".header .search");
+
+    const syncMobileNavigation = function () {
+        const isOpen = Boolean(sideNavigation && sideNavigation.classList.contains("chess"));
+
+        document.body.classList.toggle("mobile-navigation-open", isOpen);
+        if (navigationToggle) {
+            navigationToggle.setAttribute("aria-expanded", String(isOpen));
+            navigationToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+        }
+    };
+
+    const closeMobileNavigation = function () {
+        if (!sideNavigation) return;
+
+        sideNavigation.classList.remove("chess");
+        document.querySelector(".markdown-body.cake")?.classList.remove("cake");
+        syncMobileNavigation();
+        navigationToggle?.focus();
+    };
+
+    navigationToggle?.setAttribute("aria-controls", "side");
+    navigationToggle?.setAttribute("aria-expanded", "false");
+    navigationToggle?.setAttribute("tabindex", "0");
+    navigationToggle?.addEventListener("click", function () {
+        window.requestAnimationFrame(syncMobileNavigation);
+    });
+    navigationToggle?.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            navigationToggle.click();
+        }
+    });
+    navigationClose?.addEventListener("click", closeMobileNavigation);
+
+    searchToggle?.setAttribute("aria-controls", "mkdocs-search-query");
+    searchToggle?.setAttribute("aria-expanded", "false");
+    searchToggle?.addEventListener("click", function () {
+        window.requestAnimationFrame(function () {
+            const isOpen = Boolean(headerSearch && headerSearch.classList.contains("show"));
+            searchToggle.setAttribute("aria-expanded", String(isOpen));
+            if (isOpen) document.getElementById("mkdocs-search-query")?.focus();
+        });
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && document.body.classList.contains("mobile-navigation-open")) {
+            closeMobileNavigation();
+        }
+    });
+
+    window.addEventListener("resize", function () {
+        if (window.innerWidth > 1100 && document.body.classList.contains("mobile-navigation-open")) {
+            closeMobileNavigation();
+        }
+    });
 
     if (sideNavigation) {
         sideNavigation.querySelectorAll(".section-toggle").forEach(function (button) {

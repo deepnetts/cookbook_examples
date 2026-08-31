@@ -181,7 +181,12 @@
           {% endif %}
         </nav>
         <nav class="mobile-full-navigation" aria-label="Mobile navigation">
-          <h2>Navigation</h2>
+          <div class="mobile-navigation-header">
+            <h2>Navigation</h2>
+            <button type="button" class="mobile-navigation-close" aria-label="Close navigation">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
           <ul>
            {% for nav_item in nav %}
                 {% include "nav.html" %}
