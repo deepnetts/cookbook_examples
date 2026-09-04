@@ -1,0 +1,5 @@
+project_id = "deepnetts-cookbook"
+
+[functions.page-feedback]
+verify_jwt = false
+entrypoint = './functions/page-feedback/index.js'

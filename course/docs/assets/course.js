@@ -118,50 +118,258 @@ document.addEventListener("DOMContentLoaded", function () {
         );
         const feedbackForm = pageFeedback.querySelector("[data-feedback-form]");
         const feedbackComment = feedbackForm.querySelector("textarea");
+        const feedbackHoneypot = feedbackForm.querySelector("input[name='website']");
+        const feedbackSubmit = feedbackForm.querySelector("[data-feedback-submit]");
+        const feedbackProgress = pageFeedback.querySelector("[data-feedback-progress]");
         const feedbackThanks = pageFeedback.querySelector("[data-feedback-thanks]");
-        const feedbackStorageKey = "deepnetts-page-feedback:" +
-            pageFeedback.dataset.page;
-        let selectedFeedback = "";
+        const feedbackError = pageFeedback.querySelector("[data-feedback-error]");
+        const feedbackErrorMessage = pageFeedback.querySelector(
+            "[data-feedback-error-message]"
+        );
+        const feedbackRetry = pageFeedback.querySelector("[data-feedback-retry]");
+        const feedbackEndpoint = (pageFeedback.dataset.feedbackEndpoint || "").trim();
+        const rawPagePath = pageFeedback.dataset.pagePath || window.location.pathname;
+        const pagePath = ("/" + rawPagePath)
+            .replace(/\/{2,}/g, "/")
+            .replace(/\/?$/, "/");
+        const pageTitle = pageFeedback.dataset.pageTitle || document.title;
+        const feedbackIdStorageKey = "deepnetts-page-feedback-id:" + pagePath;
+        const feedbackStateStorageKey = "deepnetts-page-feedback:" + pagePath;
+        const uuidPattern =
+            /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+        let confirmedFeedback = { rating: "", comment: "" };
+        let lastAttempt = null;
+        let isSubmitting = false;
 
-        const saveFeedback = function (comment) {
-            const feedback = {
-                value: selectedFeedback,
-                comment: comment || "",
-                page: pageFeedback.dataset.page,
-                submittedAt: new Date().toISOString()
-            };
+        const createResponseId = function () {
+            if (window.crypto && typeof window.crypto.randomUUID === "function") {
+                return window.crypto.randomUUID();
+            }
+
+            const randomValues = new Uint8Array(16);
+
+            if (window.crypto && typeof window.crypto.getRandomValues === "function") {
+                window.crypto.getRandomValues(randomValues);
+            } else {
+                for (let index = 0; index < randomValues.length; index += 1) {
+                    randomValues[index] = Math.floor(Math.random() * 256);
+                }
+            }
+
+            randomValues[6] = (randomValues[6] & 0x0f) | 0x40;
+            randomValues[8] = (randomValues[8] & 0x3f) | 0x80;
+
+            return Array.from(randomValues, function (value) {
+                return value.toString(16).padStart(2, "0");
+            }).map(function (value, index) {
+                return [4, 6, 8, 10].includes(index) ? "-" + value : value;
+            }).join("");
+        };
+
+        const getResponseId = function () {
+            let responseId = "";
 
             try {
-                window.localStorage.setItem(
-                    feedbackStorageKey,
-                    JSON.stringify(feedback)
-                );
+                responseId = window.localStorage.getItem(feedbackIdStorageKey) || "";
             } catch (error) {
-                // Feedback still completes when local storage is unavailable.
+                // A page-scoped ID is still available for the current page load.
+            }
+
+            if (!uuidPattern.test(responseId)) {
+                responseId = createResponseId();
+
+                try {
+                    window.localStorage.setItem(feedbackIdStorageKey, responseId);
+                } catch (error) {
+                    // Submitting feedback does not depend on local storage access.
+                }
+            }
+
+            return responseId;
+        };
+
+        const responseId = getResponseId();
+
+        const needsCommentForm = function (rating) {
+            return rating === "neutral" || rating === "not_helpful";
+        };
+
+        const setSelectedFeedback = function (rating) {
+            feedbackButtons.forEach(function (button) {
+                const isSelected = button.dataset.feedbackValue === rating;
+
+                button.classList.toggle("selected", isSelected);
+                button.setAttribute("aria-pressed", String(isSelected));
+            });
+        };
+
+        const clearMessages = function () {
+            feedbackProgress.hidden = true;
+            feedbackThanks.hidden = true;
+            feedbackError.hidden = true;
+        };
+
+        const setSubmitting = function (submitting) {
+            isSubmitting = submitting;
+            pageFeedback.setAttribute("aria-busy", String(submitting));
+            feedbackButtons.forEach(function (button) {
+                button.disabled = submitting;
+            });
+            feedbackComment.disabled = submitting;
+            feedbackSubmit.disabled = submitting;
+            feedbackRetry.disabled = submitting;
+            feedbackProgress.hidden = !submitting;
+            feedbackSubmit.textContent = submitting
+                ? "Saving…"
+                : (needsCommentForm(confirmedFeedback.rating)
+                    ? "Update feedback"
+                    : "Send feedback");
+        };
+
+        const storeConfirmedFeedback = function () {
+            try {
+                window.localStorage.setItem(feedbackStateStorageKey, JSON.stringify({
+                    version: 2,
+                    responseId: responseId,
+                    rating: confirmedFeedback.rating,
+                    comment: confirmedFeedback.comment,
+                    updatedAt: new Date().toISOString()
+                }));
+            } catch (error) {
+                // The response is already centralized even when local storage fails.
             }
         };
 
-        const showThankYou = function () {
-            pageFeedback.classList.add("submitted");
-            feedbackForm.hidden = true;
-            feedbackThanks.hidden = false;
+        const showError = function (message, canRetry) {
+            feedbackProgress.hidden = true;
+            feedbackThanks.hidden = true;
+            feedbackErrorMessage.textContent = message;
+            feedbackRetry.hidden = !canRetry;
+            feedbackError.hidden = false;
+        };
+
+        const submitFeedback = async function (rating, comment) {
+            if (isSubmitting) {
+                return false;
+            }
+
+            const payload = {
+                responseId: responseId,
+                pagePath: pagePath,
+                pageTitle: pageTitle,
+                rating: rating,
+                comment: rating === "helpful" ? null : comment,
+                website: feedbackHoneypot.value
+            };
+
+            lastAttempt = payload;
+            clearMessages();
+
+            if (!feedbackEndpoint || feedbackEndpoint.includes("<project-ref>")) {
+                showError("Feedback is not configured for this build.", false);
+                return false;
+            }
+
+            setSubmitting(true);
+            const requestController = typeof window.AbortController === "function"
+                ? new window.AbortController()
+                : null;
+            const requestTimeout = requestController
+                ? window.setTimeout(function () {
+                    requestController.abort();
+                }, 10000)
+                : null;
+
+            try {
+                const requestOptions = {
+                    method: "POST",
+                    mode: "cors",
+                    credentials: "omit",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(payload)
+                };
+
+                if (requestController) {
+                    requestOptions.signal = requestController.signal;
+                }
+
+                const response = await window.fetch(feedbackEndpoint, requestOptions);
+                let result = null;
+
+                try {
+                    result = await response.json();
+                } catch (error) {
+                    // A malformed response is handled by the generic failure state.
+                }
+
+                if (!response.ok || !result || result.ok !== true) {
+                    const requestError = new Error("Feedback request failed");
+
+                    requestError.status = response.status;
+                    requestError.publicMessage = result &&
+                        typeof result.error === "string" &&
+                        result.error.length <= 160
+                        ? result.error
+                        : "";
+                    throw requestError;
+                }
+
+                confirmedFeedback = {
+                    rating: rating,
+                    comment: rating === "helpful" ? "" : comment
+                };
+                storeConfirmedFeedback();
+
+                if (!needsCommentForm(rating)) {
+                    feedbackComment.value = "";
+                    feedbackForm.hidden = true;
+                } else {
+                    feedbackForm.hidden = true;
+                    feedbackComment.blur();
+                }
+
+                feedbackThanks.hidden = false;
+                return true;
+            } catch (error) {
+                let message = "We could not save your response. Check your connection and try again.";
+
+                if (error.publicMessage) {
+                    message = error.publicMessage;
+                } else if (error.status === 429) {
+                    message = "Please wait a moment, then try again.";
+                } else if (error.name === "AbortError") {
+                    message = "Saving took too long. Please try again.";
+                }
+
+                showError(message, true);
+                return false;
+            } finally {
+                if (requestTimeout !== null) {
+                    window.clearTimeout(requestTimeout);
+                }
+                setSubmitting(false);
+            }
         };
 
         try {
-            const storedFeedback = window.localStorage.getItem(feedbackStorageKey);
+            const storedFeedback = window.localStorage.getItem(feedbackStateStorageKey);
 
             if (storedFeedback) {
                 const parsedFeedback = JSON.parse(storedFeedback);
 
-                selectedFeedback = parsedFeedback.value || "";
-                feedbackComment.value = parsedFeedback.comment || "";
-                feedbackButtons.forEach(function (button) {
-                    const isSelected =
-                        button.dataset.feedbackValue === selectedFeedback;
-
-                    button.classList.toggle("selected", isSelected);
-                    button.setAttribute("aria-pressed", String(isSelected));
-                });
+                if (parsedFeedback.version === 2 &&
+                    parsedFeedback.responseId === responseId &&
+                    ["helpful", "neutral", "not_helpful"].includes(parsedFeedback.rating)) {
+                    confirmedFeedback = {
+                        rating: parsedFeedback.rating,
+                        comment: parsedFeedback.comment || ""
+                    };
+                    setSelectedFeedback(confirmedFeedback.rating);
+                    feedbackComment.value = confirmedFeedback.comment;
+                    feedbackForm.hidden = !needsCommentForm(confirmedFeedback.rating);
+                }
             }
         } catch (error) {
             // Ignore storage access errors and keep the component interactive.
@@ -169,32 +377,73 @@ document.addEventListener("DOMContentLoaded", function () {
 
         feedbackButtons.forEach(function (button) {
             button.addEventListener("click", function () {
-                selectedFeedback = button.dataset.feedbackValue;
-                pageFeedback.classList.remove("submitted");
-                feedbackThanks.hidden = true;
-                feedbackButtons.forEach(function (choice) {
-                    const isSelected = choice === button;
+                const rating = button.dataset.feedbackValue;
 
-                    choice.classList.toggle("selected", isSelected);
-                    choice.setAttribute("aria-pressed", String(isSelected));
-                });
+                setSelectedFeedback(rating);
+                clearMessages();
 
-                if (selectedFeedback === "neutral" ||
-                    selectedFeedback === "not-helpful") {
+                if (needsCommentForm(rating)) {
                     feedbackForm.hidden = false;
-                    feedbackComment.focus();
+                } else {
+                    feedbackForm.hidden = true;
+                }
+
+                if (confirmedFeedback.rating === rating) {
+                    if (!needsCommentForm(rating) ||
+                        confirmedFeedback.comment === feedbackComment.value.trim()) {
+                        feedbackThanks.hidden = false;
+                    }
+
+                    if (needsCommentForm(rating)) {
+                        feedbackComment.focus();
+                    }
                     return;
                 }
 
-                saveFeedback("");
-                showThankYou();
+                // A positive response has no follow-up and is saved immediately.
+                // Neutral and negative choices let the visitor add an optional note
+                // before their selection is sent.
+                if (rating === "helpful") {
+                    submitFeedback(rating, null);
+                }
             });
         });
 
         feedbackForm.addEventListener("submit", function (event) {
             event.preventDefault();
-            saveFeedback(feedbackComment.value.trim());
-            showThankYou();
+            const comment = feedbackComment.value.trim();
+
+            const selectedRating = feedbackButtons.find(function (button) {
+                return button.getAttribute("aria-pressed") === "true";
+            })?.dataset.feedbackValue;
+
+            if (!needsCommentForm(selectedRating)) {
+                return;
+            }
+
+            setSelectedFeedback(selectedRating);
+            clearMessages();
+
+            if (confirmedFeedback.rating === selectedRating &&
+                confirmedFeedback.comment === comment) {
+                feedbackThanks.hidden = false;
+                return;
+            }
+
+            submitFeedback(selectedRating, comment);
+        });
+
+        feedbackComment.addEventListener("input", function () {
+            feedbackThanks.hidden = true;
+            feedbackError.hidden = true;
+        });
+
+        feedbackRetry.addEventListener("click", function () {
+            if (!lastAttempt) {
+                return;
+            }
+
+            submitFeedback(lastAttempt.rating, lastAttempt.comment || "");
         });
     }
 

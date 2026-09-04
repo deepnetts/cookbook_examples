@@ -2,6 +2,9 @@ site_name: "Learn Neural Networks with Java: A Code-First Machine Learning Cours
 site_description: Deep Netts Machine Learning cookbook for Java developers
 site_author: Deep Netts
 
+extra:
+  feedback_endpoint: !ENV [DEEPNETTS_FEEDBACK_ENDPOINT, ""]
+
 theme:
   name: github
   custom_dir: overrides
@@ -31,6 +34,8 @@ nav:
       - Regression: examples/regression/index.md
       - Classification: examples/classification/index.md
       - Image Classification: examples/image-classification/index.md
+      - NLP: examples/nlp/index.md
+      - Language Models: examples/language-models/index.md
 
   - Developer Guide:
       - Overview: developer-guide/index.md

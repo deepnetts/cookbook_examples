@@ -23,8 +23,19 @@ If you have not run Deep Netts yet, complete [Hello World](../getting-started/in
     <span class="category-arrow" aria-hidden="true">→</span>
   </a>
   <a href="nlp/">
-    <strong>NLP</strong>
-    <small>Process natural language, including neural probabilistic language models.</small>
+    <span class="example-category-heading">
+      <strong>NLP</strong>
+      <em>To be added</em>
+    </span>
+    <small>Learn word representations and process natural-language text.</small>
+    <span class="category-arrow" aria-hidden="true">→</span>
+  </a>
+  <a class="example-category-featured" href="language-models/">
+    <span class="example-category-heading">
+      <strong>Language Models</strong>
+      <em>To be added</em>
+    </span>
+    <small>Explore tokenization, next-token prediction, sampling, and transformer-based text generation.</small>
     <span class="category-arrow" aria-hidden="true">→</span>
   </a>
 </div>
