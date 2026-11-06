@@ -38,35 +38,26 @@ public class VggNet16TensorFlowImport {
 
             // 3. Download/cache and import TensorFlow weights
             Path weights = VggWeightsDownloader.obtain(CACHE_DIRECTORY);
-            System.out.println("Importing TensorFlow weights: " + weights);
             TensorflowUtils.importWeights(vggNet16, weights.toString());
+            System.out.println("Imported TensorFlow weights: " + weights);
 
-            // 4. Load ImageNet output labels
-            String[] labels = Files.readString(LABELS_PATH)
-                    .trim().split("\\s*,\\s*");
+            // 4. Load ImageNet output labels and 5. save the imported Deep Netts model
+            Files.createDirectories(MODEL_PATH.getParent());
+            String[] labels = Files.readString(LABELS_PATH).trim().split("\\s*,\\s*");
             if (labels.length != 1_000) {
-                throw new IllegalStateException(
-                        "Expected 1,000 ImageNet labels, found " + labels.length);
+                throw new IllegalStateException("Expected 1,000 ImageNet labels");
             }
             vggNet16.setOutputLabels(labels);
-
-            // 5. Save the imported Deep Netts model
-            Files.createDirectories(MODEL_PATH.getParent());
-            vggNet16.save(MODEL_PATH.toString());
+            vggNet16.save("models/vggnet16.dnet");
             System.out.println("Saved imported model: " + MODEL_PATH);
 
             // 6. Preprocess and classify an image
             Path imagePath = args.length > 0 ? Path.of(args[0]) : DEFAULT_IMAGE;
             VggNet16InputImage image = new VggNet16InputImage(imagePath);
-            vggNet16.predict(image.getInput()); // JVM warm-up
-            long start = System.nanoTime();
             float[] probabilities = vggNet16.predict(image.getInput()).getValues();
-            long elapsedMillis = (System.nanoTime() - start) / 1_000_000;
             int predictedIndex = indexOfLargest(probabilities);
-            System.out.println("Image: " + imagePath);
-            System.out.println("Predicted label: " + labels[predictedIndex]);
+            System.out.println(labels[predictedIndex]);
             System.out.printf("Confidence: %.4f%n", probabilities[predictedIndex]);
-            System.out.println("Inference time: " + elapsedMillis + " ms");
         } finally {
             if (vggNet16 != null) {
                 vggNet16.getThreadPool().shutdown();
@@ -114,13 +105,9 @@ public class VggNet16TensorFlowImport {
     }
 
     private static void verifyJavaRuntime() {
-        if (Runtime.version().feature() != 25) {
-            throw new IllegalStateException("Java 25 is required. Maven is using Java "
+        if (Runtime.version().feature() < 25) {
+            throw new IllegalStateException("Java 25 or newer is required. Maven is using Java "
                     + Runtime.version().feature() + ".");
-        }
-        if (ModuleLayer.boot().findModule("jdk.incubator.vector").isEmpty()) {
-            throw new IllegalStateException(
-                    "Vector API is not enabled. Use --add-modules jdk.incubator.vector.");
         }
     }
 }

@@ -15,10 +15,10 @@ import java.nio.file.Path;
 /** Binary image classification: hot dog or not hot dog. */
 public class HotDogImageClassificationDeepNetts {
     public static void main(String[] args) throws Exception {
+        // 1. Runtime configuration
         int width = 64, height = 64;
         int epochs = Integer.getInteger("deepnetts.epochs", 10);
         String dataset = "src/main/resources/datasets/hotdog-dataset";
-        // 1. Runtime configuration
         System.setProperty("java.awt.headless", "true");
         DeepNetts.getInstance().setUseCuda(false);
 
@@ -42,8 +42,7 @@ public class HotDogImageClassificationDeepNetts {
                 .addOutputLayer(1, ActivationType.SIGMOID)
                 .hiddenActivationFunction(ActivationType.LEAKY_RELU)
                 .lossFunction(LossType.CROSS_ENTROPY)
-                .randomSeed(42)
-                .build();
+                .randomSeed(42).build();
 
         // 6. Configure and train
         network.getTrainer().setStopEpochs(epochs).setLearningRate(0.001f)
@@ -59,8 +58,9 @@ public class HotDogImageClassificationDeepNetts {
         // 9. Use trained model
         ExampleImage image = testSet.get(0);
         float probability = network.predict(image.getInput()).getValues()[0];
+        String predicted = probability >= 0.5f ? "hot_dog" : "negative";
         System.out.println("Actual: " + image.getLabel());
-        System.out.println("Predicted: " + (probability >= 0.5f ? "hot_dog" : "negative"));
+        System.out.println("Predicted: " + predicted);
         System.out.printf("Hot-dog probability: %.4f%n", probability);
         // 10. Release resources
         network.getThreadPool().shutdown();

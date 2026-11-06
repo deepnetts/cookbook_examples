@@ -15,10 +15,10 @@ import java.nio.file.Path;
 /** Multi-class image classification of MNIST digits from 0 to 9. */
 public class HandwrittenDigitRecognitionDeepNetts {
     public static void main(String[] args) throws Exception {
+        // 1. Runtime configuration
         int width = 28, height = 28;
         int epochs = Integer.getInteger("deepnetts.epochs", 10);
         String dataset = "src/main/resources/datasets/mnist";
-        // 1. Runtime configuration
         System.setProperty("java.awt.headless", "true");
         DeepNetts.getInstance().setUseCuda(false);
 
@@ -45,13 +45,12 @@ public class HandwrittenDigitRecognitionDeepNetts {
                 .addOutputLayer(10, ActivationType.SOFTMAX)
                 .hiddenActivationFunction(ActivationType.RELU)
                 .lossFunction(LossType.CROSS_ENTROPY)
-                .randomSeed(42)
-                .build();
+                .randomSeed(42).build();
 
+        // 6. Configure and train
         network.getTrainer().setStopEpochs(epochs).setLearningRate(0.001f)
                 .setOptimizer(OptimizerType.ADAM).setBatchMode(true)
                 .setBatchSize(32).setShuffle(true);
-        // 6. Configure and train
         network.train(trainingSet);
         // 7. Evaluate
         System.out.println(network.test(testSet));

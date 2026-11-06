@@ -24,15 +24,15 @@ public class CreditCardFraudDetectionDeepNetts {
     private static final int NUM_OUTPUTS = 1;
 
     public static void main(String[] args) throws Exception {
-        verifyJavaRuntime();
-
         // 1. Runtime configuration
+        verifyJavaRuntime();
         DeepNetts.getInstance().setUseCuda(false);
         DeepNetts.getInstance().setMaxThreads(1);
 
         // 2. Load and inspect data
         TabularDataSet<MLDataItem> dataSet = DataSets.readCsv(
                 DATASET_PATH, NUM_INPUTS, NUM_OUTPUTS, true, ",");
+
         System.out.println("Samples: " + dataSet.size());
         System.out.println("Columns: " + Arrays.toString(dataSet.getColumnNames()));
         float[] exampleTransaction = dataSet.get(0).getInput().getValues().clone();
@@ -65,10 +65,12 @@ public class CreditCardFraudDetectionDeepNetts {
                 .setBatchMode(true)
                 .setBatchSize(32)
                 .setShuffle(true);
+
         neuralNet.train(trainingSet);
 
         // 7. Evaluate
-        ClassificationMetrics metrics = (ClassificationMetrics) neuralNet.test(testSet);
+        ClassificationMetrics metrics =
+                (ClassificationMetrics) neuralNet.test(testSet);
         System.out.println(metrics);
 
         // 8. Save model with preprocessing
@@ -76,18 +78,15 @@ public class CreditCardFraudDetectionDeepNetts {
         Files.createDirectories(Path.of("models"));
         neuralNet.save(MODEL_PATH);
 
-        // 9. Predict one held-out transaction
+        // 9. Predict the first transaction from the CSV file
         float fraudProbability = neuralNet.predict(exampleTransaction)[0];
         System.out.printf("Fraud probability: %.4f%n", fraudProbability);
         System.out.println(fraudProbability >= 0.5f ? "FRAUD" : "LEGITIMATE");
     }
 
     private static void verifyJavaRuntime() {
-        if (Runtime.version().feature() != 25) {
-            throw new IllegalStateException("Java 25 is required. Maven is using Java " + Runtime.version().feature() + ".");
-        }
-        if (ModuleLayer.boot().findModule("jdk.incubator.vector").isEmpty()) {
-            throw new IllegalStateException("Vector API is not enabled. Run Maven with --add-modules jdk.incubator.vector.");
+        if (Runtime.version().feature() < 25) {
+            throw new IllegalStateException("Java 25 or newer is required. Maven is using Java " + Runtime.version().feature() + ".");
         }
     }
 }

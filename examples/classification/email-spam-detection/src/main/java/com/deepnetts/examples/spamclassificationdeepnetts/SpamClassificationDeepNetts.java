@@ -29,18 +29,19 @@ import java.util.Arrays;
 
 public class SpamClassificationDeepNetts {
     
-        //0. Configuration
-    private static final String DATASET_PATH = "src/main/resources/datasets/spam_detection_dataset.csv";
+    // 0. Configuration
+    private static final String DATASET_PATH =
+            "src/main/resources/datasets/spam_detection_dataset.csv";
 
-    private static final String MODEL_PATH = "models/spam-classifier.dnet";
+    private static final String MODEL_PATH =
+            "models/spam-classifier.dnet";
 
     private static final int NUM_INPUTS = 5;
     private static final int NUM_OUTPUTS = 1;
 
     public static void main(String[] args) throws Exception {
-        verifyJavaRuntime();
-
         // 1. Runtime configuration
+        verifyJavaRuntime();
         DeepNetts.getInstance().setUseCuda(false);
         DeepNetts.getInstance().setMaxThreads(1);
 
@@ -50,13 +51,15 @@ public class SpamClassificationDeepNetts {
                         DATASET_PATH,
                         NUM_INPUTS,
                         NUM_OUTPUTS,
-                        true, // header
-                        "," // delimeter
+                        true,
+                        ","
                 );
 
         // 3. Inspect data
         System.out.println("Samples: " + dataSet.size());
-        System.out.println("Columns: " + Arrays.toString(dataSet.getColumnNames()));
+        System.out.println(
+                "Columns: " + Arrays.toString(dataSet.getColumnNames())
+        );
 
         // 4. Shuffle and split
         dataSet.shuffle(42);
@@ -64,7 +67,6 @@ public class SpamClassificationDeepNetts {
         TrainTestSplit split = dataSet.trainTestSplit(0.8);
 
         DataSet<MLDataItem> trainingSet = split.getTrainingSet();
-
         DataSet<MLDataItem> testSet = split.getTestSet();
 
         // 5. Preprocess
@@ -73,11 +75,13 @@ public class SpamClassificationDeepNetts {
         scaler.apply(testSet);
 
         // 6. Build model
-        FeedForwardNetwork neuralNet = FeedForwardNetwork.builder()
+        // Hidden layers use ReLU by default.
+        FeedForwardNetwork neuralNet =
+                FeedForwardNetwork.builder()
                         .addInputLayer(NUM_INPUTS)
-                        .addFullyConnectedLayer(32) // ActivationType.RELU is by default 
+                        .addFullyConnectedLayer(32)
                         .addFullyConnectedLayer(16)
-                        .addOutputLayer(NUM_OUTPUTS,ActivationType.SIGMOID)
+                        .addOutputLayer(NUM_OUTPUTS, ActivationType.SIGMOID)
                         .lossFunction(LossType.CROSS_ENTROPY)
                         .randomSeed(42)
                         .build();
@@ -114,20 +118,15 @@ public class SpamClassificationDeepNetts {
         };
 
         float spamProbability = neuralNet.predict(email)[0];
-
-        System.out.printf("Spam probability: %.4f%n",spamProbability);
+        System.out.printf("Spam probability: %.4f%n", spamProbability);
         System.out.println(spamProbability >= 0.5f ? "SPAM" : "NOT SPAM");
 
     }
 
     private static void verifyJavaRuntime() {
-        if (Runtime.version().feature() != 25) {
-            throw new IllegalStateException("Java 25 is required. Maven is using Java "
+        if (Runtime.version().feature() < 25) {
+            throw new IllegalStateException("Java 25 or newer is required. Maven is using Java "
                     + Runtime.version().feature() + ".");
-        }
-        if (ModuleLayer.boot().findModule("jdk.incubator.vector").isEmpty()) {
-            throw new IllegalStateException(
-                    "Vector API is not enabled. Run Maven with --add-modules jdk.incubator.vector.");
         }
     }
 }

@@ -8,20 +8,11 @@ public class DeepNettsHelloWorld {
 
     public static void main(String[] args) {
         String javaVersion = System.getProperty("java.version");
-        boolean vectorApiEnabled = ModuleLayer.boot()
-                .findModule("jdk.incubator.vector")
-                .isPresent();
-
         System.out.println("Java version: " + javaVersion);
-        System.out.println("Vector API enabled: " + vectorApiEnabled);
 
-        if (Runtime.version().feature() != 25) {
-            throw new IllegalStateException("Java 25 is required. Maven is using Java "
+        if (Runtime.version().feature() < 25) {
+            throw new IllegalStateException("Java 25 or newer is required. Maven is using Java "
                     + Runtime.version().feature() + ".");
-        }
-        if (!vectorApiEnabled) {
-            throw new IllegalStateException(
-                    "Vector API is not enabled. Run Maven with --add-modules jdk.incubator.vector.");
         }
 
         FeedForwardNetwork neuralNet = FeedForwardNetwork.builder()

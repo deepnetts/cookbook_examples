@@ -7,17 +7,15 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>25</maven.compiler.release>
-        <deepnetts.version>4.0.0-beta</deepnetts.version>
+        <deepnetts.version>4.0.5</deepnetts.version>
         <exec.mainClass>com.deepnetts.examples.insurancepayment.InsurancePaymentPredictionDeepNetts</exec.mainClass>
     </properties>
     <dependencies>
-        <dependency><groupId>com.deepnetts</groupId><artifactId>deepnetts-core-pro</artifactId><version>${deepnetts.version}</version></dependency>
-        <dependency><groupId>com.deepnetts</groupId><artifactId>deepnetts-license</artifactId><version>1.0</version></dependency>
+        <dependency><groupId>com.deepnetts</groupId><artifactId>deepnetts-core</artifactId><version>${deepnetts.version}</version></dependency>
     </dependencies>
     <build><plugins>
         <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><version>3.13.0</version></plugin>
         <plugin><groupId>org.codehaus.mojo</groupId><artifactId>exec-maven-plugin</artifactId><version>3.6.3</version></plugin>
     </plugins></build>
     <name>Insurance Payment Prediction with Deep Netts</name>
-    <description>--add-modules jdk.incubator.vector</description>
 </project>

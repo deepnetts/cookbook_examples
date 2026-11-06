@@ -31,19 +31,21 @@ import java.util.Arrays;
 public class LinearRegressionDeepNetts {
 
     // 0. Configuration
-    private static final String RAW_DATASET_PATH = "src/main/resources/datasets/Sorting_Algorithm.csv";
+    private static final String RAW_DATASET_PATH =
+            "src/main/resources/datasets/Sorting_Algorithm.csv";
 
-    private static final String DATASET_PATH = "target/datasets/sorting_algorithm_regression.csv";
+    private static final String DATASET_PATH =
+            "target/datasets/sorting_algorithm_regression.csv";
 
-    private static final String MODEL_PATH = "models/sorting-execution-time-regression.dnet";
+    private static final String MODEL_PATH =
+            "models/sorting-execution-time-regression.dnet";
 
     private static final int NUM_INPUTS = 1;
     private static final int NUM_OUTPUTS = 1;
 
     public static void main(String[] args) throws Exception {
-        verifyJavaRuntime();
-
         // 1. Runtime configuration
+        verifyJavaRuntime();
         DeepNetts.getInstance().setUseCuda(false);
 
         // 2. Select the feature and target columns from the raw dataset
@@ -57,7 +59,7 @@ public class LinearRegressionDeepNetts {
 
         // 3. Load data
         TabularDataSet<MLDataItem> dataSet =
-                DataSets.readCsv(DATASET_PATH,NUM_INPUTS,NUM_OUTPUTS,true,",");
+                DataSets.readCsv(DATASET_PATH, NUM_INPUTS, NUM_OUTPUTS, true, ",");
 
         // 4. Inspect data
         System.out.println("Samples: " + dataSet.size());
@@ -69,7 +71,6 @@ public class LinearRegressionDeepNetts {
         TrainTestSplit split = dataSet.trainTestSplit(0.8);
 
         DataSet<MLDataItem> trainingSet = split.getTrainingSet();
-
         DataSet<MLDataItem> testSet = split.getTestSet();
 
         // 6. Preprocess
@@ -79,13 +80,12 @@ public class LinearRegressionDeepNetts {
         standardizer.apply(testSet);
 
         // 7. Build linear model
-        FeedForwardNetwork neuralNet =
-                FeedForwardNetwork.builder()
-                        .addInputLayer(NUM_INPUTS)
-                        .addOutputLayer(NUM_OUTPUTS,ActivationType.LINEAR)
-                        .lossFunction(LossType.MEAN_SQUARED_ERROR)
-                        .randomSeed(42)
-                        .build();
+        FeedForwardNetwork neuralNet = FeedForwardNetwork.builder()
+                .addInputLayer(NUM_INPUTS)
+                .addOutputLayer(NUM_OUTPUTS, ActivationType.LINEAR)
+                .lossFunction(LossType.MEAN_SQUARED_ERROR)
+                .randomSeed(42)
+                .build();
 
         // 8. Configure and train
         neuralNet.getTrainer()
@@ -102,6 +102,7 @@ public class LinearRegressionDeepNetts {
 
         // 10. Save model with preprocessing
         neuralNet.setNormalizer(standardizer);
+
         Files.createDirectories(Path.of("models"));
         neuralNet.save(MODEL_PATH);
 
@@ -110,17 +111,13 @@ public class LinearRegressionDeepNetts {
         float predictedExecutionTime = neuralNet.predict(comparisonCount)[0];
 
         System.out.printf("Predicted execution time for %.0f comparisons: %.2f ms%n",
-                comparisonCount,predictedExecutionTime);
+                comparisonCount, predictedExecutionTime);
     }
 
     private static void verifyJavaRuntime() {
-        if (Runtime.version().feature() != 25) {
-            throw new IllegalStateException("Java 25 is required. Maven is using Java "
+        if (Runtime.version().feature() < 25) {
+            throw new IllegalStateException("Java 25 or newer is required. Maven is using Java "
                     + Runtime.version().feature() + ".");
-        }
-        if (ModuleLayer.boot().findModule("jdk.incubator.vector").isEmpty()) {
-            throw new IllegalStateException(
-                    "Vector API is not enabled. Run Maven with --add-modules jdk.incubator.vector.");
         }
     }
 }

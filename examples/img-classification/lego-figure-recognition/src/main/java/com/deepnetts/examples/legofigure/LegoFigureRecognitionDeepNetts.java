@@ -15,10 +15,10 @@ import java.nio.file.Path;
 /** Binary image classification: Lego figure or negative image. */
 public class LegoFigureRecognitionDeepNetts {
     public static void main(String[] args) throws Exception {
+        // 1. Runtime configuration
         int width = 96, height = 96;
         int epochs = Integer.getInteger("deepnetts.epochs", 15);
         String dataset = "src/main/resources/datasets/lego-people";
-        // 1. Runtime configuration
         System.setProperty("java.awt.headless", "true");
         DeepNetts.getInstance().setUseCuda(false);
 
@@ -43,13 +43,12 @@ public class LegoFigureRecognitionDeepNetts {
                 .addFullyConnectedLayer(10, ActivationType.TANH)
                 .addOutputLayer(1, ActivationType.SIGMOID)
                 .lossFunction(LossType.CROSS_ENTROPY)
-                .randomSeed(42)
-                .build();
+                .randomSeed(42).build();
 
+        // 6. Configure and train
         network.getTrainer().setStopEpochs(epochs).setLearningRate(0.001f)
                 .setOptimizer(OptimizerType.ADAM).setBatchMode(true)
                 .setBatchSize(16).setShuffle(true);
-        // 6. Configure and train
         network.train(trainingSet);
         // 7. Evaluate
         System.out.println(network.test(testSet));
@@ -60,8 +59,9 @@ public class LegoFigureRecognitionDeepNetts {
         // 9. Use trained model
         ExampleImage image = testSet.get(0);
         float probability = network.predict(image.getInput()).getValues()[0];
+        String predicted = probability >= 0.5f ? "legoman" : "negative";
         System.out.println("Actual: " + image.getLabel());
-        System.out.println("Predicted: " + (probability >= 0.5f ? "legoman" : "negative"));
+        System.out.println("Predicted: " + predicted);
         System.out.printf("Lego probability: %.4f%n", probability);
         // 10. Release resources
         network.getThreadPool().shutdown();

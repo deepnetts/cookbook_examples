@@ -42,9 +42,8 @@ public class MulticlassClassificationDeepNetts {
     };
 
     public static void main(String[] args) throws Exception {
-        verifyJavaRuntime();
-
         // 1. Runtime configuration
+        verifyJavaRuntime();
         DeepNetts.getInstance().setUseCuda(false);
         DeepNetts.getInstance().setMaxThreads(1);
 
@@ -60,7 +59,9 @@ public class MulticlassClassificationDeepNetts {
 
         // 3. Inspect data
         System.out.println("Samples: " + dataSet.size());
-        System.out.println("Columns: " + Arrays.toString(dataSet.getColumnNames()));
+        System.out.println(
+                "Columns: " + Arrays.toString(dataSet.getColumnNames())
+        );
 
         // 4. Shuffle and split
         dataSet.shuffle(42);
@@ -93,9 +94,7 @@ public class MulticlassClassificationDeepNetts {
         neuralNet.train(trainingSet);
 
         // 8. Evaluate
-        ClassificationMetrics metrics =
-                (ClassificationMetrics) neuralNet.test(testSet);
-
+        ClassificationMetrics metrics = (ClassificationMetrics) neuralNet.test(testSet);
         System.out.println(metrics);
 
         // 9. Save model with preprocessing
@@ -105,11 +104,12 @@ public class MulticlassClassificationDeepNetts {
         neuralNet.save(MODEL_PATH);
 
         // 10. Use trained model
+        // sepal length, sepal width, petal length, petal width
         float[] flower = {
-            5.1f, // sepal length
-            3.5f, // sepal width
-            1.4f, // petal length
-            0.2f  // petal width
+            5.1f,
+            3.5f,
+            1.4f,
+            0.2f
         };
 
         float[] probabilities = neuralNet.predict(flower);
@@ -120,13 +120,9 @@ public class MulticlassClassificationDeepNetts {
     }
 
     private static void verifyJavaRuntime() {
-        if (Runtime.version().feature() != 25) {
-            throw new IllegalStateException("Java 25 is required. Maven is using Java "
+        if (Runtime.version().feature() < 25) {
+            throw new IllegalStateException("Java 25 or newer is required. Maven is using Java "
                     + Runtime.version().feature() + ".");
-        }
-        if (ModuleLayer.boot().findModule("jdk.incubator.vector").isEmpty()) {
-            throw new IllegalStateException(
-                    "Vector API is not enabled. Run Maven with --add-modules jdk.incubator.vector.");
         }
     }
 

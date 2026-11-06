@@ -22,7 +22,7 @@ import java.nio.file.Path;
  * Dataset: 60 numerical input features and 1 binary target
  * (0 = rock, 1 = mine).
  *
- * Trains and evaluates a sonar-rock-mine-classification model, saves it and uses the
+ * Trains and evaluates a logistic regression model, saves it and uses the
  * trained model for prediction.
  */
 public class LogisticRegressionDeepNetts {
@@ -38,9 +38,8 @@ public class LogisticRegressionDeepNetts {
     private static final int NUM_OUTPUTS = 1;
 
     public static void main(String[] args) throws Exception {
-        verifyJavaRuntime();
-        
         // 1. Runtime configuration
+        verifyJavaRuntime();
         DeepNetts.getInstance().setUseCuda(false);
 
         // 2. Load data
@@ -49,8 +48,8 @@ public class LogisticRegressionDeepNetts {
                         DATASET_PATH,
                         NUM_INPUTS,
                         NUM_OUTPUTS,
-                        false, // no header
-                        ","    // delimiter
+                        false,
+                        ","
                 );
 
         // 3. Inspect data
@@ -62,7 +61,6 @@ public class LogisticRegressionDeepNetts {
         TrainTestSplit split = dataSet.trainTestSplit(0.8);
 
         DataSet<MLDataItem> trainingSet = split.getTrainingSet();
-
         DataSet<MLDataItem> testSet = split.getTestSet();
 
         // 5. Preprocess
@@ -70,7 +68,7 @@ public class LogisticRegressionDeepNetts {
 
         scaler.apply(testSet);
 
-        // 6. Build sonar-rock-mine-classification model
+        // 6. Build logistic regression model
         FeedForwardNetwork neuralNet = FeedForwardNetwork.builder()
                 .addInputLayer(NUM_INPUTS)
                 .addOutputLayer(NUM_OUTPUTS, ActivationType.SIGMOID)
@@ -88,9 +86,7 @@ public class LogisticRegressionDeepNetts {
         neuralNet.train(trainingSet);
 
         // 8. Evaluate
-        ClassificationMetrics metrics =
-                (ClassificationMetrics) neuralNet.test(testSet);
-
+        ClassificationMetrics metrics = (ClassificationMetrics) neuralNet.test(testSet);
         System.out.println(metrics);
 
         // 9. Save model
@@ -101,7 +97,6 @@ public class LogisticRegressionDeepNetts {
         MLDataItem sonarExample = testSet.get(0);
         float[] sonarSignal = sonarExample.getInput().getValues();
         float actualTarget = sonarExample.getTargetOutput().getValues()[0];
-
         float mineProbability = neuralNet.predict(sonarSignal)[0];
 
         System.out.printf("Mine probability: %.4f%n", mineProbability);
@@ -113,13 +108,9 @@ public class LogisticRegressionDeepNetts {
 
 
     private static void verifyJavaRuntime() {
-        if (Runtime.version().feature() != 25) {
-            throw new IllegalStateException("Java 25 is required. Maven is using Java "
+        if (Runtime.version().feature() < 25) {
+            throw new IllegalStateException("Java 25 or newer is required. Maven is using Java "
                     + Runtime.version().feature() + ".");
-        }
-        if (ModuleLayer.boot().findModule("jdk.incubator.vector").isEmpty()) {
-            throw new IllegalStateException(
-                    "Vector API is not enabled. Run Maven with --add-modules jdk.incubator.vector.");
         }
     }
 }

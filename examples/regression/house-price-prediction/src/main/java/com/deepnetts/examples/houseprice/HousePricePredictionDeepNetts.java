@@ -79,7 +79,6 @@ public class HousePricePredictionDeepNetts {
     }
 
     private static void verifyJavaRuntime() {
-        if (Runtime.version().feature() != 25) throw new IllegalStateException("Java 25 is required.");
-        if (ModuleLayer.boot().findModule("jdk.incubator.vector").isEmpty()) throw new IllegalStateException("Vector API is not enabled. Run Maven with --add-modules jdk.incubator.vector.");
+        if (Runtime.version().feature() < 25) throw new IllegalStateException("Java 25 or newer is required.");
     }
 }

@@ -11,7 +11,12 @@ import java.nio.file.Path;
 import java.util.List;
 import javax.imageio.ImageIO;
 
-/** Workaround for the ImageSet index-loader regression in Deep Netts 4 beta. */
+/**
+ * Loads the images listed in an index file (one image path per line, optionally followed by its label).
+ * Every image is resized, optionally converted to grayscale and inverted, and gets a one-hot target
+ * built from labels.txt. An unreadable image stops loading with an error that names the file.
+ * Unlike ImageSet.loadImages, it does not print every loaded path.
+ */
 public final class ImageData {
     private ImageData() {}
 
