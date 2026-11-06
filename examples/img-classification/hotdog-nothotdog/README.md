@@ -10,6 +10,79 @@ hot_dog  = an image containing a hot dog
 negative = an image that does not contain a hot dog
 ```
 
+## Run this example
+
+**Requirements:** Java 25 or newer, Maven, and Git. If you are not sure they are installed, follow [Check your environment](../../../README.md#1-check-your-environment) first.
+
+Maven downloads Deep Netts Community Edition (`com.deepnetts:deepnetts-core:4.0.5`) from Maven Central on the first build. No separate installation or extra JVM option is needed.
+
+**1. Open the example folder.** From the `cookbook-examples` folder (the repository root), run:
+
+```bash
+cd examples/img-classification/hotdog-nothotdog
+```
+
+**2. Build and run the example:**
+
+```bash
+mvn clean compile exec:java
+```
+
+This trains the network for 10 epochs, which takes about 1 minute on an 8-core CPU (Community Edition trains on the CPU without Vector API acceleration). To check the complete workflow quickly, train for one epoch instead (about 20 seconds):
+
+```bash
+mvn "-Ddeepnetts.epochs=1" clean compile exec:java
+```
+
+To train longer, change the number, for example `"-Ddeepnetts.epochs=30"`.
+
+**3. Check the result.** After the one-epoch run, the last lines look like this:
+
+```text
+Images: 467
+Images by class: {negative=228, hot_dog=239}
+...
+Actual: hot_dog
+Predicted: hot_dog
+Hot-dog probability: 0.6097
+```
+
+Training progress and metrics are printed in between. With more epochs the numbers change, because the network trains longer. The exact numbers can differ slightly between computers. On systems that use a decimal comma (for example Serbian or German Windows), numbers are printed as `0,9978` instead of `0.9978`.
+
+**Generated files:** `models/hotdog-classifier.dnet`. Running the example again overwrites the generated files. The `models/` and `target/` folders are ignored by Git.
+
+Go back to the repository root when you are done:
+
+```bash
+cd ../../..
+```
+
+### If something goes wrong
+
+- **`'mvn' is not recognized` or `mvn: command not found`** - Maven is not installed or not on the `PATH`. Follow [Maven](../../../README.md#maven), open a new terminal, and run `mvn --version` again.
+- **`release version 25 not supported` or `Java 25 or newer is required`** - Maven runs on an older Java. Install JDK 25 and point `JAVA_HOME` to it, as described in [Java 25 or newer](../../../README.md#java-25-or-newer).
+- **`Could not resolve dependencies` or `Could not transfer artifact com.deepnetts:deepnetts-core`** - Maven cannot reach Maven Central. Check the internet connection and any proxy or mirror in `~/.m2/settings.xml`, then force Maven to try again:
+
+```bash
+mvn -U clean compile exec:java
+```
+- **`NoSuchFileException` or `FileNotFoundException` for `src/main/resources/datasets/...`** - the command was not started from the example folder. Go back to the repository root, run the `cd` command from step 1, and run the example again.
+- **`LifecyclePhaseNotFoundException` mentioning `.epochs=1`** (Windows PowerShell) - PowerShell split the option. Keep the quotes exactly as shown:
+
+```bash
+mvn "-Ddeepnetts.epochs=1" clean compile exec:java
+```
+- **Training takes too long** - run the one-epoch command above. It checks the complete workflow in about 20 seconds.
+- `WARNING: A terminally deprecated method in sun.misc.Unsafe has been called` at the start of a Maven command is printed by Maven itself on Java 24 and newer. It is harmless; ignore it.
+
+More fixes are listed in [Troubleshooting](../../../README.md#troubleshooting).
+
+### Run it in Apache NetBeans
+
+1. Choose **File -> Open Project** and select the `examples/img-classification/hotdog-nothotdog` folder.
+2. Click **Run Project** (F6). NetBeans uses the project folder as the working directory, so the dataset paths work without changes.
+3. For a one-epoch run, right-click the project, choose **Properties -> Run**, and set **VM Options** to `-Ddeepnetts.epochs=1`.
+
 ## Dataset
 
 The dataset comes from the original
@@ -46,44 +119,6 @@ hotdog-nothotdog/
     └── resources/datasets/hotdog-dataset/
         ├── hot_dog/
         └── negative/
-```
-
-## Requirements
-
-- Java 25
-- Maven
-- Deep Netts 4 Pro installed in the local Maven repository
-- a valid Deep Netts license
-- Java Vector API enabled
-
-## Run
-
-From this project directory:
-
-```bash
-MAVEN_OPTS="--add-modules jdk.incubator.vector" \
-  mvn clean compile exec:java
-```
-
-### Quick NetBeans test
-
-To verify the complete network flow without waiting for the default training
-run, open **Project Properties → Run → VM Options** and use:
-
-```text
---add-modules=jdk.incubator.vector -Ddeepnetts.epochs=1
-```
-
-One epoch verifies image loading, CNN training, evaluation, model saving, and
-prediction. It is a functional smoke test, not a meaningful accuracy run.
-
-Training a convolutional network is more computationally expensive than the
-tabular examples. The default run uses 10 epochs and can take several minutes
-on CPU. Increase the epoch limit for a longer experiment:
-
-```bash
-MAVEN_OPTS="--add-modules jdk.incubator.vector" \
-  mvn -Ddeepnetts.epochs=50 clean compile exec:java
 ```
 
 ## Workflow
